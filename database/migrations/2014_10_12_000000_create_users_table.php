@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->tinyInteger('role')->default(0)->comment="1: admin; 0:user";
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

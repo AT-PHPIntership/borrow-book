@@ -29,6 +29,7 @@ class CreateBooksTable extends Migration
             $table->string('language');
             $table->integer('quantity')->default(0);
             $table->integer('count_rate')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

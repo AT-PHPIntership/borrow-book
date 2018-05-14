@@ -29,6 +29,7 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->float('rate_point')->default(0.0);
             $table->integer('status')->default(0)->comment="1: accepted; 0:not accept";
+            $table->softDeletes();
             $table->timestamps();
         });
     }

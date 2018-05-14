@@ -24,6 +24,7 @@ class CreateBorrowesTable extends Migration
             $table->integer('number_book')->default(0);
             $table->date('to_date')->nullable();
             $table->date('form_date')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
