@@ -42,7 +42,7 @@ class Borrow extends Model
     /**
      * Relationship belongsToMany with Book
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function borrowDetails()
     {

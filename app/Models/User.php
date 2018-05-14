@@ -55,7 +55,7 @@ class User extends Authenticatable
     /**
      * Relationship belongsToMany with Book
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function ratings()
     {
@@ -66,7 +66,7 @@ class User extends Authenticatable
     /**
      * Relationship belongsToMany with User
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function favorites()
     {

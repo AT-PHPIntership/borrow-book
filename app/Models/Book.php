@@ -66,7 +66,7 @@ class Book extends Model
     /**
      * Relationship belongsToMany with User
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function ratings()
     {
@@ -77,7 +77,7 @@ class Book extends Model
     /**
      * Relationship belongsToMany with User
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function favorites()
     {
@@ -88,7 +88,7 @@ class Book extends Model
     /**
      * Relationship belongsToMany with Borrow
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function borrowDetails()
     {
