@@ -19,7 +19,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin' ], function(){
         return view('admin.index');
     });
 
-    Route::get('/create-user', function () {
-        return view('admin.users.createuser');
+    Route::get('/users/create', function () {
+        return view('admin.users.create');
     });
 });

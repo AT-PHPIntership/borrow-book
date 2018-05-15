@@ -24,7 +24,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">{{trans('admin.title.left-bar')}}</li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>{{trans('admin.user.title')}}</span>
