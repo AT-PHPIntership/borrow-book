@@ -14,7 +14,7 @@ class UserController extends Controller
      *
      * @return users
      */
-    public function listUser()
+    public function index()
     {
         $users = User::all();
         return view('admin.user', ['users' => $users]);
