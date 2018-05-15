@@ -10,6 +10,22 @@ class Borrow extends Model
     use SoftDeletes;
 
     /**
+     * Declare table
+     *
+     * @var string $tabel table name
+     */
+    protected $table = 'borrowes';
+
+    /**
+     * Borrows status
+     *
+     * @type int
+     */
+    const BORROWING = 0;
+    const GIVE_BACK = 1;
+    const WAITTING = 2;
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

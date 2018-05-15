@@ -10,6 +10,22 @@ class Post extends Model
     use SoftDeletes;
 
     /**
+     * Post status
+     *
+     * @type int
+     */
+    const UNACCEPT = 0;
+    const ACCEPT = 1;
+
+    /**
+     * Post post_type
+     *
+     * @type int
+     */
+    const COMMENT = 0;
+    const REVIEW = 1;
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
