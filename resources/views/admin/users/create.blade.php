@@ -16,38 +16,38 @@
             <form role="form">
                 <div class="box-body">
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.email')}}</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        <label>{{trans('user.form.title-inputs.email')}}</label>
+                        <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.address')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.password')}}</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <label>{{trans('user.form.title-inputs.password')}}</label>
+                        <input type="password" class="form-control" id="password" placeholder="{{trans('user.form.placeholders.address')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.fullname')}}</label>
-                        <input type="text" class="form-control" id="full-name" placeholder="Enter Full name">
+                        <label>{{trans('user.form.title-inputs.fullname')}}</label>
+                        <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.address')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.identity-number')}}</label>
-                        <input type="text" class="form-control" id="identity-number" placeholder="Enter Identity number">
+                        <label>{{trans('user.form.title-inputs.identity-number')}}</label>
+                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.address')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.dob')}}</label>
+                        <label>{{trans('user.form.title-inputs.dob')}}</label>
                         <input type="date" class="form-control" id="dob">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.address')}}</label>
-                        <input type="text" class="form-control" id="address" placeholder="Enter Address">
+                        <label>{{trans('user.form.title-inputs.address')}}</label>
+                        <input type="text" class="form-control" id="address" placeholder="{{trans('user.form.placeholders.address')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('admin.user.title-input.avatar')}}</label>
+                        <label>{{trans('user.form.title-inputs.avatar')}}</label>
                         <input type="file" id="avatar">
                     </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">{{trans('admin.button.submit')}}</button>
-                    <button type="reset" class="btn">{{trans('admin.button.reset')}}</button>
+                    <button type="submit" class="btn btn-primary">{{trans('user.form.buttons.submit')}}</button>
+                    <button type="reset" class="btn">{{trans('user.form.buttons.reset')}}</button>
                 </div>
             </form>
           </div>

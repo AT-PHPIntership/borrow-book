@@ -7,19 +7,6 @@
         ],
         'user' => [
             'title' => 'Manage users',
-            'create' => 'Create users',
-            'title-input' => [
-                'email' => 'Email',
-                'password' => 'Password',
-                'fullname' => 'Full name',
-                'identity-number' => 'Identity number',
-                'dob' => 'Birthday',
-                'address' => 'Address',
-                'avatar' => 'Avatar',
-            ],
-        ],
-        'button' => [
-            'submit' => 'Submit',
-            'reset' => 'Reset'
+            'sub-title' => 'Create users',
         ],
     );
