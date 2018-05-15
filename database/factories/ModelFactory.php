@@ -35,7 +35,7 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
 $factory->define(App\Models\ImageBook::class, function (Faker $faker) {
     return [
         'book_id' => App\Models\Book::all()->random()->id,
-        'image' => 'public/storage/images/default-user.png'
+        'image' => 'storage/images/default-user.png'
     ];
 });
 
