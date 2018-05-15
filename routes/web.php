@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+
+});
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin' ], function(){
+    Route::get('user','UserController@listUser')->name('user');
 });
