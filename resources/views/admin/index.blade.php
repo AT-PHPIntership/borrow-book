@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', trans('label.title.index'))
+@section('title', trans('admin.title.index'))
 
 @section('content')
 
