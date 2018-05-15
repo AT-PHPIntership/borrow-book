@@ -27,52 +27,14 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-table"></i> <span>Manage users</span>
+                    <i class="fa fa-table"></i> <span>{{trans('label.left-bar.user.title')}}</span>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>List users</a></li>
-                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>Create users</a></li>
-                    <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i>Edit users</a></li>
+                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>{{trans('label.left-bar.user.show')}}</a></li>
                 </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Manage books</span>
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>List books</a></li>
-                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>Create books</a></li>
-                    <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i>Edit books</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Manage borrow</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Manage posts</span>
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>List posts</a></li>
-                    <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i>Create posts</a></li>
-                    <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i>Edit posts</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Manage favorite</span>
-                </a>
             </li>
         </ul>
     </section>
