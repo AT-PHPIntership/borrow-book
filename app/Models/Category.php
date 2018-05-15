@@ -18,7 +18,7 @@ class Category extends Model
     /**
      * Relationship hasMany with Book
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function books()
     {

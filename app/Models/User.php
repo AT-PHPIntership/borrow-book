@@ -45,7 +45,7 @@ class User extends Authenticatable
     /**
      * Relationship hasMany with Post
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function posts()
     {
@@ -53,31 +53,29 @@ class User extends Authenticatable
     }
 
     /**
-     * Relationship belongsToMany with Book
+     * Relationship hasMany with Rating
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ratings()
     {
-        return $this->belongsToMany(Book::class, 'ratings', 'user_id', 'book_id')
-            ->withPivot('rate')->withTimestamps();
+        return $this->hasMany(Rating::class);
     }
 
     /**
-     * Relationship belongsToMany with User
+     * Relationship hasMany with Favorite
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'book_id')
-            ->withTimestamps();
+        return $this->hasMany(Favorite::class);
     }
 
     /**
      * Relationship hasMany with Borrow
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function borrowes()
     {

@@ -36,7 +36,7 @@ class Book extends Model
     /**
      * Relationship belongsTo with Category
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
@@ -46,7 +46,7 @@ class Book extends Model
     /**
      * Relationship hasMany with ImageBook
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function imageBooks()
     {
@@ -56,7 +56,7 @@ class Book extends Model
     /**
      * Relationship hasMany with Post
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function posts()
     {
@@ -64,35 +64,32 @@ class Book extends Model
     }
 
     /**
-     * Relationship belongsToMany with User
+     * Relationship hasMany with Rating
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ratings()
     {
-        return $this->belongsToMany(User::class, 'ratings', 'user_id', 'book_id')
-            ->withPivot('rate')->withTimestamps();
+        return $this->hasMany(Rating::class);
     }
 
     /**
-     * Relationship belongsToMany with User
+     * Relationship hasMany with Favorite
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'book_id')
-            ->withTimestamps();
+        return $this->hasMany(Favorite::class);
     }
 
     /**
-     * Relationship belongsToMany with Borrow
+     * Relationship HasMany with BorrowDetail
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function borrowDetails()
     {
-        return $this->belongsToMany(Borrow::class, 'borrow_details', 'borrow_id', 'book_id')
-            ->withTimestamps();
+        return $this->hasMany(BorrowDetail::class);
     }
 }

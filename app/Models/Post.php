@@ -33,7 +33,7 @@ class Post extends Model
     /**
      * Relationship belongsTo with User
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {

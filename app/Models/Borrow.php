@@ -32,7 +32,7 @@ class Borrow extends Model
     /**
      * Relationship belongsTo with User
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
@@ -40,13 +40,12 @@ class Borrow extends Model
     }
 
     /**
-     * Relationship belongsToMany with Book
+     * Relationship hasMany with BorrowDetail
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function borrowDetails()
     {
-        return $this->belongsToMany(Book::class, 'borrow_details', 'borrow_id', 'book_id')
-            ->withTimestamps();
+        return $this->hasMany(BorrowDetail::class);
     }
 }

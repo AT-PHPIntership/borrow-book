@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ImageBook extends Model
+class Favorite extends Model
 {
     /**
     * The attributes that are mass assignable.
@@ -12,8 +12,8 @@ class ImageBook extends Model
     * @var array
     */
     protected $fillable = [
-        'book_id',
-        'image'
+        'user_id',
+        'book_id'
     ];
 
     /**
@@ -24,5 +24,15 @@ class ImageBook extends Model
     public function book()
     {
         return $this->belongsTo(Book::class, 'book_id');
+    }
+
+    /**
+     * Relationship belongsTo with User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
