@@ -9,7 +9,7 @@
     <section class="content-header">
         <h3>{{trans('user.list_user')}}</h3>
     </section>
-
+    @include('admin.layouts.partials.messages')
     <!-- Main content -->
     <section class="container">
         <div class="row">
