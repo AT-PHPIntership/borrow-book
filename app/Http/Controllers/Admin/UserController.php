@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -46,16 +45,17 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Http\Requests\CreateUserRequest $request
-     * @return Response
+     * @param Http\Requests\CreateUserRequest $request request
+     *
+     * @return \Illuminate\Http\Response
      */
     public function store(CreateUserRequest $request)
     {
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
-            $name_new = time().'.'.$image->getClientOriginalExtension();
+            $nameNew = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images/avatars');
-            $image->move($destinationPath, $name_new);
+            $image->move($destinationPath, $nameNew);
         }
         $user = new User;
         $user->email = $request->email;
@@ -64,10 +64,10 @@ class UserController extends Controller
         $user->identity_number = $request->identity_number;
         $user->dob = $request->dob;
         $user->address = $request->address;
-        $user->avatar = $name_new;
+        $user->avatar = $nameNew;
         $user->role = $request->role;
         $user -> save();
         Session::flash('message', 'Successfully created user!');
         return redirect()->route('admin.users.create');
-    } 
+    }
 }

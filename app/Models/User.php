@@ -50,16 +50,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    /**
-     * Hash Password
-     *
-     */
-    /*public function setPasswordAttribute($pass)
-    {
-
-        $this->attributes['password'] = Hash::make($pass);
-
-    }*/
+    
     /**
      * Relationship hasMany with Post
      *
