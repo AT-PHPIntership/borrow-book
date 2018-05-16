@@ -92,14 +92,4 @@ class Book extends Model
     {
         return $this->hasMany(BorrowDetail::class);
     }
-
-    /**
-     * Get the book's image.
-     *
-     * @return string
-     */
-    public function getImageAttribute()
-    {
-        return asset(config('image.images_path') . $this->attributes['image']);
-    }
 }

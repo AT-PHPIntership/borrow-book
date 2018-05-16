@@ -7,7 +7,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h3>{{trans('user.listUser')}}</h3>
+        <h3>{{trans('user.list_user')}}</h3>
     </section>
 
     <!-- Main content -->
@@ -17,15 +17,15 @@
                 <table class="table box">
                     <thead>
                         <tr>
-                            <th>{{trans('user.tableHead.avatar')}}</th>
-                            <th>{{trans('user.tableHead.name')}}</th>
-                            <th>{{trans('user.tableHead.email')}}</th>
+                            <th>{{trans('user.table_head.avatar')}}</th>
+                            <th>{{trans('user.table_head.name')}}</th>
+                            <th>{{trans('user.table_ead.email')}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->getAvatarAttribute() }}" alt=""></td>
+                            <td><img class="text-center" src="{{ $user->avatar_url}}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                         </tr>

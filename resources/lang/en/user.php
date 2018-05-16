@@ -1,12 +1,12 @@
 <?php
 
     return [
-        'listUser' => 'List Users',
-        'tableHead' => [
+        'list_user' => 'List Users',
+        'table_head' => [
             'avatar' => 'Avatar',
             'name' => 'Name',
             'email' => 'Email',
-        ]
+        ],
         'title' => 'Manage users',
         'create' => 'Create users',
         'form' => [
@@ -32,4 +32,4 @@
                 'avatar' => 'Enter Avatar',
             ],
         ],
-    ]
+    ];
