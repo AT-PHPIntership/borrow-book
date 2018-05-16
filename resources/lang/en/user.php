@@ -9,12 +9,13 @@
         ],
         'title' => 'Manage users',
         'create' => 'Create users',
+        'update' => 'Update users',
         'form' => [
-            'title-inputs' => [
+            'title_inputs' => [
                 'email' => 'Email',
                 'password' => 'Password',
                 'fullname' => 'Full name',
-                'identity-number' => 'Identity number',
+                'identity_number' => 'Identity number',
                 'dob' => 'Birthday',
                 'address' => 'Address',
                 'avatar' => 'Avatar',
@@ -27,7 +28,7 @@
                 'email' => 'Enter Email',
                 'password' => 'Enter Password',
                 'fullname' => 'Enter Full name',
-                'identity-number' => 'Enter Identity number',
+                'identity_number' => 'Enter Identity number',
                 'address' => 'Enter Address',
                 'avatar' => 'Enter Avatar',
             ],
