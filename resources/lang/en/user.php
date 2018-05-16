@@ -3,6 +3,7 @@
     return array(
         'title' => 'Manage users',
         'create' => 'Create users',
+        'update' => 'Update users',
         'form' => [
             'title-inputs' => [
                 'email' => 'Email',
