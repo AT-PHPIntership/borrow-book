@@ -67,10 +67,10 @@ class UserController extends Controller
             $user->avatar = $nameNew;
             $user->role = $request->role;
             $user->save();
-            
+
             $image->move($destinationPath, $nameNew);
         }
-        Session::flash('message', trans('user.messages.create'));
+        Session::flash('message', trans('user.messages.create_success'));
         return redirect()->route('admin.users.index');
     }
 }
