@@ -21,9 +21,16 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.users.index', ['users' => $users]);
     }
-    public function edit($id)
+
+      /**
+     * Show layout of user.
+     *
+     * @param int $id id of user
+     *
+     * @return view
+     */
+    public function edit()
     {
         return view('admin.users.update');
     }
-    
 }
