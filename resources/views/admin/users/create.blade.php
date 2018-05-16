@@ -7,14 +7,12 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     
-
     <section class="content-header">
         <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">{{trans('user.create')}}</h3>
             </div>
             @include('admin.layouts.partials.errors')
-            @include('admin.layouts.partials.messages')
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">

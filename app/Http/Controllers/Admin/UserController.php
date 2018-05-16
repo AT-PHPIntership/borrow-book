@@ -54,7 +54,7 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $nameNew = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/avatars');
+            $destinationPath = public_path('/storage/images');
             $image->move($destinationPath, $nameNew);
         }
         $user = new User;
@@ -66,8 +66,8 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->avatar = $nameNew;
         $user->role = $request->role;
-        $user -> save();
-        Session::flash('message', 'Successfully created user!');
-        return redirect()->route('admin.users.create');
+        $user->save();
+        Session::flash('message', trans('messages.success'));
+        return redirect()->route('admin.users.index');
     }
 }
