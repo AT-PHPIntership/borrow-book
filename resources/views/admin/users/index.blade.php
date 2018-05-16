@@ -9,7 +9,7 @@
     <section class="content-header">
         <h3>{{trans('user.list_user')}}</h3>
     </section>
-
+    @include('admin.layouts.partials.messages')
     <!-- Main content -->
     <section class="container">
         <div class="row">
@@ -19,7 +19,7 @@
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
                             <th>{{trans('user.table_head.name')}}</th>
-                            <th>{{trans('user.table_ead.email')}}</th>
+                            <th>{{trans('user.table_head.email')}}</th>
                         </tr>
                     </thead>
                     <tbody>
