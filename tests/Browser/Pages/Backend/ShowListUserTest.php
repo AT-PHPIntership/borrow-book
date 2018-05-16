@@ -8,12 +8,14 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ShowListUserTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A Dusk test example.
      *
      * @return void
      */
-    public function testExample()
+    public function testShowList()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/users')
