@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Http\Requests\CreateUserRequest;
 
@@ -51,23 +50,27 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
+        
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $nameNew = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/storage/images');
+
+            $password = str_random(6);
+            $user = new User;
+            $user->email = $request->email;
+            $user->password = bcrypt($password);
+            $user->name = $request->name;
+            $user->identity_number = $request->identity_number;
+            $user->dob = $request->dob;
+            $user->address = $request->address;
+            $user->avatar = $nameNew;
+            $user->role = $request->role;
+            $user->save();
+            
             $image->move($destinationPath, $nameNew);
         }
-        $user = new User;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->name = $request->name;
-        $user->identity_number = $request->identity_number;
-        $user->dob = $request->dob;
-        $user->address = $request->address;
-        $user->avatar = $nameNew;
-        $user->role = $request->role;
-        $user->save();
-        Session::flash('message', trans('messages.success'));
+        Session::flash('message', trans('user.messages.create'));
         return redirect()->route('admin.users.index');
     }
 }

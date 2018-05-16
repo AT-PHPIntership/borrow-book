@@ -12,6 +12,9 @@
         'title' => 'Manage users',
         'create' => 'Create users',
         'update' => 'Update users',
+        'messages' => [
+            'create' => 'Successfully created user!',
+        ],
         'form' => [
             'title_inputs' => [
                 'email' => 'Email',

@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.password')}}</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="{{trans('user.form.placeholders.password')}}">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="{{trans('user.form.placeholders.password')}}" disabled="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.name')}}</label>
