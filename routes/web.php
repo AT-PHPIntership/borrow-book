@@ -19,4 +19,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', "as" => "admin." ], f
         return view('admin.index');
     });
     Route::resource('users', 'UserController');
+    Route::resource('books', 'BookController');
 });
