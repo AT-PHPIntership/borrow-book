@@ -1,6 +1,12 @@
 <?php
 
-    return array(
+    return [
+        'list_user' => 'List Users',
+        'table_head' => [
+            'avatar' => 'Avatar',
+            'name' => 'Name',
+            'email' => 'Email',
+        ],
         'title' => 'Manage users',
         'create' => 'Create users',
         'update' => 'Update users',
@@ -9,7 +15,7 @@
                 'email' => 'Email',
                 'password' => 'Password',
                 'fullname' => 'Full name',
-                'identity-number' => 'Identity number',
+                'identity_number' => 'Identity number',
                 'dob' => 'Birthday',
                 'address' => 'Address',
                 'avatar' => 'Avatar',
@@ -22,10 +28,9 @@
                 'email' => 'Enter Email',
                 'password' => 'Enter Password',
                 'fullname' => 'Enter Full name',
-                'identity-number' => 'Enter Identity number',
+                'identity_number' => 'Enter Identity number',
                 'address' => 'Enter Address',
                 'avatar' => 'Enter Avatar',
             ],
         ],
-        
-    );
+    ];

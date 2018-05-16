@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'            => 'required|string|max:255',
             'email'           => 'required|string|email|max:255|unique:users',
-            'identity_number' => 'required|integer|unique:users',
+            'identity_number' => 'required|integer|unique:users|max:9',
             'avatar'          => 'image|mimes:png,jpg,jpeg',
             'dob'             => 'date_format:"Y-m-d"',
             'address'         => 'string|max:255',

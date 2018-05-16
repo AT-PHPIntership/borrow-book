@@ -25,4 +25,14 @@ class ImageBook extends Model
     {
         return $this->belongsTo(Book::class, 'book_id');
     }
+
+    /**
+     * Get the book's image.
+     *
+     * @return string
+     */
+    public function getImageUrlAttribute()
+    {
+        return asset(config('image.images_path') . $this->image);
+    }
 }
