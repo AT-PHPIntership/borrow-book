@@ -22,10 +22,8 @@ class UserController extends Controller
         return view('admin.users.index', ['users' => $users]);
     }
 
-      /**
+    /**
      * Show layout of user.
-     *
-     * @param int $id id of user
      *
      * @return view
      */

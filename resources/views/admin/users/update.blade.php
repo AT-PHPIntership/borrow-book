@@ -14,19 +14,19 @@
                 <div class="box-body">
                     <div class="form-group">
                         <label>{{trans('user.form.title-inputs.email')}}</label>
-                        <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.address')}}" value="">
+                        <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.email')}}" value="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title-inputs.password')}}</label>
-                        <input type="password" class="form-control" id="password" placeholder="{{trans('user.form.placeholders.address')}}" value="">
+                        <input type="password" class="form-control" id="password" placeholder="{{trans('user.form.placeholders.password')}}" value="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title-inputs.fullname')}}</label>
-                        <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.address')}}" value="">
+                        <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.fullname')}}" value="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title-inputs.identity-number')}}</label>
-                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.address')}}" value="">
+                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.identity-number')}}" value="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title-inputs.dob')}}</label>
