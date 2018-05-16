@@ -19,13 +19,15 @@ class UserController extends Controller
         $users = User::paginate();
         return view('admin.users.index', ['users' => $users]);
     }
+
     /**
      * Show layout of user.
      *
      * @return view
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.users.update');
+        $user = User::findOrFail($id);
+        return view('admin.users.update', compact('user'));
     }
 }

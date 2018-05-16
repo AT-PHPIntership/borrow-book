@@ -13,32 +13,31 @@
             <form role="form">
                 <div class="box-body">
                     <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.email')}}</label>
-                        <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.email')}}" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.password')}}</label>
-                        <input type="password" class="form-control" id="password" placeholder="{{trans('user.form.placeholders.password')}}" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.fullname')}}</label>
-                        <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.fullname')}}" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.identity_number')}}</label>
-                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.identity_number')}}" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.dob')}}</label>
-                        <input type="date" class="form-control" id="dob" value="">
-                    </div>
-                    <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.address')}}</label>
-                        <input type="text" class="form-control" id="address" placeholder="{{trans('user.form.placeholders.address')}}" value="">
+                        <img src="{{ $user->avatar_url }}" alt="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.avatar')}}</label>
                         <input type="file" id="avatar">
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('user.form.title_inputs.email')}}</label>
+                        <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.email')}}" value="{{ $user->email }}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('user.form.title_inputs.fullname')}}</label>
+                        <input type="text" class="form-control" id="name" placeholder=" {{trans('user.form.placeholders.fullname')}}" value="{{ $user->name }}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('user.form.title_inputs.identity_number')}}</label>
+                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.identity_number')}}" value="{{ $user->identity_number }}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('user.form.title_inputs.dob')}}</label>
+                        <input type="date" class="form-control" id="dob" value="{{ $user->dob }}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('user.form.title_inputs.address')}}</label>
+                        <input type="text" class="form-control" id="address" placeholder="{{trans('user.form.placeholders.address')}}" value="{{ $user->address }}">
                     </div>
                 </div>
                 <!-- /.box-body -->
