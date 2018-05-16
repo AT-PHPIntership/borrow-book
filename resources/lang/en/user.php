@@ -13,7 +13,7 @@
         'create' => 'Create users',
         'update' => 'Update users',
         'messages' => [
-            'create' => 'Successfully created user!',
+            'create_success' => 'Successfully created user!',
         ],
         'form' => [
             'title_inputs' => [
