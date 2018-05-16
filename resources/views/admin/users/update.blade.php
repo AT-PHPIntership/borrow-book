@@ -13,32 +13,32 @@
             <form role="form">
                 <div class="box-body">
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.email')}}</label>
+                        <label>{{trans('user.form.title_inputs.email')}}</label>
                         <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.email')}}" value="{{$users->email}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.password')}}</label>
-                        <input disabled type="password" class="form-control" id="password" placeholder="{{trans('user.form.placeholders.password')}}" value="{{$users->password}}">
+                        <label>{{trans('user.form.title_inputs.password')}}</label>
+                        <input type="password" class="form-control" id="password" placeholder="{{trans('user.form.placeholders.password')}}" value="{{$users->password}}" disabled>
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.fullname')}}</label>
+                        <label>{{trans('user.form.title_inputs.fullname')}}</label>
                         <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.fullname')}}" value="{{$users->name}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.identity-number')}}</label>
+                        <label>{{trans('user.form.title_inputs.identity-number')}}</label>
                         <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.identity-number')}}" value="{{$users->identity_number}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.dob')}}</label>
+                        <label>{{trans('user.form.title_inputs.dob')}}</label>
                         <input type="date" class="form-control" id="dob" value="{{$users->dob}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.address')}}</label>
+                        <label>{{trans('user.form.title_inputs.address')}}</label>
                         <input type="text" class="form-control" id="address" placeholder="{{trans('user.form.placeholders.address')}}" value="{{$users->address}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title-inputs.avatar')}}</label>
-                        <input type="file" id="avatar" value="{{$users->avatar}}">
+                        <label>{{trans('user.form.title_inputs.avatar')}}</label>
+                        <input type="file" id="avatar">
                     </div>
                 </div>
                 <!-- /.box-body -->
