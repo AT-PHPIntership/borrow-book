@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -19,8 +20,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate();
         return view('admin.users.index', ['users' => $users]);
+    }
+    /**
+     * Show layout of user.
+     *
+     * @return view
+     */
+    public function edit()
+    {
+        return view('admin.users.update');
     }
 
     /**
@@ -36,6 +46,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param Http\Requests\CreateUserRequest $request
      * @return Response
      */
     public function store(CreateUserRequest $request)
@@ -55,12 +66,8 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->avatar = $name_new;
         $user->role = $request->role;
-        //$data = $request->all();
         $user -> save();
-        //$user = User::create($data);
-        // dd($data);
-        // redirect
         Session::flash('message', 'Successfully created user!');
         return redirect()->route('admin.users.create');
-    }
+    } 
 }

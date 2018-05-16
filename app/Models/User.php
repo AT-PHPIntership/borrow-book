@@ -99,4 +99,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Borrow::class);
     }
+
+    /**
+     * Get the user's avatar.
+     *
+     * @return string
+     */
+    public function getAvatarUrlAttribute()
+    {
+        return asset(config('image.images_path') . $this->avatar);
+    }
 }

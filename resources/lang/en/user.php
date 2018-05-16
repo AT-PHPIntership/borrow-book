@@ -1,8 +1,17 @@
 <?php
 
     return [
+
+        'list_user' => 'List Users',
+        'table_head' => [
+            'avatar' => 'Avatar',
+            'name' => 'Name',
+            'email' => 'Email',
+        ],
+
         'title' => 'Manage users',
         'create' => 'Create users',
+        'update' => 'Update users',
         'form' => [
             'title_inputs' => [
                 'email' => 'Email',
@@ -27,5 +36,4 @@
                 'avatar' => 'Enter Avatar',
             ],
         ],
-        
     ];
