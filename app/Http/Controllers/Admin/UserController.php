@@ -40,8 +40,12 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        $validated = $request->validated();
-        dd($validated);
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $name_new = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/avatars');
+            $image->move($destinationPath, $name_new);
+        }
         $user = new User;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -49,7 +53,7 @@ class UserController extends Controller
         $user->identity_number = $request->identity_number;
         $user->dob = $request->dob;
         $user->address = $request->address;
-        $user->avatar = $request->avatar;
+        $user->avatar = $name_new;
         $user->role = $request->role;
         //$data = $request->all();
         $user -> save();

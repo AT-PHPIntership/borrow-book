@@ -7,7 +7,7 @@
             'title_inputs' => [
                 'email' => 'Email',
                 'password' => 'Password',
-                'fullname' => 'Full name',
+                'name' => 'Name',
                 'identity_number' => 'Identity number',
                 'dob' => 'Birthday',
                 'address' => 'Address',
@@ -21,7 +21,7 @@
             'placeholders' => [
                 'email' => 'Enter Email',
                 'password' => 'Enter Password',
-                'fullname' => 'Enter Full name',
+                'name' => 'Enter Name',
                 'identity_number' => 'Enter Identity number',
                 'address' => 'Enter Address',
                 'avatar' => 'Enter Avatar',

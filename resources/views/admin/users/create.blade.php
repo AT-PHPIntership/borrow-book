@@ -6,14 +6,18 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    
+
     <section class="content-header">
         <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">{{trans('user.create')}}</h3>
             </div>
+            @include('admin.layouts.partials.errors')
+            @include('admin.layouts.partials.messages')
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('admin.users.store') }}" method="POST">
+            <form role="form" action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="box-body">
                     <div class="form-group">
@@ -25,8 +29,8 @@
                         <input type="password" class="form-control" id="password" name="password" placeholder="{{trans('user.form.placeholders.password')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.fullname')}}</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder=" {{trans('user.form.placeholders.fullname')}}">
+                        <label>{{trans('user.form.title_inputs.name')}}</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('user.form.placeholders.name')}}">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.identity_number')}}</label>
