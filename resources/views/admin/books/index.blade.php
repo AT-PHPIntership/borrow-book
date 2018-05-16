@@ -25,17 +25,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($books as $book )
                         <tr>
-                            <td></td>
-                            <td>King's ring</td>
-                            <td>A</td>
-                            <td>Englist</td>
-                            <td>1</td>
+                            @foreach ($book->imageBooks as $image)
+                                @if ($loop->first)
+                                    <td><img src="{{ $image->image_url }}" alt=""></td>
+                                @endif
+                            @endforeach
+                            <td>{{ $book->title }}</td>
+                            <td>{{ $book->author }}</td>
+                            <td>{{ $book->language }}</td>
+                            <td>{{ $book->quantity }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="text-center">
-                    
+                    {{ $books->links() }}
                 </div>
             </div>
         </div>
