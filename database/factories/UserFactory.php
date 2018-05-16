@@ -17,7 +17,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'avatar' => 'storage/images/default-user.png',
+        'avatar' => 'default-user.png',
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'identity_number' => $faker->numberBetween($min = 100000000, $max = 999999999),
         'dob' => $faker->date(),

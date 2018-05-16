@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin' ], function(){
     Route::get('/', function () {
         return view('admin.index');
     });
-
     Route::resource('/users', 'UserController');
+    Route::get('/users/create', function () {
+        return view('admin.users.create');
+    });
 });

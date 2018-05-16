@@ -25,13 +25,16 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->avatar }}" alt=""></td>
+                            <td><img class="text-center" src="{{ $user->getAvatarAttribute() }}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="text-center">
+                    {{ $users->links() }}
+                </div>
             </div>
         </div>
     </section>
