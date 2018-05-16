@@ -25,8 +25,8 @@
                         <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.fullname')}}" value="">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.identity-number')}}</label>
-                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.identity-number')}}" value="">
+                        <label>{{trans('user.form.title_inputs.identity_number')}}</label>
+                        <input type="text" class="form-control" id="identity-number" placeholder="{{trans('user.form.placeholders.identity_number')}}" value="">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.dob')}}</label>
