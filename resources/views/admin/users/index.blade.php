@@ -19,7 +19,7 @@
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
                             <th>{{trans('user.table_head.name')}}</th>
-                            <th>{{trans('user.table_ead.email')}}</th>
+                            <th>{{trans('user.table_head.email')}}</th>
                         </tr>
                     </thead>
                     <tbody>
