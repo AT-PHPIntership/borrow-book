@@ -5,7 +5,7 @@
         'create' => 'Create users',
         'update' => 'Update users',
         'form' => [
-            'title-inputs' => [
+            'title_inputs' => [
                 'email' => 'Email',
                 'password' => 'Password',
                 'fullname' => 'Full name',
