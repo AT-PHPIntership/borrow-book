@@ -61,18 +61,18 @@ class UserController extends Controller
         $user->identity_number = $request->identity_number;
         $user->dob = $request->dob;
         $user->address = $request->address;
+        $user->role = $request->role;
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $nameNew = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/storage/images');
             $user->avatar = $nameNew;
+            $user->save();
             $image->move($destinationPath, $nameNew);
         } else {
             $user->avatar = $request->avatar;
+            $user->save();
         }
-        $user->role = $request->role;
-        $user->save();
-
         $data['email'] = $user->email;
         $data['password'] = $password;
         Mail::to($user->email)->send(new CreateUserMail($data));
