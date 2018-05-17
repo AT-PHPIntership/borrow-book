@@ -12,15 +12,12 @@
 */
 Route::get('/', function () {
     return view('welcome');
-
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin' ], function(){   
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', "as" => "admin." ], function(){
     Route::get('/', function () {
         return view('admin.index');
     });
-    Route::resource('/users', 'UserController');
-    Route::get('/users/create', function () {
-        return view('admin.users.create');
-    });
+    Route::resource('users', 'UserController');
+    Route::resource('books', 'BookController');
 });

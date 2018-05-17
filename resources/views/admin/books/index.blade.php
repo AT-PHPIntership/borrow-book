@@ -1,13 +1,13 @@
 @extends('admin.layouts.admin')
 
-@section('title', trans('admin.title.index'))
+@section('title', trans('book.title'))
 
 @section('content')
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h3>{{trans('user.list_user')}}</h3>
+        <h3>{{trans('book.list_book')}}</h3>
     </section>
     @include('admin.layouts.partials.messages')
     <!-- Main content -->
@@ -17,23 +17,25 @@
                 <table class="table box">
                     <thead>
                         <tr>
-                            <th>{{trans('user.table_head.avatar')}}</th>
-                            <th>{{trans('user.table_head.name')}}</th>
-                            <th>{{trans('user.table_head.email')}}</th>
+                            <th>{{trans('book.table_head.image')}}</th>
+                            <th>{{trans('book.table_head.title')}}</th>
+                            <th>{{trans('book.table_head.author')}}</th>
+                            <th>{{trans('book.table_head.language')}}</th>
+                            <th>{{trans('book.table_head.quantity')}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->avatar_url}}" alt=""></td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td></td>
+                            <td>King's ring</td>
+                            <td>A</td>
+                            <td>Englist</td>
+                            <td>1</td>
                         </tr>
-                        @endforeach
                     </tbody>
                 </table>
                 <div class="text-center">
-                    {{ $users->links() }}
+                    
                 </div>
             </div>
         </div>

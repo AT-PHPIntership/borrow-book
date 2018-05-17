@@ -9,17 +9,9 @@
               <h3 class="box-title">{{trans('user.update')}}</h3>
             </div>
             <!-- /.box-header -->
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('admin.layouts.partials.errors')
             <!-- form start -->
-            <form role="form" action="{{ route('users.update', $users->id) }}" method = "POST"">
+            <form role="form" action="{{ route('admin.users.update', $users->id) }}" method = "POST" enctype="multipart/form-data">
                 {{method_field('PATCH')}}
                 {{ csrf_field() }}
                 <div class="box-body">
@@ -33,8 +25,8 @@
                         <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.email')}}" value="{{$users->email}}" disabled>
                     </div>
                     <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.fullname')}}</label>
-                        <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.fullname')}}" value="{{$users->name}}" name="name">
+                        <label>{{trans('user.form.title_inputs.name')}}</label>
+                        <input type="text" class="form-control" id="full-name" placeholder=" {{trans('user.form.placeholders.name')}}" value="{{$users->name}}" name="name">
                     </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.identity_number')}}</label>

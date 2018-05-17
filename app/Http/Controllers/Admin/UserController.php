@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\UpdateUserRequest;
-
+use Session;
+use App\Http\Requests\CreateUserRequest;
+use App\Mail\CreateUserMail;
+use Mail;
 class UserController extends Controller
 {
 
@@ -20,6 +23,7 @@ class UserController extends Controller
         $users = User::paginate();
         return view('admin.users.index', ['users' => $users]);
     }
+
     /**
      * Show layout of user.
      *
@@ -34,9 +38,69 @@ class UserController extends Controller
     }
     public function update(UpdateUserRequest $request, $id)
     {
-        $data = $request->all();
-        $user = User::FindOrFail($id)->update($data); 
-        dd($user);
+        $user = User::FindOrFail($id);
+        $user->name = $request->name;
+        $user->identity_number = $request->identity_number;
+        $user->dob = $request->dob;
+        $user->address = $request->address;
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $nameNew = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/storage/images');
+            $user->avatar = $nameNew;
+            $user->save();
+            $image->move($destinationPath, $nameNew);
+        } else {
+            $user->avatar = $request->avatar;
+            $user->save();
+        }
+        Session::flash('message', trans('user.messages.update_success'));
         return redirect()->route('admin.users.index');  
+    }
+
+    /**
+    * Show the form for creating a new user.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Http\Requests\CreateUserRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CreateUserRequest $request)
+    {
+        $password = str_random(6);
+        $user = new User;
+        $user->email = $request->email;
+        $user->password = bcrypt($password);
+        $user->name = $request->name;
+        $user->identity_number = $request->identity_number;
+        $user->dob = $request->dob;
+        $user->address = $request->address;
+        $user->role = $request->role;
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $nameNew = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/storage/images');
+            $user->avatar = $nameNew;
+            $user->save();
+            $image->move($destinationPath, $nameNew);
+        } else {
+            $user->avatar = $request->avatar;
+            $user->save();
+        }
+        $data['email'] = $user->email;
+        $data['password'] = $password;
+        Mail::to($user->email)->send(new CreateUserMail($data));
+        Session::flash('message', trans('user.messages.create_success'));
+        return redirect()->route('admin.users.index');
     }
 }
