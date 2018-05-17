@@ -27,7 +27,7 @@ class ShowListUserTest extends DuskTestCase
     }
 
     /**
-     * A Dusk test example.
+     * A Dusk test show list user.
      *
      * @return void
      */
