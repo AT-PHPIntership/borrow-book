@@ -1,8 +1,8 @@
 <?php
 
-    return array(
+    return [
         'title' => [
             'index' => 'Admin Borrow Index',
-            'left-bar' => 'MAIN NAVIGATION'
+            'left_bar' => 'MAIN NAVIGATION'
         ],
-    );
+    ];
