@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = User::FindOrFail($id);
         $user->name = $request->name;
         $user->identity_number = $request->identity_number;
         $user->dob = $request->dob;
@@ -55,7 +55,7 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $nameNew = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = 'images_url';
+            $destinationPath = public_path(config('image.images_path'));
             $user->avatar = $nameNew;
             $user->save();
             $image->move($destinationPath, $nameNew);
