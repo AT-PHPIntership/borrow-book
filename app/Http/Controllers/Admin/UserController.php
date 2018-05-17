@@ -27,11 +27,14 @@ class UserController extends Controller
     /**
      * Show layout of user.
      *
+     * @param int $id id of user
+     *
      * @return view
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.users.update');
+        $users = User::findOrFail($id);
+        return view('admin.users.update', ['users' => $users]);
     }
 
     /**
