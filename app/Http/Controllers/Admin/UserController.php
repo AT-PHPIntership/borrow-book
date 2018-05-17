@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::find($id);
+        $users = User::findOrFail($id);
         return view('admin.users.update', ['users' => $users]);
     }
 }

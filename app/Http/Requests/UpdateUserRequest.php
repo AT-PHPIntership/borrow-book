@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -19,14 +20,16 @@ class UpdateUserRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * 
+     * @param Illuminate\Http\Request $request request for edit user
+     * 
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'name'            => 'required|string|max:255',
-            'identity_number' => 'required|integer|unique:users,identity_number,',
+            'identity_number' => 'required|integer|unique:users,id,'.$request->get('id'),
             'avatar'          => 'image|mimes:png,jpg,jpeg',
             'dob'             => 'date_format:"Y-m-d"',
             'address'         => 'string|max:255',
