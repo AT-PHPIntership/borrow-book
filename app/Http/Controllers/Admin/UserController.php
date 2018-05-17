@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Session;
 use App\Http\Requests\CreateUserRequest;
+use App\Mail\CreateUserMail;
+use Mail;
 
 class UserController extends Controller
 {
@@ -21,6 +23,7 @@ class UserController extends Controller
         $users = User::paginate();
         return view('admin.users.index', ['users' => $users]);
     }
+
     /**
      * Show layout of user.
      *
@@ -50,27 +53,32 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        
+        $password = str_random(6);
+        $user = new User;
+        $user->email = $request->email;
+        $user->password = bcrypt($password);
+        $user->name = $request->name;
+        $user->identity_number = $request->identity_number;
+        $user->dob = $request->dob;
+        $user->address = $request->address;
         if ($request->hasFile('avatar')) {
             $image = $request->file('avatar');
             $nameNew = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/storage/images');
-
-            $password = str_random(6);
-            $user = new User;
-            $user->email = $request->email;
-            $user->password = bcrypt($password);
-            $user->name = $request->name;
-            $user->identity_number = $request->identity_number;
-            $user->dob = $request->dob;
-            $user->address = $request->address;
             $user->avatar = $nameNew;
-            $user->role = $request->role;
-            $user->save();
-
             $image->move($destinationPath, $nameNew);
+        }else{
+            $user->avatar = $request->avatar;
         }
+        $user->role = $request->role;
+        $user->save();
+
+        $data['email'] = $user->email;
+        $data['password'] = $password;
+        Mail::to($user->email)->send(new CreateUserMail($data));
         Session::flash('message', trans('user.messages.create_success'));
         return redirect()->route('admin.users.index');
+        
+        
     }
 }
