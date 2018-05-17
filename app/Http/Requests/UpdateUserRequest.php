@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,11 +25,11 @@ class UpdateUserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(Requests $request)
+    public function rules(Request $request)
     {
         return [
             'name'            => 'required|string|max:255',
-            'identity_number' => 'required|integer|unique:users,identity_number,'.$request->get('id'),
+            'identity_number' => 'required|integer|unique:users,id,'.$request->get('id'),
             'avatar'          => 'image|mimes:png,jpg,jpeg',
             'dob'             => 'date_format:"Y-m-d"',
             'address'         => 'string|max:255',
