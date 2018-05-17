@@ -67,7 +67,7 @@ class UserController extends Controller
             $destinationPath = public_path('/storage/images');
             $user->avatar = $nameNew;
             $image->move($destinationPath, $nameNew);
-        }else{
+        } else {
             $user->avatar = $request->avatar;
         }
         $user->role = $request->role;
@@ -78,7 +78,5 @@ class UserController extends Controller
         Mail::to($user->email)->send(new CreateUserMail($data));
         Session::flash('message', trans('user.messages.create_success'));
         return redirect()->route('admin.users.index');
-        
-        
     }
 }
