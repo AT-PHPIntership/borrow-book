@@ -15,6 +15,16 @@ class ShowListBookTest extends DuskTestCase
     const RECORD_LIMIT = 15;
 
     /**
+    * Override function setUp() for make user login
+    *
+    * @return void
+    */
+    public function setUp()
+    {
+        factory(Book::class, 20)->create();
+    }
+
+    /**
      * A Dusk test show list book.
      *
      * @return void
