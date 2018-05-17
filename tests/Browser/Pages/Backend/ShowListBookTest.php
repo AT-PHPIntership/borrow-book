@@ -5,8 +5,8 @@ namespace Tests\Browser\Pages\Backend;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Models\Category;
 use App\Models\Book;
-use Faker\Factory as Faker;
 
 class ShowListBookTest extends DuskTestCase
 {
@@ -16,12 +16,15 @@ class ShowListBookTest extends DuskTestCase
     const RECORD_LIMIT = 15;
 
     /**
-    * Override function setUp() for make user login
+    * Override function set up database
     *
     * @return void
     */
     public function setUp()
     {
+        parent::setUp();
+
+        factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Book::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
