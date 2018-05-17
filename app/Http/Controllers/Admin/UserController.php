@@ -10,6 +10,7 @@ use Session;
 use App\Http\Requests\CreateUserRequest;
 use App\Mail\CreateUserMail;
 use Mail;
+
 class UserController extends Controller
 {
 
@@ -33,9 +34,17 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = User::find($id);
+        $users = User::findOrFail($id);
         return view('admin.users.update', ['users' => $users]);
     }
+    /**
+     * Update User.
+     *
+     * @param Http\Requests\UpdateUserRequest $request request
+     * @param App\Models\User                 $id      id of User
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function update(UpdateUserRequest $request, $id)
     {
         $user = User::FindOrFail($id);
@@ -55,7 +64,7 @@ class UserController extends Controller
             $user->save();
         }
         Session::flash('message', trans('user.messages.update_success'));
-        return redirect()->route('admin.users.index');  
+        return redirect()->route('admin.users.index');
     }
 
     /**
