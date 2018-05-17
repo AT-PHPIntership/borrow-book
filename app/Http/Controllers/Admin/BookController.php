@@ -18,4 +18,14 @@ class BookController extends Controller
         $books = Book::with('imageBooks')->paginate();
         return view('admin.books.index', compact('books', $books));
     }
+
+    /**
+    * Show the form for creating a new user.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create()
+    {
+        return view('admin.books.create');
+    }
 }
