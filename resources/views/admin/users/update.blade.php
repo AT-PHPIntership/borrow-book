@@ -13,6 +13,11 @@
             <form role="form">
                 <div class="box-body">
                     <div class="form-group">
+                        <label>{{trans('user.form.title_inputs.avatar')}}</label>
+                        <img src="{{$users->avatar_url}}" alt="">
+                        <input type="file" id="avatar" value="{{$users->avatar}}">
+                    </div>
+                    <div class="form-group">
                         <label>{{trans('user.form.title_inputs.email')}}</label>
                         <input type="email" class="form-control" id="email" placeholder="{{trans('user.form.placeholders.email')}}" value="{{$users->email}}">
                     </div>
@@ -35,10 +40,6 @@
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.address')}}</label>
                         <input type="text" class="form-control" id="address" placeholder="{{trans('user.form.placeholders.address')}}" value="{{$users->address}}">
-                    </div>
-                    <div class="form-group">
-                        <label>{{trans('user.form.title_inputs.avatar')}}</label>
-                        <input type="file" id="avatar">
                     </div>
                 </div>
                 <!-- /.box-body -->
