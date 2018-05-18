@@ -112,4 +112,18 @@ class UserController extends Controller
         Session::flash('message', trans('user.messages.create_success'));
         return redirect()->route('admin.users.index');
     }
+
+    /**
+    * Remove the specified resource from storage.
+    *
+    * @param App\Models\User $user data of user want to delete
+    *
+    * @return Response
+    */
+    public function destroy(User $user)
+    {
+        $user->delete();
+        Session::flash('message', trans('user.messages.delete_success'));
+        return redirect()->route('admin.users.index');
+    }
 }

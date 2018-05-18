@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateBookRequest;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\ImageBook;
+use Session;
+use DB;
 
 class BookController extends Controller
 {
@@ -21,17 +25,58 @@ class BookController extends Controller
     }
 
     /**
-     * Show layout of book.
+    * Show the form for creating a new user.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create()
+    {
+        $languages = Book::LANGUAGES;
+        $categories = Category::all();
+        return view('admin.books.create', compact('categories', 'languages'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
      *
-     * @param int $id id of book
+     * @param Http\Requests\CreateBookRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CreateBookRequest $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = $request->except([
+                'count_rate'
+            ]);
+
+            $book = Book::create($data);
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $photo) {
+                    $nameNew = time().'.'.$photo->getClientOriginalExtension();
+                    $photo->move(public_path(config('image.images_path')), $nameNew);
+                    ImageBook::create([
+                        'book_id' => $book->id,
+                        'image' => $nameNew
+                    ]);
+                }
+            } else {
+                ImageBook::create([
+                    'book_id' => $book->id
+                ]);
+            }
+        });
+        Session::flash('message', trans('book.messages.create_success'));
+        return redirect()->route('admin.books.index');
+    }
+
+    /**
+     * Show layout of book.
      *
      * @return view
      */
-    public function edit($id)
+    public function edit()
     {
-        $book = Book::with(['category', 'imageBooks'])->findOrFail($id);
-        $categories = Category::all();
-        $data = compact('book', 'categories');
-        return view('admin.books.edit', $data);
+        return view('admin.books.edit');
     }
 }

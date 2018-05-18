@@ -14,12 +14,13 @@
     <section class="container">
         <div class="row">
             <div class="col-md-10">
-                <table class="table box">
+                <table class="table table-striped box">
                     <thead>
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
                             <th>{{trans('user.table_head.name')}}</th>
                             <th>{{trans('user.table_head.email')}}</th>
+                            <th>{{trans('user.table_head.options')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,14 @@
                             <td><img class="text-center" src="{{ $user->avatar_url}}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>
+                                <button>{{trans('user.form.buttons.edit')}}</button> 
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button onclick="return confirm('{{trans('user.messages.confirm_delete')}}')">{{trans('user.form.buttons.delete')}}</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

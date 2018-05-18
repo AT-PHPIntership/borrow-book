@@ -17,6 +17,16 @@ class Book extends Model
     protected $dates = ['deleted_at'];
 
     /**
+     * The Book language
+     *
+     * @type array
+     */
+    const LANGUAGES = [
+        'English',
+        'VietNamese'
+    ];
+
+    /**
     * The attributes that are mass assignable.
     *
     * @var array
