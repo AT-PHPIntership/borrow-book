@@ -31,7 +31,7 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 <button>{{trans('user.form.buttons.edit')}}</button> 
-                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button onclick="return confirm('{{trans('user.messages.confirm_delete')}}')">{{trans('user.form.buttons.delete')}}</button>

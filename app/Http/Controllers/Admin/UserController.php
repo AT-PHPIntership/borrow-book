@@ -120,9 +120,8 @@ class UserController extends Controller
     *
     * @return Response
     */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::findOrFail($id);
         $user->delete();
         Session::flash('message', trans('user.messages.delete_success'));
         return redirect()->route('admin.users.index');
