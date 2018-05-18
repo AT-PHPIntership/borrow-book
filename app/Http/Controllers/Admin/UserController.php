@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Requests\UpdateUserRequest;
 use Session;
 use App\Http\Requests\CreateUserRequest;
 use App\Mail\CreateUserMail;
@@ -35,6 +36,35 @@ class UserController extends Controller
     {
         $users = User::findOrFail($id);
         return view('admin.users.update', ['users' => $users]);
+    }
+    /**
+     * Update User.
+     *
+     * @param Http\Requests\UpdateUserRequest $request request
+     * @param App\Models\User                 $id      id of User
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateUserRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->identity_number = $request->identity_number;
+        $user->dob = $request->dob;
+        $user->address = $request->address;
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $nameNew = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path(config('image.images_path'));
+            $user->avatar = $nameNew;
+            $user->save();
+            $image->move($destinationPath, $nameNew);
+        } else {
+            $user->avatar = $request->avatar;
+            $user->save();
+        }
+        Session::flash('message', trans('user.messages.update_success'));
+        return redirect()->route('admin.users.index');
     }
 
     /**

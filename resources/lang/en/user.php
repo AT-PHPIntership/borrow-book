@@ -16,6 +16,8 @@
         'messages' => [
             'create_success' => 'Successfully created user!',
             'delete_success' => 'Successfully deleted user!',
+            'update_success' => 'Successfully updated user!',
+
         ],
         'form' => [
             'title_inputs' => [
