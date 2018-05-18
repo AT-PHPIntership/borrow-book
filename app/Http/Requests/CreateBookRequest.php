@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Book;
 
 class CreateBookRequest extends FormRequest
 {
@@ -23,6 +24,7 @@ class CreateBookRequest extends FormRequest
      */
     public function rules()
     {
+        $languages = Book::LANGUAGES;
         return [
             'category_id'     => 'required|exists:categories,id',
             'title'           => 'required|string|max:255',
@@ -30,7 +32,7 @@ class CreateBookRequest extends FormRequest
             'number_of_page'  => 'required|integer',
             'author'          => 'required|string|max:255',
             'publishing_year' => 'date_format:"Y-m-d"|before:today',
-            'language'        => 'required|string|max:255',
+            'language'        => 'required|in:' . implode(',', $languages),
             'quantity'        => 'integer'
         ];
     }

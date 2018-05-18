@@ -26,7 +26,7 @@
                         <label>{{trans('book.form.title_inputs.category')}}</label>
                         <select class="form-control" id="category" name="category_id">
                             @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -54,7 +54,11 @@
                     </div>
                     <div class="form-group">
                         <label>{{trans('book.form.title_inputs.language')}}</label>
-                        <input type="text" class="form-control" id="language" name="language" placeholder="{{trans('book.form.placeholders.language')}}">
+                        <select class="form-control" id="language" name="language">
+                            @foreach ($languages as $language)
+                                <option value="{{ $language }}">{{ $language }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>{{trans('book.form.title_inputs.quantity')}}</label>

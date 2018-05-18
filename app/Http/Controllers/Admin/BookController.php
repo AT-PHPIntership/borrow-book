@@ -9,6 +9,7 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\ImageBook;
 use Session;
+use DB;
 
 class BookController extends Controller
 {
@@ -30,8 +31,9 @@ class BookController extends Controller
     */
     public function create()
     {
+        $languages = Book::LANGUAGES;
         $categories = Category::all();
-        return view('admin.books.create', compact('categories', $categories));
+        return view('admin.books.create', compact('categories', 'languages'));
     }
 
     /**
@@ -43,32 +45,27 @@ class BookController extends Controller
      */
     public function store(CreateBookRequest $request)
     {
-        $data = $request->only([
-            'category_id',
-            'title',
-            'description',
-            'number_of_page',
-            'author',
-            'publishing_year',
-            'language',
-            'quantity'
-        ]);
+        DB::transaction(function () use ($request) {
+            $data = $request->except([
+                'count_rate'
+            ]);
 
-        $book = Book::create($data);
-        if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photo) {
-                $nameNew = time().'.'.$photo->getClientOriginalExtension();
-                $photo->move(public_path(config('image.images_path')), $nameNew);
+            $book = Book::create($data);
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $photo) {
+                    $nameNew = time().'.'.$photo->getClientOriginalExtension();
+                    $photo->move(public_path(config('image.images_path')), $nameNew);
+                    ImageBook::create([
+                        'book_id' => $book->id,
+                        'image' => $nameNew
+                    ]);
+                }
+            } else {
                 ImageBook::create([
-                    'book_id' => $book->id,
-                    'image' => $nameNew
+                    'book_id' => $book->id
                 ]);
             }
-        } else {
-            ImageBook::create([
-                'book_id' => $book->id
-            ]);
-        }
+        });
         Session::flash('message', trans('book.messages.create_success'));
         return redirect()->route('admin.books.index');
     }
