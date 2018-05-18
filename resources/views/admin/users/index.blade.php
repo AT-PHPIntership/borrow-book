@@ -26,15 +26,15 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->avatar_url}}" alt="" width="25%"></td>
+                            <td><img class="text-center" src="{{ $user->avatar_url}}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <button>Edit</button> 
+                                <button>{{trans('user.form.buttons.edit')}}</button> 
                                 <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button onclick="return confirm('Are you sure?')">Delete</button>
+                                    <button onclick="return confirm('{{trans('user.messages.confirm_delete')}}')">{{trans('user.form.buttons.delete')}}</button>
                                 </form>
                             </td>
                         </tr>

@@ -17,6 +17,7 @@
             'create_success' => 'Successfully created user!',
             'delete_success' => 'Successfully deleted user!',
             'update_success' => 'Successfully updated user!',
+            'confirm_delete' => 'Are you sure?',
 
         ],
         'form' => [
@@ -32,7 +33,9 @@
             ],
             'buttons' => [
                 'submit' => 'Submit',
-                'reset' => 'Reset'
+                'reset' => 'Reset',
+                'edit' => 'Edit',
+                'delete' => 'Delete',
             ],
             'placeholders' => [
                 'email' => 'Enter Email',
