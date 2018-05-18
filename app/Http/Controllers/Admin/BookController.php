@@ -58,14 +58,13 @@ class BookController extends Controller
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 $nameNew = time().'.'.$photo->getClientOriginalExtension();
-                $filename = $photo->move(public_path(config('image.images_path')), $nameNew);
+                $photo->move(public_path(config('image.images_path')), $nameNew);
                 ImageBook::create([
                     'book_id' => $book->id,
                     'image' => $nameNew
                 ]);
             }
-        }
-        else {
+        } else {
             ImageBook::create([
                 'book_id' => $book->id
             ]);
