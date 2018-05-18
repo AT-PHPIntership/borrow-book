@@ -7,6 +7,7 @@
             'avatar' => 'Avatar',
             'name' => 'Name',
             'email' => 'Email',
+            'options' => 'Options',
         ],
 
         'title' => 'Manage users',
@@ -14,6 +15,7 @@
         'update' => 'Update users',
         'messages' => [
             'create_success' => 'Successfully created user!',
+            'delete_success' => 'Successfully deleted user!',
         ],
         'form' => [
             'title_inputs' => [
