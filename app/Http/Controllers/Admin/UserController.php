@@ -116,7 +116,7 @@ class UserController extends Controller
     /**
     * Remove the specified resource from storage.
     *
-    * @param int $id id
+    * @param App\Models\User $user data of user want to delete
     *
     * @return Response
     */
