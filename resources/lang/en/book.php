@@ -16,6 +16,7 @@
         'update' => 'Update Book',
         'messages' => [
             'create_success' => 'Successfully created book!',
+            'update_success' => 'Successfully updated book!',
         ],
         'form' => [
             'title_inputs' => [
