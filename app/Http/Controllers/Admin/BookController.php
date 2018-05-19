@@ -10,7 +10,6 @@ use App\Models\Category;
 use App\Models\ImageBook;
 use Session;
 use DB;
-use Storage;
 
 class BookController extends Controller
 {
