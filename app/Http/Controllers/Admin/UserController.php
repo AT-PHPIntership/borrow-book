@@ -103,7 +103,7 @@ class UserController extends Controller
             $user->save();
             $image->move($destinationPath, $nameNew);
         } else {
-            $user->avatar = $request->avatar;
+            $user->avatar = 'default-user.png';
             $user->save();
         }
         $data['email'] = $user->email;

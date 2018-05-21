@@ -1,0 +1,6 @@
+ii  php-common                                  1:35ubuntu6.1                                all          Common files for PHP packages
+ii  php7.0-cli                                  7.0.30-0ubuntu0.16.04.1                      amd64        command-line interpreter for the PHP scripting language
+ii  php7.0-common                               7.0.30-0ubuntu0.16.04.1                      amd64        documentation, examples and common module for PHP
+ii  php7.0-json                                 7.0.30-0ubuntu0.16.04.1                      amd64        JSON module for PHP
+ii  php7.0-opcache                              7.0.30-0ubuntu0.16.04.1                      amd64        Zend OpCache module for PHP
+ii  php7.0-readline                             7.0.30-0ubuntu0.16.04.1                      amd64        readline module for PHP
