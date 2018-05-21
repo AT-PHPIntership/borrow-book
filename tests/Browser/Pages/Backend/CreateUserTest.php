@@ -96,6 +96,14 @@ class CreateUserTest extends DuskTestCase
                 ->type('address', 'da nang');
             $browser->press('Submit')
                 ->assertSee('Successfully created user!');
+            $this->assertDatabaseHas('users', [
+                'id' => 2,
+                'email' => 'alone.hht@gmail.com',
+                'name' => 'Ha',
+                'identity_number' => 111,
+                'dob' => '2018-12-12',
+                'address' => 'da nang'
+            ]);
         });
     }
 }
