@@ -69,4 +69,14 @@ class BookController extends Controller
         Session::flash('message', trans('book.messages.create_success'));
         return redirect()->route('admin.books.index');
     }
+
+    /**
+     * Show layout of book.
+     *
+     * @return view
+     */
+    public function edit()
+    {
+        return view('admin.books.edit');
+    }
 }
