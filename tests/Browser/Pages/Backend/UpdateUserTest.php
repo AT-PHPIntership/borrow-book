@@ -22,24 +22,89 @@ class UpdateUserTest extends DuskTestCase
 
     }
 
-    /**
-     * A Dusk test example.
+      /**
+     * Test Url Admin Edit Users.
      *
      * @return void
      */
-    public function  testEditUserSuccess()
+    public function  testUrlEditUsers()
     {
-        $user = User::findOrFail(1);
+        $user = User::find(1);
         // dd($user->id);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('route(admin.users.edit, ["user" => $user->id])')
-                    ->assertSee('Update users');
+            $browser->visit('/admin/users')
+                    ->press('Edit')
+                    ->assertSee('Update users')
+                    ->assertPathIs('/admin/users/'.$user->id.'/edit');
         });
     }
-    /**
-     *List case for test validation Edit Users
+     /**
+     * Test Users Edit Success.
      *
-     *@return array
+     * @return void
      */
+    public function testEditUsersSuccess()
+    {
+        $user = User::find(1);
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('/admin/users/'.$user->id.'/edit')
+                    ->resize(900,1000)
+                    ->assertSee('Update users')
+                    ->type('name',$user->name)
+                    ->press('Submit')
+                    ->assertSee('Successfully updated user!')
+                    ->assertPathIs('/admin/users');
+        });
+        $this->assertDatabaseHas('users', [
+                        'name' => $user->name]);
+    }
+     /**
+    
+    /**
+     * List case for Test validate for input Update User
+     *
+     * @return array
+     */
+   public function listCaseTestValidateForInput()
+   {
+       return [
+           ['name', '', 'The name field is required.'],
+           ['identity_number', '', 'The identity number field is required.'],
+           ['dob', '', 'The dob does not match the format Y-m-d.'],
+           ['address', '', 'The address must be a string.'],
+           ['avatar', '','The avatar must be an image'],
+           ['avatar', '','The avatar must be a file of type: png, jpg, jpeg'],
+       ];
+   }
+
+   /**
+    * Dusk test validate for input
+    *
+    * @param string $name    name of field
+    * @param string $content content
+    * @param string $message message show when validate
+    * @param string $user    get value in table user
+    *
+    * @dataProvider listCaseTestValidateForInput
+    *
+    * @return void
+    */
+   public function testValidateForInput($name, $content,$message)
+   {
+        $user = User::find(1);
+       $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
+           $browser->visit('/admin/users/'.$user->id.'/edit')
+               ->keys('#dob', '1996/02/09')
+               ->pause(1000)
+                ->attach('avatar', __DIR__.'/testing_file/ahihi.txt')
+               ->type('identity_number', '')
+               ->type('name', '')
+               ->type('address', '');
+           $browser->press('Submit')
+               ->pause(3000)
+               ->assertSee($message);
+       });
+   }
+
     
 }
