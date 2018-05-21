@@ -13,8 +13,14 @@
         
         'title' => 'Manage book',
         'create' => 'Create Book',
+        'update' => 'Update Book',
+        'messages' => [
+            'create_success' => 'Successfully created book!',
+        ],
         'form' => [
             'title_inputs' => [
+                'image' => 'Images',
+                'category' => 'Category',
                 'title' => 'Title',
                 'description' => 'Description',
                 'number_of_page' => 'Number of page',
