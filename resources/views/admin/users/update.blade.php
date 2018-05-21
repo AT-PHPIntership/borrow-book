@@ -43,7 +43,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">{{trans('user.form.buttons.submit')}}</button>
+                    <button type="submit" name="update" class="btn btn-primary">{{trans('user.form.buttons.submit')}}</button>
                     <button type="reset" class="btn">{{trans('user.form.buttons.reset')}}</button>
                 </div>
             </form>

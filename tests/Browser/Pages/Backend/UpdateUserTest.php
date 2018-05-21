@@ -1,26 +1,24 @@
 <?php
 
-namespace Tests\Browser;
+namespace Tests\Browser\Pages\Backend;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Models\User;
+use DB;
+use Faker\Factory as Faker;
+use Facebook\WebDriver\WebDriverBy;
 
 class UpdateUserTest extends DuskTestCase
 {
-
     use DatabaseMigrations;
-
-    protected $user;
-
-    /**
-     * Override function setUp()
-     *
-     * @return void
-     */
+    
     public function setUp()
     {
         parent::setUp();
+
+        factory(User::class, 2)->create();
 
     }
 
@@ -31,14 +29,11 @@ class UpdateUserTest extends DuskTestCase
      */
     public function  testEditUserSuccess()
     {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users/'.$this->user->id.'/edit')
-                    ->resize(900,1000)
-                    ->assertSee('Update users')
-                    ->type('name',$this->user->name)
-                    ->press('Submit')
-                    ->assertSee('Successfully updated user!')
-                    ->assertPathIs('/admin/users');
+        $user = User::findOrFail(1);
+        // dd($user->id);
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('route(admin.users.edit, ["user" => $user->id])')
+                    ->assertSee('Update users');
         });
     }
     /**
@@ -46,32 +41,5 @@ class UpdateUserTest extends DuskTestCase
      *
      *@return array
      */
-    public function listCaseTestForEditUsers()
-    {
-        return [
-            ['name', '','The name field is required.'],
-            ['identity_number', '', 'The identity number field is required.'],
-            ['avatar', '', 'The avatar must be a file of type: png, jpg, jpeg.'],
-            ['dob','12345', 'The dob does not match the format Y.'],
-            ['address', '', 'The address must be a string.'],
-        ];
-    }
-     /**
-     * @dataProvider listCaseTestForEditUsers
-     *
-     */
-    public function testValidateEditUsers($name, $content, $msg)
-    {
-        $this->browse(function (Browser $browser) use ($name, $content, $msg) {
-            $browser->visit('/admin/users/'.$this->user->id.'/edit')
-                    ->resize(900,1000)
-                    ->type($name, $content)
-                    ->press('Submit')
-                    ->assertSee($msg)
-                    ->assertPathIs('/admin/users/'.$this->user->id.'/edit');
-        });
-    }
-
-
-
+    
 }
