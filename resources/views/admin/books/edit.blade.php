@@ -18,6 +18,7 @@
             <form role="form" action="{{ route('admin.books.update', $book->id) }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 {{method_field('PATCH')}}
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="box-body">
                     @foreach ($book->imageBooks as $imageBook)
                         <img class="text-center" src="{{ $imageBook->image_url }}" alt="">
