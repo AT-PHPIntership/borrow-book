@@ -13,6 +13,7 @@
         
         'title' => 'Manage book',
         'create' => 'Create Book',
+        'update' => 'Update Book',
         'messages' => [
             'create_success' => 'Successfully created book!',
         ],

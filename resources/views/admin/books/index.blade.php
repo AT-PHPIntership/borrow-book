@@ -29,7 +29,7 @@
                         <tr>
                             @foreach ($book->imageBooks as $image)
                                 @if ($loop->first)
-                                    <td><img src="{{ $image->image_url }}" alt=""></td>
+                                    <td><img class="text-center" src="{{ $image->image_url }}" alt=""></td>
                                 @endif
                             @endforeach
                             <td>{{ $book->title }}</td>
