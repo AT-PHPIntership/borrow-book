@@ -16,8 +16,8 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" action="" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 {{method_field('PATCH')}}
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="box-body">
                     <img src="" alt="">
                     <div class="form-group">
