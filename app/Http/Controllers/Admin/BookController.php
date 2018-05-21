@@ -97,9 +97,8 @@ class BookController extends Controller
     {
         DB::transaction(function () use ($request, $id) {
             $book = Book::findOrFail($id);
-            $book->update($request->all());
+            $data = $request->all();
             if ($request->hasFile('photos')) {
-                ImageBook::where('book_id', $book->id)->delete();
                 foreach ($request->file('photos') as $photo) {
                     $nameNew = time().'.'.$photo->getClientOriginalExtension();
                     $photo->move(public_path(config('image.images_path')), $nameNew);
@@ -109,6 +108,7 @@ class BookController extends Controller
                     ]);
                 }
             }
+            $book->update($data);
         });
         Session::flash('message', trans('book.messages.update_success'));
         return redirect()->route('admin.books.index');
