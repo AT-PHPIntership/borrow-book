@@ -14,10 +14,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', "as" => "admin." ], function(){
+$admin_config = [
+    'namespace' => 'Admin',
+    'prefix' => 'admin',
+    'as'=> 'admin.',
+];
+Route::group($admin_config, function(){
     Route::get('/', function () {
         return view('admin.index');
     });
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
+    Route::resource('borrows', 'BorrowController');
 });
+
+Auth::routes();
