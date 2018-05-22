@@ -34,7 +34,8 @@ class ShowListUserTest extends DuskTestCase
     public function testShowList()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/users')
                     ->assertPathIs('/admin/users')
                     ->assertSee('List Users');
         });
@@ -48,7 +49,8 @@ class ShowListUserTest extends DuskTestCase
     public function testShowRecord()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users')
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
                 ->assertSee('List Users');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
@@ -63,7 +65,8 @@ class ShowListUserTest extends DuskTestCase
     public function testListUsersPagination()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users')
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
                 ->assertSee('List Users');
             $paginate_element = $browser->elements('.pagination li');
             $number_page = count($paginate_element) - 2;
