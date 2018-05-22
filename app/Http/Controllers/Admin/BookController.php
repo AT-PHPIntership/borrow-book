@@ -12,7 +12,6 @@ use Session;
 use DB;
 use Exception;
 
-
 class BookController extends Controller
 {
     /**
