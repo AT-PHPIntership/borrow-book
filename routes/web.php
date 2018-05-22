@@ -18,6 +18,7 @@ $admin_config = [
     'namespace' => 'Admin',
     'prefix' => 'admin',
     'as'=> 'admin.',
+    'middleware' => 'admin'
 ];
 Route::group($admin_config, function(){
     Route::get('/', function () {

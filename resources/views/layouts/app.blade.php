@@ -50,6 +50,11 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->role == App\Models\User::ROLE_ADMIN)
+                                        <a class="dropdown-item" href="{{ route('admin.') }}">
+                                            {{ __('Dashboard') }}
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
