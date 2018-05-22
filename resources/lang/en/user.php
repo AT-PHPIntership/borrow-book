@@ -18,7 +18,6 @@
             'delete_success' => 'Successfully deleted user!',
             'update_success' => 'Successfully updated user!',
             'confirm_delete' => 'Are you sure?',
-
         ],
         'form' => [
             'title_inputs' => [

@@ -32,6 +32,7 @@ class ShowListBookTest extends DuskTestCase
      * A Dusk test show list book.
      *
      * @return void
+     * 
      */
     public function testShowList()
     {
