@@ -30,7 +30,9 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <button>{{trans('user.form.buttons.edit')}}</button> 
+                                <button>
+                                     <a href="{{ route('admin.users.edit', $user->id) }}">{{trans('user.form.buttons.edit')}}</a>
+                                </button> 
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
