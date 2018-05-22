@@ -20,4 +20,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', "as" => "admin." ], f
     });
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
+    Route::resource('borrows', 'BorrowController');
 });
