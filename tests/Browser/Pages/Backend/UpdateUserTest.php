@@ -30,7 +30,6 @@ class UpdateUserTest extends DuskTestCase
     public function  testUrlEditUsers()
     {
         $user = User::find(1);
-        // dd($user->id);
         $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/admin/users')
                     ->press('Edit')
@@ -58,8 +57,6 @@ class UpdateUserTest extends DuskTestCase
         $this->assertDatabaseHas('users', [
                         'name' => $user->name]);
     }
-     /**
-    
     /**
      * List case for Test validate for input Update User
      *
