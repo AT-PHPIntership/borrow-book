@@ -25,6 +25,7 @@ Route::group($admin_config, function(){
     });
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
+    Route::resource('borrows', 'BorrowController');
 });
 
 Auth::routes();
