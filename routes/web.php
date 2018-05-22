@@ -12,7 +12,7 @@
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 $admin_config = [
     'namespace' => 'Admin',
