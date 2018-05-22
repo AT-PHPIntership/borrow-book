@@ -2,10 +2,10 @@
 
 namespace Tests\Browser\Pages\Backend;
 
+use App\Models\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Models\User;
 
 class DeleteUserTest extends DuskTestCase
 {
@@ -19,7 +19,6 @@ class DeleteUserTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
-
         $user = factory(User::class, 1)->create();
     }
 
@@ -36,8 +35,7 @@ class DeleteUserTest extends DuskTestCase
                 ->press('Delete')
                 ->assertDialogOpened('Are you sure?')
                 ->dismissDialog();
-            $element = $browser->elements('#table-index tbody tr');
-            $this->assertCount(1, $element);
+            $this->assertDatabaseHas('users',['deleted_at' => null]);
         });
     }
 
@@ -49,15 +47,12 @@ class DeleteUserTest extends DuskTestCase
     public function testConfirmDeleteOnPopup()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users');
-            $elements = $browser->elements('#table-index tbody tr');
-            $this->assertCount(1, $elements);
-            $browser->press('Delete')
+            $browser->visit('/admin/users')
+                ->press('Delete')
                 ->assertDialogOpened('Are you sure?')
                 ->acceptDialog()
                 ->assertSee('Successfully deleted user!');
-            $elements = $browser->elements('#table-index tbody tr');
-            $this->assertCount(0, $elements);
+            $this->assertDatabaseMissing('users',['deleted_at'=>null]);
         });
     }
 
