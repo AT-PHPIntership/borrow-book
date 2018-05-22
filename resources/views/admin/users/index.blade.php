@@ -14,7 +14,7 @@
     <section class="container">
         <div class="row">
             <div class="col-md-10">
-                <table class="table table-striped box">
+                <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>

@@ -91,7 +91,7 @@ class UpdateUserTest extends DuskTestCase
    public function testValidateForInput($name, $content,$message)
    {
         $user = User::find(1);
-       $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
+        $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users/'.$user->id.'/edit')
                 ->keys('#dob', '1996/02/09')
