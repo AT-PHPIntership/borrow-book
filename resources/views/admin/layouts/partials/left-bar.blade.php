@@ -33,7 +33,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="../index.html"><i class="fa fa-circle-o"> {{trans('user.create')}}</i></a></li>
+                    <li><a href="admin/users/create"><i class="fa fa-circle-o"> {{trans('user.create')}}</i></a></li>
                 </ul>
             </li>
         </ul>
