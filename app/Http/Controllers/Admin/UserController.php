@@ -60,7 +60,6 @@ class UserController extends Controller
             $user->save();
             $image->move($destinationPath, $nameNew);
         } else {
-            $user->avatar = $request->avatar;
             $user->save();
         }
         Session::flash('message', trans('user.messages.update_success'));
@@ -103,7 +102,6 @@ class UserController extends Controller
             $user->save();
             $image->move($destinationPath, $nameNew);
         } else {
-            $user->avatar = $request->avatar;
             $user->save();
         }
         $data['email'] = $user->email;
