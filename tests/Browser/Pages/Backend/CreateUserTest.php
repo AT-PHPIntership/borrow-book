@@ -57,7 +57,7 @@ class CreateUserTest extends DuskTestCase
     /**
      * Dusk test validate for input
      *
-     * @param string $name    name of field
+     * @param string $name name of field
      * @param string $content content
      * @param string $message message show when validate
      *
@@ -65,16 +65,11 @@ class CreateUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testValidateForInput($name, $content,$message)
+    public function testValidateForInput($name, $content, $message)
     {
         $this->browse(function (Browser $browser) use ($name, $content, $message) {
             $browser->visit('admin/users/create')
-                ->type('name', '')
-                ->type('email', '')
-                ->type('identity_number', '')
-                ->keys('#dob', '')
-                ->type('address', '');
-            $browser->press('Submit')
+                ->press('Submit')
                 ->assertSee($message);
         });
     }
