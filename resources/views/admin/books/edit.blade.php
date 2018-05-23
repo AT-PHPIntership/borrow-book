@@ -13,15 +13,19 @@
                 <h3 class="box-title">{{trans('book.update')}}</h3>
             </div>
             @include('admin.layouts.partials.errors')
+            @include('admin.layouts.partials.messages')
             <!-- /.box-header -->
             <!-- form start -->
+            @foreach ($book->imageBooks as $imageBook)
+                <div class="img-wrap">
+                    <span id="close{{ $imageBook->id }}" data-id="{{ $imageBook->id }}" data-token="{{ csrf_token() }}" class="close">&times;</span>
+                    <img id="image{{ $imageBook->id }}" class="text-center" src="{{ $imageBook->image_url }}" alt="">
+                </div>
+            @endforeach
             <form role="form" action="{{ route('admin.books.update', $book->id) }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 {{method_field('PATCH')}}
                 <div class="box-body">
-                    @foreach ($book->imageBooks as $imageBook)
-                        <img class="text-center" src="{{ $imageBook->image_url }}" alt="" style="width: 10%">
-                    @endforeach
                     <div class="form-group">
                         <label>{{trans('book.form.title_inputs.image')}}</label>
                         <input type="file" name="photos[]" multiple>
@@ -82,4 +86,7 @@
     
     <!-- /.content -->
 </div>
+@endsection
+@section('script')
+    <script src="js/deleteImage.js"></script>
 @endsection

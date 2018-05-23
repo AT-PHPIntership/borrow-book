@@ -12,12 +12,23 @@
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', "as" => "admin." ], function(){
+$admin_config = [
+    'namespace' => 'Admin',
+    'prefix' => 'admin',
+    'as'=> 'admin.',
+    'middleware' => 'admin'
+];
+Route::group($admin_config, function(){
     Route::get('/', function () {
         return view('admin.index');
     });
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
+    Route::resource('borrows', 'BorrowController');
+    Route::resource('images', 'ImageBookController');
+    // Route::delete('images/{$image}', 'ImageBookController@destroy')->name('images.destroy');
 });
+
+Auth::routes();

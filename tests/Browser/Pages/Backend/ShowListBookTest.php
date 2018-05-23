@@ -32,11 +32,13 @@ class ShowListBookTest extends DuskTestCase
      * A Dusk test show list book.
      *
      * @return void
+     * 
      */
     public function testShowList()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/books')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/books')
                     ->assertPathIs('/admin/books')
                     ->assertSee('List Book');
         });
@@ -50,7 +52,8 @@ class ShowListBookTest extends DuskTestCase
     public function testShowRecord()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/books')
+            $browser->loginAs($this->user)
+                ->visit('/admin/books')
                 ->assertSee('List Book');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
@@ -65,7 +68,8 @@ class ShowListBookTest extends DuskTestCase
     public function testListBooksPagination()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/books')
+            $browser->loginAs($this->user)
+                ->visit('/admin/books')
                 ->assertSee('List Book');
             $paginate_element = $browser->elements('.pagination li');
             $number_page = count($paginate_element) - 2;

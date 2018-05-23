@@ -14,7 +14,7 @@
     <section class="container">
         <div class="row">
             <div class="col-md-10">
-                <table class="table table-striped box">
+                <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
@@ -30,7 +30,9 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <button>{{trans('user.form.buttons.edit')}}</button> 
+                                <button>
+                                     <a href="{{ route('admin.users.edit', $user->id) }}">{{trans('user.form.buttons.edit')}}</a>
+                                </button> 
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}

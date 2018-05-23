@@ -26,5 +26,6 @@
     </div>
     <!-- ./wrapper -->
     @include('admin.layouts.partials.scripts')
+    @yield('script')
 </body>
 </html>
