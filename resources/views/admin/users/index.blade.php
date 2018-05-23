@@ -7,13 +7,21 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h3>{{trans('user.list_user')}}</h3>
+        <h2>{{trans('user.list_user')}}</h2>
+        <h4><a href="{{route('admin.users.create')}}"><i class="fa fa-plus"> {{trans('user.create')}}</i></a></h4>
     </section>
+    <hr>
     @include('admin.layouts.partials.messages')
     <!-- Main content -->
     <section class="container">
         <div class="row">
             <div class="col-md-10">
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search" name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                 <table class="table table-striped box">
                     <thead>
                         <tr>
@@ -26,7 +34,7 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->avatar_url}}" alt=""></td>
+                            <td><img class="text-center" src="{{ $user->avatar_url }}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
