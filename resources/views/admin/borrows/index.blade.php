@@ -38,6 +38,7 @@
                     </tbody>
                 </table>
                 <div class="text-center">
+                    {{ $borrows->links() }}
                 </div>
             </div>
         </div>
