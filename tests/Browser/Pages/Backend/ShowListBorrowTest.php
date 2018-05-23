@@ -46,4 +46,21 @@ class ShowListBorrowTest extends DuskTestCase
         });
     }
 
+    /**
+     * Test view Admin List Borrow with pagination
+     *
+     * @return void
+     */
+    public function testListBorrowsPagination()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs($this->user)
+                ->visit('/admin/borrows')
+                ->assertSee('List Borrow');
+            $paginate_element = $browser->elements('.pagination li');
+            $number_page = count($paginate_element) - 2;
+            $this->assertTrue($number_page == ceil((self::NUMBER_RECORD_CREATE) / (self::RECORD_LIMIT)));
+        });
+    }
+
 }
