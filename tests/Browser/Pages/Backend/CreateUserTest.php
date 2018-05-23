@@ -30,7 +30,8 @@ class CreateUserTest extends DuskTestCase
     public function testCreateUserUrl()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users')
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
                 ->clickLink('Manage users')
                 ->clickLink('Create users')
                 ->assertPathIs('/admin/users/create')
@@ -68,7 +69,8 @@ class CreateUserTest extends DuskTestCase
     public function testValidateForInput($name, $content, $message)
     {
         $this->browse(function (Browser $browser) use ($name, $content, $message) {
-            $browser->visit('admin/users/create')
+            $browser->loginAs($this->user)
+                ->visit('admin/users/create')
                 ->press('Submit')
                 ->assertSee($message);
         });
@@ -83,7 +85,8 @@ class CreateUserTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser)
         {
-            $browser->visit('admin/users/create')
+            $browser->loginAs($this->user)
+                ->visit('admin/users/create')
                 ->type('name', 'Ha')
                 ->type('email', 'alone.hht@gmail.com')
                 ->type('identity_number', '111')
@@ -92,7 +95,7 @@ class CreateUserTest extends DuskTestCase
             $browser->press('Submit')
                 ->assertSee('Successfully created user!');
             $this->assertDatabaseHas('users', [
-                'id' => 2,
+                'id' => 3,
                 'email' => 'alone.hht@gmail.com',
                 'name' => 'Ha',
                 'identity_number' => 111,

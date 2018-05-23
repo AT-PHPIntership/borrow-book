@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\ImageBook;
 use Session;
 use DB;
+use Exception;
 
 class BookController extends Controller
 {
@@ -78,5 +79,30 @@ class BookController extends Controller
     public function edit()
     {
         return view('admin.books.edit');
+    }
+    /**
+     * Delete a book and relationship.
+     *
+     * @param Book $book object book
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Book $book)
+    {
+        DB::beginTransaction();
+        try {
+            $book->delete();
+            $book->ratings()->delete();
+            $book->borrowDetails()->delete();
+            $book->favorites()->delete();
+            $book->posts()->delete();
+            $book->imageBooks()->delete();
+            DB::commit();
+            Session::flash('message', trans('book.messages.delete_book_success'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            Session::flash('error', trans('book.errors.delete_book_fail'));
+        }
+        return redirect()->back();
     }
 }
