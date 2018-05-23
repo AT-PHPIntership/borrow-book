@@ -31,7 +31,8 @@ class UpdateUserTest extends DuskTestCase
     {
         $user = User::find(1);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/users')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/users')
                     ->press('Edit')
                     ->assertSee('Update users')
                     ->assertPathIs('/admin/users/'.$user->id.'/edit');
@@ -46,7 +47,8 @@ class UpdateUserTest extends DuskTestCase
     {
         $user = User::find(1);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/users/'.$user->id.'/edit')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/users/'.$user->id.'/edit')
                     ->resize(900,1000)
                     ->assertSee('Update users')
                     ->type('name',$user->name)
@@ -89,15 +91,16 @@ class UpdateUserTest extends DuskTestCase
    public function testValidateForInput($name, $content,$message)
    {
         $user = User::find(1);
-       $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
-           $browser->visit('/admin/users/'.$user->id.'/edit')
-               ->keys('#dob', '1996/02/09')
-               ->pause(1000)
+        $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
+            $browser->loginAs($this->user)
+                ->visit('/admin/users/'.$user->id.'/edit')
+                ->keys('#dob', '1996/02/09')
+                ->pause(1000)
                 ->attach('avatar', __DIR__.'/testing_file/ahihi.txt')
-               ->type('identity_number', '')
-               ->type('name', '')
-               ->type('address', '');
-           $browser->press('Submit')
+                ->type('identity_number', '')
+                ->type('name', '')
+                ->type('address', '');
+            $browser->press('Submit')
                ->pause(3000)
                ->assertSee($message);
        });
