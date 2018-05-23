@@ -31,7 +31,8 @@ class CreateBookTest extends DuskTestCase
     public function testCreateBooksUrl()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/books/create')
+            $browser->loginAs($this->user)
+                ->visit('/admin/books/create')
                 ->assertPathIs('/admin/books/create')
                 ->assertSee('Create Book');
         });
@@ -45,7 +46,8 @@ class CreateBookTest extends DuskTestCase
     public function testCreatesBookSuccess()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('admin/books/create')
+            $browser->loginAs($this->user)
+                ->visit('admin/books/create')
                 ->select('category_id', '2')
                 ->type('title', 'Title for book')
                 ->type('description', 'Lorem ABC')
@@ -79,7 +81,8 @@ class CreateBookTest extends DuskTestCase
     public function testBookValidateForInput()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('admin/books/create')
+            $browser->loginAs($this->user)
+                ->visit('admin/books/create')
                 ->type('title', '')
                 ->type('description', '')
                 ->type('number_of_page', '')
