@@ -13,10 +13,15 @@
         'title' => 'Manage users',
         'create' => 'Create users',
         'update' => 'Update users',
-        'messages' => [
+        'messages_success' => [
             'create_success' => 'Successfully created user!',
             'delete_success' => 'Successfully deleted user!',
             'update_success' => 'Successfully updated user!',
+        ],
+        'messages_fail' => [
+            'delete_fail' => 'Failfully deleted user!',
+        ],
+        'messages_confirm' => [
             'confirm_delete' => 'Are you sure?',
         ],
         'form' => [

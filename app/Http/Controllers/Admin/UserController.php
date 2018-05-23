@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Rating;
 use App\Http\Requests\UpdateUserRequest;
 use Session;
 use App\Http\Requests\CreateUserRequest;
@@ -62,7 +63,7 @@ class UserController extends Controller
         } else {
             $user->save();
         }
-        Session::flash('message', trans('user.messages.update_success'));
+        Session::flash('message_success', trans('user.messages_success.update_success'));
         return redirect()->route('admin.users.index');
     }
 
@@ -107,7 +108,7 @@ class UserController extends Controller
         $data['email'] = $user->email;
         $data['password'] = $password;
         Mail::to($user->email)->send(new CreateUserMail($data));
-        Session::flash('message', trans('user.messages.create_success'));
+        Session::flash('message_success', trans('user.messages_success.create_success'));
         return redirect()->route('admin.users.index');
     }
 
@@ -120,8 +121,24 @@ class UserController extends Controller
     */
     public function destroy(User $user)
     {
-        $user->delete();
-        Session::flash('message', trans('user.messages.delete_success'));
+        if($user->role == 0){
+            DB::beginTransaction();
+            try {
+                $user->ratings()->delete();
+                $user->favorites()->delete();
+                $user->posts()->delete();
+                
+                $user->borrowes()->borrowDetails()->delete();
+                $user->delete();
+                DB::commit();
+                Session::flash('message_success', trans('user.messages_success.delete_success'));
+            } catch (\Exception $e) {
+                DB::rollback();
+                Session::flash('message_fail', trans('user.messages_fail.delete_fail'));
+            }
+        }else{
+            Session::flash('message_fail', trans('user.messages_fail.delete_fail'));
+        }
         return redirect()->route('admin.users.index');
     }
 }
