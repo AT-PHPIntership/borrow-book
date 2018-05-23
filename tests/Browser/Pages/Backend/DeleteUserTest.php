@@ -41,10 +41,10 @@ class DeleteUserTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
                 ->assertSee('List Users')
-                ->press('Delete')
+                ->click('#table-index tbody tr:nth-child(2) form > button')
                 ->assertDialogOpened('Are you sure?')
                 ->dismissDialog();
-            $this->assertDatabaseHas('users', ['deleted_at' => null]);
+            $this->assertDatabaseHas('users', ['id' => 2, 'deleted_at' => null]);
         });
     }
 

@@ -22,7 +22,7 @@
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                <table class="table table-striped box">
+                <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
@@ -39,11 +39,11 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if($user->role == 0)
-                                <a href="" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
                                 <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item" onclick="return confirm('{{trans('user.messages_confirm.confirm_delete')}}')"></button>
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item" onclick="return confirm('{{trans('user.messages.confirm_delete')}}')"></button>
                                 </form>
                                 @endif
                             </td>
