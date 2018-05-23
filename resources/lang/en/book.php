@@ -8,7 +8,8 @@
             'title' => 'Title',
             'author' => 'Author',
             'language' => 'Language',
-            'quantity' => 'Quantity'
+            'quantity' => 'Quantity',
+             'options' => 'Options',
         ],
         
         'title' => 'Manage book',
@@ -16,6 +17,8 @@
         'update' => 'Update Book',
         'messages' => [
             'create_success' => 'Successfully created book!',
+            'confirm_delete' => 'Are you sure you want to deleted?',
+            'delete_book_success' => 'Delete Book Success!',
         ],
         'form' => [
             'title_inputs' => [
@@ -43,5 +46,8 @@
                 'quantity' => 'Enter Quantity',
             ],
         ],
+        'errors' => [
+            'delete_book_fail' => 'Delete Book Fail!',
+        ]
 
     ];

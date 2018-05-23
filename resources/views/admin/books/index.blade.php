@@ -9,7 +9,9 @@
     <section class="content-header">
         <h3>{{trans('book.list_book')}}</h3>
     </section>
+    @include('admin.layouts.partials.errors')
     @include('admin.layouts.partials.messages')
+
     <!-- Main content -->
     <section class="container">
         <div class="row">
@@ -22,6 +24,7 @@
                             <th>{{trans('book.table_head.author')}}</th>
                             <th>{{trans('book.table_head.language')}}</th>
                             <th>{{trans('book.table_head.quantity')}}</th>
+                            <th>{{trans('user.table_head.options')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +39,16 @@
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->language }}</td>
                             <td>{{ $book->quantity }}</td>
+                            <td>
+                                 <a href="" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
+                                <form method="POST" action="{{ route('admin.books.destroy', $book->id) }}" class="inline">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item"
+                                    onclick="return confirm('{{trans('book.messages.confirm_delete')}}')">
+                                    </button>
+                                </form> 
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
