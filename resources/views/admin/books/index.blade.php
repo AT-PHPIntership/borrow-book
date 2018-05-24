@@ -7,7 +7,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h3>{{trans('book.list_book')}}</h3>
+        <h2>{{trans('book.list_book')}}</h2>
     </section>
     @include('admin.layouts.partials.errors')
     @include('admin.layouts.partials.messages')
@@ -16,6 +16,15 @@
     <section class="container">
         <div class="row">
             <div class="col-md-10">
+                <div class="search-container">
+                    <form action="{{route('admin.books.index')}}" method="GET">
+                        <input type="text" placeholder="Search" name="search">
+                        <button type="submit" class="button-search-book"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="show-detail-search">
+                    <strong>{{trans('book.search_book.results', ['number' => $books->count()])}}</strong>
+                </div>
                 <table class="table box">
                     <thead>
                         <tr>
