@@ -49,7 +49,7 @@ class ShowListBookTest extends DuskTestCase
      *
      * @return void
      */
-    public function testShowRecord()
+    public function testShowRecord()    
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
