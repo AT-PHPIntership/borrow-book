@@ -2,7 +2,7 @@
 
     return [
 
-        'list_post' => 'List Book',
+        'list_post' => 'List Post',
         'table_head' => [
             'user' => 'User',
             'book' => 'Book',
@@ -13,4 +13,6 @@
             'options' =>'Option'
         ],
         'title' => 'Manage book',
+        'comment' =>'Comment',
+        'review' =>'Review'
     ];

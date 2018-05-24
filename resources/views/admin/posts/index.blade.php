@@ -29,10 +29,39 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($posts as $post )
+                        <tr>
+                            <td>{{ $post->name }}</td>
+                            <td>{{ $post->title }}</td>
+                            @if($post->post_type ===0 )
+                                <td>{{trans('post.comment')}}</td>
+                            @else
+                                <td>{{trans('post.review')}}</td>
+                            @endif
+                            <td>{{ $post->body }}</td>
+                            <td>{{ $post->rate_point }}</td>
+                            <td>
+                                @if($post->status === 1)
+                                <a href=""><i class="btn btn-success fa fa-check"></i></a>
+                                @else
+                                <a href=""><i class="btn btn-danger fa fa-close"></i></a>
+                                @endif
+                            </td>
+                            <td>
+                                <form method="POST" action="" class="inline">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item">
+                                    </button>
+                                </form> 
+                            </td>
+                        </tr>
+                        @endforeach
                       
                     </tbody>
                 </table>
-                <div class="text-center">
+                <div>
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>
