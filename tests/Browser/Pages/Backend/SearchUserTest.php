@@ -36,8 +36,6 @@ class SearchUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
-                ->assertPathIs('/admin/users')
-                ->assertSee('List Users')
                 ->click('.button-search-user')
                 ->assertSee('List Users');
             $elements = $browser->elements('#table-index tbody tr');
@@ -46,11 +44,11 @@ class SearchUserTest extends DuskTestCase
     }
 
     /**
-     * Test show result of search with data input
+     * Test show result of search with data input, has records return
      *
      * @return void
      */
-    public function testSearchUser()
+    public function testSearchUserHasRecordReturn()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
@@ -61,6 +59,25 @@ class SearchUserTest extends DuskTestCase
                 ->assertSee('List Users');
             $elements = $browser->elements('#table-index tbody tr');
             $this->assertCount(1, $elements);
+        });
+    }
+
+    /**
+     * Test show result of search with data input, no record return
+     *
+     * @return void
+     */
+    public function testSearchUserNoRecordReturn()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
+                ->assertSee('List Users')
+                ->type('search', 'hahaha')
+                ->click('.button-search-user')
+                ->assertSee('List Users');
+            $elements = $browser->elements('#table-index tbody tr');
+            $this->assertCount(0, $elements);
         });
     }
 }
