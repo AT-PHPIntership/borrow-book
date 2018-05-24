@@ -40,7 +40,7 @@ class SearchUserTest extends DuskTestCase
                 ->assertSee('List Users')
                 ->click('.button-search-user')
                 ->assertSee('List Users');
-            $elements = $browser->elements('.table tbody tr');
+            $elements = $browser->elements('#table-index tbody tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
     }
@@ -59,7 +59,7 @@ class SearchUserTest extends DuskTestCase
                 ->type('search', 'Hay Tran')
                 ->click('.button-search-user')
                 ->assertSee('List Users');
-            $elements = $browser->elements('.table tbody tr');
+            $elements = $browser->elements('#table-index tbody tr');
             $this->assertCount(1, $elements);
         });
     }
