@@ -36,7 +36,13 @@
                             <td>{{ $post->post_type }}</td>
                             <td>{{ $post->body }}</td>
                             <td>{{ $post->rate_point }}</td>
-                            <td>{{ $post->status }}</td>
+                            <td>
+                                @if($post->status === 1)
+                                <a href=""><i class="btn btn-success fa fa-check"></i></a>
+                                @else
+                                <a href=""><i class="btn btn-danger fa fa-close"></i></a>
+                                @endif
+                            </td>
                             <td>
                                 <form method="POST" action="" class="inline">
                                     {{ csrf_field() }}
@@ -50,8 +56,8 @@
                       
                     </tbody>
                 </table>
-                <div class="text-center">
-                     {{ $posts->links() }}
+                <div>
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>

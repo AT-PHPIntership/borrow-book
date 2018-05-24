@@ -9,13 +9,13 @@ use App\Models\Post;
 class PostController extends Controller
 {
     /**
-     * Show layout of post.
+     * Display a list of posts.
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-    	$fields = [
+        $fields = [
             'users.name',
             'books.title',
             'posts.post_type',
@@ -23,10 +23,10 @@ class PostController extends Controller
             'posts.rate_point',
             'posts.status',
         ];
-    	$posts = Post::select($fields)
+        $posts = Post::select($fields)
                     ->leftJoin('users', 'posts.user_id', '=', 'users.id')
                     ->leftJoin('books', 'posts.book_id', '=', 'books.id')
                     ->paginate();
-        return view('admin.posts.index',compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 }
