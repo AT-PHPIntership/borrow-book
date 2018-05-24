@@ -39,11 +39,11 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if($user->role == 0)
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
-                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline">
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-flat fa fa-pencil button-edit"></a>&nbsp;&nbsp;
+                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline form-delete">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item" onclick="return confirm('{{trans('user.messages.confirm_delete')}}')"></button>
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm_delete')}}')"></button>
                                 </form>
                                 @endif
                             </td>
