@@ -77,3 +77,4 @@ class ShowListBookTest extends DuskTestCase
         });
     }
 }
+
