@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="search-container">
-                    <form action="{{route('admin.books.index')}}" method="GET">
+                    <form action="{{route('admin.books.index')}}" method="GET" class="form-search-book">
                         <input type="text" placeholder="Search" name="search">
                         <button type="submit" class="button-search-book"><i class="fa fa-search"></i></button>
                     </form>
