@@ -19,7 +19,7 @@
                 <div class="search-container">
                     <form action="{{route('admin.users.index')}}" method="GET">
                         <input type="text" placeholder="Search" name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="button-search-user"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
                 <table id="table-index" class="table table-striped box">
