@@ -11,7 +11,8 @@ class ImageBookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param ImageBook $image image
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(ImageBook $image)

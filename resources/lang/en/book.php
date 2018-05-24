@@ -49,6 +49,8 @@
         ],
         'errors' => [
             'delete_book_fail' => 'Delete Book Fail!',
-        ]
-
+        ],
+        'search_book' => [
+            'results' => 'Found :number results',
+        ],
     ];

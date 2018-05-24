@@ -28,7 +28,7 @@ Route::group($admin_config, function(){
     Route::resource('books', 'BookController');
     Route::resource('borrows', 'BorrowController');
     Route::resource('images', 'ImageBookController');
-    // Route::delete('images/{$image}', 'ImageBookController@destroy')->name('images.destroy');
+    Route::resource('posts', 'PostController');
 });
 
 Auth::routes();

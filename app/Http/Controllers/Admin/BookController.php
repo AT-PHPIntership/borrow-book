@@ -17,11 +17,21 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Http\Requests\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::with('imageBooks')->paginate();
+        $keyword = $request->search;
+        if ($keyword != '') {
+            $books = Book::with('imageBooks')->where("title", "LIKE", "%$keyword%")
+                        ->orWhere("author", "LIKE", "%$keyword%")
+                        ->orWhere("language", "LIKE", "%$keyword%")
+                        ->paginate();
+        } else {
+            $books = Book::with('imageBooks')->paginate();
+        }
         return view('admin.books.index', compact('books', $books));
     }
 
