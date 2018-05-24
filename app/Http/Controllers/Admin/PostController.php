@@ -15,6 +15,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index');
+    	$fields = [
+            'users.name',
+            'books.title',
+            'posts.post_type',
+            'posts.body',
+            'posts.rate_point',
+            'posts.status',
+        ];
+    	$posts = Post::select($fields)
+                    ->leftJoin('users', 'posts.user_id', '=', 'users.id')
+                    ->leftJoin('books', 'posts.book_id', '=', 'books.id')
+                    ->paginate();
+        return view('admin.posts.index',compact('posts'));
     }
 }

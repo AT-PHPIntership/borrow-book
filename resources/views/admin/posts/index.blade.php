@@ -29,10 +29,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($posts as $post )
+                        <tr>
+                            <td>{{ $post->name }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $post->post_type }}</td>
+                            <td>{{ $post->body }}</td>
+                            <td>{{ $post->rate_point }}</td>
+                            <td>{{ $post->status }}</td>
+                            <td>
+                                <form method="POST" action="" class="inline">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item">
+                                    </button>
+                                </form> 
+                            </td>
+                        </tr>
+                        @endforeach
                       
                     </tbody>
                 </table>
                 <div class="text-center">
+                     {{ $posts->links() }}
                 </div>
             </div>
         </div>
