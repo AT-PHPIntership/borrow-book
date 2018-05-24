@@ -33,7 +33,11 @@
                         <tr>
                             <td>{{ $post->name }}</td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->post_type }}</td>
+                            @if($post->post_type ===0 )
+                                <td>{{trans('post.comment')}}</td>
+                            @else
+                                <td>{{trans('post.review')}}</td>
+                            @endif
                             <td>{{ $post->body }}</td>
                             <td>{{ $post->rate_point }}</td>
                             <td>
