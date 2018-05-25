@@ -60,7 +60,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="text-center">
+                <div class="page">
                     {{ $books->links() }}
                 </div>
             </div>
