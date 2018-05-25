@@ -18,4 +18,16 @@ class BorrowController extends Controller
         $borrows = Borrow::with(['user'])->paginate();
         return view('admin.borrows.index', compact('borrows'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Borrow $borrow borrow
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Borrow $borrow)
+    {
+        return view('admin.borrows.show', compact('borrow'));
+    }
 }
