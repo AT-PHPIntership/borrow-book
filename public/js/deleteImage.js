@@ -1,7 +1,8 @@
 $('.close').click(function() {
     var id = $(this).data("id");
     var token = $(this).data("token");
-    if (confirm('Are you sure ?')){
+    msg = Lang.get('book.messages.are_you_sure');
+    if (confirm(msg)){
         $.ajax({
             type: 'delete',
             url: '/admin/images/'+id,

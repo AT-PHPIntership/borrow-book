@@ -89,4 +89,5 @@
 @endsection
 @section('script')
     <script src="js/deleteImage.js"></script>
+    <script src="js/message.js"></script>
 @endsection

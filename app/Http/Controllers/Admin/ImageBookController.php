@@ -18,6 +18,6 @@ class ImageBookController extends Controller
     public function destroy(ImageBook $image)
     {
         $image->delete();
-        return response()->json();
+        return response()->json($image);
     }
 }

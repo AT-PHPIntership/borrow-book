@@ -90,28 +90,26 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $book = Book::with(['category', 'imageBooks'])->findOrFail($id);
+        $book = Book::with('imageBooks')->findOrFail($id);
         $languages = Book::LANGUAGES;
         $categories = Category::all();
         return view('admin.books.edit', compact('book', 'categories', 'languages'));
     }
 
     /**
-     * Update User.
+     * Update Book.
      *
      * @param Http\Requests\UpdateUserRequest $request request
-     * @param App\Models\User                 $id      id of User
+     * @param App\Models\Book                 $book    book of Book
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateBookRequest $request, $id)
+    public function update(CreateBookRequest $request,Book $book)
     {
-        DB::transaction(function () use ($request, $id) {
-            $book = Book::findOrFail($id);
-            $data = $request->all();
+        DB::transaction(function () use ($request, $book) {
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $photo) {
-                    $nameNew = time().'.'.$photo->getClientOriginalExtension();
+                    $nameNew = time().str_random(8).'.'.$photo->getClientOriginalExtension();
                     $photo->move(public_path(config('image.images_path')), $nameNew);
                     ImageBook::create([
                         'book_id' => $book->id,
@@ -119,7 +117,7 @@ class BookController extends Controller
                     ]);
                 }
             }
-            $book->update($data);
+            $book->update($request->all());
         });
         Session::flash('message', trans('book.messages.update_success'));
         return redirect()->route('admin.books.index');
