@@ -45,13 +45,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        DB::beginTransaction();
         try {
             $post->delete();
-            DB::commit();
             Session::flash('message', trans('post.messages.delete_post_success'));
         } catch (Exception $e) {
-            DB::rollBack();
             Session::flash('error', trans('post.messages.delete_post_error'));
         }
         return redirect()->back();
