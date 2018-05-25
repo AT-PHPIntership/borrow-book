@@ -48,10 +48,10 @@
                                 @endif
                             </td>
                             <td>
-                                <form method="POST" action="" class="inline">
+                                <form method="POST" action="{{ route('admin.posts.destroy', $post->id) }}" class="inline">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item">
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item" onclick="return confirm('{{trans('post.messages.confirm_delete')}}')">
                                     </button>
                                 </form> 
                             </td>

@@ -10,9 +10,14 @@
             'body' => 'Body',
             'rate_point' => 'Rate Point',
             'status' => 'Status',
-            'options' =>'Option'
+            'options' =>'Option',
         ],
-        'title' => 'Manage book',
+        'title' => 'Manage post',
         'comment' =>'Comment',
-        'review' =>'Review'
+        'review' =>'Review',
+        'messages' => [
+            'delete_post_success' =>'Delete Post Success!',
+            'confirm_delete' => 'Are you sure you want to deleted?',
+            'delete_post_error' => 'Delete Post Fail!',
+        ],
     ];
