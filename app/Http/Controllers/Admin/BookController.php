@@ -29,6 +29,7 @@ class BookController extends Controller
                         ->orWhere("author", "LIKE", "%$keyword%")
                         ->orWhere("language", "LIKE", "%$keyword%")
                         ->paginate();
+            $books->appends(['search' => $keyword]);
         } else {
             $books = Book::with('imageBooks')->paginate();
         }
@@ -100,11 +101,11 @@ class BookController extends Controller
      * Update Book.
      *
      * @param Http\Requests\UpdateUserRequest $request request
-     * @param App\Models\Book                 $book    book of Book
+     * @param App\Models\Book                 $book    book
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateBookRequest $request,Book $book)
+    public function update(CreateBookRequest $request, Book $book)
     {
         DB::transaction(function () use ($request, $book) {
             if ($request->hasFile('photos')) {

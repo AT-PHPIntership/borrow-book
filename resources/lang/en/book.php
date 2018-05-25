@@ -20,7 +20,7 @@
             'update_success' => 'Successfully updated book!',
             'confirm_delete' => 'Are you sure you want to deleted?',
             'delete_book_success' => 'Delete Book Success!',
-            'are_you_sure' => 'Are you sure?'
+            'confirm_delete_message' => 'Are you sure?'
         ],
         'form' => [
             'title_inputs' => [
