@@ -2,6 +2,7 @@
     
     return [
         'list_borrow' => 'List Borrow',
+        'borrow_detail' => 'Borrow Detail',
         'table_head' => [
             'avatar' => 'Avatar',
             'borrower' => 'Borrower',
