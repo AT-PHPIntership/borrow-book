@@ -37,7 +37,7 @@ class PostController extends Controller
     }
 
     /**
-     * Delete a post 
+     * Delete a post
      *
      * @param Post $post object post
      *
@@ -50,8 +50,7 @@ class PostController extends Controller
             $post->delete();
             DB::commit();
             Session::flash('message', trans('post.messages.delete_post_success'));
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             Session::flash('error', trans('post.messages.delete_post_error'));
         }
