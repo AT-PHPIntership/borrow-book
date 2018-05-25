@@ -28,19 +28,9 @@ class SearchBookTest extends DuskTestCase
         parent::setUp();
         
         factory(Category::class, 5)->create();
-        $categoryId = DB::table('categories')->pluck('id')->all();
-        $faker = Faker::create();
         factory(Book::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Book::class)->create([
-            'id' => 21,
-            'category_id' => $faker->randomElement($categoryId),
             'title' => 'Flower',
-            'description' => $faker->text,
-            'number_of_page' => $faker->numberBetween(),
-            'author' => $faker->name,
-            "publishing_year" => $faker->dateTime(),
-            "language" => $faker->randomElement($languages),
-            'quantity' => $faker->numberBetween(1, 10),
         ]);
     }
 
