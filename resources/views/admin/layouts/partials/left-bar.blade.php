@@ -35,6 +35,11 @@
                     <i class="fa fa-dashboard"></i> <span>{{trans('book.title')}}</span>
                 </a>
             </li>
+            <li>
+                <a href="{{route('admin.posts.index')}}">
+                    <i class="fa fa-dashboard"></i> <span>{{trans('post.title')}}</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
