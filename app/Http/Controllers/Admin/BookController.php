@@ -27,9 +27,10 @@ class BookController extends Controller
         if ($keyword != '') {
             $books = Book::with('imageBooks')->where("title", "LIKE", "%$keyword%")
                         ->orWhere("author", "LIKE", "%$keyword%")
-                        ->orWhere("language", "LIKE", "%$keyword%")
-                        ->paginate();
-            Session::flash('message_search', trans('search.message', ['number' => $books::count()]));
+                        ->orWhere("language", "LIKE", "%$keyword%");
+            Session::flash('message_search', trans('search.message', ['number' => $books->count()]));
+            $books->paginate();
+            $books->appends(['search' => $keyword]);
         } else {
             $books = Book::with('imageBooks')->paginate();
         }

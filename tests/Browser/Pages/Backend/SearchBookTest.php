@@ -124,7 +124,8 @@ class SearchBookTest extends DuskTestCase
                 ->type('search', 'a')
                 ->click('.button-search-book')
                 ->assertSee('List Book')
-                ->clicklink('2');
+                ->clicklink('2')
+                ->visit('/admin/books?search=a&page=2');
             $elements = $browser->elements('.table tbody tr');
             $this->assertCount(6, $elements);
         });
