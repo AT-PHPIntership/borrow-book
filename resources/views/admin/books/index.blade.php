@@ -62,8 +62,8 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="text-center">
-                    {{ $books->links() }}
+                <div>
+                    {{ $books->appends(['search' => $keyword])->links() }}
                 </div>
             </div>
         </div>

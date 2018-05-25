@@ -32,7 +32,9 @@ class BookController extends Controller
         } else {
             $books = Book::with('imageBooks')->paginate();
         }
-        return view('admin.books.index', compact('books', $books));
+        $data['books'] = $books;
+        $data['keyword'] = $keyword;
+        return view('admin.books.index', $data);
     }
 
     /**
