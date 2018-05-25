@@ -44,12 +44,10 @@
                 'publishing_year' => 'Enter Publishing Year',
                 'language' => 'Enter Language',
                 'quantity' => 'Enter Quantity',
+                'search' => 'Search',
             ],
         ],
         'errors' => [
             'delete_book_fail' => 'Delete Book Fail!',
-        ],
-        'search_book' => [
-            'results' => 'Found :number results',
         ],
     ];

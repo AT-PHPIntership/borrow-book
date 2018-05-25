@@ -18,13 +18,11 @@
             <div class="col-md-10">
                 <div class="search-container">
                     <form action="{{route('admin.books.index')}}" method="GET" class="form-search-book">
-                        <input type="text" placeholder="Search" name="search">
+                        <input type="text" placeholder="{{trans('book.form.placeholders.search')}}" name="search">
                         <button type="submit" class="button-search-book"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                <div class="show-detail-search">
-                    <strong>{{trans('book.search_book.results', ['number' => $books->count()])}}</strong>
-                </div>
+                @include('admin.layouts.partials.message_search')
                 <table class="table box">
                     <thead>
                         <tr>
