@@ -29,12 +29,11 @@ class BookController extends Controller
                         ->orWhere("author", "LIKE", "%$keyword%")
                         ->orWhere("language", "LIKE", "%$keyword%")
                         ->paginate();
+            $books->appends(['search' => $keyword]);
         } else {
             $books = Book::with('imageBooks')->paginate();
         }
-        $data['books'] = $books;
-        $data['keyword'] = $keyword;
-        return view('admin.books.index', $data);
+        return view('admin.books.index', compact('books', $books));
     }
 
     /**

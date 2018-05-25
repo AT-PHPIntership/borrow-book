@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
                 <div>
-                    {{ $books->appends(['search' => $keyword])->links() }}
+                    {{ $books->links() }}
                 </div>
             </div>
         </div>
