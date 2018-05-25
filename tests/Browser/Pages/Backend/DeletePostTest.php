@@ -24,17 +24,19 @@ class DeletePostTest extends DuskTestCase
     {
         parent::setUp();
         factory(User::class,2)->create();
-        $userId = DB::table('users')->pluck('id')->all();
+        $userIds = DB::table('users')->pluck('id')->all();
         factory(Category::class,2)->create();
-        $categoryId = DB::table('categories')->pluck('id')->all();
+        $categoryIds = DB::table('categories')->pluck('id')->all();
         $faker = Faker::create();
-        factory(Book::class, 1)->create([
-            'category_id' => $faker->randomElement($categoryId),
+        factory(Book::class, 2)->create([
+            'category_id' => $faker->randomElement($categoryIds),
         ]);
-        $bookId = DB::table('books')->pluck('id')->all();
-        factory(Post::class,1)->create([
-            'user_id' =>$faker ->randomElement($userId),
-            'book_id' =>$faker ->randomElement($bookId),
+        $bookIds = DB::table('books')->pluck('id')->all();
+        factory(Post::class,3)->create();
+        factory(Post::class)->create([
+            'id' => 4,
+            'user_id' =>$faker ->randomElement($userIds),
+            'book_id' =>$faker ->randomElement($bookIds),
         ]);
     }
 
@@ -43,7 +45,7 @@ class DeletePostTest extends DuskTestCase
      *
      * @return void
      */
-    public function testClickButtonDeletePost()
+    public function testCancelConfirmDelete()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
@@ -57,25 +59,23 @@ class DeletePostTest extends DuskTestCase
     }
 
     /**
-     * Test confirm delete 
+     * Test accept confirm delete 
      *
      * @return void
      */
-    public function testConfirmDeleteOnPopup()
+    public function testAcceptConfirmDelete()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                     ->visit('/admin/posts')
-                    ->assertSee('List Post');
-            $elements = $browser->elements('.table tbody tr');
-            $this->assertCount(1, $elements);
-            $browser->click('td button.fa-trash-o')
+                    ->assertSee('List Post')
+                    ->click('tr:nth-child(4) td button.fa-trash-o')
                     ->assertDialogOpened('Are you sure you want to deleted?')
                     ->acceptDialog()
                     ->assertSee('Delete Post Success!');
-            $this->assertDatabaseMissing('posts', ['deleted_at' => null]);
+            $this->assertDatabaseMissing('posts', ['id'=>4 , 'deleted_at' => null]);
             $elements = $browser->elements('.table tbody tr');
-            $this->assertCount(0, $elements);
+            $this->assertCount(3, $elements);
         });
     }
 }
