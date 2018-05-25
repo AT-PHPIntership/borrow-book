@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use DB;
+use Exception;
+use Session;
 
 class PostController extends Controller
 {
@@ -16,6 +19,9 @@ class PostController extends Controller
     public function index()
     {
         $fields = [
+            'posts.id',
+            'posts.user_id',
+            'posts.book_id',
             'users.name',
             'books.title',
             'posts.post_type',
@@ -28,5 +34,27 @@ class PostController extends Controller
                     ->leftJoin('books', 'posts.book_id', '=', 'books.id')
                     ->paginate();
         return view('admin.posts.index', compact('posts'));
+    }
+
+    /**
+     * Delete a post 
+     *
+     * @param Post $post object post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        DB::beginTransaction();
+        try {
+            $post->delete();
+            DB::commit();
+            Session::flash('message', trans('post.messages.delete_post_success'));
+        }
+        catch(Exception $e) {
+            DB::rollBack();
+            Session::flash('error', trans('post.messages.delete_post_error'));
+        }
+        return redirect()->back();
     }
 }
