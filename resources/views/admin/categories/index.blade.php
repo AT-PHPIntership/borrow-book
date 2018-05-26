@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', trans('book.title'))
+@section('title', trans('category.title'))
 
 @section('content')
 
@@ -41,6 +41,17 @@
                 </table>
                 <div class="text-center">
                 </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <form action="{{ route('admin.categories.store') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}"><input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <label>{{ trans('category.form.title_inputs.name') }}</label>
+                        <input type="text" placeholder="{{ trans('category.placeholders.name') }}" name="name">
+                        <button class="btn btn-primary"><i class="fa fa-plus"> {{trans('user.create')}}</i></button>
+                    </form>
+                </div>
+                @include('admin.layouts.partials.errors')
             </div>
         </div>
     </section>
