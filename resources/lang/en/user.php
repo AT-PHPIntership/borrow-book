@@ -3,11 +3,15 @@
     return [
 
         'list_user' => 'List Users',
+        'user_detail_borrow' => 'User detail borrow',
         'table_head' => [
             'avatar' => 'Avatar',
             'name' => 'Name',
             'email' => 'Email',
             'options' => 'Options',
+            'dob' => 'Day of birth',
+            'identity_number' => 'Identity Number',
+            'address' => 'Address'
         ],
 
         'title' => 'Manage users',

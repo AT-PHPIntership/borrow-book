@@ -25,6 +25,7 @@ Route::group($admin_config, function(){
         return view('admin.index');
     });
     Route::resource('users', 'UserController');
+    Route::get('users/borrows/{borrow}', 'UserController@borrowDetail')->name('users.borrowDetail');
     Route::resource('books', 'BookController');
     Route::resource('borrows', 'BorrowController');
     Route::resource('images', 'ImageBookController');

@@ -133,4 +133,14 @@ class UserController extends Controller
         Session::flash('message', trans('user.messages.delete_success'));
         return redirect()->route('admin.users.index');
     }
+
+    /**
+    * Show the user detail borrow.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function borrowDetail()
+    {
+        return view('admin.users.borrowDetail');
+    }
 }
