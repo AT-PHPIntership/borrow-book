@@ -18,11 +18,20 @@ class UserController extends Controller
     /**
      * Display a listing of User.
      *
+     * @param Http\Requests\Request $request request
+     *
      * @return users
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate();
+        $keyword = $request->search;
+        if ($keyword != '') {
+            $users = User::where("name", "LIKE", "%$keyword%")
+                        ->orWhere("email", "LIKE", "%$keyword%")
+                        ->paginate();
+        } else {
+            $users = User::paginate();
+        }
         return view('admin.users.index', ['users' => $users]);
     }
 

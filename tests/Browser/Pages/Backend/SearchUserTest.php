@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
 
-class ShowListUserTest extends DuskTestCase
+class SearchUserTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
@@ -31,46 +31,53 @@ class ShowListUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testShowList()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user)
-                    ->visit('/admin/users')
-                    ->assertPathIs('/admin/users')
-                    ->assertSee('List Users');
-        });
-    }
-
-    /**
-     * A Dusk test show record with table has data.
-     *
-     * @return void
-     */
-    public function testShowRecord()
+    public function testButtonSearch()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
+                ->click('.button-search-user')
                 ->assertSee('List Users');
-            $elements = $browser->elements('.table tbody tr');
+            $elements = $browser->elements('#table-index tbody tr');
             $this->assertCount(self::RECORD_LIMIT, $elements);
         });
     }
 
     /**
-     * Test view Admin List Users with pagination
+     * Test show result of search with data input, has records return
      *
      * @return void
      */
-    public function testListUsersPagination()
+    public function testSearchUserHasRecordReturn()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
+                ->assertSee('List Users')
+                ->type('search', 'Hay Tran')
+                ->click('.button-search-user')
                 ->assertSee('List Users');
-            $paginate_element = $browser->elements('.pagination li');
-            $number_page = count($paginate_element) - 2;
-            $this->assertTrue($number_page == ceil((self::NUMBER_RECORD_CREATE) / (self::RECORD_LIMIT)));
+            $elements = $browser->elements('#table-index tbody tr');
+            $this->assertCount(1, $elements);
+        });
+    }
+
+    /**
+     * Test show result of search with data input, no record return
+     *
+     * @return void
+     */
+    public function testSearchUserNoRecordReturn()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
+                ->assertSee('List Users')
+                ->type('search', 'hahaha')
+                ->click('.button-search-user')
+                ->assertSee('List Users');
+            $elements = $browser->elements('#table-index tbody tr');
+            $this->assertCount(0, $elements);
         });
     }
 }

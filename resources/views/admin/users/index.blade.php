@@ -7,13 +7,21 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h3>{{trans('user.list_user')}}</h3>
+        <h2>{{trans('user.list_user')}}</h2>
+        <h4><a href="{{route('admin.users.create')}}"><i class="fa fa-plus"> {{trans('user.create')}}</i></a></h4>
     </section>
+    <hr>
     @include('admin.layouts.partials.messages')
     <!-- Main content -->
     <section class="container">
         <div class="row">
             <div class="col-md-10">
+                <div class="search-container">
+                    <form action="{{route('admin.users.index')}}" method="GET">
+                        <input type="text" placeholder="Search" name="search">
+                        <button type="submit" class="button-search-user"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                 <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
@@ -26,19 +34,18 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->avatar_url}}" alt=""></td>
+                            <td><img class="text-center" src="{{ $user->avatar_url }}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                            @if($user->role == 0)
-                                <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
-                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline">
+                                @if($user->role == 0)
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-flat fa fa-pencil button-edit"></a>&nbsp;&nbsp;
+                                <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline form-delete">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item" onclick="return confirm('{{trans('user.messages_confirm.confirm_delete')}}')">
-                                    </button>
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm_delete')}}')"></button>
                                 </form>
-                            @endif                                
+                                @endif
                             </td>
                         </tr>
                         @endforeach

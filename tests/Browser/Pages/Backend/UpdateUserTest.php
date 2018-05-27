@@ -18,7 +18,15 @@ class UpdateUserTest extends DuskTestCase
     {
         parent::setUp();
 
-        factory(User::class, 2)->create();
+        factory(User::class)->create([
+            'id' => 2,
+            'email' => 'alone.hht@gmail.com',
+            'name' => 'Ha',
+            'identity_number' => 111,
+            'dob' => '2018-12-12',
+            'address' => 'da nang',
+            'role' => User::ROLE_USER
+        ]);
 
     }
 
@@ -29,10 +37,11 @@ class UpdateUserTest extends DuskTestCase
      */
     public function  testUrlEditUsers()
     {
-        $user = User::find(1);
+        $user = User::find(2);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/users')
-                    ->press('Edit')
+            $browser->loginAs($this->user)
+                    ->visit('/admin/users')
+                    ->click('#table-index tbody tr:nth-child(2) .button-edit')
                     ->assertSee('Update users')
                     ->assertPathIs('/admin/users/'.$user->id.'/edit');
         });
@@ -44,15 +53,16 @@ class UpdateUserTest extends DuskTestCase
      */
     public function testEditUsersSuccess()
     {
-        $user = User::find(1);
+        $user = User::find(2);
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/admin/users/'.$user->id.'/edit')
-                    ->resize(900,1000)
-                    ->assertSee('Update users')
-                    ->type('name',$user->name)
-                    ->press('Submit')
-                    ->assertSee('Successfully updated user!')
-                    ->assertPathIs('/admin/users');
+            $browser->loginAs($this->user)
+                ->visit('/admin/users/'.$user->id.'/edit')
+                ->resize(900, 1000)
+                ->assertSee('Update users')
+                ->type('name',$user->name)
+                ->press('Submit')
+                ->assertSee('Successfully updated user!')
+                ->assertPathIs('/admin/users');
         });
         $this->assertDatabaseHas('users', [
                         'name' => $user->name]);
@@ -89,15 +99,16 @@ class UpdateUserTest extends DuskTestCase
    public function testValidateForInput($name, $content,$message)
    {
         $user = User::find(1);
-       $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
-           $browser->visit('/admin/users/'.$user->id.'/edit')
-               ->keys('#dob', '1996/02/09')
-               ->pause(1000)
+        $this->browse(function (Browser $browser) use ($name, $content, $message ,$user) {
+            $browser->loginAs($this->user)
+                ->visit('/admin/users/'.$user->id.'/edit')
+                ->keys('#dob', '1996/02/09')
+                ->pause(1000)
                 ->attach('avatar', __DIR__.'/testing_file/ahihi.txt')
-               ->type('identity_number', '')
-               ->type('name', '')
-               ->type('address', '');
-           $browser->press('Submit')
+                ->type('identity_number', '')
+                ->type('name', '')
+                ->type('address', '');
+            $browser->press('Submit')
                ->pause(3000)
                ->assertSee($message);
        });

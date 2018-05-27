@@ -25,16 +25,20 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">{{trans('admin.title.left_bar')}}</li>
-            <li class="treeview">
-                <a href="#">
+            <li>
+                <a href="{{route('admin.users.index')}}">
                     <i class="fa fa-dashboard"></i> <span>{{trans('user.title')}}</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="admin/users/create"><i class="fa fa-circle-o"> {{trans('user.create')}}</i></a></li>
-                </ul>
+            </li>
+            <li>
+                <a href="{{route('admin.books.index')}}">
+                    <i class="fa fa-dashboard"></i> <span>{{trans('book.title')}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.posts.index')}}">
+                    <i class="fa fa-dashboard"></i> <span>{{trans('post.title')}}</span>
+                </a>
             </li>
         </ul>
     </section>

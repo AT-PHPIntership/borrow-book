@@ -19,7 +19,15 @@ class DeleteUserTest extends DuskTestCase
     public function setUp()
     {
         parent::setUp();
-        $user = factory(User::class, 1)->create();
+        factory(User::class)->create([
+            'id' => 2,
+            'email' => 'alone.hht@gmail.com',
+            'name' => 'Ha',
+            'identity_number' => 111,
+            'dob' => '2018-12-12',
+            'address' => 'da nang',
+            'role' => User::ROLE_USER
+        ]);
     }
 
     /**
@@ -30,12 +38,13 @@ class DeleteUserTest extends DuskTestCase
     public function testClickButtonDeleleUser()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users')
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
                 ->assertSee('List Users')
-                ->press('Delete')
+                ->click('#table-index tbody tr:nth-child(2) .form-delete .button-delete')
                 ->assertDialogOpened('Are you sure?')
                 ->dismissDialog();
-            $this->assertDatabaseHas('users',['deleted_at' => null]);
+            $this->assertDatabaseHas('users', ['id' => 2, 'deleted_at' => null]);
         });
     }
 
@@ -47,12 +56,13 @@ class DeleteUserTest extends DuskTestCase
     public function testConfirmDeleteOnPopup()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/admin/users')
-                ->press('Delete')
+            $browser->loginAs($this->user)
+                ->visit('/admin/users')
+                ->click('#table-index tbody tr:nth-child(2) .form-delete .button-delete')
                 ->assertDialogOpened('Are you sure?')
                 ->acceptDialog()
                 ->assertSee('Successfully deleted user!');
-            $this->assertDatabaseMissing('users',['deleted_at'=>null]);
+            $this->assertDatabaseMissing('users', ['id' => 2, 'deleted_at' => null]);
         });
     }
 

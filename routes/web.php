@@ -12,12 +12,13 @@
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 $admin_config = [
     'namespace' => 'Admin',
     'prefix' => 'admin',
     'as'=> 'admin.',
+    'middleware' => 'admin'
 ];
 Route::group($admin_config, function(){
     Route::get('/', function () {
@@ -26,6 +27,8 @@ Route::group($admin_config, function(){
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
     Route::resource('borrows', 'BorrowController');
+    Route::resource('images', 'ImageBookController');
+    Route::resource('posts', 'PostController');
 });
 
 Auth::routes();
