@@ -37,11 +37,13 @@
                     <tbody>
                         @foreach ($books as $book )
                         <tr>
+                            <td>
                             @foreach ($book->imageBooks as $image)
                                 @if ($loop->first)
-                                    <td><img class="text-center" src="{{ $image->image_url }}" alt=""></td>
+                                    <img class="text-center" src="{{ $image->image_url }}" alt="">
                                 @endif
                             @endforeach
+                            </td>
                             <td>{{ $book->title }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->language }}</td>
