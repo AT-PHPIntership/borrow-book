@@ -28,13 +28,12 @@ class BookController extends Controller
             $books = Book::with('imageBooks')->where("title", "LIKE", "%$keyword%")
                         ->orWhere("author", "LIKE", "%$keyword%")
                         ->orWhere("language", "LIKE", "%$keyword%");
-            //$number = $books->count();
-            $books->paginate();
-            //Session::flash('message_search', trans('search.message', ['number' => $number]));
+            Session::flash('message_search', trans('search.message', ['number' => $books->count()]));
+            $books = $books->paginate()->appends(['search' => $keyword]);
         } else {
             $books = Book::with('imageBooks')->paginate();
         }
-        return view('admin.books.index', compact('books', $books));
+        return view('admin.books.index', compact('books'));
     }
 
     /**
