@@ -28,7 +28,7 @@
                     <tbody>
                         @foreach ($borrows as $borrow)
                             <tr>
-                                <td><img class="text-center a" src="{{ $borrow->user->avatar_url}}" alt=""></td>
+                                <td><img class="text-center img-style" src="{{ $borrow->user->avatar_url}}" alt=""></td>
                                 <td>{{ $borrow->user->name }}</td>
                                 <td>{{ $borrow->number_book }}</td>
                                 <td>{{ date('d-m-Y', strtotime($borrow->form_date)) }}</td>
