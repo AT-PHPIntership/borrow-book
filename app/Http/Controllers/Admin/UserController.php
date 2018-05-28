@@ -11,6 +11,8 @@ use Session;
 use App\Http\Requests\CreateUserRequest;
 use App\Mail\CreateUserMail;
 use Mail;
+use DB;
+use Exception;
 
 class UserController extends Controller
 {
