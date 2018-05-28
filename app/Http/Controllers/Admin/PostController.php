@@ -52,4 +52,19 @@ class PostController extends Controller
         }
         return redirect()->back();
     }
+    /**
+     * Update status of posts
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function active(Request $request)
+    {
+        $post = Post::findOrFail($request->idPost);
+        $post->update(['status' => !$post->status]);
+        return response()->json([
+            "status" => $post->status
+        ]);
+    }
 }

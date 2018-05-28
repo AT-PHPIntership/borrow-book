@@ -1,7 +1,7 @@
 <?php
 
     return [
-
+        'online' => 'Online',
         'list_user' => 'List Users',
         'user_detail_borrow' => 'User detail borrow',
         'table_head' => [
@@ -13,7 +13,7 @@
             'identity_number' => 'Identity Number',
             'address' => 'Address'
         ],
-
+        'profile' => 'Profile',
         'title' => 'Manage users',
         'create' => 'Create users',
         'update' => 'Update users',
@@ -47,6 +47,9 @@
                 'identity_number' => 'Enter Identity number',
                 'address' => 'Enter Address',
                 'avatar' => 'Enter Avatar',
+            ],
+            'alt' => [
+                'user_image' => 'User Image',
             ],
         ],
     ];
