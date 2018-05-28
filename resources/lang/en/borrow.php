@@ -1,6 +1,7 @@
 <?php
     
     return [
+        'title' => 'Manage Borrow',
         'list_borrow' => 'List Borrow',
         'table_head' => [
             'avatar' => 'Avatar',

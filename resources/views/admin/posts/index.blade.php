@@ -34,11 +34,11 @@
                             <td>{{ $post->name }}</td>
                             <td>{{ $post->title }}</td>
                             @if($post->post_type ===0 )
-                                <td>{{trans('post.comment')}}</td>
+                                <td><p class="label label-success">{{trans('post.comment')}}</p></td>
                             @else
-                                <td>{{trans('post.review')}}</td>
+                                <td><p class="label label-primary">{{trans('post.review')}}</p></td>
                             @endif
-                            <td>{{ $post->body }}</td>
+                            <td>{{ str_limit($post->body, 15) }}</td>
                             <td>{{ $post->rate_point }}</td>
                             <td>
                                 @if($post->status === 1)
