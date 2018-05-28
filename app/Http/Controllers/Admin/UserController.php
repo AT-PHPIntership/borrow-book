@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Rating;
+use App\Models\Favorite;
+use App\Models\Borrow;
+use App\Models\BorrowDetail;
+use App\Models\Post;
 use App\Http\Requests\UpdateUserRequest;
 use Session;
 use App\Http\Requests\CreateUserRequest;
@@ -132,24 +136,33 @@ class UserController extends Controller
     */
     public function destroy(User $user)
     {
-        if($user->role == 0){
-            DB::beginTransaction();
+        //dd($user);
+        if ($user->role == 0) {
+            // DB::beginTransaction();
             try {
-                $user->ratings()->delete();
-                $user->favorites()->delete();
-                $user->posts()->delete();
+                // \DB::connection()->enableQueryLog();
+                // $user->ratings()->delete();
+                // $user->favorites()->delete();
+                // $user->posts()->delete();
+                // $user->delete();
+                $borrow = Borrow::where('user_id', $user->id)->all();
+                dd($borrow->id);
+                // if ($borrow->count() > 0){
+                    // $borrow = Borrow::where('user_id', $user->id);
                 
-                $user->borrowes()->borrowDetails()->delete();
-                $user->delete();
-                DB::commit();
+                    //$borrowdeail = BorrowDetail::where('borrow_id', $borrow->id)->get();
+                    
+                    // $user->borrowes()->delete();
+                // }
+                // $queries = \DB::getQueryLog();
+                // return dd($queries);
+                // DB::commit();
                 Session::flash('message_success', trans('user.messages_success.delete_success'));
-            } catch (\Exception $e) {
-                DB::rollback();
+            } catch (Exception $e) {
+                // DB::rollback();
                 Session::flash('message_fail', trans('user.messages_fail.delete_fail'));
             }
-        }else{
-            Session::flash('message_fail', trans('user.messages_fail.delete_fail'));
-        }
+        } 
         return redirect()->route('admin.users.index');
     }
 }
