@@ -11,33 +11,27 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('user.online') }}</a>
             </div>
         </div>
-      <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-        </form>
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">{{trans('admin.title.left_bar')}}</li>
             <li>
                 <a href="{{route('admin.users.index')}}">
-                    <i class="fa fa-dashboard"></i> <span>{{trans('user.title')}}</span>
+                    <i class="fa fa-users"></i> <span>{{trans('user.title')}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{route('admin.books.index')}}">
-                    <i class="fa fa-dashboard"></i> <span>{{trans('book.title')}}</span>
+                    <i class="fa fa-book"></i> <span>{{trans('book.title')}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{route('admin.posts.index')}}">
-                    <i class="fa fa-dashboard"></i> <span>{{trans('post.title')}}</span>
+                    <i class="fa fa-comment"></i> <span>{{trans('post.title')}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.borrows.index')}}">
+                    <i class="fa fa-dashboard"></i> <span>{{trans('borrow.title')}}</span>
                 </a>
             </li>
         </ul>
