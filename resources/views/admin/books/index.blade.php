@@ -17,14 +17,12 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="search-container">
-                    <form action="{{route('admin.books.index')}}" method="GET">
-                        <input type="text" placeholder="Search" name="search">
+                    <form action="{{route('admin.books.index')}}" method="GET" class="form-search-book">
+                        <input type="text" placeholder="{{trans('book.form.placeholders.search')}}" name="search">
                         <button type="submit" class="button-search-book"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                <div class="show-detail-search">
-                    <strong>{{trans('book.search_book.results', ['number' => $books->count()])}}</strong>
-                </div>
+                @include('admin.layouts.partials.message_search')
                 <table class="table box">
                     <thead>
                         <tr>
@@ -39,11 +37,13 @@
                     <tbody>
                         @foreach ($books as $book )
                         <tr>
+                            <td>
                             @foreach ($book->imageBooks as $image)
                                 @if ($loop->first)
-                                    <td><img class="text-center" src="{{ $image->image_url }}" alt=""></td>
+                                    <img class="text-center" src="{{ $image->image_url }}" alt="">
                                 @endif
                             @endforeach
+                            </td>
                             <td>{{ $book->title }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->language }}</td>
