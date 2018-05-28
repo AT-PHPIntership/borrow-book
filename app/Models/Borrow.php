@@ -56,12 +56,12 @@ class Borrow extends Model
     }
 
     /**
-     * Relationship hasMany with BorrowDetail
+     * Relationship hasOne with BorrowDetail
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function borrowDetails()
     {
-        return $this->hasMany(BorrowDetail::class);
+        return $this->hasOne(BorrowDetail::class);
     }
 }
