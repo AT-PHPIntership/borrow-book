@@ -52,4 +52,19 @@ class PostController extends Controller
         }
         return redirect()->back();
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function active(Request $request)
+    {
+        $post = Post::findOrFail($request->idPost);
+        $post->update(['status' => !$post->status]);
+        return response()->json([
+            "status" => $post->status
+        ]);
+     }
 }
