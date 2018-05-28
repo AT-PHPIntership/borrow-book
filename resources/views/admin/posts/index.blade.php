@@ -71,14 +71,14 @@
 @endsection
 @section('jquery')
 <script>
-      $('table tr td a').on('click',function (event) {
+    $('table tr td a').on('click',function (event) {
         event.preventDefault();
         var a = $(this);
         var pending = '<i class="btn btn-danger fa fa-close"></i>';
         var approve = '<i class="btn btn-success fa fa-check"></i>';
         var idPost = $(this).data('id');
         var this_button = $(this);
-          $.ajax({
+        $.ajax({
             url: '{{route("admin.post.active")}}',
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -86,15 +86,15 @@
             data: {
                 "idPost": idPost
             }
-          })
-          .done(function(data) {
+        })
+        .done(function(data) {
             if(data.status == true) {
                 a.find('i').attr('class','btn btn-success fa fa-check');
             } else {
                 a.find('i').attr('class','btn btn-danger fa fa-close');
             }
-          })
+        })
         
-      })
-    </script>
+    })
+</script>
 @endsection

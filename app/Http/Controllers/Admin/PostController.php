@@ -53,7 +53,7 @@ class PostController extends Controller
         return redirect()->back();
     }
     /**
-     * Store a newly created resource in storage.
+     * Update status of posts
      *
      * @param \Illuminate\Http\Request $request request
      *
@@ -66,5 +66,5 @@ class PostController extends Controller
         return response()->json([
             "status" => $post->status
         ]);
-     }
+    }
 }

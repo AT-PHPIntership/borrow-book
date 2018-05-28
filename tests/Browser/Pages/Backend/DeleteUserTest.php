@@ -41,7 +41,7 @@ class DeleteUserTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
                 ->assertSee('List Users')
-                ->click('#table-index tbody tr:nth-child(2) .form-delete .button-delete')
+                ->click('.form-delete .button-delete')
                 ->assertDialogOpened('Are you sure?')
                 ->dismissDialog();
             $this->assertDatabaseHas('users', ['id' => 2, 'deleted_at' => null]);
@@ -58,7 +58,7 @@ class DeleteUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
-                ->click('#table-index tbody tr:nth-child(2) .form-delete .button-delete')
+                ->click('.form-delete .button-delete')
                 ->assertDialogOpened('Are you sure?')
                 ->acceptDialog()
                 ->assertSee('Successfully deleted user!');
