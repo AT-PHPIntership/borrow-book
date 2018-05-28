@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use DB;
 use Exception;
 use Session;
 
@@ -45,13 +44,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        DB::beginTransaction();
         try {
             $post->delete();
-            DB::commit();
             Session::flash('message', trans('post.messages.delete_post_success'));
         } catch (Exception $e) {
-            DB::rollBack();
             Session::flash('error', trans('post.messages.delete_post_error'));
         }
         return redirect()->back();

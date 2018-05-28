@@ -62,7 +62,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="text-center">
+                <div>
                     {{ $books->links() }}
                 </div>
             </div>
