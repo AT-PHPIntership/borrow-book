@@ -80,6 +80,5 @@ $factory->define(App\Models\Borrow::class, function (Faker $faker) {
 $factory->define(App\Models\BorrowDetail::class, function (Faker $faker) {
     return [
         'book_id' => App\Models\Book::all()->random()->id,
-        'borrow_id' => App\Models\Borrow::all()->random()->id,
     ];
 });
