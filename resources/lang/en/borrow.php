@@ -1,6 +1,7 @@
 <?php
     
     return [
+        'title' => 'Manage Borrow',
         'list_borrow' => 'List Borrow',
         'table_head' => [
             'avatar' => 'Avatar',
@@ -11,4 +12,9 @@
             'to_date' => 'To Date',
             'status' => 'Status'
         ],
+        'status' => [
+            'give_back' => 'Give Back',
+            'waitting' => 'Waitting',
+            'borrowing' => 'Borrowing'
+        ]
     ];

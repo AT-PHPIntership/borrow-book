@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Models\Post::class, 10)->create();
         factory(App\Models\Favorite::class, 10)->create();
         factory(App\Models\Rating::class, 10)->create();
-        factory(App\Models\Borrow::class, 10)->create();
-        factory(App\Models\BorrowDetail::class, 10)->create();
+        factory(App\Models\Borrow::class, 20)->create();
+        $this->call(BorrowDetailsTableSeeder::class);
     }
 }
