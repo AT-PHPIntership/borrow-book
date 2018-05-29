@@ -44,7 +44,7 @@ class Borrow extends Model
         'to_date',
         'form_date'
     ];
-
+    
     /**
      * Relationship belongsTo with User
      *
@@ -56,9 +56,9 @@ class Borrow extends Model
     }
 
     /**
-     * Relationship hasOne with BorrowDetail
+     * Relationship hasMany with BorrowDetail
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function borrowDetails()
     {

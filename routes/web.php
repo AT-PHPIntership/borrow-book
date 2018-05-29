@@ -29,7 +29,6 @@ Route::group($admin_config, function(){
     Route::resource('borrows', 'BorrowController');
     Route::resource('images', 'ImageBookController');
     Route::resource('posts', 'PostController');
-
 });
  Route::post('active',[
             'uses'=>'Admin\PostController@active',
