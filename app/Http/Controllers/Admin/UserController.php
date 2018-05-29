@@ -140,28 +140,25 @@ class UserController extends Controller
         if ($user->role == 0) {
             DB::beginTransaction();
             try {
-                \DB::connection()->enableQueryLog();
                 $user->ratings()->delete();
                 $user->favorites()->delete();
                 $user->posts()->delete();
                 $user->delete();
                 $borrowes = Borrow::where('user_id', $user->id)->get();
                 
-                if ($borrowes->count() > 0){
+                if ($borrowes->count() > 0) {
                     foreach ($borrowes as $borrow) {
-                        $borrowdeail = BorrowDetail::where('borrow_id', $borrow->id)->delete();
+                        BorrowDetail::where('borrow_id', $borrow->id)->delete();
                     }
                     $user->borrowes()->delete();
                 }
-                $queries = \DB::getQueryLog();
-                return dd($queries);
                 DB::commit();
                 Session::flash('message_success', trans('user.messages_success.delete_success'));
             } catch (Exception $e) {
                 DB::rollback();
                 Session::flash('message_fail', trans('user.messages_fail.delete_fail'));
             }
-        } 
+        }
         return redirect()->route('admin.users.index');
     }
 }

@@ -34,8 +34,6 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-
-                            <td>{{ $user->id }}</td>
                             <td><img class="text-center img-style" src="{{ $user->avatar_url }}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
