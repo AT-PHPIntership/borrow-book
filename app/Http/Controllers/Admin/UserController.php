@@ -78,7 +78,7 @@ class UserController extends Controller
         } else {
             $user->save();
         }
-        Session::flash('message_success', trans('user.messages_success.update_success'));
+        Session::flash('message_success', trans('user.messages.success.update'));
         return redirect()->route('admin.users.index');
     }
 
@@ -123,7 +123,7 @@ class UserController extends Controller
         $data['email'] = $user->email;
         $data['password'] = $password;
         Mail::to($user->email)->send(new CreateUserMail($data));
-        Session::flash('message_success', trans('user.messages_success.create_success'));
+        Session::flash('message_success', trans('user.messages.success.create'));
         return redirect()->route('admin.users.index');
     }
 
@@ -151,10 +151,10 @@ class UserController extends Controller
                     $user->borrowes()->delete();
                 }
                 DB::commit();
-                Session::flash('message_success', trans('user.messages_success.delete_success'));
+                Session::flash('message_success', trans('user.messages.success.delete'));
             } catch (Exception $e) {
                 DB::rollback();
-                Session::flash('message_fail', trans('user.messages_fail.delete_fail'));
+                Session::flash('message_fail', trans('user.messages.fail.delete'));
             }
         }
         return redirect()->route('admin.users.index');
