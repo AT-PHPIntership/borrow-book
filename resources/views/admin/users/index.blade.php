@@ -22,6 +22,7 @@
                         <button type="submit" class="button-search-user"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+                @include('admin.layouts.partials.message_search')
                 <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
