@@ -136,8 +136,7 @@ class UserController extends Controller
     */
     public function destroy(User $user)
     {
-        //dd($user);
-        if ($user->role == 0) {
+        if ($user->role == User::ROLE_USER) {
             DB::beginTransaction();
             try {
                 $user->ratings()->delete();
@@ -145,8 +144,7 @@ class UserController extends Controller
                 $user->posts()->delete();
                 $user->delete();
                 $borrowes = Borrow::where('user_id', $user->id)->get();
-                
-                if ($borrowes->count() > 0) {
+                if ($borrowes->count()) {
                     foreach ($borrowes as $borrow) {
                         BorrowDetail::where('borrow_id', $borrow->id)->delete();
                     }
