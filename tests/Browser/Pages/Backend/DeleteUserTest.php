@@ -55,7 +55,7 @@ class DeleteUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testClickButtonDeleleUser()
+    public function testButtonCancelDeleleUser()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
@@ -73,7 +73,7 @@ class DeleteUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testConfirmDeleteOnPopup()
+    public function testAppectDeleleUser()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
