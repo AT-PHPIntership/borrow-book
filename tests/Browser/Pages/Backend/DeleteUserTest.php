@@ -3,6 +3,11 @@
 namespace Tests\Browser\Pages\Backend;
 
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Borrow;
+use App\Models\Rating;
+use App\Models\Favorite;
+use App\Models\BorrowDetail;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -28,6 +33,11 @@ class DeleteUserTest extends DuskTestCase
             'address' => 'da nang',
             'role' => User::ROLE_USER
         ]);
+        factory(Post::class,2)->create();
+        factory(Favorite::class,2)->create();
+        factory(Rating::class,2)->create();
+        factory(Borrow::class,2)->create();
+        factory(BorrowDetail::class,2)->create();
     }
 
     /**
@@ -62,7 +72,11 @@ class DeleteUserTest extends DuskTestCase
                 ->assertDialogOpened('Are you sure?')
                 ->acceptDialog()
                 ->assertSee('Successfully deleted user!');
-            $this->assertDatabaseMissing('users', ['id' => 2, 'deleted_at' => null]);
+            $this->assertDatabaseMissing('users', ['id' => 2, 'deleted_at' => null])
+                ->assertDatabaseMissing('posts', ['user_id'=> 2, 'deleted_at' => null])
+                ->assertDatabaseMissing('ratings', ['user_id'=> 2])
+                ->assertDatabaseMissing('favorites', ['user_id'=> 2])
+                ->assertDatabaseMissing('borrowes', ['user_id'=> 2, 'deleted_at' => null]);
         });
     }
 
