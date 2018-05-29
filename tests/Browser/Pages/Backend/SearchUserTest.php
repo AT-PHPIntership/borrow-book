@@ -82,7 +82,7 @@ class SearchUserTest extends DuskTestCase
     }
 
     /**
-     * Test view Admin List Borrow with pagination
+     * Test pagination of search
      *
      * @return void
      */
