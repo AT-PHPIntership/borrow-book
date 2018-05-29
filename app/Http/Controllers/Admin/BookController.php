@@ -78,7 +78,7 @@ class BookController extends Controller
                 ]);
             }
         });
-        Session::flash('message', trans('book.messages.create_success'));
+        Session::flash('message_success', trans('book.messages.create_success'));
         return redirect()->route('admin.books.index');
     }
 
@@ -120,7 +120,7 @@ class BookController extends Controller
             }
             $book->update($request->all());
         });
-        Session::flash('message', trans('book.messages.update_success'));
+        Session::flash('message_success', trans('book.messages.update_success'));
         return redirect()->route('admin.books.index');
     }
     /**
@@ -141,10 +141,10 @@ class BookController extends Controller
             $book->posts()->delete();
             $book->imageBooks()->delete();
             DB::commit();
-            Session::flash('message', trans('book.messages.delete_book_success'));
+            Session::flash('message_success', trans('book.messages.delete_book_success'));
         } catch (Exception $e) {
             DB::rollBack();
-            Session::flash('error', trans('book.errors.delete_book_fail'));
+            Session::flash('message_fail', trans('book.errors.delete_book_fail'));
         }
         return redirect()->back();
     }
