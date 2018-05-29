@@ -46,9 +46,9 @@ class PostController extends Controller
     {
         try {
             $post->delete();
-            Session::flash('message', trans('post.messages.delete_post_success'));
+            Session::flash('message_success', trans('post.messages.delete_post_success'));
         } catch (Exception $e) {
-            Session::flash('error', trans('post.messages.delete_post_error'));
+            Session::flash('message_fail', trans('post.messages.delete_post_error'));
         }
         return redirect()->back();
     }

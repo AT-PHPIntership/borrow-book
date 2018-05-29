@@ -14,10 +14,17 @@
         'create' => 'Create users',
         'update' => 'Update users',
         'messages' => [
-            'create_success' => 'Successfully created user!',
-            'delete_success' => 'Successfully deleted user!',
-            'update_success' => 'Successfully updated user!',
-            'confirm_delete' => 'Are you sure?',
+            'success'=> [
+                'create' => 'Successfully created user!',
+                'delete' => 'Successfully deleted user!',
+                'update' => 'Successfully updated user!',
+            ],
+            'fail'=> [
+                'delete' => 'Failfully deleted user!',
+            ],
+            'confirm'=> [
+                'delete' => 'Are you sure?',
+            ],
         ],
         'form' => [
             'title_inputs' => [
