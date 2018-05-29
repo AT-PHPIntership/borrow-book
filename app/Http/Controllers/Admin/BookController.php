@@ -156,9 +156,9 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show ($id)
+    public function show($id)
     {
         $book = Book::with(['category','imageBooks'])->findOrFail($id);
-        return view('admin.books.show',compact('book'));
+        return view('admin.books.show', compact('book'));
     }
 }

@@ -7,7 +7,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h2>{{trans('book.list_book')}}</h2>
+        <h2>{{trans('book.detail_book')}}</h2>
       </section>
       <!-- Main content -->
     <section class="container">
