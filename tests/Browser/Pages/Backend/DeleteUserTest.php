@@ -8,8 +8,12 @@ use App\Models\Borrow;
 use App\Models\Rating;
 use App\Models\Favorite;
 use App\Models\BorrowDetail;
+use App\Models\Book;
+use App\Models\Category;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Faker\Factory as Faker;
+use DB;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DeleteUserTest extends DuskTestCase
@@ -33,11 +37,17 @@ class DeleteUserTest extends DuskTestCase
             'address' => 'da nang',
             'role' => User::ROLE_USER
         ]);
+        factory(Category::class,2)->create();
+        factory(Book::class,2)->create();
         factory(Post::class,2)->create();
         factory(Favorite::class,2)->create();
         factory(Rating::class,2)->create();
         factory(Borrow::class,2)->create();
-        factory(BorrowDetail::class,2)->create();
+        $borrowId = DB::table('borrowes')->pluck('id')->all();
+        $faker = Faker::create();
+        factory(BorrowDetail::class,2)->create([
+            'borrow_id' => $faker->randomElement($borrowId),
+        ]);
     }
 
     /**
