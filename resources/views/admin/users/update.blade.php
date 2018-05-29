@@ -15,9 +15,11 @@
                 {{method_field('PATCH')}}
                 {{ csrf_field() }}
                 <div class="box-body">
+                    <div class="img-wrap">
+                        <img class="img-style" src="{{$users->avatar_url}}" alt="">
+                    </div>
                     <div class="form-group">
                         <label>{{trans('user.form.title_inputs.avatar')}}</label>
-                        <img src="{{$users->avatar_url}}" alt="">
                         <input type="file" id="avatar" value="{{$users->avatar}}" name="avatar">
                     </div>
                     <div class="form-group">

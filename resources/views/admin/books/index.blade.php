@@ -8,6 +8,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h2>{{trans('book.list_book')}}</h2>
+        <h4><a class="btn btn-primary" href="{{route('admin.books.create')}}"><i class="fa fa-plus"> {{trans('book.create')}}</i></a></h4>
     </section>
     @include('admin.layouts.partials.errors')
     @include('admin.layouts.partials.messages')
@@ -17,14 +18,12 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="search-container">
-                    <form action="{{route('admin.books.index')}}" method="GET">
-                        <input type="text" placeholder="Search" name="search">
+                    <form action="{{route('admin.books.index')}}" method="GET" class="form-search-book">
+                        <input type="text" placeholder="{{trans('book.form.placeholders.search')}}" name="search">
                         <button type="submit" class="button-search-book"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                <div class="show-detail-search">
-                    <strong>{{trans('book.search_book.results', ['number' => $books->count()])}}</strong>
-                </div>
+                @include('admin.layouts.partials.message_search')
                 <table class="table box">
                     <thead>
                         <tr>
@@ -39,17 +38,19 @@
                     <tbody>
                         @foreach ($books as $book )
                         <tr>
+                            <td>
                             @foreach ($book->imageBooks as $image)
                                 @if ($loop->first)
-                                    <td><img class="text-center" src="{{ $image->image_url }}" alt=""></td>
+                                    <img class="text-center img-style" src="{{ $image->image_url }}" alt="">
                                 @endif
                             @endforeach
+                            </td>
                             <td>{{ $book->title }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->language }}</td>
                             <td>{{ $book->quantity }}</td>
                             <td>
-                                 <a href="" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
+                                 <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
                                 <form method="POST" action="{{ route('admin.books.destroy', $book->id) }}" class="inline">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
@@ -62,7 +63,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div>
+                <div class="text-center">
                     {{ $books->links() }}
                 </div>
             </div>

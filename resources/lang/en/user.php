@@ -1,7 +1,7 @@
 <?php
 
     return [
-
+        'online' => 'Online',
         'list_user' => 'List Users',
         'table_head' => [
             'avatar' => 'Avatar',
@@ -9,7 +9,7 @@
             'email' => 'Email',
             'options' => 'Options',
         ],
-
+        'profile' => 'Profile',
         'title' => 'Manage users',
         'create' => 'Create users',
         'update' => 'Update users',
@@ -48,6 +48,9 @@
                 'identity_number' => 'Enter Identity number',
                 'address' => 'Enter Address',
                 'avatar' => 'Enter Avatar',
+            ],
+            'alt' => [
+                'user_image' => 'User Image',
             ],
         ],
     ];
