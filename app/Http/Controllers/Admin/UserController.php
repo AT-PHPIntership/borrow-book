@@ -10,6 +10,7 @@ use Session;
 use App\Http\Requests\CreateUserRequest;
 use App\Mail\CreateUserMail;
 use Mail;
+use App\Models\Borrow;
 
 class UserController extends Controller
 {
@@ -135,12 +136,15 @@ class UserController extends Controller
     }
 
     /**
-    * Show the user detail borrow.
+    * Show the user detail and history borrow.
     *
     * @return \Illuminate\Http\Response
     */
-    public function borrowDetail()
+    public function show(User $user)
     {
-        return view('admin.users.borrowDetail');
+        $borrowes = Borrow::with('borrowDetails.book')
+                        ->where('user_id', $user->id)
+                        ->orderBy('status', 'asc')->get();
+        return view('admin.users.show', compact('user', 'borrowes'));
     }
 }

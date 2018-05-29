@@ -3,7 +3,7 @@
     return [
         'online' => 'Online',
         'list_user' => 'List Users',
-        'user_detail_borrow' => 'User detail borrow',
+        'user_detail' => 'User Detail',
         'table_head' => [
             'avatar' => 'Avatar',
             'name' => 'Name',
@@ -11,7 +11,11 @@
             'options' => 'Options',
             'dob' => 'Day of birth',
             'identity_number' => 'Identity Number',
-            'address' => 'Address'
+            'address' => 'Address',
+            'from_date' => 'From Date',
+            'to_date' => 'To Date',
+            'book_name' => 'Book Name',
+            'status' => 'Status'
         ],
         'profile' => 'Profile',
         'title' => 'Manage users',

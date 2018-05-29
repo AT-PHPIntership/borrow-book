@@ -62,6 +62,6 @@ class Borrow extends Model
      */
     public function borrowDetails()
     {
-        return $this->hasOne(BorrowDetail::class);
+        return $this->hasMany(BorrowDetail::class);
     }
 }
