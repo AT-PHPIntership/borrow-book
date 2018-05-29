@@ -58,7 +58,7 @@
                                     onclick="return confirm('{{trans('book.messages.confirm_delete')}}')">
                                     </button>
                                 </form> 
-                                 <a href="{{ route('admin.books.show', $book->id) }}" class="btn btn-primary btn-flat fa fa-info"></a>
+                                 <a href="{{ route('admin.books.show', $book->id) }}" class="btn btn-primary btn-flat fa fa-info button-info"></a>
                             </td>
                         </tr>
                         @endforeach
