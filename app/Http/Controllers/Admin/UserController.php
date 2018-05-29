@@ -26,8 +26,9 @@ class UserController extends Controller
         $keyword = $request->search;
         if ($keyword != '') {
             $users = User::where("name", "LIKE", "%$keyword%")
-                        ->orWhere("email", "LIKE", "%$keyword%")
-                        ->paginate();
+                        ->orWhere("email", "LIKE", "%$keyword%");
+            Session::flash('message_search', trans('search.message', ['number' => $users->count()]));
+            $users = $users->paginate()->appends(['search' => $keyword]);
         } else {
             $users = User::paginate();
         }
