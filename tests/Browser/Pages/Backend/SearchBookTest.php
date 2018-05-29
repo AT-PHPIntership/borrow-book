@@ -91,7 +91,7 @@ class SearchBookTest extends DuskTestCase
     }
 
     /**
-     * Test view Admin List Borrow with pagination
+     * Test pagination of search
      *
      * @return void
      */
@@ -111,7 +111,7 @@ class SearchBookTest extends DuskTestCase
     }
 
     /**
-     * Test view Admin List Borrow with pagination
+     * Test pagination page 2 of search
      *
      * @return void
      */
