@@ -12,4 +12,9 @@
             'to_date' => 'To Date',
             'status' => 'Status'
         ],
+        'status' => [
+            'give_back' => 'Give Back',
+            'waitting' => 'Waitting',
+            'borrowing' => 'Borrowing'
+        ]
     ];

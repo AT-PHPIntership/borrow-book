@@ -159,4 +159,19 @@ class UserController extends Controller
         }
         return redirect()->route('admin.users.index');
     }
+
+    /**
+    * Show the user detail and history borrow.
+    *
+    * @param User $user object user
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function show(User $user)
+    {
+        $borrowes = Borrow::with('borrowDetails.book')
+                        ->where('user_id', $user->id)
+                        ->orderBy('status', 'asc')->get();
+        return view('admin.users.show', compact('user', 'borrowes'));
+    }
 }
