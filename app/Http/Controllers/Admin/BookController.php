@@ -148,4 +148,17 @@ class BookController extends Controller
         }
         return redirect()->back();
     }
+
+     /**
+     * Display the detail of book.
+     *
+     * @param int $id id of book
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show ($id)
+    {
+        $book = Book::with(['category','imageBooks'])->findOrFail($id);
+        return view('admin.books.show',compact('book'));
+    }
 }

@@ -36,7 +36,8 @@
             ],
             'buttons' => [
                 'submit' => 'Submit',
-                'reset' => 'Reset'
+                'reset' => 'Reset',
+                'back' => 'Back'
             ],
             'placeholders' => [
                 'title' => 'Enter Title',
