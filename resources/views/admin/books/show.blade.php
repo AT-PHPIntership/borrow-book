@@ -17,7 +17,7 @@
                    	<div class="box-body box-profile">
                     	@foreach ($book->imageBooks as $imageBook)
                 		<div class="img-wrap">
-                    		<img id="image{{ $imageBook->id }}" class="text-center img-style" src="{{ $imageBook->image_url }}" alt="">
+                    	   <img id="image{{ $imageBook->id }}" class="text-center img-style" src="{{ $imageBook->image_url }}" alt="">
                 		</div>
             			@endforeach
                        	<ul class="list-group list-group-unbordered">
