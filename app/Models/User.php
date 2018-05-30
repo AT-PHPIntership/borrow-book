@@ -10,7 +10,7 @@ use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use SoftDeletes, Notifiable,sortable;
+    use SoftDeletes, Notifiable,Sortable;
 
     /**
      * User role
