@@ -8,7 +8,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h2>{{trans('user.list_user')}}</h2>
-        <h4><a href="{{route('admin.users.create')}}"><i class="fa fa-plus"> {{trans('user.create')}}</i></a></h4>
+        <h4><a class="btn btn-primary" href="{{route('admin.users.create')}}"><i class="fa fa-plus"> {{trans('user.create')}}</i></a></h4>
     </section>
     <hr>
     @include('admin.layouts.partials.messages')
@@ -22,11 +22,12 @@
                         <button type="submit" class="button-search-user"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+                @include('admin.layouts.partials.message_search')
                 <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
-                            <th>{{trans('user.table_head.name')}}</th>
+                            <th>@sortablelink('name', trans('user.table_head.name'))</th>
                             <th>{{trans('user.table_head.email')}}</th>
                             <th>{{trans('user.table_head.options')}}</th>
                         </tr>
@@ -34,7 +35,7 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><img class="text-center" src="{{ $user->avatar_url }}" alt=""></td>
+                            <td><img class="text-center img-style" src="{{ $user->avatar_url }}" alt=""></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
@@ -43,7 +44,7 @@
                                 <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline form-delete">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm_delete')}}')"></button>
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm.delete')}}')"></button>
                                 </form>
                                 @endif
                             </td>

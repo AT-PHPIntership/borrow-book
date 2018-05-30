@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='csrf-token' content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <base href="{{asset('')}}">
     <!-- Tell the browser to be responsive to screen width -->
@@ -27,5 +28,6 @@
     <!-- ./wrapper -->
     @include('admin.layouts.partials.scripts')
     @yield('script')
+    @yield('jquery')
 </body>
 </html>

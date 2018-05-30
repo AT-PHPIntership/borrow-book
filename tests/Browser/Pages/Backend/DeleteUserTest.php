@@ -3,8 +3,17 @@
 namespace Tests\Browser\Pages\Backend;
 
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Borrow;
+use App\Models\Rating;
+use App\Models\Favorite;
+use App\Models\BorrowDetail;
+use App\Models\Book;
+use App\Models\Category;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Faker\Factory as Faker;
+use DB;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DeleteUserTest extends DuskTestCase
@@ -28,6 +37,17 @@ class DeleteUserTest extends DuskTestCase
             'address' => 'da nang',
             'role' => User::ROLE_USER
         ]);
+        factory(Category::class,2)->create();
+        factory(Book::class,2)->create();
+        factory(Post::class,2)->create();
+        factory(Favorite::class,2)->create();
+        factory(Rating::class,2)->create();
+        factory(Borrow::class,2)->create();
+        $borrowId = DB::table('borrowes')->pluck('id')->all();
+        $faker = Faker::create();
+        factory(BorrowDetail::class,2)->create([
+            'borrow_id' => $faker->randomElement($borrowId),
+        ]);
     }
 
     /**
@@ -35,13 +55,13 @@ class DeleteUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testClickButtonDeleleUser()
+    public function testButtonCancelDeleleUser()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
                 ->assertSee('List Users')
-                ->click('#table-index tbody tr:nth-child(2) .form-delete .button-delete')
+                ->click('.form-delete .button-delete')
                 ->assertDialogOpened('Are you sure?')
                 ->dismissDialog();
             $this->assertDatabaseHas('users', ['id' => 2, 'deleted_at' => null]);
@@ -53,16 +73,20 @@ class DeleteUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testConfirmDeleteOnPopup()
+    public function testAppectDeleleUser()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
-                ->click('#table-index tbody tr:nth-child(2) .form-delete .button-delete')
+                ->click('.form-delete .button-delete')
                 ->assertDialogOpened('Are you sure?')
                 ->acceptDialog()
                 ->assertSee('Successfully deleted user!');
-            $this->assertDatabaseMissing('users', ['id' => 2, 'deleted_at' => null]);
+            $this->assertDatabaseMissing('users', ['id' => 2, 'deleted_at' => null])
+                ->assertDatabaseMissing('posts', ['user_id'=> 2, 'deleted_at' => null])
+                ->assertDatabaseMissing('ratings', ['user_id'=> 2])
+                ->assertDatabaseMissing('favorites', ['user_id'=> 2])
+                ->assertDatabaseMissing('borrowes', ['user_id'=> 2, 'deleted_at' => null]);
         });
     }
 

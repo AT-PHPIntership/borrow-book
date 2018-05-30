@@ -19,7 +19,7 @@
             @foreach ($book->imageBooks as $imageBook)
                 <div class="img-wrap">
                     <span id="close{{ $imageBook->id }}" data-id="{{ $imageBook->id }}" data-token="{{ csrf_token() }}" class="close">&times;</span>
-                    <img id="image{{ $imageBook->id }}" class="text-center" src="{{ $imageBook->image_url }}" alt="">
+                    <img id="image{{ $imageBook->id }}" class="text-center img-style" src="{{ $imageBook->image_url }}" alt="">
                 </div>
             @endforeach
             <form role="form" action="{{ route('admin.books.update', $book->id) }}" method="POST" enctype="multipart/form-data">
@@ -89,5 +89,4 @@
 @endsection
 @section('script')
     <script src="js/deleteImage.js"></script>
-    <script src="js/message.js"></script>
 @endsection
