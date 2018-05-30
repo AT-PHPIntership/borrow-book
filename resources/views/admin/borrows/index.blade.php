@@ -35,9 +35,9 @@
                                 <td>{{ date('d-m-Y', strtotime($borrow->to_date)) }}</td>
                                 <td>
                                     <select class="form-control status" name="status" data-id="{{ $borrow->id }}">
-                                        <option value="{{ App\Models\Borrow::BORROWING }}" {{ $borrow->status == App\Models\Borrow::BORROWING ? 'selected="selected"' : '' }}>Borrowing</option>
-                                        <option value="{{ App\Models\Borrow::GIVE_BACK }}" {{ $borrow->status == App\Models\Borrow::GIVE_BACK ? 'selected="selected"' : '' }}>Give Back</option>
-                                        <option value="{{ App\Models\Borrow::WAITTING }}" {{ $borrow->status == App\Models\Borrow::WAITTING ? 'selected="selected"' : '' }}>Waitting</option>
+                                        <option value="{{ App\Models\Borrow::BORROWING }}" {{ $borrow->status == App\Models\Borrow::BORROWING ? 'selected="selected"' : '' }}>{{ trans('borrow.status.borrowing') }}</option>
+                                        <option value="{{ App\Models\Borrow::GIVE_BACK }}" {{ $borrow->status == App\Models\Borrow::GIVE_BACK ? 'selected="selected"' : '' }}>{{ trans('borrow.status.give_back') }}</option>
+                                        <option value="{{ App\Models\Borrow::WAITTING }}" {{ $borrow->status == App\Models\Borrow::WAITTING ? 'selected="selected"' : '' }}>{{ trans('borrow.status.waitting') }}</option>
                                     </select>
                                 </td>
                             </tr>
