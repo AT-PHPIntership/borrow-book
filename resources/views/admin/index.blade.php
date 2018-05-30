@@ -45,7 +45,6 @@
                 </div>
             </div>
         </div>
-
         <h3>{{ trans('statistical.time.weekly') }}</h3>
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -58,6 +57,9 @@
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
+                    <a href="#" class="small-footer" style="color: #fff; margin-left: 10px;">
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -70,6 +72,9 @@
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
+                    <a href="#" class="small-footer" style="color: #fff; margin-left: 10px;">
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -82,6 +87,9 @@
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
+                    <a href="#" class="small-footer" style="color: #fff; margin-left: 10px;">
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
@@ -94,6 +102,9 @@
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
+                    <a href="#" class="small-footer" style="color: #fff; margin-left: 10px;">
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -124,7 +135,7 @@
                         <i class="ion ion-ios-book-outline"></i>
                     </div>
                     <a href="#" class="small-box-footer">
-                        {{ trans('statistical.title.more_info') } <i class="fa fa-arrow-circle-right"></i>
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -138,7 +149,7 @@
                         <i class="fa fa-comments-o"></i>
                     </div>
                     <a href="#" class="small-box-footer">
-                        {{ trans('statistical.title.more_info') } <i class="fa fa-arrow-circle-right"></i>
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -152,7 +163,7 @@
                         <i class="ion ion-clipboard"></i>
                     </div>
                     <a href="#" class="small-box-footer">
-                        {{ trans('statistical.title.more_info') } <i class="fa fa-arrow-circle-right"></i>
+                        {{ trans('statistical.title.more_info') }} <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
