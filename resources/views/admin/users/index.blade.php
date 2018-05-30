@@ -40,13 +40,14 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if($user->role == 0)
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-flat fa fa-pencil button-edit"></a>&nbsp;&nbsp;
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-flat fa fa-pencil button-edit"></a>
                                 <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline form-delete">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm.delete')}}')"></button>
                                 </form>
                                 @endif
+                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-primary btn-flat fa fa-info button-info"></a>
                             </td>
                         </tr>
                         @endforeach
