@@ -6,10 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use SoftDeletes, Notifiable;
+    use SoftDeletes, Notifiable,sortable;
 
     /**
      * User role
@@ -40,6 +41,14 @@ class User extends Authenticatable
         'dob',
         'address',
         'role'
+    ];
+    /**
+    * Declare table sort
+    *
+    * @var array $sortable table sort
+    */
+    public $sortable = [
+        'name',
     ];
 
     /**
