@@ -15,5 +15,6 @@
             'new_posts' => 'New Posts',
             'new_books' => 'New Books',
             'new_borrowes' => 'New Borrows',
+            'more_info' => 'More Info'
         ],
     ];
