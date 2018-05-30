@@ -1,10 +1,10 @@
 <?php
     return [
         'time' => [
-            'total' => 'Total',
-            'weekly' => 'Weekly',
-            'monthly' => 'Monthly',
-            'annually' => 'Annually',
+            'total' => 'TOTAL',
+            'weekly' => 'WEEKLY',
+            'monthly' => 'MONTHLY',
+            'annually' => 'ANNUALLY',
         ],
         'title' =>[
             'users' => 'Users',
