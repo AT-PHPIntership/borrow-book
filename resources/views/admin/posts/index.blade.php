@@ -42,9 +42,9 @@
                             <td>{{ $post->rate_point }}</td>
                             <td>
                                 @if($post->status === 1)
-                                <a href=""><i class="btn btn-success fa fa-check"></i></a>
+                                <a href="" id="{{$post->id}}" data-id="{{$post->id}}"><i class="btn btn-success fa fa-check"></i></a>
                                 @else
-                                <a href=""><i class="btn btn-danger fa fa-close"></i></a>
+                                <a href="" id="{{$post->id}}" data-id="{{$post->id}}"><i class="btn btn-danger fa fa-close"></i></a>
                                 @endif
                             </td>
                             <td>
@@ -68,4 +68,33 @@
     </section>
     <!-- /.content -->
 </div>
+@endsection
+@section('jquery')
+<script>
+    $('table tr td a').on('click',function (event) {
+        event.preventDefault();
+        var a = $(this);
+        var pending = '<i class="btn btn-danger fa fa-close"></i>';
+        var approve = '<i class="btn btn-success fa fa-check"></i>';
+        var idPost = $(this).data('id');
+        var this_button = $(this);
+        $.ajax({
+            url: '{{route("admin.post.active")}}',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType: 'json',
+            data: {
+                "idPost": idPost
+            }
+        })
+        .done(function(data) {
+            if(data.status == true) {
+                a.find('i').attr('class','btn btn-success fa fa-check');
+            } else {
+                a.find('i').attr('class','btn btn-danger fa fa-close');
+            }
+        })
+        
+    })
+</script>
 @endsection

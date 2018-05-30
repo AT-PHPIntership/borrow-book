@@ -44,7 +44,7 @@ class Borrow extends Model
         'to_date',
         'form_date'
     ];
-
+    
     /**
      * Relationship belongsTo with User
      *

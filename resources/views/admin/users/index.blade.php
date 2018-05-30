@@ -22,6 +22,7 @@
                         <button type="submit" class="button-search-user"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+                @include('admin.layouts.partials.message_search')
                 <table id="table-index" class="table table-striped box">
                     <thead>
                         <tr>
@@ -43,7 +44,7 @@
                                 <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline form-delete">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm_delete')}}')"></button>
+                                    <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item button-delete" onclick="return confirm('{{trans('user.messages.confirm.delete')}}')"></button>
                                 </form>
                                 @endif
                             </td>

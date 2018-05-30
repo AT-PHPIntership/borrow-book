@@ -31,5 +31,9 @@ Route::group($admin_config, function(){
     Route::resource('posts', 'PostController');
     Route::resource('categories', 'CategoryController');
 });
+ Route::post('active',[
+            'uses'=>'Admin\PostController@active',
+            'as' => 'admin.post.active'
+]);
 
 Auth::routes();

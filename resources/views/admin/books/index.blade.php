@@ -24,7 +24,7 @@
                     </form>
                 </div>
                 @include('admin.layouts.partials.message_search')
-                <table class="table box">
+                <table class="table box" id="table-index">
                     <thead>
                         <tr>
                             <th>{{trans('book.table_head.image')}}</th>
@@ -50,7 +50,7 @@
                             <td>{{ $book->language }}</td>
                             <td>{{ $book->quantity }}</td>
                             <td>
-                                 <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
+                                <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-primary btn-flat fa fa-pencil button-edit"></a>
                                 <form method="POST" action="{{ route('admin.books.destroy', $book->id) }}" class="inline">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
@@ -58,6 +58,7 @@
                                     onclick="return confirm('{{trans('book.messages.confirm_delete')}}')">
                                     </button>
                                 </form> 
+                                <a href="{{ route('admin.books.show', $book->id) }}" class="btn btn-primary btn-flat fa fa-info button-info"></a>
                             </td>
                         </tr>
                         @endforeach
