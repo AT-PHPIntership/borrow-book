@@ -14,3 +14,5 @@
 <script src="js/app.js" defer></script>
 <!--Logout-->
 <script src="js/main.js"></script>
+<!--Message-->
+<script src="js/message.js"></script>

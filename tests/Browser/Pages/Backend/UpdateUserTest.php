@@ -41,7 +41,7 @@ class UpdateUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($this->user)
                     ->visit('/admin/users')
-                    ->click('#table-index tbody tr:nth-child(2) .button-edit')
+                    ->click('.button-edit')
                     ->assertSee('Update users')
                     ->assertPathIs('/admin/users/'.$user->id.'/edit');
         });

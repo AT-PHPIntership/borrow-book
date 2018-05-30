@@ -29,8 +29,10 @@ Route::group($admin_config, function(){
     Route::resource('borrows', 'BorrowController');
     Route::resource('images', 'ImageBookController');
     Route::resource('posts', 'PostController');
+    Route::put('borrows/{borrow}/updateStatus', 'BorrowController@updateStatus');
+    Route::resource('categories', 'CategoryController');
 });
- Route::post('active',[
+Route::post('active',[
             'uses'=>'Admin\PostController@active',
             'as' => 'admin.post.active'
 ]);
