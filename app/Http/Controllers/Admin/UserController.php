@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Rating;
+use App\Models\Favorite;
+use App\Models\Borrow;
+use App\Models\BorrowDetail;
+use App\Models\Post;
 use App\Http\Requests\UpdateUserRequest;
 use Session;
 use App\Http\Requests\CreateUserRequest;
 use App\Mail\CreateUserMail;
 use Mail;
+use DB;
+use Exception;
 
 class UserController extends Controller
 {
@@ -26,8 +33,9 @@ class UserController extends Controller
         $keyword = $request->search;
         if ($keyword != '') {
             $users = User::where("name", "LIKE", "%$keyword%")
-                        ->orWhere("email", "LIKE", "%$keyword%")
-                        ->paginate();
+                        ->orWhere("email", "LIKE", "%$keyword%");
+            Session::flash('message_search', trans('search.message', ['number' => $users->count()]));
+            $users = $users->paginate()->appends(['search' => $keyword]);
         } else {
             $users = User::paginate();
         }
@@ -71,7 +79,7 @@ class UserController extends Controller
         } else {
             $user->save();
         }
-        Session::flash('message', trans('user.messages.update_success'));
+        Session::flash('message_success', trans('user.messages.success.update'));
         return redirect()->route('admin.users.index');
     }
 
@@ -116,7 +124,7 @@ class UserController extends Controller
         $data['email'] = $user->email;
         $data['password'] = $password;
         Mail::to($user->email)->send(new CreateUserMail($data));
-        Session::flash('message', trans('user.messages.create_success'));
+        Session::flash('message_success', trans('user.messages.success.create'));
         return redirect()->route('admin.users.index');
     }
 
@@ -129,8 +137,42 @@ class UserController extends Controller
     */
     public function destroy(User $user)
     {
-        $user->delete();
-        Session::flash('message', trans('user.messages.delete_success'));
+        if ($user->role == User::ROLE_USER) {
+            DB::beginTransaction();
+            try {
+                $user->ratings()->delete();
+                $user->favorites()->delete();
+                $user->posts()->delete();
+                $user->delete();
+                $borrowes = Borrow::where('user_id', $user->id)->get();
+                if ($borrowes->count()) {
+                    foreach ($borrowes as $borrow) {
+                        BorrowDetail::where('borrow_id', $borrow->id)->delete();
+                    }
+                    $user->borrowes()->delete();
+                }
+                DB::commit();
+                Session::flash('message_success', trans('user.messages.success.delete'));
+            } catch (Exception $e) {
+                DB::rollback();
+                Session::flash('message_fail', trans('user.messages.fail.delete'));
+            }
+        }
         return redirect()->route('admin.users.index');
+    }
+
+    /**
+    * Show the user detail and history borrow.
+    *
+    * @param User $user object user
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function show(User $user)
+    {
+        $borrowes = Borrow::with('borrowDetails.book')
+                        ->where('user_id', $user->id)
+                        ->orderBy('status', 'asc')->get();
+        return view('admin.users.show', compact('user', 'borrowes'));
     }
 }

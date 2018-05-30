@@ -3,6 +3,7 @@
     return [
 
         'list_book' => 'List Book',
+        'detail_book' => 'Detail Book',
         'table_head' => [
             'image' => 'Image',
             'title' => 'Title',
@@ -36,7 +37,8 @@
             ],
             'buttons' => [
                 'submit' => 'Submit',
-                'reset' => 'Reset'
+                'reset' => 'Reset',
+                'back' => 'Back'
             ],
             'placeholders' => [
                 'title' => 'Enter Title',
@@ -46,12 +48,10 @@
                 'publishing_year' => 'Enter Publishing Year',
                 'language' => 'Enter Language',
                 'quantity' => 'Enter Quantity',
+                'search' => 'Search',
             ],
         ],
         'errors' => [
             'delete_book_fail' => 'Delete Book Fail!',
-        ],
-        'search_book' => [
-            'results' => 'Found :number results',
         ],
     ];
