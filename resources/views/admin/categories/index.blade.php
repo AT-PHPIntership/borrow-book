@@ -22,6 +22,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($categories as $category)
+                            <tr>
+                                <td>{{ $category->name }}</td>
+                                <td>
+                                    <a href="" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
+                                    <form method="POST" action="" class="inline">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item"
+                                        onclick="return confirm('{{trans('category.messages.confirm_delete')}}')">
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="text-center">

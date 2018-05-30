@@ -6,4 +6,7 @@
             'name' => 'Name',
             'action' => 'Action',
         ],
+        'messages' => [
+            'confirm_delete' => 'Are you sure',
+        ]
     ];
