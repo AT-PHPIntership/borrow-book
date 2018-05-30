@@ -21,9 +21,7 @@ $admin_config = [
     'middleware' => 'admin'
 ];
 Route::group($admin_config, function(){
-    Route::get('/', function () {
-        return view('admin.index');
-    });
+    Route::get('/', 'HomeController@index');
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
     Route::resource('borrows', 'BorrowController');
