@@ -56,7 +56,6 @@
                             </li>
                             <li class="list-group-item">
                                 <b>{{trans('user.table_head.status')}}</b>
-                                <input type="hidden" class="status" value="{{ $borrow->status }}">
                                 @if($borrow->status == App\Models\Borrow::BORROWING)
                                     <p class="pull-right label label-primary" >{{trans('borrow.status.borrowing')}}</p>
                                 @elseif($borrow->status == App\Models\Borrow::GIVE_BACK)

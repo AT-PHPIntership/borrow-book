@@ -29,15 +29,16 @@ class ShowDetailUserTest extends DuskTestCase
         factory(User::class)->create([
             'id' => 2,
             'email' => 'haytranngoc@gmail.com',
+            'name' => 'Jay N',
             'address' => 'ABCXYZ A'
         ]);
         factory(Category::class, 2)->create();
         factory(Book::class, 2)->create();
         factory(Borrow::class)->create();
         $borrowId = DB::table('borrowes')->pluck('id')->all();
-        $bookId = DB::table('books')->pluck('id')->all();
+        $bookIds = DB::table('books')->pluck('id')->all();
         factory(BorrowDetail::class)->create([
-            'borrow_id' => $faker->randomElement($borrowIds),
+            'borrow_id' => $faker->randomElement($borrowId),
             'book_id' => $faker->randomElement($bookIds)
         ]);
 
@@ -80,11 +81,9 @@ class ShowDetailUserTest extends DuskTestCase
             $this->assertTrue($browser->text('.identity-number') === $user->identity_number);
             $this->assertTrue($browser->text('.dob') === $user->dob);
             $this->assertTrue($browser->text('.address') === $user->address);
-            $this->assertTrue($browser->text('.address') === $user->address);
             foreach ($borrowes as $borrow) {
                 $this->assertTrue($browser->text('.from-date') === $borrow->form_date);
                 $this->assertTrue($browser->text('.to-date') === $borrow->to_date);
-                $this->assertTrue($browser->value('.status') === $borrow->status);
             }
         });
     }
