@@ -33,6 +33,13 @@
                                 <td>{{ $borrow->number_book }}</td>
                                 <td>{{ date('d-m-Y', strtotime($borrow->form_date)) }}</td>
                                 <td>{{ date('d-m-Y', strtotime($borrow->to_date)) }}</td>
+                                <td>
+                                    <select class="form-control status" name="status" data-id="{{ $borrow->id }}">
+                                        <option value="{{ App\Models\Borrow::BORROWING }}" {{ $borrow->status == App\Models\Borrow::BORROWING ? 'selected="selected"' : '' }}>Borrowing</option>
+                                        <option value="{{ App\Models\Borrow::GIVE_BACK }}" {{ $borrow->status == App\Models\Borrow::GIVE_BACK ? 'selected="selected"' : '' }}>Give Back</option>
+                                        <option value="{{ App\Models\Borrow::WAITTING }}" {{ $borrow->status == App\Models\Borrow::WAITTING ? 'selected="selected"' : '' }}>Waitting</option>
+                                    </select>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -45,4 +52,7 @@
     </section>
     <!-- /.content -->
 </div>
+@endsection
+@section('script')
+    <script src="js/updateStatusBorrow.js"></script>
 @endsection

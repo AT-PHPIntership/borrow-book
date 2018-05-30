@@ -16,5 +16,8 @@
             'give_back' => 'Give Back',
             'waitting' => 'Waitting',
             'borrowing' => 'Borrowing'
+        ],
+        'messages' => [
+            'confirm_delete_message' => 'Are you sure?'
         ]
     ];
