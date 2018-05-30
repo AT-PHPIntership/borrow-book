@@ -3,6 +3,7 @@
     return [
         'title' => 'List Category',
         'list_category' => 'List Category',
+        'create' => 'Create',
         'table_head' => [
             'name' => 'Name',
             'action' => 'Action',

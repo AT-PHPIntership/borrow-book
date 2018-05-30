@@ -48,7 +48,7 @@
                         <input type="hidden" name="_token" value="{{csrf_token()}}"><input type="hidden" name="_token" value="{{csrf_token()}}">
                         <label>{{ trans('category.form.title_inputs.name') }}</label>
                         <input type="text" placeholder="{{ trans('category.placeholders.name') }}" name="name">
-                        <button class="btn btn-primary"><i class="fa fa-plus"> {{trans('user.create')}}</i></button>
+                        <button class="btn btn-primary"><i class="fa fa-plus"> {{trans('category.create')}}</i></button>
                     </form>
                 </div>
                 @include('admin.layouts.partials.errors')
