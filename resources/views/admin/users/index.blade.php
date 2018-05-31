@@ -27,8 +27,8 @@
                     <thead>
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
-                            <th>@sortablelink('name', trans('user.table_head.name'))</th>
-                            <th>@sortablelink('email', trans('user.table_head.email'))</th>
+                            <th id="link-sort-name">@sortablelink('name', trans('user.table_head.name'))</th>
+                            <th id="link-sort-email">@sortablelink('email', trans('user.table_head.email'))</th>
                             <th>{{trans('user.table_head.options')}}</th>
                         </tr>
                     </thead>
@@ -54,7 +54,7 @@
                     </tbody>
                 </table>
                 <div class="text-center">
-                    {{ $users->links() }}
+                    {{ $users->appends(Request::except('page'))->links() }}
                 </div>
             </div>
         </div>
