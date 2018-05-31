@@ -17,4 +17,9 @@
             'new_borrowes' => 'New Borrows',
             'more_info' => 'More Info'
         ],
+        'table' => [
+            'title' => 'Top 10 borrowed book',
+            'books' => 'Books',
+            'times' => 'Times'
+        ]
     ];
