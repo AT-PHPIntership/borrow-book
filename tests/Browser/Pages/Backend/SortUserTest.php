@@ -52,8 +52,8 @@ class SortUserTest extends DuskTestCase
     public function dataForTest()
     {
         return [
-            ['name', 2],
-            ['email', 3],
+            ['name', 'users.name', 2],
+            ['email', 'users.email', 3],
         ];
     }
 
@@ -64,28 +64,25 @@ class SortUserTest extends DuskTestCase
      *
      * @return void
      */
-    public function testSortListUser($name, $columnIndex)
+    public function testSortListUser($name, $order, $columnIndex)
     {
-        $arraySelected = DB::table('users')->pluck($name)->toArray();
-        $this->browse(function (Browser $browser) use ($arraySelected, $name, $columnIndex) {
+        $this->browse(function (Browser $browser) use ($order, $name, $columnIndex) {
             $browser->loginAs($this->user)
                 ->visit('admin/users')
                 ->resize(1200,1600)
                 ->click("#link-sort-$name a");
-
-            //Test list user Asc
-            sort($arraySelected);
+            //Test list user Desc
+            $arrayAsc = DB::table('users')->orderBy($order,'asc')->pluck($name)->toArray();
             for ($i = 1; $i <= 15; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columnIndex)";
-                $this->assertEquals($browser->text($selector), $arraySelected[$i-1]);
+                $this->assertEquals($browser->text($selector), $arrayAsc[$i - 1]);
             }
-
             //Test list user Desc
             $browser->click("#link-sort-$name a");
-            rsort($arraySelected);
+            $arrayDesc = DB::table('users')->orderBy($order,'desc')->pluck($name)->toArray();
             for ($i = 1; $i <= 15; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columnIndex)";
-                $this->assertEquals($browser->text($selector), $arraySelected[$i-1]);
+                $this->assertEquals($browser->text($selector), $arrayDesc[$i - 1]);
             }
         });
     }
@@ -97,32 +94,29 @@ class SortUserTest extends DuskTestCase
      *
      * @return void
      */
-     public function testSortListUsersWhenPanigate($name, $columnIndex)
+     public function testSortListUsersWhenPanigate($name, $order, $columnIndex)
     {
-        $arraySelected = DB::table('users')->pluck($name)->toArray();
-        $this->browse(function (Browser $browser) use ($arraySelected, $name, $columnIndex) {
+        $this->browse(function (Browser $browser) use ( $order, $name, $columnIndex) {
             $browser->loginAs($this->user)
                 ->visit('admin/users')
                 ->resize(1200,1600)
                 ->click("#link-sort-$name a")
                 ->clickLink("2");
-
             // Test list Asc
-            sort($arraySelected);
-            $arraySortAsc = array_chunk($arraySelected, 15)[1];
+            $arrayAsc = DB::table('users')->orderBy($order,'asc')->pluck($name)->toArray();
+            $arraySortAsc = array_chunk($arrayAsc, 15)[1];
             for ($i = 1; $i <= 2; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columnIndex)";
-                $this->assertEquals($browser->text($selector), $arraySortAsc[$i-1]);
+                $this->assertEquals($browser->text($selector), $arraySortAsc[$i - 1]);
             }
-
             // Test list Desc
             $browser->click("#link-sort-$name a")
                 ->clickLink("2");
-            rsort($arraySelected);
-            $arraySortDesc = array_chunk($arraySelected, 15)[1];
+            $arrayDesc = DB::table('users')->orderBy($order,'desc')->pluck($name)->toArray();
+            $arraySortDesc = array_chunk($arrayDesc, 15)[1];
             for ($i = 1; $i <= 2; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columnIndex)";
-                $this->assertEquals($browser->text($selector), $arraySortDesc[$i-1]);
+                $this->assertEquals($browser->text($selector), $arraySortDesc[$i - 1]);
             }
         });
     }
