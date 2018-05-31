@@ -17,20 +17,20 @@
             <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar_url }}">
-                        <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                        <img class="profile-user-img img-responsive img-circle avatar" src="{{ $user->avatar_url }}">
+                        <h3 class="profile-username text-center name">{{ $user->name }}</h3>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.email')}}</b> <p class="pull-right">{{ $user->email }}</p>
+                                <b>{{trans('user.table_head.email')}}</b> <p class="pull-right email">{{ $user->email }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.identity_number')}}</b> <p class="pull-right">{{ $user->identity_number }}</p>
+                                <b>{{trans('user.table_head.identity_number')}}</b> <p class="pull-right identity-number">{{ $user->identity_number }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.dob')}}</b> <p class="pull-right">{{ $user->dob }}</p>
+                                <b>{{trans('user.table_head.dob')}}</b> <p class="pull-right dob">{{ $user->dob }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.address')}}</b> <p class="pull-right">{{ $user->address }}</p>
+                                <b>{{trans('user.table_head.address')}}</b> <p class="address">{{ $user->address }}</p>
                             </li>
                         </ul>
                     </div>
@@ -43,15 +43,15 @@
                     <div class="box-body">
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.from_date')}}</b> <p class="pull-right">{{ $borrow->form_date }}</p>
+                                <b>{{trans('user.table_head.from_date')}}</b> <p class="pull-right from-date">{{ $borrow->form_date }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.to_date')}}</b> <p class="pull-right">{{ $borrow->to_date }}</p>
+                                <b>{{trans('user.table_head.to_date')}}</b> <p class="pull-right to-date">{{ $borrow->to_date }}</p>
                             </li>
                             <li class="list-group-item">
                                 <b>{{trans('user.table_head.book_name')}}</b>
                                 @foreach ($borrow->borrowDetails as $borrowDetail)
-                                    <a href="">{{ $borrowDetail->book->title }}</a><span>&sbquo; </span>
+                                    <a class="title" href="">{{ $borrowDetail->book->title }}</a><span>&sbquo; </span>
                                 @endforeach
                             </li>
                             <li class="list-group-item">
