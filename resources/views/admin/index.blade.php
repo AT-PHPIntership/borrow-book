@@ -13,7 +13,7 @@
                     <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.users') }}</span>
-                        <span class="info-box-number">{{ $users->count() }}</span>
+                        <span class="info-box-number total-users">{{ $users->count() }}</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <span class="info-box-icon bg-green"><i class="ion-ios-book-outline"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.books') }}</span>
-                        <span class="info-box-number">{{ $books->count() }}</span>
+                        <span class="info-box-number total-books">{{ $books->count() }}</span>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <span class="info-box-icon bg-yellow"><i class="fa fa-comments-o"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.posts') }}</span>
-                        <span class="info-box-number">{{ $posts->count() }}</span>
+                        <span class="info-box-number total-posts">{{ $posts->count() }}</span>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <span class="info-box-icon bg-red"><i class="ion ion-clipboard"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.borrowes') }}</span>
-                        <span class="info-box-number">{{ $borrowes->count() }}</span>
+                        <span class="info-box-number total-borrowes">{{ $borrowes->count() }}</span>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <span class="info-box-icon"><i class="ion ion-person-add"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.users') }}</span>
-                        <span class="info-box-number">{{ $usersLastWeek->count() }}</span>
+                        <span class="info-box-number last-week-users">{{ $usersLastWeek->count() }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -67,7 +67,7 @@
                     <span class="info-box-icon"><i class="ion ion-ios-book-outline"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.books') }}</span>
-                        <span class="info-box-number">{{ $booksLastWeek->count() }}</span>
+                        <span class="info-box-number  last-week-books">{{ $booksLastWeek->count() }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -82,7 +82,7 @@
                     <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.posts') }}</span>
-                        <span class="info-box-number">{{ $postsLastWeek->count() }}</span>
+                        <span class="info-box-number last-week-posts">{{ $postsLastWeek->count() }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -97,7 +97,7 @@
                     <span class="info-box-icon"><i class="ion ion-clipboard"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.borrowes') }}</span>
-                        <span class="info-box-number">{{ $borrowesLastWeek->count() }}</span>
+                        <span class="info-box-number last-week-borrowes">{{ $borrowesLastWeek->count() }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -114,7 +114,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>{{ $usersLastMonth->count() }}</h3>
+                        <h3 class="last-month-users">{{ $usersLastMonth->count() }}</h3>
                         <p>{{ trans('statistical.title.new_users') }}</p>
                     </div>
                     <div class="icon">
@@ -128,7 +128,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{{ $booksLastMonth->count() }}</h3>
+                        <h3 class="last-month-books">{{ $booksLastMonth->count() }}</h3>
                         <p>{{ trans('statistical.title.new_books') }}</p>
                     </div>
                     <div class="icon">
@@ -142,7 +142,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>{{ $postsLastMonth->count() }}</h3>
+                        <h3 class="last-month-posts">{{ $postsLastMonth->count() }}</h3>
                         <p>{{ trans('statistical.title.new_posts') }}</p>
                     </div>
                     <div class="icon">
@@ -156,7 +156,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>{{ $borrowesLastMonth->count() }}</h3>
+                        <h3 class="last-month-borrowes">{{ $borrowesLastMonth->count() }}</h3>
                         <p>{{ trans('statistical.title.new_borrowes') }}</p>
                     </div>
                     <div class="icon">
