@@ -21,10 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['users'] = User::all()->count();
-        $data['books'] = Book::all()->count();
-        $data['posts'] = Post::all()->count();
-        $data['borrowes'] = Borrow::all()->count();
+        $data['users'] = User::count();
+        $data['books'] = Book::count();
+        $data['posts'] = Post::count();
+        $data['borrowes'] = Borrow::count();
         $lastWeek = new Carbon('last week');
         $data['usersLastWeek'] = User::where('created_at', '>', $lastWeek)->count();
         $data['booksLastWeek'] = Book::where('created_at', '>', $lastWeek)->count();
