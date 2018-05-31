@@ -35,9 +35,9 @@ class UserController extends Controller
             $users = User::where("name", "LIKE", "%$keyword%")
                         ->orWhere("email", "LIKE", "%$keyword%");
             Session::flash('message_search', trans('search.message', ['number' => $users->count()]));
-            $users = $users->sortable('name')->paginate()->appends(['search' => $keyword]);
+            $users = $users->sortable()->paginate()->appends(['search' => $keyword]);
         } else {
-            $users = User::sortable('name')->paginate();
+            $users = User::sortable()->paginate();
         }
         return view('admin.users.index', ['users' => $users]);
     }
