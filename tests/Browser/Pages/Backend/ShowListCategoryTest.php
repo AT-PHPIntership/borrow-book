@@ -36,9 +36,9 @@ class ShowListCategoryTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
-                    ->visit('/admin/categories')
-                    ->assertPathIs('/admin/categories')
-                    ->assertSee('List Category');
+                ->visit('/admin/categories')
+                ->assertPathIs('/admin/categories')
+                ->assertSee('List Category');
         });
     }
 
