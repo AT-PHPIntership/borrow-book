@@ -37,7 +37,7 @@ class UserController extends Controller
             Session::flash('message_search', trans('search.message', ['number' => $users->count()]));
             $users = $users->sortable()->paginate()->appends(['search' => $keyword]);
         } else {
-            $users = User::sortable()->sortable(['email'])->paginate();
+            $users = User::sortable()->paginate();
         }
         return view('admin.users.index', ['users' => $users]);
     }
