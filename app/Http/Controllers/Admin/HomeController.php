@@ -21,25 +21,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['users'] = User::all();
-        $data['books'] = Book::all();
-        $data['posts'] = Post::all();
-        $data['borrowes'] = Borrow::all();
+        $data['users'] = User::all()->count();
+        $data['books'] = Book::all()->count();
+        $data['posts'] = Post::all()->count();
+        $data['borrowes'] = Borrow::all()->count();
         $lastWeek = new Carbon('last week');
-        $data['usersLastWeek'] = User::where('created_at', '>', $lastWeek);
-        $data['booksLastWeek'] = Book::where('created_at', '>', $lastWeek);
-        $data['postsLastWeek'] = Post::where('created_at', '>', $lastWeek);
-        $data['borrowesLastWeek'] = Borrow::where('created_at', '>', $lastWeek);
+        $data['usersLastWeek'] = User::where('created_at', '>', $lastWeek)->count();
+        $data['booksLastWeek'] = Book::where('created_at', '>', $lastWeek)->count();
+        $data['postsLastWeek'] = Post::where('created_at', '>', $lastWeek)->count();
+        $data['borrowesLastWeek'] = Borrow::where('created_at', '>', $lastWeek)->count();
         $lastMonth = new Carbon('last month');
-        $data['usersLastMonth'] = User::where('created_at', '>', $lastMonth);
-        $data['booksLastMonth'] = Book::where('created_at', '>', $lastMonth);
-        $data['postsLastMonth'] = Post::where('created_at', '>', $lastMonth);
-        $data['borrowesLastMonth'] = Borrow::where('created_at', '>', $lastMonth);
+        $data['usersLastMonth'] = User::where('created_at', '>', $lastMonth)->count();
+        $data['booksLastMonth'] = Book::where('created_at', '>', $lastMonth)->count();
+        $data['postsLastMonth'] = Post::where('created_at', '>', $lastMonth)->count();
+        $data['borrowesLastMonth'] = Borrow::where('created_at', '>', $lastMonth)->count();
         $data['topBookMonthly'] = DB::table('borrow_details')
-                                ->select('books.title AS name', \DB::raw("COUNT('book_id') AS numberOfBorrow"))
+                                ->select('books.title AS name', \DB::raw("COUNT('book_id') AS number_borrow"))
                                 ->join('books', 'books.id', '=', 'borrow_details.book_id')
                                 ->where('borrow_details.created_at', '>', $lastMonth)
-                                ->orderBy('numberOfBorrow', 'desc')
+                                ->orderBy('number_borrow', 'desc')
                                 ->groupBy('book_id')
                                 ->take(10)
                                 ->get();

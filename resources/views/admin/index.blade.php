@@ -13,7 +13,7 @@
                     <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.users') }}</span>
-                        <span class="info-box-number">{{ $users->count() }}</span>
+                        <span class="info-box-number">{{ $users }}</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <span class="info-box-icon bg-green"><i class="ion-ios-book-outline"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.books') }}</span>
-                        <span class="info-box-number">{{ $books->count() }}</span>
+                        <span class="info-box-number">{{ $books }}</span>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <span class="info-box-icon bg-yellow"><i class="fa fa-comments-o"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.posts') }}</span>
-                        <span class="info-box-number">{{ $posts->count() }}</span>
+                        <span class="info-box-number">{{ $posts }}</span>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <span class="info-box-icon bg-red"><i class="ion ion-clipboard"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.borrowes') }}</span>
-                        <span class="info-box-number">{{ $borrowes->count() }}</span>
+                        <span class="info-box-number">{{ $borrowes }}</span>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <span class="info-box-icon"><i class="ion ion-person-add"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.users') }}</span>
-                        <span class="info-box-number">{{ $usersLastWeek->count() }}</span>
+                        <span class="info-box-number">{{ $usersLastWeek }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -67,7 +67,7 @@
                     <span class="info-box-icon"><i class="ion ion-ios-book-outline"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.books') }}</span>
-                        <span class="info-box-number">{{ $booksLastWeek->count() }}</span>
+                        <span class="info-box-number">{{ $booksLastWeek }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -82,7 +82,7 @@
                     <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.posts') }}</span>
-                        <span class="info-box-number">{{ $postsLastWeek->count() }}</span>
+                        <span class="info-box-number">{{ $postsLastWeek }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -97,7 +97,7 @@
                     <span class="info-box-icon"><i class="ion ion-clipboard"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">{{ trans('statistical.title.borrowes') }}</span>
-                        <span class="info-box-number">{{ $borrowesLastWeek->count() }}</span>
+                        <span class="info-box-number">{{ $borrowesLastWeek }}</span>
                     </div>
                     <div class="progress">
                         <div class="progress-bar" style="width: 100%"></div>
@@ -114,7 +114,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>{{ $usersLastMonth->count() }}</h3>
+                        <h3>{{ $usersLastMonth }}</h3>
                         <p>{{ trans('statistical.title.new_users') }}</p>
                     </div>
                     <div class="icon">
@@ -128,7 +128,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>{{ $booksLastMonth->count() }}</h3>
+                        <h3>{{ $booksLastMonth }}</h3>
                         <p>{{ trans('statistical.title.new_books') }}</p>
                     </div>
                     <div class="icon">
@@ -142,7 +142,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>{{ $postsLastMonth->count() }}</h3>
+                        <h3>{{ $postsLastMonth }}</h3>
                         <p>{{ trans('statistical.title.new_posts') }}</p>
                     </div>
                     <div class="icon">
@@ -156,7 +156,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>{{ $borrowesLastMonth->count() }}</h3>
+                        <h3>{{ $borrowesLastMonth }}</h3>
                         <p>{{ trans('statistical.title.new_borrowes') }}</p>
                     </div>
                     <div class="icon">
@@ -185,7 +185,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $topBook->name }}</td>
-                            <td>{{ $topBook->numberOfBorrow }}</td>
+                            <td>{{ $topBook->number_borrow }}</td>
                         </tr>
                         @endforeach
                     </tbody>
