@@ -36,10 +36,10 @@ class HomeTest extends DuskTestCase
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Borrow::class, self::NUMBER_RECORD_CREATE)->create();
-        $borrowId = DB::table('borrowes')->pluck('id')->all();
+        $borrowIds = DB::table('borrowes')->pluck('id')->all();
         $faker = Faker::create();
         factory(BorrowDetail::class, self::NUMBER_RECORD_CREATE)->create([
-            'borrow_id' => $faker->randomElement($borrowId),
+            'borrow_id' => $faker->randomElement($borrowIds),
         ]);
     }
 
@@ -53,7 +53,7 @@ class HomeTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin')
-                ->clicklink('AdminLTE')
+                ->clickLink('AdminLTE')
                 ->assertSee('TOTAL');
         });
     }
