@@ -22,7 +22,7 @@ class HomeTest extends DuskTestCase
     const RECORD_LIMIT = 15;
 
     /**
-    * Override function setUp() for make book login
+    * Make testing data
     *
     * @return void
     */
