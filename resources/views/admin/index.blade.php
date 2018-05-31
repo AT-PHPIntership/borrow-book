@@ -169,21 +169,21 @@
             </div>
         </div>
 
-        <h3>{{ trans('statistical.time.monthly') }}</h3>
+        <h3>{{ trans('statistical.table.title') }}</h3>
         <div class="row">
             <div class="col-md-6">
                 <table id="table-index" class="table box">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Book</th>
-                            <th>Times</th>
+                            <th>{{ trans('statistical.table.books') }}</th>
+                            <th>{{ trans('statistical.table.times') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($topBookMonthly as $key => $topBook)
                         <tr>
-                            <td>{{ $key+1 }}</td>
+                            <td>{{ $key + 1 }}</td>
                             <td>{{ $topBook->name }}</td>
                             <td>{{ $topBook->numberOfBorrow }}</td>
                         </tr>
