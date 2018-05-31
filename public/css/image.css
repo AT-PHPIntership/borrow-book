@@ -26,3 +26,7 @@
 .img-wrap:hover .close {
     opacity: 1;
 }
+.small-footer{
+    color: #fff;
+    margin-left: 10px;
+}
