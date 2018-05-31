@@ -42,6 +42,7 @@ class User extends Authenticatable
         'address',
         'role'
     ];
+    
     /**
     * Declare table sort
     *
@@ -49,6 +50,7 @@ class User extends Authenticatable
     */
     public $sortable = [
         'name',
+        'email'
     ];
 
     /**

@@ -28,7 +28,7 @@
                         <tr>
                             <th>{{trans('user.table_head.avatar')}}</th>
                             <th>@sortablelink('name', trans('user.table_head.name'))</th>
-                            <th>{{trans('user.table_head.email')}}</th>
+                            <th>@sortablelink('email', trans('user.table_head.email'))</th>
                             <th>{{trans('user.table_head.options')}}</th>
                         </tr>
                     </thead>
