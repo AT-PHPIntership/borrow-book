@@ -10,6 +10,7 @@
         <h3>{{trans('category.list_category')}}</h3>
     </section>
     @include('admin.layouts.partials.messages')
+    <div class="success-update hidden"></div>
     <!-- Main content -->
     <section class="container">
         <div class="row">
@@ -24,9 +25,9 @@
                     <tbody>
                         @foreach ($categories as $category)
                             <tr>
-                                <td>{{ $category->name }}</td>
+                                <td id="{{ $category->id }}">{{ $category->name }}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary btn-flat fa fa-pencil"></a>&nbsp;&nbsp;
+                                    <button class="btn btn-primary btn-flat fa fa-pencil button-edit-category" data-category="{{ $category }}"></button>&nbsp;&nbsp;
                                     <form method="POST" action="" class="inline">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
@@ -43,19 +44,41 @@
                     {{ $categories->links() }}
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 create-category">
+                <h3>{{ trans('category.create') }}</h3>
                 <div class="form-group">
                     <form action="{{ route('admin.categories.store') }}" method="POST">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}"><input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <label>{{ trans('category.form.title_inputs.name') }}</label>
                         <input type="text" placeholder="{{ trans('category.placeholders.name') }}" name="name" value="{{ old('name') }}">
-                        <button class="btn btn-primary"><i class="fa fa-plus"> {{trans('category.create')}}</i></button>
+                        <button class="btn btn-primary"><i class="fa fa-plus"> {{trans('category.buttons.create')}}</i></button>
                     </form>
                 </div>
                 @include('admin.layouts.partials.errors')
+            </div>
+            <div class="col-md-6 update-category hidden">
+                <h3>{{ trans('category.update') }}</h3>
+                <form role="form" action="" class="form-edit-category" method="POST">
+                    {{method_field('PATCH')}}
+                    {{ csrf_field() }}
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>{{trans('category.form.title_inputs.name')}}</label>
+                            <input type="text" class="form-control" id="category-update" placeholder=" {{trans('category.placeholders.name')}}" value="" name="categoryName">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" name="update-btn" class="btn btn-primary">{{trans('category.buttons.update')}}</button>
+                        <button type="reset" class="btn">{{trans('category.buttons.reset')}}</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
     <!-- /.content -->
 </div>
+@endsection
+@section('script')
+    <script src="js/updateCategory.js"></script>
 @endsection
