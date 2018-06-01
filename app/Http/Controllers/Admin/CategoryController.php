@@ -31,7 +31,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->all());
-        Session::flash('message', trans('category.messages.create_success'));
+        Session::flash('message_success', trans('category.messages.create_success'));
         return redirect()->back();
     }
 }
