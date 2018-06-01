@@ -28,10 +28,10 @@
                     <thead>
                         <tr>
                             <th>{{trans('book.table_head.image')}}</th>
-                            <th>{{trans('book.table_head.title')}}</th>
-                            <th>{{trans('book.table_head.author')}}</th>
+                            <th>@sortablelink('title', trans('book.table_head.title'))</th>
+                            <th>@sortablelink('author', trans('book.table_head.author'))</th>
                             <th>{{trans('book.table_head.language')}}</th>
-                            <th>{{trans('book.table_head.quantity')}}</th>
+                            <th>@sortablelink('quantity', trans('book.table_head.quantity'))</th>
                             <th>{{trans('user.table_head.options')}}</th>
                         </tr>
                     </thead>
@@ -65,7 +65,7 @@
                     </tbody>
                 </table>
                 <div class="text-center">
-                    {{ $books->links() }}
+                    {{ $books->appends(\Request::except('page'))->render() }}
                 </div>
             </div>
         </div>

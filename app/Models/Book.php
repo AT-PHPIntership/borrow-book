@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Book extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sortable;
 
     /**
      * The attributes that should be mutated to dates.
@@ -41,6 +42,17 @@ class Book extends Model
         'language',
         'quantity',
         'count_rate'
+    ];
+
+    /**
+    * Declare table sort
+    *
+    * @var array $sortable table sort
+    */
+    public $sortable = [
+        'title',
+        'author',
+        'quantity'
     ];
 
     /**
