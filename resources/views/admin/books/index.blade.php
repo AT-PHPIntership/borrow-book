@@ -28,10 +28,10 @@
                     <thead>
                         <tr>
                             <th>{{trans('book.table_head.image')}}</th>
-                            <th>@sortablelink('title', trans('book.table_head.title'))</th>
-                            <th>@sortablelink('author', trans('book.table_head.author'))</th>
+                            <th id="book-sort-title">@sortablelink('title', trans('book.table_head.title'))</th>
+                            <th id="book-sort-author">@sortablelink('author', trans('book.table_head.author'))</th>
                             <th>{{trans('book.table_head.language')}}</th>
-                            <th>@sortablelink('quantity', trans('book.table_head.quantity'))</th>
+                            <th id="book-sort-quantity">@sortablelink('quantity', trans('book.table_head.quantity'))</th>
                             <th>{{trans('user.table_head.options')}}</th>
                         </tr>
                     </thead>
