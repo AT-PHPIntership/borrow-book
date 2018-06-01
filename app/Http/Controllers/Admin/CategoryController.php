@@ -30,7 +30,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        //dd($request);
         Category::create($request->all());
         Session::flash('message_success', trans('category.messages.create_success'));
         return redirect()->back();
@@ -49,6 +48,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->name = $request->name;
         $category->save();
-        return response()->json(['category' => $category,'msg' => trans('category.messages.update_success')]);
+        return response()->json(['category' => $category, 'msg' => trans('category.messages.update_success')]);
     }
 }
