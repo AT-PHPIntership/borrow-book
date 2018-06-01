@@ -6,8 +6,12 @@ return [
     spec columns
     */
     'columns' => [
+        'amount'   => [
+            'rows' => ['price'],
+            'class' => 'fa fa-sort-amount'
+        ],
         'alpha'   => [
-            'rows'  => ['name','email'],
+            'rows'  => ['name', 'email', 'title', 'author'],
             'class' => 'fa fa-sort',
         ],
         

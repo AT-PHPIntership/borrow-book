@@ -29,9 +29,9 @@ class BookController extends Controller
                         ->orWhere("author", "LIKE", "%$keyword%")
                         ->orWhere("language", "LIKE", "%$keyword%");
             Session::flash('message_search', trans('search.message', ['number' => $books->count()]));
-            $books = $books->paginate()->appends(['search' => $keyword]);
+            $books = $books->sortable()->paginate()->appends(['search' => $keyword]);
         } else {
-            $books = Book::with('imageBooks')->paginate();
+            $books = Book::with('imageBooks')->sortable()->paginate();
         }
         return view('admin.books.index', compact('books'));
     }
