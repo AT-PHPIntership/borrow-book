@@ -12,7 +12,7 @@
             'status' => 'Status',
             'options' =>'Option',
         ],
-        'title' => 'Manage post',
+        'title' => 'Manage Post',
         'comment' =>'Comment',
         'review' =>'Review',
         'messages' => [

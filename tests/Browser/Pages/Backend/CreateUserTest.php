@@ -32,7 +32,7 @@ class CreateUserTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/admin/users')
-                ->clickLink('Manage users')
+                ->clickLink('Manage Users')
                 ->clickLink('Create users')
                 ->assertPathIs('/admin/users/create')
                 ->assertSee('Create users');
