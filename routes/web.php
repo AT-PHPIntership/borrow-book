@@ -18,7 +18,7 @@ $admin_config = [
     'namespace' => 'Admin',
     'prefix' => 'admin',
     'as'=> 'admin.',
-    'middleware' => 'admin'
+    'middleware' => ['auth:web','admin']
 ];
 Route::group($admin_config, function(){
     Route::get('/', 'HomeController@index');
@@ -35,4 +35,6 @@ Route::post('active',[
             'as' => 'admin.post.active'
 ]);
 
-Auth::routes();
+Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+Route::post('admin/login', 'Auth\LoginController@login');
+Route::post('admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
