@@ -20,6 +20,11 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('admin.categories.index')}}">
+                    <i class="fa fa-folder-open"></i> <span>{{trans('category.title')}}</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{route('admin.books.index')}}">
                     <i class="fa fa-book"></i> <span>{{trans('book.title')}}</span>
                 </a>

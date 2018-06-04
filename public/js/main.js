@@ -294,9 +294,6 @@ $('.logout').click(function(event) {
 		});
 	};
 
-
-
-	
 	$(function(){
 		mobileMenuOutsideClick();
 		offcanvasMenu();
@@ -310,6 +307,4 @@ $('.logout').click(function(event) {
 		parallax();
 		datePicker();
 	});
-
-
 }());
