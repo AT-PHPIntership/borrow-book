@@ -18,7 +18,7 @@
             'status' => 'Status'
         ],
         'profile' => 'Profile',
-        'title' => 'Manage users',
+        'title' => 'Manage Users',
         'create' => 'Create users',
         'update' => 'Update users',
         'messages' => [

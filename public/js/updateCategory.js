@@ -21,8 +21,14 @@ $(document).ready(function(){
                 $("#"+arr_category['id']).html(data['category'].name);
                 $(".update-category").attr("class", "col-md-6 update-category hidden");
                 $(".create-category").attr("class", "col-md-6 create-category");
-                $(".success-update").html(data.msg);
-                $(".success-update").attr("class", "alert alert-success success-update");
+                $(".update-notice").html(data.msg);
+                $(".update-notice").attr("class", "alert alert-success update-notice");
+            },
+            statusCode: {
+                422: function(data) {
+                    $(".update-notice").html(data.responseJSON.errors.name);
+                    $(".update-notice").attr("class", "alert alert-danger update-notice");
+                }
             }
         });
     });

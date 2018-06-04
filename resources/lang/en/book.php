@@ -13,7 +13,7 @@
              'options' => 'Options',
         ],
         
-        'title' => 'Manage book',
+        'title' => 'Manage Book',
         'create' => 'Create Book',
         'update' => 'Update Book',
         'messages' => [

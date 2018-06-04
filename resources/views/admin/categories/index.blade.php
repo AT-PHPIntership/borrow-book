@@ -10,7 +10,7 @@
         <h3>{{ trans('category.list_category') }}</h3>
     </section>
     @include('admin.layouts.partials.messages')
-    <div class="success-update hidden"></div>
+    <div class="update-notice hidden"></div>
     <!-- Main content -->
     <section class="container">
         <div class="row">
