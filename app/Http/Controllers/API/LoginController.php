@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
+use App\Http\Requests\Api\RegisterRequest;
 use Auth;
 use Validator;
 
@@ -34,18 +35,9 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
         $data = $request->all();
-        $validator = Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'identity_number' => 'required|integer|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], Response::HTTP_UNAUTHORIZED);
-        }
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
         $success['token'] =  $user->createToken('MyApp')->accessToken;
