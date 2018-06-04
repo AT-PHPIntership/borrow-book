@@ -34,4 +34,20 @@ class CategoryController extends Controller
         Session::flash('message_success', trans('category.messages.create_success'));
         return redirect()->back();
     }
+
+    /**
+     * Update Category.
+     *
+     * @param Http\Requests\CategoryRequest $request request
+     * @param App\Models\Category           $id      id of Category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CategoryRequest $request, $id)
+    {
+        $category = Category::findOrFail($id);
+        $category->name = $request->name;
+        $category->save();
+        return response()->json(['category' => $category, 'msg' => trans('category.messages.update_success')]);
+    }
 }
