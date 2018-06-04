@@ -69,22 +69,22 @@ class SortBookTest extends DuskTestCase
      *
      * @return void
      */
-    public function testSortListBooks($name,$order, $columIndex)
+    public function testSortListBooks($name, $order, $columIndex)
     {
-        $this->browse(function (Browser $browser) use ($name,$order, $columIndex) {
+        $this->browse(function (Browser $browser) use ($name, $order, $columIndex) {
             $browser->loginAs($this->user)
                 ->visit('admin/books')
                 ->resize(1200, 1600)
                 ->press("#book-sort-$name a");
             // Test list Asc
-            $arrAsc =Book::with('category')->orderBy($order,'asc')->pluck($name)->toArray();
+            $arrAsc =Book::with('category')->orderBy($order, 'asc')->pluck($name)->toArray();
             for ($i = 1; $i <= 15; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columIndex)";
                 $this->assertEquals($browser->text($selector), $arrAsc[$i - 1]);
             }
             // Test list Desc
             $browser->press("#book-sort-$name a");
-            $arrDesc = Book::with('category')->orderBy($order,'desc')->pluck($name)->toArray();
+            $arrDesc = Book::with('category')->orderBy($order, 'desc')->pluck($name)->toArray();
             for ($i = 1; $i <= 15; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columIndex)";
                 $this->assertEquals($browser->text($selector), $arrDesc[$i - 1]);
@@ -108,7 +108,7 @@ class SortBookTest extends DuskTestCase
                 ->click("#book-sort-$name a")
                 ->clickLink("2");
             // Test list Asc
-            $arrAsc = Book::with('category')->orderBy($order,'asc')->pluck($name)->toArray();
+            $arrAsc = Book::with('category')->orderBy($order, 'asc')->pluck($name)->toArray();
             $arraySortAsc = array_chunk($arrAsc, 15)[1];
             for ($i = 1; $i <= 2; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columIndex)";
@@ -117,7 +117,7 @@ class SortBookTest extends DuskTestCase
             // Test list Desc
             $browser->press("#book-sort-$name a")
                     ->clickLink("2");
-            $arrAsc = Book::with('category')->orderBy($order,'desc')->pluck($name)->toArray();
+            $arrAsc = Book::with('category')->orderBy($order, 'desc')->pluck($name)->toArray();
             $arraySortDesc = array_chunk($arrAsc, 15)[1];
             for ($i = 1; $i <= 2; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columIndex)";

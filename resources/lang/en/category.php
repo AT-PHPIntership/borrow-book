@@ -1,16 +1,18 @@
 <?php
     
     return [
-        'title' => 'List Category',
+        'title' => 'Manage Category',
         'list_category' => 'List Category',
-        'create' => 'Create',
+        'update' => 'Update Category',
+        'create' => 'Create Category',
         'table_head' => [
             'name' => 'Name',
             'action' => 'Action',
         ],
         'messages' => [
             'confirm_delete' => 'Are you sure?',
-            'create_success' => 'Create category Success!'
+            'create_success' => 'Create category Success!',
+            'update_success' => 'Update category Success!',
         ],
         'form' => [
             'title_inputs' => [
@@ -20,4 +22,9 @@
         'placeholders' => [
             'name' => 'Enter Name',
         ],
+        'buttons' => [
+            'create' => 'Create',
+            'update' => 'Update',
+            'reset' => 'Reset'
+        ]
     ];
