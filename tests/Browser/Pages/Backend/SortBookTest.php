@@ -22,8 +22,8 @@ class SortBookTest extends DuskTestCase
     {
         parent::setUp();
         
-        factory(Category::class,2)->create();
-        factory(Book::class,17)->create();
+        factory(Category::class, 2)->create();
+        factory(Book::class, 17)->create();
     }
 
     /*
@@ -77,7 +77,7 @@ class SortBookTest extends DuskTestCase
                 ->resize(1200, 1600)
                 ->click("#book-sort-$name a");
             // Test list Asc
-            $arrAsc =Book::with('category')->orderBy($order, 'asc')->pluck($name)->toArray();
+            $arrAsc = Book::with('category')->orderBy($order, 'asc')->pluck($name)->toArray();
             for ($i = 1; $i <= 15; $i++) {
                 $selector = "#table-index tbody tr:nth-child($i) td:nth-child($columIndex)";
                 $this->assertEquals($browser->text($selector), $arrAsc[$i - 1]);
