@@ -55,7 +55,7 @@ class UpdateCategoryTest extends DuskTestCase
                 ->click('.button-edit-category')
                 ->type('categoryName', 'Title')
                 ->press('Update')
-                ->pause(500)
+                ->pause(1000)
                 ->assertSee('Update category Success!')
                 ->assertPathIs('/admin/categories');
         });
