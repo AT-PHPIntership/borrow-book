@@ -36,8 +36,8 @@
                                 <a href="#" class="btn btn-default btn-flat">{{ trans('user.profile') }}</a>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-default btn-flat logout" href="{{ route('logout') }}">{{ trans('auth.logout') }}</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <a class="btn btn-default btn-flat logout" href="{{ route('admin.logout') }}">{{ trans('auth.logout') }}</a>
+                                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
