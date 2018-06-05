@@ -6,13 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Models\BorrowDetail;
-use App\Models\Borrow;
-use App\Models\Rating;
-use App\Models\Favorite;
-use App\Models\Book;
-use App\Models\ImageBook;
-use App\Models\Post;
 use Session;
 use DB;
 
@@ -68,32 +61,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        DB::beginTransaction();
-        try {
-            $books = Book::where('category_id', $category->id)->get();
-            if ($books->count()) {
-                foreach ($books as $book) {
-                    Favorite::where('book_id', $book->id)->delete();
-                    Post::where('book_id', $book->id)->delete();
-                    Rating::where('book_id', $book->id)->delete();
-                    ImageBook::where('book_id', $book->id)->delete();
-                    $borroweDetails = BorrowDetail::where('book_id', $book->id)->get();
-                    if ($borroweDetails->count()) {
-                        foreach ($borroweDetails as $borroweDetail) {
-                            Borrow::where('id', $borroweDetail->borrow_id)->delete();
-                        }
-                        BorrowDetail::where('book_id', $book->id)->delete();
-                    }
-                }
-                Book::where('category_id', $category->id)->delete();
-            }
-            $category->delete();
-            DB::commit();
-            Session::flash('message_success', trans('category.messages.delete_success'));
-        } catch (Exception $e) {
-            DB::rollback();
-            Session::flash('message_fail', trans('category.messages.delete_fail'));
-        }
+        Category::destroy($category->id);
         return redirect()->route('admin.categories.index');
     }
 }
