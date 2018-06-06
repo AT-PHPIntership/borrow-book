@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Book;
+use App\Models\Category;
 use DB;
 
 class Category extends Model
@@ -47,7 +48,8 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function ($category) {
-            foreach ($category->books() as $book) {
+            $books = Book::where('category_id', $category->id)->get();
+            foreach ($books as $book) {
                 $book->ratings()->delete();
                 $book->borrowDetails()->delete();
                 $book->favorites()->delete();

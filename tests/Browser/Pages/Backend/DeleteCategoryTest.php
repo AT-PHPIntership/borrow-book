@@ -78,7 +78,6 @@ class DeleteCategoryTest extends DuskTestCase
                 ->assertDatabaseMissing('posts', ['id'=> 1, 'deleted_at' => null])
                 ->assertDatabaseMissing('ratings', ['id'=> 1])
                 ->assertDatabaseMissing('favorites', ['id'=> 1])
-                ->assertDatabaseMissing('borrowes', ['id'=> 1, 'deleted_at' => null])
                 ->assertDatabaseMissing('borrow_details', ['id'=> 1])
                 ->assertDatabaseMissing('books', ['id'=> 1, 'deleted_at' => null]);
         });
