@@ -14,6 +14,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/api-docs', function () {
+    return view('api-docs');
+});
+Route::get('/api-doc-builders', function () {
+    return view('api-docs-builders.index');
+});
+
 $admin_config = [
     'namespace' => 'Admin',
     'prefix' => 'admin',
