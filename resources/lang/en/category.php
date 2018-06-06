@@ -13,6 +13,8 @@
             'confirm_delete' => 'Are you sure?',
             'create_success' => 'Create category Success!',
             'update_success' => 'Update category Success!',
+            'delete_success' => 'Delete Category Successfully!',
+            'delete_fail' => 'Delete Category Failfully!',
         ],
         'form' => [
             'title_inputs' => [

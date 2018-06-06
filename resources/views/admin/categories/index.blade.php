@@ -28,7 +28,7 @@
                                 <td id="{{ $category->id }}">{{ $category->name }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-flat fa fa-pencil button-edit-category" data-category="{{ $category }}"></button>&nbsp;&nbsp;
-                                    <form method="POST" action="" class="inline">
+                                    <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="inline">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button class="btn btn-danger btn-flat fa fa-trash-o btn-delete-item"

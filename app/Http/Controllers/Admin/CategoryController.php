@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Session;
+use DB;
 
 class CategoryController extends Controller
 {
@@ -49,5 +50,26 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
         return response()->json(['category' => $category, 'msg' => trans('category.messages.update_success')]);
+    }
+
+    /**
+     * Delete category.
+     *
+     * @param App\Models\Category $category data of category want to delete
+     *
+     * @return Response
+     */
+    public function destroy(Category $category)
+    {
+        DB::beginTransaction();
+        try {
+            Category::destroy($category->id);
+            DB::commit();
+            Session::flash('message_success', trans('category.messages.delete_success'));
+        } catch (Exception $e) {
+            DB::rollback();
+            Session::flash('message_fail', trans('category.messages.delete_fail'));
+        }
+        return redirect()->route('admin.categories.index');
     }
 }
