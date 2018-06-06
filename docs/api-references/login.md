@@ -3,7 +3,6 @@
 /api/login
 ```
 Login api
-
 #### Parameters
 | Key | Type | Required | Description |
 |---|---|---|---|
