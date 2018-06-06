@@ -78,7 +78,7 @@ class UpdateCategoryTest extends DuskTestCase
                 ->click('.button-edit-category')
                 ->type('categoryName', '');
             $browser->press('Update')
-               ->pause(1000)
+               ->pause(500)
                ->assertSee('The name field is required.');
        });
     }

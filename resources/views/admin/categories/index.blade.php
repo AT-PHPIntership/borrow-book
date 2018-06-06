@@ -41,7 +41,7 @@
                     </tbody>
                 </table>
                 <div class="text-center">
-                    {{ $categories->appends(\Request::except('page'))->render() }}
+                    {{ $categories->links() }}
                 </div>
             </div>
             <div class="col-md-6 create-category">

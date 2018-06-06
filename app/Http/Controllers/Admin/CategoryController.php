@@ -18,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::sortable()->paginate();
+        $categories = Category::sortable()->paginate()->appends(\Request::except('page'));
         return view('admin.categories.index', compact('categories'));
     }
 
