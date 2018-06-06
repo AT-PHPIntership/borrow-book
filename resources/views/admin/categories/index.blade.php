@@ -18,7 +18,7 @@
                 <table class="table box">
                     <thead>
                         <tr>
-                            <th>{{ trans('category.table_head.name') }}</th>
+                            <th>@sortablelink('name', trans('category.table_head.name'))</th>
                             <th >{{ trans('category.table_head.action') }}</th>
                         </tr>
                     </thead>
@@ -41,7 +41,7 @@
                     </tbody>
                 </table>
                 <div class="text-center">
-                    {{ $categories->links() }}
+                    {{ $categories->appends(\Request::except('page'))->render() }}
                 </div>
             </div>
             <div class="col-md-6 create-category">

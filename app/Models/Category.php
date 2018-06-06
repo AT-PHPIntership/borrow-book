@@ -3,15 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Category extends Model
 {
+    use Sortable;
+    
     /**
     * The attributes that are mass assignable.
     *
     * @var array
     */
     protected $fillable = [
+        'name'
+    ];
+
+    /**
+    * Declare table sort
+    *
+    * @var array $sortable table sort
+    */
+    public $sortable = [
         'name'
     ];
 
