@@ -31,13 +31,13 @@ class SortCategoryTest extends DuskTestCase
     { 
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
-                ->visit('/admin/categories');
-                $browser->click("#category-sort-name a")
-                    ->assertQueryStringHas('sort', 'name')
-                    ->assertQueryStringHas('order', 'asc')
-                    ->click("#category-sort-name a")
-                    ->assertQueryStringHas('sort', 'name')
-                    ->assertQueryStringHas('order', 'desc');
+                ->visit('/admin/categories')
+                ->click("#category-sort-name a")
+                ->assertQueryStringHas('sort', 'name')
+                ->assertQueryStringHas('order', 'asc')
+                ->click("#category-sort-name a")
+                ->assertQueryStringHas('sort', 'name')
+                ->assertQueryStringHas('order', 'desc');
         });
     }
 
@@ -95,7 +95,7 @@ class SortCategoryTest extends DuskTestCase
             $arrayDesc = Category::orderBy('name', 'desc')->pluck('name')->toArray();
             $arraySortDesc = array_chunk($arrayDesc, 15)[1];
             for ($i = 1; $i <= 2; $i++) {
-               $selector = ".table tbody tr:nth-child($i) td:first-child";
+                $selector = ".table tbody tr:nth-child($i) td:first-child";
                 $this->assertEquals($browser->text($selector), $arraySortDesc[$i - 1]);
             }
         });
