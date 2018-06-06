@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Book;
 use App\Models\Category;
@@ -10,7 +11,8 @@ use DB;
 
 class Category extends Model
 {
-    use SoftDeletes;
+
+    use SoftDeletes, Sortable;
 
     /**
      * The attributes that should be mutated to dates.
@@ -25,6 +27,15 @@ class Category extends Model
     * @var array
     */
     protected $fillable = [
+        'name'
+    ];
+
+    /**
+    * Declare table sort
+    *
+    * @var array $sortable table sort
+    */
+    public $sortable = [
         'name'
     ];
 
@@ -48,8 +59,7 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function ($category) {
-            $books = Book::where('category_id', $category->id)->get();
-            foreach ($books as $book) {
+            foreach ($category->books as $book) {
                 $book->ratings()->delete();
                 $book->borrowDetails()->delete();
                 $book->favorites()->delete();
