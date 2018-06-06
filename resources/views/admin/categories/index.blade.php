@@ -18,7 +18,7 @@
                 <table class="table box">
                     <thead>
                         <tr>
-                            <th>@sortablelink('name', trans('category.table_head.name'))</th>
+                            <th id="category-sort-name">@sortablelink('name', trans('category.table_head.name'))</th>
                             <th >{{ trans('category.table_head.action') }}</th>
                         </tr>
                     </thead>
