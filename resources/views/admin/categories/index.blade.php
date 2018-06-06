@@ -14,6 +14,44 @@
     <!-- Main content -->
     <section class="container">
         <div class="row">
+            <div class="col-md-5 create-category">
+                <h4>{{ trans('category.create') }}</h4>
+                <div class="form-group">
+                    <form action="{{ route('admin.categories.store') }}" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>{{ trans('category.form.title_inputs.name') }}</label>
+                                <input type="text" class="form-control" placeholder="{{ trans('category.placeholders.name') }}" name="name" value="{{ old('name') }}">
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button class="btn btn-primary"><i class="fa fa-plus"> {{ trans('category.buttons.create') }}</i></button>
+                        </div>
+                    </form>
+                </div>
+                @include('admin.layouts.partials.errors')
+            </div>
+            <div class="col-md-5 update-category hidden">
+                <h4>{{ trans('category.update') }}</h4>
+                <form role="form" action="" class="form-edit-category" method="POST">
+                    {{ method_field('PATCH') }}
+                    {{ csrf_field() }}
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>{{ trans('category.form.title_inputs.name') }}</label>
+                            <input type="text" class="form-control" id="category-update" placeholder=" {{ trans('category.placeholders.name') }}" value="" name="categoryName">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" name="update-btn" class="btn btn-primary">{{ trans('category.buttons.update') }}</button>
+                        <button type="reset" class="btn">{{ trans('category.buttons.reset') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-5">
                 <table class="table box">
                     <thead>
@@ -43,36 +81,6 @@
                 <div class="text-center">
                     {{ $categories->links() }}
                 </div>
-            </div>
-            <div class="col-md-6 create-category">
-                <h3>{{ trans('category.create') }}</h3>
-                <div class="form-group">
-                    <form action="{{ route('admin.categories.store') }}" method="POST">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <label>{{ trans('category.form.title_inputs.name') }}</label>
-                        <input type="text" placeholder="{{ trans('category.placeholders.name') }}" name="name" value="{{ old('name') }}">
-                        <button class="btn btn-primary"><i class="fa fa-plus"> {{ trans('category.buttons.create') }}</i></button>
-                    </form>
-                </div>
-                @include('admin.layouts.partials.errors')
-            </div>
-            <div class="col-md-6 update-category hidden">
-                <h3>{{ trans('category.update') }}</h3>
-                <form role="form" action="" class="form-edit-category" method="POST">
-                    {{ method_field('PATCH') }}
-                    {{ csrf_field() }}
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label>{{ trans('category.form.title_inputs.name') }}</label>
-                            <input type="text" class="form-control" id="category-update" placeholder=" {{ trans('category.placeholders.name') }}" value="" name="categoryName">
-                        </div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <button type="submit" name="update-btn" class="btn btn-primary">{{ trans('category.buttons.update') }}</button>
-                        <button type="reset" class="btn">{{ trans('category.buttons.reset') }}</button>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
