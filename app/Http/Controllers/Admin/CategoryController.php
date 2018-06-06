@@ -61,7 +61,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::destroy($category->id);
+        DB::beginTransaction();
+        try {
+            Category::destroy($category->id);
+            DB::commit();
+            Session::flash('message_success', trans('category.messages.delete_success'));
+        } catch (Exception $e) {
+            DB::rollback();
+            Session::flash('message_fail', trans('category.messages.delete_fail'));
+        }
         return redirect()->route('admin.categories.index');
     }
 }
