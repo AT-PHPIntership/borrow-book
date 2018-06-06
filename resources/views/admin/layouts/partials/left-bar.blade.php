@@ -14,27 +14,27 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">{{trans('admin.title.left_bar')}}</li>
-            <li>
+            <li class="{{ request()->is('admin/users*') ? 'active' : '' }}">
                 <a href="{{route('admin.users.index')}}">
                     <i class="fa fa-users"></i> <span>{{trans('user.title')}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('admin/categories*') ? 'active' : '' }}">
                 <a href="{{route('admin.categories.index')}}">
                     <i class="fa fa-folder-open"></i> <span>{{trans('category.title')}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('admin/books*') ? 'active' : '' }}">
                 <a href="{{route('admin.books.index')}}">
                     <i class="fa fa-book"></i> <span>{{trans('book.title')}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('admin/posts*') ? 'active' : '' }}">
                 <a href="{{route('admin.posts.index')}}">
                     <i class="fa fa-comment"></i> <span>{{trans('post.title')}}</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ request()->is('admin/borrows*') ? 'active' : '' }}">
                 <a href="{{route('admin.borrows.index')}}">
                     <i class="fa fa-dashboard"></i> <span>{{trans('borrow.title')}}</span>
                 </a>
