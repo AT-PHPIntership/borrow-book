@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Book;
+use App\Models\Category;
 use DB;
 
 class Category extends Model
@@ -58,7 +59,7 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function ($category) {
-            foreach ($category->books() as $book) {
+            foreach ($category->books as $book) {
                 $book->ratings()->delete();
                 $book->borrowDetails()->delete();
                 $book->favorites()->delete();
