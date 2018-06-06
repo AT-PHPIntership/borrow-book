@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
 use App\Http\Requests\Api\RegisterRequest;
 use Auth;
 use Validator;
 
-class LoginController extends Controller
+class LoginController extends ApiController
 {
     /**
      * Login api
@@ -22,6 +22,8 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
             $success['token'] =  $user->createToken('MyApp')->accessToken;
+            $success['status'] = Response::HTTP_OK;
+            $success['data'] = $user;
             return response()->json(['success' => $success], Response::HTTP_OK);
         } else {
             return response()->json(['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
