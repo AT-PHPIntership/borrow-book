@@ -47,7 +47,6 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function ($category) {
-            $category->books()->delete();
             foreach ($category->books() as $book) {
                 $book->ratings()->delete();
                 $book->borrowDetails()->delete();
@@ -55,6 +54,7 @@ class Category extends Model
                 $book->posts()->delete();
                 $book->imageBooks()->delete();
             }
+            $category->books()->delete();
         });
     }
 }
