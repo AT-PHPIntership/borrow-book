@@ -20,11 +20,10 @@ class LoginController extends ApiController
     public function login()
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-            $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')->accessToken;
-            $success['status'] = Response::HTTP_OK;
-            $success['data'] = $user;
-            return response()->json(['success' => $success], Response::HTTP_OK);
+            $data = Auth::user();
+            $token =  $data->createToken('MyApp')->accessToken;
+            $status = Response::HTTP_OK;
+            return response()->json(compact('status', 'token', 'data'), Response::HTTP_OK);
         } else {
             return response()->json(['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED);
         }
