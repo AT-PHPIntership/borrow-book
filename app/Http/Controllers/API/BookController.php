@@ -9,18 +9,19 @@ use App\Models\User;
 use App\Http\Requests\Api\RegisterRequest;
 use Auth;
 use App\Models\Book;
+use App\Models\Category;
+use DB;
 
 class BookController extends ApiController
 {
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-	    $book = Book::all();
-	    return $this->showAll($book);
-	}
+        $book = Book::with('category', 'imageBooks')->get();
+        return $this->showAll($book, Response::HTTP_OK);
+    }
 }
-
