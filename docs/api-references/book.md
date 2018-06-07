@@ -14,7 +14,7 @@ Get list books
 | rate | string | Rate Books |
 | limit | string | Top Books |
 | category | string | Get Product By Category |
-| page | string | Panigate Books |
+| page | string | Paninate Books |
 
 ```json
 "status": 200,
@@ -75,4 +75,13 @@ Get list books
             }
         },
         ]
-}
+"pagination": {
+                "total": 30,
+                "per_page": 20,
+                "count": 20,
+                "current_page": 1,
+                "total_pages": 2,
+                "links": {
+                    "prev": null,
+                    "next": "http://192.168.33.10/api/books?page=2"
+              }
