@@ -1,50 +1,78 @@
-## Flappy Api - Just sample API
+## Book Api - Just sample API
 
 ### `GET` List Books
 ```
-/api/birds
+/api/books
 ```
-Get list books with paginate
+Get list books
 
-
-#### Response - Success
-| Field | Type | Description |
-|-------|------|-------------|
-| status | String | Status result |
-| code | Number | HTTP status codes |
-| data | Object | Object book |
-| id | Number | Id of book |
-| title | String | Title of book |
-| picture | String | Url for image of the book |
-| quantity | Number | Number of book |
-| rating | Number | The number of reviews of a book |
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| sort | string | Sort Books |
+| new | string | New Books |
+| rate | string | Rate Books |
+| limit | string | Top Books |
+| category | string | Get Product By Category |
+| page | string | Panigate Books |
 
 ```json
 "status": 200,
 "data": [
         {
-            "id": 3,
+            "id": 1,
             "title": "Herman Sanford DDS",
             "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
             "quantity": 8,
-            "rating": 4.5
+            "rating": 4.5,
+            "category": {
+                "id": 1,
+                "name": "food",
+            }
+        },
+        {
+            "id": 2,
+            "title": "Mr. Conrad Ryan",
+            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
+            "quantity": 7,
+            "rating": 3.5,
+            "category": {
+                "id": 2,
+                "name": "food"
+            }
+        },
+        {
+            "id": 3,
+            "title": "Mr. Conrad Ryan",
+            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
+            "quantity": 7,
+            "rating": 3.5,
+            "category": {
+                "id": 3,
+                "name": "food"
+            }
+        },
+        {
+            "id": 4,
+            "title": "Mr. Conrad Ryan",
+            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
+            "quantity": 7,
+            "rating": 3.5,
+            "category": {
+                "id": 4,
+                "name": "food"
+            }
         },
         {
             "id": 5,
             "title": "Mr. Conrad Ryan",
             "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
             "quantity": 7,
-            "rating": 3.5
+            "rating": 3.5,
+            "category": {
+                "id": 2,
+                "name": "food"
+            }
         },
-        ],
-"pagination": {
-                "total": 20,
-                "per_page": 8,
-                "count": 8,
-                "current_page": 1,
-                "total_pages": 3,
-                "links": {
-                    "prev": null,
-                    "next": "http://192.168.33.10/api/books?page=2"
-              }
+        ]
 }
