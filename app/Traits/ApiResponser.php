@@ -98,7 +98,7 @@ trait ApiResponser
         
         $page = LengthAwarePaginator::resolveCurrentPage();
         
-        $prePage = 20;
+        $prePage = 15;
         if (request()->has('per_page')) {
             $prePage = request()->per_page;
         }
