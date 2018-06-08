@@ -8,6 +8,7 @@
                 <div class="col-xs-10 text-right menu-1">
                     <ul>
                         <li class="active"><a href="#">Home</a></li>
+                        <li class=""><a href="{{ route('login') }}">Login</a></li>
                         <li class="has-dropdown">
                             <a href=""></a>
                             <ul class="dropdown">
