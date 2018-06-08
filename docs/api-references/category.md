@@ -9,8 +9,8 @@ Get list categories
 #### Query Param
 | Param | Type | Description |
 |---|---|---|
-| page | string | Paninate Category |
-| limit | number | Limit Category |
+| page | Integer | Paninate Category |
+| limit | Integer | Limit Category |
 
 ```json
 "data": [
