@@ -18,7 +18,11 @@ class BookController extends ApiController
      */
     public function index(Request $request)
     {
-        $books = Book::search($request->search);
+        $books = new Book();
+        if ($request->has('search')) {
+            $books = $books->search($request->search);
+        }
+        $books = $books->with(['category', 'imageBooks'])->get();
         return $this->showAll($books, Response::HTTP_OK);
     }
 }
