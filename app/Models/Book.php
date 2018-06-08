@@ -125,12 +125,11 @@ class Book extends Model
     public static function search($key)
     {
         return Book::with(['category', 'imageBooks'])
-                ->whereHas('category', function ($query) use ($key) {
-                    $query->where('name', 'like', "%$key%");
-                })
-                ->orWhere('title', 'like', "%$key%")
-                ->orWhere('author', 'like', "%$key%")
-                ->orWhere('language', 'like', "%$key%")
-                ->get();
+            ->whereHas('category', function ($query) use ($key) {
+                $query->where('name', 'like', "%$key%");
+            })
+            ->orWhere('title', 'like', "%$key%")
+            ->orWhere('author', 'like', "%$key%")
+            ->orWhere('language', 'like', "%$key%");
     }
 }
