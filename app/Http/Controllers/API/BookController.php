@@ -18,7 +18,7 @@ class BookController extends ApiController
      */
     public function index(Request $request)
     {
-        $books = new Book();
+        $books = new Book;
         if ($request->has('search')) {
             $books = $books->search($request->search);
         }
