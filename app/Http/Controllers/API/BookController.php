@@ -18,14 +18,7 @@ class BookController extends ApiController
      */
     public function index(Request $request)
     {
-        $books = Book::with(['category', 'imageBooks'])
-                ->whereHas('category', function ($query) use ($request) {
-                    $query->where('name', 'like', "%$request->search%");
-                })
-                ->orWhere('title', 'like', "%$request->search%")
-                ->orWhere('author', 'like', "%$request->search%")
-                ->orWhere('language', 'like', "%$request->search%")
-                ->get();
+        $books = Book::search($request->search);
         return $this->showAll($books, Response::HTTP_OK);
     }
 }
