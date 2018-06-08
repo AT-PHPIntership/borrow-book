@@ -123,8 +123,8 @@ trait ApiResponser
      */
     protected function sortData(Collection $collection)
     {
-        if (request()->has('sort_by')) {
-            $collection = $collection->sortBy(request()->sort_by);
+        if (request()->has('sort')) {
+            $collection = $collection->sortBy(request()->sort);
         }
         
         return $collection->values();
