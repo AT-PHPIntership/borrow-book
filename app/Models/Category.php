@@ -69,4 +69,16 @@ class Category extends Model
             $category->books()->delete();
         });
     }
+
+     /**
+     * Get limit category
+     *
+     * @param int $number get limit category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function limitCategory($number)
+    {
+        return Category::limit($number);
+    }
 }

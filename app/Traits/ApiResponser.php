@@ -91,7 +91,7 @@ trait ApiResponser
     protected function paginate(Collection $collection)
     {
         $rules = [
-            'per_page' => 'integer|min:2|max:50'
+            'limit' => 'integer|min:2|max:50'
         ];
         
         Validator::validate(request()->all(), $rules);
@@ -99,8 +99,8 @@ trait ApiResponser
         $page = LengthAwarePaginator::resolveCurrentPage();
         
         $prePage = 20;
-        if (request()->has('per_page')) {
-            $prePage = request()->per_page;
+        if (request()->has('limit')) {
+            $prePage = request()->limit;
         }
         
         $result = $collection->slice(($page - 1) * $prePage, $prePage);
