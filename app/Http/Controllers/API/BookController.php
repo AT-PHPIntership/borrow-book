@@ -20,7 +20,7 @@ class BookController extends ApiController
     {
         $books = new Book;
         if ($request->has('search')) {
-            $books->search($request->search);
+            $books = $books->search($request->search);
         }
         $books = $books->with(['category', 'imageBooks'])->get();
         return $this->showAll($books, Response::HTTP_OK);
