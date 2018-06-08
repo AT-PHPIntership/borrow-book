@@ -85,3 +85,4 @@ Get list books
                     "prev": null,
                     "next": "http://192.168.33.10/api/books?page=2"
               }
+```
