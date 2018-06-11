@@ -1,5 +1,3 @@
-## Book Api - Just sample API
-
 ### `GET` List Books
 ```
 /api/books
@@ -10,82 +8,114 @@ Get list books
 | Param | Type | Description |
 |---|---|---|
 | sort | string | Sort Books |
-| new | string | New Books |
-| rate | string | Rate Books |
-| limit | string | Top Books |
-| category | string | Get Product By Category |
-| page | string | Paninate Books |
+| page | number | Paninate Books |
+| search | string | Search Books |
 
 ```json
-"status": 200,
 "data": [
         {
             "id": 1,
-            "title": "Herman Sanford DDS",
-            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
-            "quantity": 8,
-            "rating": 4.5,
+            "category_id": 7,
+            "title": "Sydnie Dickens PhD",
+            "description": "Eos facilis doloribus consequatur minus velit dolor. Fugit itaque corrupti et ab. Atque eum hic ipsam esse rerum. Est mollitia aliquid facilis sit.",
+            "number_of_page": 871030395,
+            "author": "Prof. Elian Auer",
+            "publishing_year": "1990-04-28",
+            "language": "English",
+            "quantity": 9,
+            "count_rate": 0,
+            "deleted_at": null,
+            "created_at": "2018-05-24 07:00:16",
+            "updated_at": "2018-05-24 07:00:16",
             "category": {
-                "id": 1,
-                "name": "food",
-            }
+                "id": 7,
+                "name": "Kobe Mitchell",
+                "created_at": "2018-05-24 07:00:16",
+                "updated_at": "2018-05-24 07:00:16",
+                "deleted_at": null
+            },
+            "image_books": [
+                {
+                    "id": 1,
+                    "book_id": 2,
+                    "image": "27e3383467f7751e535cc257cf616cad.jpg",
+                    "created_at": "2018-05-24 07:00:34",
+                    "updated_at": "2018-05-24 07:00:34"
+                },
+                {
+                    "id": 5,
+                    "book_id": 2,
+                    "image": "cdaa5b32ef5af5e7562b987100c098fd.jpg",
+                    "created_at": "2018-05-24 07:00:34",
+                    "updated_at": "2018-05-24 07:00:34"
+                },
+                {
+                    "id": 9,
+                    "book_id": 2,
+                    "image": "6ea38209a11e436e7b0df801b8e5a551.jpg",
+                    "created_at": "2018-05-24 07:00:34",
+                    "updated_at": "2018-05-24 07:00:34"
+                }
+            ]
         },
         {
             "id": 2,
-            "title": "Mr. Conrad Ryan",
-            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
-            "quantity": 7,
-            "rating": 3.5,
+            "category_id": 7,
+            "title": "Sydnie Dickens PhD",
+            "description": "Eos facilis doloribus consequatur minus velit dolor. Fugit itaque corrupti et ab. Atque eum hic ipsam esse rerum. Est mollitia aliquid facilis sit.",
+            "number_of_page": 871030395,
+            "author": "Prof. Elian Auer",
+            "publishing_year": "1990-04-28",
+            "language": "English",
+            "quantity": 9,
+            "count_rate": 0,
+            "deleted_at": null,
+            "created_at": "2018-05-24 07:00:16",
+            "updated_at": "2018-05-24 07:00:16",
             "category": {
-                "id": 2,
-                "name": "food"
-            }
-        },
-        {
-            "id": 3,
-            "title": "Mr. Conrad Ryan",
-            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
-            "quantity": 7,
-            "rating": 3.5,
-            "category": {
-                "id": 3,
-                "name": "food"
-            }
-        },
-        {
-            "id": 4,
-            "title": "Mr. Conrad Ryan",
-            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
-            "quantity": 7,
-            "rating": 3.5,
-            "category": {
-                "id": 4,
-                "name": "food"
-            }
-        },
-        {
-            "id": 5,
-            "title": "Mr. Conrad Ryan",
-            "picture": "http://192.168.33.10/storage/images/639802f65e69608edf2700e979022e1d.png",
-            "quantity": 7,
-            "rating": 3.5,
-            "category": {
-                "id": 2,
-                "name": "food"
-            }
+                "id": 7,
+                "name": "Kobe Mitchell",
+                "created_at": "2018-05-24 07:00:16",
+                "updated_at": "2018-05-24 07:00:16",
+                "deleted_at": null
+            },
+            "image_books": [
+                {
+                    "id": 1,
+                    "book_id": 2,
+                    "image": "27e3383467f7751e535cc257cf616cad.jpg",
+                    "created_at": "2018-05-24 07:00:34",
+                    "updated_at": "2018-05-24 07:00:34"
+                },
+                {
+                    "id": 5,
+                    "book_id": 2,
+                    "image": "cdaa5b32ef5af5e7562b987100c098fd.jpg",
+                    "created_at": "2018-05-24 07:00:34",
+                    "updated_at": "2018-05-24 07:00:34"
+                },
+                {
+                    "id": 9,
+                    "book_id": 2,
+                    "image": "6ea38209a11e436e7b0df801b8e5a551.jpg",
+                    "created_at": "2018-05-24 07:00:34",
+                    "updated_at": "2018-05-24 07:00:34"
+                }
+            ]
         },
         ]
-"pagination": {
-                "total": 30,
-                "per_page": 20,
-                "count": 20,
-                "current_page": 1,
-                "total_pages": 2,
-                "links": {
-                    "prev": null,
-                    "next": "http://192.168.33.10/api/books?page=2"
-              }
+"first_page_url": "http://192.168.10.10/api/books?page=1",
+"from": 1,
+"last_page": 2,
+"last_page_url": "http://192.168.10.10/api/books?page=2",
+"next_page_url": "http://192.168.10.10/api/books?page=2",
+"path": "http://192.168.10.10/api/books",
+"per_page": 15,
+"prev_page_url": null,
+"to": 15,
+"total": 30
 ```
+
 ### `GET` Book
 
 ```
@@ -139,3 +169,4 @@ Get a detail book
    }
 }
 ```
+>>>>>>> master
