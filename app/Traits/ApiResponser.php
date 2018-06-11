@@ -10,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 trait ApiResponser
 {
+    protected $limit = 20;
     /**
      * Return success Response
      *
@@ -97,15 +98,14 @@ trait ApiResponser
         Validator::validate(request()->all(), $rules);
         
         $page = LengthAwarePaginator::resolveCurrentPage();
-        
-        $prePage = 20;
+
         if (request()->has('limit')) {
-            $prePage = request()->limit;
+            $this->limit = request()->limit;
         }
         
-        $result = $collection->slice(($page - 1) * $prePage, $prePage);
+        $result = $collection->slice(($page - 1) * $this->limit, $this->limit);
         
-        $paginated = new LengthAwarePaginator($result, $collection->count(), $prePage, $page, [
+        $paginated = new LengthAwarePaginator($result, $collection->count(), $this->limit, $page, [
             'path' => LengthAwarePaginator::resolveCurrentPath()
         ]);
         

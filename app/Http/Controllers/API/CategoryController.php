@@ -10,19 +10,13 @@ use App\Models\Category;
 class CategoryController extends ApiController
 {
     /**
-     * Get api limit categories
-     *
-     * @param Request $request request
+     * Get api categories
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $categories = new Category;
-        if ($request->has('limit')) {
-            $categories = $categories->limitCategory($request->limit);
-        }
-        $categories = $categories->get();
+        $categories = Category::get();
         return $this->showAll($categories, Response::HTTP_OK);
     }
 }
