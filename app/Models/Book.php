@@ -114,4 +114,21 @@ class Book extends Model
     {
         return $this->hasMany(BorrowDetail::class);
     }
+
+    /**
+     * Get search book
+     *
+     * @param int $key key of search book
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function search($key)
+    {
+        return Book::whereHas('category', function ($query) use ($key) {
+            $query->where('name', 'like', "%$key%");
+        })
+            ->orWhere('title', 'like', "%$key%")
+            ->orWhere('author', 'like', "%$key%")
+            ->orWhere('language', 'like', "%$key%");
+    }
 }
