@@ -29,13 +29,13 @@ class BookController extends ApiController
     /**
      * Api show detail book
      *
-     * @param Models/Book $book
+     * @param Models/Book $book book
      *
      * @return \Illuminate\Http\Response
      */
     public function show(Book $book)
     {
-        $book = $book->load(['category','imageBooks']);
+        $book = $book->load(['category', 'imageBooks']);
         return $this->showOne($book, Response::HTTP_OK);
     }
 }
