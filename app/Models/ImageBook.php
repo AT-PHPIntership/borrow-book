@@ -27,6 +27,16 @@ class ImageBook extends Model
     }
 
     /**
+     * Relationship belongsTo with Book
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function imageLimitBook()
+    {
+        return $this->belongsTo(Book::class, 'book_id');
+    }
+
+    /**
      * Get the book's image.
      *
      * @return string
@@ -34,5 +44,18 @@ class ImageBook extends Model
     public function getImageUrlAttribute()
     {
         return asset(config('image.images_path') . $this->image);
+    }
+
+    /**
+     * Custom toArray Model ImageBook.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'book_id' => $this->book_id,
+            'image' => $this->getImageUrlAttribute()
+        ];
     }
 }
