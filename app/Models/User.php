@@ -114,7 +114,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's avatar url.
+     * Custom toArray Model User.
      *
      * @return string
      */
