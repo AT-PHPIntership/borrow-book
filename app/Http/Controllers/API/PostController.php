@@ -17,10 +17,10 @@ class PostController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPostFollowingBook($id)
+    public function getPostFollowingBook(Book $book)
     {
         $posts = new Post;
-        $posts = $posts->with(['user'])->where('book_id', $id)->get();
+        $posts = $posts->with(['user'])->where('book_id', $book->id)->get();
         return $this->successResponse($posts, Response::HTTP_OK);
     }
 }
