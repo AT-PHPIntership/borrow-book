@@ -27,16 +27,6 @@ class ImageBook extends Model
     }
 
     /**
-     * Relationship belongsTo with Book
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function imageLimitBook()
-    {
-        return $this->belongsTo(Book::class, 'book_id');
-    }
-
-    /**
      * Get the book's image.
      *
      * @return string

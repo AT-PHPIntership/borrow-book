@@ -76,16 +76,6 @@ class Book extends Model
     }
 
     /**
-     * Relationship hasMany with ImageBook and limit 1
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function imageLimitBooks()
-    {
-        return $this->hasMany(ImageBook::class)->limit(5);
-    }
-
-    /**
      * Relationship hasMany with Post
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

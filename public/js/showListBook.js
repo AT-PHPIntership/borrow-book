@@ -1,15 +1,15 @@
 $("document").ready(function() {
     $.get("api/books", function(data) {
         data.data.forEach(function(book) {
-            if(typeof book.image_limit_books[0] === 'undefined') {
-                book.image_limit_books[0] = {
+            if(typeof book.image_books[0] === 'undefined') {
+                book.image_books[0] = {
                     'image': 'http://via.placeholder.com/150x150'
                 };
             }
             $('#books').append(
                     '<div class="col-md-3 text-center" >\
                         <div class="product-entry">\
-                            <div class="product-img" style="background-image: url('+ book.image_limit_books[0].image +');">\
+                            <div class="product-img" style="background-image: url('+ book.image_books[0].image +');">\
                                 <p class="tag"><span class="sale">'+ book.author +'</span></p>\
                                 <div class="cart">\
                                     <p>\
