@@ -13,7 +13,7 @@ class PostController extends ApiController
     /**
      * Api get list post following book_id
      *
-     * @param Request $id book_id
+     * @param Models\Book $book book
      *
      * @return \Illuminate\Http\Response
      */

@@ -112,4 +112,24 @@ class User extends Authenticatable
     {
         return asset(config('image.images_path') . $this->avatar);
     }
+
+    /**
+     * Get the user's avatar url.
+     *
+     * @return string
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'identity_number' => $this->identity_number,
+            'avatar' => $this->avatar,
+            'dob' => $this->dob,
+            'address' => $this->address,
+            'role' => $this->role,
+            'avatar' => $this->getAvatarUrlAttribute()
+        ];
+    }
 }
