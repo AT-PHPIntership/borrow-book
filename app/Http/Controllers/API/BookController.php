@@ -9,7 +9,7 @@ use App\Models\Book;
 
 class BookController extends ApiController
 {
-   /**
+    /**
      * Get api list books, search
      *
      * @param Request $request request
@@ -24,5 +24,18 @@ class BookController extends ApiController
         }
         $books = $books->with(['category', 'imageBooks'])->get();
         return $this->showAll($books, Response::HTTP_OK);
+    }
+
+    /**
+     * Api show detail book
+     *
+     * @param Models/Book $book book
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Book $book)
+    {
+        $book = $book->load(['category', 'imageBooks']);
+        return $this->showOne($book, Response::HTTP_OK);
     }
 }
