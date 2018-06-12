@@ -21,3 +21,4 @@ Route::post('login', 'API\LoginController@login');
 Route::post('register', 'API\LoginController@register');
 Route::get('books', 'API\BookController@index');
 Route::get('books/{book}', 'API\BookController@show');
+Route::get('posts/{id}', 'API\PostController@getPostFollowingBook');
