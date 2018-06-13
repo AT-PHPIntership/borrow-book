@@ -10,6 +10,9 @@ Get list books
 | sort | string | Sort Books |
 | page | number | Paninate Books |
 | search | string | Search Books |
+| category | number | Filter Books By Category |
+| language | string | Filter Books By Language |
+| number_of_page | number | Filter Books By Number Of Page |
 
 ```json
 "data": [
