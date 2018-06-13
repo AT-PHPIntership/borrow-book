@@ -30,11 +30,11 @@ class ApiGetListPostsOfBookTest extends TestCase
         factory(User::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Category::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Book::class, self::NUMBER_RECORD_CREATE)->create();
-        factory(Book::class, self::NUMBER_RECORD_CREATE)->create();
         factory(Post::class)->create([
             'id' => 1,
             'book_id' => 1,
         ]);
+        factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
     }
 
     /**
