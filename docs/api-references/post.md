@@ -79,7 +79,7 @@ Get list posts following book
                 "role": 1
             }
         }
-        ]
+        ],
 "first_page_url": "http://192.168.33.10/api/books/9/posts?page=1",
 "from": 1,
 "last_page": 1,
