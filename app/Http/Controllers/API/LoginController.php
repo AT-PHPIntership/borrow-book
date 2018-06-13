@@ -10,6 +10,7 @@ use App\Http\Requests\Api\RegisterRequest;
 use Illuminate\Auth\AuthenticationException;
 use Auth;
 use Validator;
+use DB;
 
 class LoginController extends ApiController
 {
@@ -51,5 +52,22 @@ class LoginController extends ApiController
         $success['name'] =  $user->name;
         $success['email'] =  $user->email;
         return response()->json(['success' => $success], Response::HTTP_OK);
+    }
+
+    /**
+     * Check access token api
+     *
+     * @param \Illuminate\Auth\AuthenticationException $exception exception
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkAccessToken(AuthenticationException $exception)
+    {
+        if (Auth::user()) {
+            $user = Auth::user();
+            return response()->json($user);
+        } else {
+            return response()->json(['error' => $exception->getMessage()], Response::HTTP_UNAUTHORIZED);
+        }
     }
 }

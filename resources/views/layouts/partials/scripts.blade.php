@@ -19,3 +19,5 @@
 <script src="js/jquery.stellar.min.js"></script>
 <!-- Main -->
 <script src="js/main.js"></script>
+<!-- Homepage -->
+<script src="js/homepage.js"></script>
