@@ -1,16 +1,39 @@
-$("document").ready(function() {
-    $.get("api/books", function(data) {
-        data.data.forEach(function(book) {
-            if(typeof book.image_books[0] === 'undefined') {
-                book.image_books[0] = {
+var current_page = 1;
+
+$(document).ready(function () {
+    getListBooks();
+});
+
+function getListBooks() {
+    $.get("api/books", {
+        _method : 'GET',
+        page: current_page
+    })
+    .done(function(data) {
+        var total_page = data.last_page;
+        if (total_page > 1) {
+            $('#pagination').twbsPagination({
+                totalPages: total_page,
+                visiblePages: 7,
+                onPageClick: function (event, pageL) {
+                    if (current_page != pageL) {
+                        current_page = pageL;
+                        getListBooks();
+                    }
+                }
+            });
+        }
+        var books = '';
+        $.each(data.data, function (key, value) {
+            if(typeof value.image_books[0] === 'undefined') {
+                value.image_books[0] = {
                     'image': 'http://via.placeholder.com/150x150'
                 };
             }
-            $('#books').append(
-                    '<div class="col-md-3 text-center" >\
+            books += '<div class="col-md-3 text-center" >\
                         <div class="product-entry">\
-                            <div class="product-img" style="background-image: url('+ book.image_books[0].image +');">\
-                                <p class="tag"><span class="sale">'+ book.author +'</span></p>\
+                            <div class="product-img" style="background-image: url('+ value.image_books[0].image +');">\
+                                <p class="tag"><span class="sale">'+ value.author +'</span></p>\
                                 <div class="cart">\
                                     <p>\
                                         <span><a href="#"></a></span>\
@@ -18,12 +41,20 @@ $("document").ready(function() {
                                 </div>\
                             </div>\
                             <div class="desc">\
-                                <h3><a href="#">'+ book.title +'</a></h3>\
+                                <h3><a href="#">'+ value.title +'</a></h3>\
                             </div>\
                         </div>\
-                    </div>'
-            );
+                    </div>';
+            $("#books").html(books);
         });
+    })
+    .fail(function(data) {
+        if (data.responseJSON.message) {
+            window.alert(data.responseJSON.message);
+        }
+        else {
+            window.alert(data.responseJSON);
+        }
     });
-
-});
+    
+}
