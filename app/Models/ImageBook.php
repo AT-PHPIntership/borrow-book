@@ -35,4 +35,17 @@ class ImageBook extends Model
     {
         return asset(config('image.images_path') . $this->image);
     }
+
+    /**
+     * Custom toArray Model ImageBook.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'book_id' => $this->book_id,
+            'image' => $this->getImageUrlAttribute()
+        ];
+    }
 }
