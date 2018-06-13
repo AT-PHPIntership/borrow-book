@@ -73,7 +73,7 @@ class Post extends Model
      *
      * @return \Illuminate\Http\Response
      */
-    public static function type($key)
+    public static function postType($key)
     {
         return Post::where('post_type', $key);
     }

@@ -7,8 +7,9 @@ Get list posts following book
 #### Query Param
 | Param | Type | Description |
 |---|---|---|
-| type | number | Type Of Posts |
+| post_type | number | Type Of Posts |
 | page | number | Paninate Posts |
+| sort | string | Sort Posts Follow Name |
 
 ```json
 "data": [

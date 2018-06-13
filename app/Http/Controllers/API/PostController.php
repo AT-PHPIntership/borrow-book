@@ -21,8 +21,8 @@ class PostController extends ApiController
     public function getPostFollowingBook(Request $request, Book $book)
     {
         $posts = new Post;
-        if ($request->has('type')) {
-            $posts = $posts->type($request->type);
+        if ($request->has('post_type')) {
+            $posts = $posts->postType($request->post_type);
         }
         $posts = $posts->with(['user'])->where('book_id', $book->id)->get();
         return $this->showAll($posts, Response::HTTP_OK);
