@@ -169,4 +169,3 @@ Get a detail book
    }
 }
 ```
->>>>>>> master
