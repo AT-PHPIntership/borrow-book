@@ -13,18 +13,14 @@ class PostController extends ApiController
     /**
      * Api get list post following book_id
      *
-     * @param Illuminate\Http\Request $request request
-     * @param Models\Book             $book    book
+     * @param Models\Book $book book
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPostFollowingBook(Request $request, Book $book)
+    public function getPostFollowingBook(Book $book)
     {
         $posts = new Post;
-        if ($request->has('post_type')) {
-            $posts = $posts->postType($request->post_type);
-        }
         $posts = $posts->with(['user'])->where('book_id', $book->id)->get();
-        return $this->showAll($posts, Response::HTTP_OK);
+        return $this->successResponse($posts, Response::HTTP_OK);
     }
 }
