@@ -10,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 trait ApiResponser
 {
+    protected $limit = 20;
     /**
      * Return success Response
      *
@@ -18,7 +19,7 @@ trait ApiResponser
      *
      * @return \Illuminate\Http\Response
      */
-    private function successResponse($data, $code)
+    protected function successResponse($data, $code)
     {
         return response()->json($data, $code);
     }
@@ -91,21 +92,20 @@ trait ApiResponser
     protected function paginate(Collection $collection)
     {
         $rules = [
-            'per_page' => 'integer|min:2|max:50'
+            'limit' => 'integer|min:2|max:50'
         ];
         
         Validator::validate(request()->all(), $rules);
         
         $page = LengthAwarePaginator::resolveCurrentPage();
-        
-        $prePage = 20;
-        if (request()->has('per_page')) {
-            $prePage = request()->per_page;
+
+        if (request()->has('limit')) {
+            $this->limit = request()->limit;
         }
         
-        $result = $collection->slice(($page - 1) * $prePage, $prePage);
+        $result = $collection->slice(($page - 1) * $this->limit, $this->limit);
         
-        $paginated = new LengthAwarePaginator($result, $collection->count(), $prePage, $page, [
+        $paginated = new LengthAwarePaginator($result, $collection->count(), $this->limit, $page, [
             'path' => LengthAwarePaginator::resolveCurrentPath()
         ]);
         
@@ -123,8 +123,8 @@ trait ApiResponser
      */
     protected function sortData(Collection $collection)
     {
-        if (request()->has('sort_by')) {
-            $collection = $collection->sortBy(request()->sort_by);
+        if (request()->has('sort')) {
+            $collection = $collection->sortBy(request()->sort);
         }
         
         return $collection->values();

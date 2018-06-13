@@ -21,6 +21,8 @@
     <div class="colorlib-loader"></div>
     <div id="page">
         @include('layouts.partials.header')
+        <!--Banner-->
+        @include('layouts.partials.banner')
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->

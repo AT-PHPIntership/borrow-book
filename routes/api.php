@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'API\LoginController@login');
 Route::post('register', 'API\LoginController@register');
+Route::get('books', 'API\BookController@index');
+Route::get('categories', 'API\CategoryController@index');
+Route::get('books/{book}', 'API\BookController@show');
+Route::get('books/{book}/posts', 'API\PostController@getPostFollowingBook');
