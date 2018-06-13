@@ -25,7 +25,6 @@ class PostController extends ApiController
             $posts = $posts->type($request->type);
         }
         $posts = $posts->with(['user'])->where('book_id', $book->id)->get();
-        $posts = $this->paginate($posts);
-        return $this->successResponse($posts, Response::HTTP_OK);
+        return $this->showAll($posts, Response::HTTP_OK);
     }
 }
