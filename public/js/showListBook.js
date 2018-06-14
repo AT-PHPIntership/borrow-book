@@ -43,7 +43,7 @@ function contentBook(data) {
                 'image': 'http://via.placeholder.com/150x150'
             };
         }
-        books += '<div class="col-md-3 text-center" >\
+        books += '<div class="col-md-4 text-center" >\
                     <div class="product-entry">\
                         <div class="product-img" style="background-image: url('+ value.image_books[0].image +');">\
                             <p class="tag"><span class="sale">'+ value.author +'</span></p>\
