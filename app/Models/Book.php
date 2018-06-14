@@ -64,7 +64,7 @@ class Book extends Model
     protected $fieldSearchable = [
         'category' => ['category_id' => '='],
         'number_of_page' => ['books.number_of_page' => 'between'],
-        'language' => ['books.language' => 'like']
+        'language' => ['books.language' => 'like'],
     ];
 
     /**

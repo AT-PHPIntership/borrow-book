@@ -21,10 +21,8 @@ class BookController extends ApiController
         $books = new Book;
         if ($request->has('search')) {
             $books = $books->search($request->search);
-        } else {
-            $books = $books->filter($request->all());
         }
-        $books = $books->with(['category', 'imageBooks'])->get();
+        $books = $books->filter($request->except(['search','sort','page']))->with(['category', 'imageBooks'])->get();
         return $this->showAll($books, Response::HTTP_OK);
     }
 
