@@ -91,3 +91,33 @@ Get list posts following book
 "to": 3,
 "total": 3
 ```
+### `DELETE` DELETE POST
+```
+/api/books/{book}/posts/{post}
+```
+Delete the post
+#### Request header
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}
+#### Parameters
+| Field | Type | Description |
+| --- | --- | --- |
+| id | Number | Id of post |
+#### Response success
+| Field | Type | Description |
+|---|---|---|
+| message | String | Status result |
+
+```json
+{
+    "status": "Successfully",
+}
+```
+#### Response fail
+```json
+{
+    "message": "Data not found!",
+}
+```
