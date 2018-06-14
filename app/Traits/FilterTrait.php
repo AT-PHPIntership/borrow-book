@@ -17,8 +17,9 @@ trait FilterTrait
     {
         if (isset($fields)) {
             foreach ($fields as $field => $value) {
-                if ($this->getColummnsFilter($field) !=null) {
-                    foreach ($this->getColummnsFilter($field) as $key => $operator) {
+                $columnsFilter = $this->getColummnsFilter($field);
+                if ($columnsFilter !=null) {
+                    foreach ($columnsFilter as $key => $operator) {
                         $this->addCondition($query, $key, $operator, $value);
                     }
                 }
