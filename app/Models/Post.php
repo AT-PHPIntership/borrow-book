@@ -65,4 +65,16 @@ class Post extends Model
     {
         return $this->belongsTo(Book::class, 'book_id');
     }
+
+    /**
+     * Get posts follow type_post
+     *
+     * @param int $key key of type post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public static function postType($key)
+    {
+        return Post::where('post_type', $key);
+    }
 }

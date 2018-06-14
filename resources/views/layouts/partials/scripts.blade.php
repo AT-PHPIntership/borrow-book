@@ -19,5 +19,7 @@
 <script src="js/jquery.stellar.min.js"></script>
 <!-- Main -->
 <script src="js/main.js"></script>
+<!-- Main -->
+<script src="js/jquery.twbsPagination.min.js"></script>
 <!-- Homepage -->
 <script src="js/homepage.js"></script>
