@@ -8,7 +8,7 @@ use App\Models\Book;
 class BookController extends Controller
 {
     /**
-     * show view detail book
+     * Show view detail book
      *
      * @param Models/Book $book book
      *
