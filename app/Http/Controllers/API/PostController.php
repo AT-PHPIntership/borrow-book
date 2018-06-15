@@ -33,7 +33,7 @@ class PostController extends ApiController
     }
 
     /**
-     * Api store new posst
+     * Api store new post
      *
      * @param \App\Models\Book                     $book    book of this post
      * @param \App\Http\Requests\CreatePostRequest $request request
@@ -43,23 +43,19 @@ class PostController extends ApiController
     public function store(Book $book, CreatePostRequest $request)
     {
         $user = Auth::user();
-        $post = new Post;
         DB::beginTransaction();
         try {
-            $post->user_id = $user->id;
-            $post->book_id = $book->id;
-            $post->body = $request->body;
-            if (isset($request->rate_point)) {
-                $post->rate_point = $request->rate_point;
-                $post->post_type = Post::REVIEW;
+            $input = $request->only('post_type', 'body');
+            if ($input['post_type'] == Post::REVIEW) {
+                $input['rate_point'] = $request->rate_point;
                 $book->total_rate += $request->rate_point;
                 $book->count_rate += 1;
                 $book->save();
-            } else {
-                $post->post_type = Post::COMMENT;
             }
-            $post->status = 0;
-            $post->save();
+            $input['user_id'] = $user->id;
+            $input['book_id'] = $book->id;
+            $input['status'] = 0;
+            $post = Post::create($input);
             DB::commit();
             return $this->showOne($post->load('user'), Response::HTTP_OK);
         } catch (Exception $e) {
