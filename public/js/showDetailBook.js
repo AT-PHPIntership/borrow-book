@@ -4,22 +4,16 @@ $.ajax({
     url: "/api/books/" + id,
     type: "get",
     success: function( data ) {
-        for(var i = 0; i <= 3; i++){
-            if(typeof data.image_books[i] === 'undefined') {
-                data.image_books[i] = {
-                    'image': 'http://via.placeholder.com/150x150'
-                };
+        let img='', imgItem='';
+        if(typeof data.image_books !== 'undefined') {
+            img += '<div class="product-img" style="background-image: url(' + data.image_books[0].image + ');"></div>';
+            for(var i = 1; i < data.image_books.length; i++ )
+            {                
+                imgItem += '<a href="#" class="thumb-img" style="background-image: url(' + data.image_books[i].image + ');"></a>';
             }
         }
-        let img = '';
-        img += '<div class="product-img" style="background-image: url(' + data.image_books[0].image + ');">\
-                </div>\
-                <div class="thumb-nail">\
-                    <a href="#" class="thumb-img" style="background-image: url(' + data.image_books[1].image + ');"></a>\
-                    <a href="#" class="thumb-img" style="background-image: url(' + data.image_books[2].image + ');"></a>\
-                    <a href="#" class="thumb-img" style="background-image: url(' + data.image_books[3].image + ');"></a>\
-                </div>'; 
-        $('.product-entry').append(img);
+        $('.product-img').html(img);
+        $('.thumb-nail').html(imgItem);
         $('#title').text(data.title);
         $('#author').text(data.author);
         $('#description').text(data.description);

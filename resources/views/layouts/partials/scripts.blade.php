@@ -22,4 +22,4 @@
 <!-- Main -->
 <script src="{{ asset('js/jquery.twbsPagination.min.js') }}"></script>
 <!-- Homepage -->
-<script src="js/homepage.js"></script>
+<script src="{{ asset('js/homepage.js') }}"></script>

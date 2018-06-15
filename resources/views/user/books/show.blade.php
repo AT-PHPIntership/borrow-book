@@ -8,6 +8,11 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="product-entry">
+                                        <div class="product-img" id="product" style="background-image: url('../storage/images/default-book.png')">
+                                        </div>
+                                        <div class="thumb-nail">
+                                            <a href="#" class="thumb-img" style="background-image: url();"></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
