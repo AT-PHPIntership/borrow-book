@@ -54,7 +54,7 @@ class PostController extends ApiController
             }
             $input['user_id'] = $user->id;
             $input['book_id'] = $book->id;
-            $input['status'] = 0;
+            $input['status'] = Post::UNACCEPT;
             $post = Post::create($input);
             DB::commit();
             return $this->showOne($post->load('user'), Response::HTTP_OK);
