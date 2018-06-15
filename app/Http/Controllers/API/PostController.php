@@ -63,4 +63,4 @@ class PostController extends ApiController
             throw new ModelNotFoundException();
         }
     }
- }
+}
