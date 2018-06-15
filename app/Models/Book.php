@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use App\Traits\FilterTrait;
 
 class Book extends Model
 {
-    use SoftDeletes, Sortable;
+    use SoftDeletes, Sortable, FilterTrait;
 
     /**
      * The attributes that should be mutated to dates.
@@ -53,6 +54,17 @@ class Book extends Model
         'title',
         'author',
         'quantity'
+    ];
+
+    /**
+     * The attributes that can be search.
+     *
+     * @var array $fieldSearchable
+     */
+    protected $fieldSearchable = [
+        'category' => ['category_id' => '='],
+        'number_of_page' => ['books.number_of_page' => 'between'],
+        'language' => ['books.language' => 'like'],
     ];
 
     /**

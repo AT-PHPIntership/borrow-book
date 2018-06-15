@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6, figure {
     .colorlib-nav ul li a {
       position: relative;
       font-size: 15px;
-      padding: 30px 12px;
+      padding: 10px 10px;
       color: rgba(0, 0, 0, 0.7);
       -webkit-transition: 0.5s;
       -o-transition: 0.5s;
@@ -2113,3 +2113,11 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+.category-list {
+  width: 350px;
+}
+.category-item {
+  float:left; 
+  width: 49%;
+  margin: 10px;
+}

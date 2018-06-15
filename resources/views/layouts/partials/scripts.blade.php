@@ -21,3 +21,5 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <!-- Main -->
 <script src="{{ asset('js/jquery.twbsPagination.min.js') }}"></script>
+<!-- Homepage -->
+<script src="js/homepage.js"></script>
