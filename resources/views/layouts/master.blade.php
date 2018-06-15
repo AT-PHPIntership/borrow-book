@@ -10,13 +10,16 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @include('layouts.partials.styles')
+
 </head>
 <body>
     <div class="colorlib-loader"></div>
     <div id="page">
         @include('layouts.partials.header')
         <!--Banner-->
+        @if (!request()->is('login'))
         @include('layouts.partials.banner')
+        @endif
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
