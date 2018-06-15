@@ -23,3 +23,5 @@
 <script src="js/jquery.twbsPagination.min.js"></script>
 <!-- Homepage -->
 <script src="js/homepage.js"></script>
+<!-- Load Categories -->
+<script src="js/showListBook.js"></script>

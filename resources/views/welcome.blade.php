@@ -13,5 +13,4 @@
 @endsection
 @section('scripts')
 <script src="js/showListCategories.js"></script>
-<script src="js/showListBook.js"></script>
 @endsection
