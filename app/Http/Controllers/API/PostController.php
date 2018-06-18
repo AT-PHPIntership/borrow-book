@@ -32,11 +32,11 @@ class PostController extends ApiController
     /**
      * Api delete post
      *
-     * @param Model/Post $post post
+     * @param Models/Post $post post
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book, Post $post)
+    public function destroy(Post $post)
     {
         DB::beginTransaction();
         try {

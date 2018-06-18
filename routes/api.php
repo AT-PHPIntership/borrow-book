@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('checkAccessToken', 'API\LoginController@checkAccessToken');
-    Route::delete('books/{book}/posts/{post}', 'API\PostController@destroy');
+    Route::delete('/posts/{post}', 'API\PostController@destroy');
 });
 
 Route::post('login', 'API\LoginController@login');
