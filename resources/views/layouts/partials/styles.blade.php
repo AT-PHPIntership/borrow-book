@@ -14,5 +14,7 @@
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
+<!-- Fontawsome  -->
+<link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>

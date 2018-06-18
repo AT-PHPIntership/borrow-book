@@ -21,3 +21,7 @@
 <script src="js/main.js"></script>
 <!-- Main -->
 <script src="js/jquery.twbsPagination.min.js"></script>
+<!-- Homepage -->
+<script src="js/homepage.js"></script>
+<!-- Categories -->
+<script src="{{ asset('js/showListCategories.js') }}"></script>
