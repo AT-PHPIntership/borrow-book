@@ -1,11 +1,14 @@
 var current_page = 1;
-
+var limit = 12;
+var url = "/api/books?limit=" + limit;
+var category = [];
 $(document).ready(function () {
     getListBooks();
+    getListCategoriesFilter();
 });
 
 function getListBooks() {
-    $.get("api/books", {
+    $.get(url, {
         _method : 'GET',
         page: current_page
     })
@@ -23,6 +26,7 @@ function getListBooks() {
                 }
             });
         }
+        $("#books").html('<h4 class="text-center h1">Not Found</h4>');
         contentBook(data);
     })
     .fail(function(data) {
@@ -36,6 +40,7 @@ function getListBooks() {
 }
 
 function contentBook(data) {
+
     var books = '';
     $.each(data.data, function (key, value) {
         if(typeof value.image_books[0] === 'undefined') {
@@ -43,13 +48,13 @@ function contentBook(data) {
                 'image': 'http://via.placeholder.com/150x150'
             };
         }
-        books += '<div class="col-md-3 text-center" >\
+        books += '<div class="col-md-4 text-center" >\
                     <div class="product-entry">\
                         <div class="product-img" style="background-image: url('+ value.image_books[0].image +');">\
                             <p class="tag"><span class="sale">'+ value.author +'</span></p>\
                             <div class="cart">\
                                 <p>\
-                                    <span><a href="#"></a></span>\
+                                    <span><a href="#"><i class="fa fa-eye"></i></a></span>\
                                 </p>\
                             </div>\
                         </div>\
@@ -60,4 +65,61 @@ function contentBook(data) {
                 </div>';
         $("#books").html(books);
     });
-} 
+}
+
+function getListCategoriesFilter() {
+    $.get("/api/categories", {
+        _method : 'GET',
+    }).done(function(data) {
+        contentCategory(data);
+    })
+    .fail(function(data) {
+        if (data.responseJSON.message) {
+            window.alert(data.responseJSON.message);
+        }
+        else {
+            window.alert(data.responseJSON);
+        }
+    });
+}
+
+function contentCategory(data) {
+    var categories = '';
+    $.each(data.data, function (key, value) {
+        categories +=   '<div class="checkbox">\
+                        <label><input name="category" type="checkbox" onclick="filterCategory(this.value)" id="checkCategory'+ value.id +'" value="'+ value.id +'">'+ value.name +'</label>\
+                        </div>';
+        $("#filter-categories").html(categories);
+    });
+}
+
+function filterCategory(value) {
+    if ($('#checkCategory' + value).is(':checked')) {
+        $('#checkCategory' + value).attr('disabled','disabled');
+        category.push(value);
+        url += '&category=' + category.toString();
+        getListBooks(url)
+    }
+}
+
+$("#filter-language").on("click", function filterLanguage() {
+    if ($('#filter-language option').is(':selected')) {
+        var language = $('#filter-language option:selected').val();
+        url += '&language=' + language;
+        getListBooks(url);
+    }
+});
+
+$(".number-of-page").on("click", function filterNumberPage() {
+    from = $('#from').val();
+    to = $('#to').val();
+    url += '&number_of_page=' + from + ',' + to;
+    getListBooks(url);
+});
+
+$("#filter-search").submit(function filterNumberPage(event) {
+    event.preventDefault();
+    search = $('#search').val();
+    url += '&search=' + search;
+    getListBooks(url);
+});

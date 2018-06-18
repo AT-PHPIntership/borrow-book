@@ -8,6 +8,16 @@ use App\Models\Book;
 class BookController extends Controller
 {
     /**
+     * Show All Books
+     *
+     * @return view
+     */
+    public function index()
+    {
+        return view('user.books.index');
+    }
+
+    /**
      * Show view detail book
      *
      * @param Models/Book $book book

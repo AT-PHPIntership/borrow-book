@@ -23,5 +23,5 @@
 <script src="{{ asset('js/jquery.twbsPagination.min.js') }}"></script>
 <!-- Homepage -->
 <script src="{{ asset('js/homepage.js') }}"></script>
-<!-- Load Categories -->
-<script src="{{ asset('js/showListBook.js') }}"></script>
+<!-- Categories -->
+<script src="{{ asset('js/showListCategories.js') }}"></script>

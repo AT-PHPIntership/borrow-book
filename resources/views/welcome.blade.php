@@ -11,6 +11,3 @@
         </div>
     </div>
 @endsection
-@section('scripts')
-<script src="js/showListCategories.js"></script>
-@endsection

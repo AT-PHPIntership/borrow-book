@@ -3,8 +3,8 @@ $(document).ready(function () {
 });
 
 function getListCategories() {
-    $.get("api/categories", {
-        _method : 'GET'
+    $.get("/api/categories", {
+        _method : 'GET',
     })
     .done(function(data) {
         titleCategory(data);
