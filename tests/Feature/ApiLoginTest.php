@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Models\User;
-use Laravel\Passport\ClientRepository;
+use Illuminate\Support\Facades\Artisan;
 
 class ApiLoginTest extends TestCase
 {
@@ -22,13 +22,8 @@ class ApiLoginTest extends TestCase
     {
         parent::setUp();
         factory(User::class)->create();
-        $clientRepository = new ClientRepository();
-        $client = $clientRepository->createPersonalAccessClient(
-            null, config('app.name'), 'http://192.168.10.10'
-        );
-        \DB::table('oauth_personal_access_clients')->insert([
-            'client_id' => $client->id,
-        ]);        
+
+        Artisan::call('passport:install');
     }
 
     /**
