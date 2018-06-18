@@ -27,4 +27,24 @@ class PostController extends ApiController
         $posts = $posts->with(['user'])->where('book_id', $book->id)->get();
         return $this->showAll($posts, Response::HTTP_OK);
     }
+
+    /**
+     * Api delete post
+     *
+     * @param Model/Post $post post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        DB::beginTransaction();
+        try {
+            $post->delete();
+            DB::commit();
+            return $this->showMessage("Sucessfully", Response::HTTP_OK);
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw new ModelNotFoundException();
+        }
+    }
 }
