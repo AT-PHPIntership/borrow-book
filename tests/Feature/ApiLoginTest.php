@@ -66,6 +66,22 @@ class ApiLoginTest extends TestCase
             ->assertJsonStructure($this->jsonStructureLogin());
     }
 
+     /**
+     * Test error login.
+     *
+     * @return void
+     */
+    public function testErrorLogin()
+    {
+        $user = User::find(1);
+        $body = [
+            'email' => $user->email,
+            'password' => 'secret1'
+        ];
+        $this->json('POST', '/api/login', $body, ['Accept' => 'application/json'])
+            ->assertStatus(Response::HTTP_UNAUTHORIZED);
+    }
+
     /**
      * Test check some object compare database.
      *
