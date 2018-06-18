@@ -41,14 +41,14 @@ class PostController extends ApiController
      */
     public function destroy(Post $post)
     {
-        if($post->user_id == Auth::id()) {
+        if ($post->user_id == Auth::id()) {
             $post->delete();
             return $this->showOne($post->load('user'), Response::HTTP_OK);
         } else {
             return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_OK);
-
+        }
     }
-
+    
     /**
      * Api store new post
      *
