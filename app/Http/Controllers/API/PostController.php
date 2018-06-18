@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Post;
 use App\Models\Book;
+use DB;
 
 class PostController extends ApiController
 {
@@ -35,13 +36,13 @@ class PostController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Book $book, Post $post)
     {
         DB::beginTransaction();
         try {
             $post->delete();
             DB::commit();
-            return $this->showMessage("Sucessfully", Response::HTTP_OK);
+            return $this->responseDeleteSuccess(Response::HTTP_OK);
         } catch (Exception $e) {
             DB::rollBack();
             throw new ModelNotFoundException();
