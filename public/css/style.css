@@ -559,7 +559,7 @@ h1, h2, h3, h4, h5, h6, figure {
       margin-bottom: 2em; } }
   .product-detail-wrap .thumb-nail .thumb-img {
     height: 120px;
-    width: 31.87%;
+    width: 31.5%;
     float: left;
     margin-left: 8px; }
     .product-detail-wrap .thumb-nail .thumb-img:first-child {
@@ -1176,7 +1176,6 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative; }
   .color-wrap p.color-desc {
     margin-bottom: 0;
-    text-transform: uppercase;
     display: block;
     font-weight: 500; }
     .color-wrap p.color-desc .color {

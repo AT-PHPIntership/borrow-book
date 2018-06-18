@@ -31,7 +31,7 @@
                                         <select name="language" id="filter-language" class="form-control">
                                             <option value="#" disabled selected>{{ trans('listBook.filter.select.choose') }}</option>
                                             <option value="English">{{ trans('listBook.filter.select.english') }}</option>
-                                            <option value="VietNamese">{{ trans('listBook.filter.select.vietNamese') }}</option>
+                                            <option value="VietNamese">{{ trans('listBook.filter.select.vietnamese') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -85,5 +85,5 @@
     </div>
 @endsection
 @section('scripts')
-<script src="js/showListBook.js"></script>
+<script src="{{ asset('js/showListBook.js') }}"></script>
 @endsection
