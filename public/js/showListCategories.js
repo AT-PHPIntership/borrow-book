@@ -4,8 +4,7 @@ $(document).ready(function () {
 
 function getListCategories() {
     $.get("api/categories", {
-        _method : 'GET',
-        page: current_page
+        _method : 'GET'
     })
     .done(function(data) {
         titleCategory(data);
