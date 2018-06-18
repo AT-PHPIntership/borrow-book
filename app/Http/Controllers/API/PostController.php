@@ -7,6 +7,8 @@ use App\Http\Controllers\ApiController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Post;
 use App\Models\Book;
+use App\Models\User;
+use Auth;
 use DB;
 
 class PostController extends ApiController
@@ -38,14 +40,12 @@ class PostController extends ApiController
      */
     public function destroy(Post $post)
     {
-        DB::beginTransaction();
-        try {
+        if($post->user_id == Auth::id()) {
             $post->delete();
-            DB::commit();
-            return $this->responseDeleteSuccess(Response::HTTP_OK);
-        } catch (Exception $e) {
-            DB::rollBack();
-            throw new ModelNotFoundException();
+            return $this->showOne($post->load('user'), Response::HTTP_OK);
+        } else {
+            return $this->errorResponse("Can not delete this comment!", Response::HTTP_OK);
+
         }
     }
 }
