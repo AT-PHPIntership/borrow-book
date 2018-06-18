@@ -66,6 +66,18 @@ class ApiLoginTest extends TestCase
             ->assertJsonStructure($this->jsonStructureLogin());
     }
 
+    /**
+     * Return structure of json error login.
+     *
+     * @return array
+     */
+    public function jsonStructureErrorLogin()
+    {
+        return [
+            "error",
+        ];
+    }
+
      /**
      * Test error login.
      *
@@ -79,7 +91,8 @@ class ApiLoginTest extends TestCase
             'password' => 'secret1'
         ];
         $this->json('POST', '/api/login', $body, ['Accept' => 'application/json'])
-            ->assertStatus(Response::HTTP_UNAUTHORIZED);
+            ->assertStatus(Response::HTTP_UNAUTHORIZED)
+            ->assertJsonStructure($this->jsonStructureErrorLogin());
     }
 
     /**
