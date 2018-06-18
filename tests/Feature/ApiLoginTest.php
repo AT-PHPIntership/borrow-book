@@ -22,7 +22,6 @@ class ApiLoginTest extends TestCase
     {
         parent::setUp();
         factory(User::class)->create();
-
         $clientRepository = new ClientRepository();
         $client = $clientRepository->createPersonalAccessClient(
             null, config('app.name'), 'http://192.168.10.10'
@@ -67,7 +66,7 @@ class ApiLoginTest extends TestCase
             'email' => $user->email,
             'password' => 'secret'
         ];
-        $this->json('POST','/api/login',$body,['Accept' => 'application/json'])
+        $this->json('POST', '/api/login', $body, ['Accept' => 'application/json'])
             ->assertStatus(200)
             ->assertJsonStructure($this->jsonStructureLogin());
     }
@@ -84,15 +83,15 @@ class ApiLoginTest extends TestCase
             'email' => $user->email,
             'password' => 'secret'
         ];
-        $response = $this->json('POST','/api/login',$body,['Accept' => 'application/json']);
-        $user = json_decode($response->getContent())->user;
+        $response = $this->json('POST', '/api/login', $body, ['Accept' => 'application/json']);
+        $data = json_decode($response->getContent());
         $arrayCompare = [
-            'name' => $user->name,
-            'identity_number' => $user->identity_number,
-            'email' => $user->email,
-            'dob' => $user->dob,
-            'address' => $user->address,
-            'role' => $user->role
+            'name' => $data->user->name,
+            'identity_number' => $data->user->identity_number,
+            'email' => $data->user->email,
+            'dob' => $data->user->dob,
+            'address' => $data->user->address,
+            'role' => $data->user->role
         ];
         $this->assertDatabaseHas('users', $arrayCompare);    
     }

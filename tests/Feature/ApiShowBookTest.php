@@ -12,7 +12,7 @@ use App\Models\ImageBook;
 use Illuminate\Http\Response;
 use DB;
 
-class ApiGetListPostsOfBookTest extends TestCase
+class ApiShowBookTest extends TestCase
 {
     use DatabaseMigrations;
     const NUMBER_RECORD_CREATE = 5;
