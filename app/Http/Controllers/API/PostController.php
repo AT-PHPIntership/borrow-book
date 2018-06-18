@@ -10,6 +10,7 @@ use App\Models\Book;
 use App\Models\User;
 use Auth;
 use DB;
+use App\Http\Requests\CreatePostRequest;
 
 class PostController extends ApiController
 {
@@ -46,6 +47,37 @@ class PostController extends ApiController
         } else {
             return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_OK);
 
+    }
+
+    /**
+     * Api store new post
+     *
+     * @param \App\Models\Book                     $book    book of this post
+     * @param \App\Http\Requests\CreatePostRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Book $book, CreatePostRequest $request)
+    {
+        $user = Auth::user();
+        DB::beginTransaction();
+        try {
+            $input = $request->only('post_type', 'body');
+            if ($input['post_type'] == Post::REVIEW) {
+                $input['rate_point'] = $request->rate_point;
+                $book->total_rate += $request->rate_point;
+                $book->count_rate += 1;
+                $book->save();
+            }
+            $input['user_id'] = $user->id;
+            $input['book_id'] = $book->id;
+            $input['status'] = Post::UNACCEPT;
+            $post = Post::create($input);
+            DB::commit();
+            return $this->showOne($post->load('user'), Response::HTTP_OK);
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw new ModelNotFoundException();
         }
     }
 }
