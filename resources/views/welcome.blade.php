@@ -12,5 +12,5 @@
     </div>
 @endsection
 @section('scripts')
-<script src="js/showListBook.js"></script>
+<script src="js/showListCategories.js"></script>
 @endsection

@@ -91,9 +91,56 @@ Get list posts following book
 "to": 3,
 "total": 3
 ```
+### `POST` Create new Post
+```
+/api/books/{book}/posts
+```
+Create new post
+
+#### Request header
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}
+
+#### Parameters
+| Key | Value | Required | Description |
+|---|---|---|---|
+| status | Number | required | Post type (status,find book,review) |
+| content | String | required | Content of post |
+| book_id | Number | optional | Id book review (required when status is review) |
+| rating | Number | optional | Rating for book (required when status is review) |
+
+#### Response - Success
+```json
+{
+    "data": {
+        "id": 14,
+        "user_id": 9,
+        "book_id": 9,
+        "post_type": 1,
+        "body": "Et veniam in nemo commodi molestiae. Voluptas quibusdam perferendis beatae molestias. Qui deserunt cumque veniam commodi et debitis recusandae.",
+        "rate_point": 3.1,
+        "status": 0,
+        "deleted_at": null,
+        "created_at": "2018-06-06 08:45:01",
+        "updated_at": "2018-06-06 08:45:01",
+        "user": {
+            "id": 9,
+            "name": "Prof. Fern Ryan",
+            "email": "skertzmann@example.com",
+            "identity_number": "378468817",
+            "avatar": "http://192.168.33.10/storage/images/default-user.png",
+            "dob": "2000-12-10",
+            "address": "460 Heidi Mount Apt. 732\nWest Zack, RI 05510-4851",
+            "role": 1
+        }
+    }
+}
+```
 ### `DELETE` DELETE POST
 ```
-/api/books/{book}/posts/{post}
+/api/posts/{post}
 ```
 Delete the post
 #### Request header
@@ -106,18 +153,30 @@ Delete the post
 | --- | --- | --- |
 | id | Number | Id of post |
 #### Response success
-| Field | Type | Description |
-|---|---|---|
-| message | String | Status result |
 
 ```json
 {
-    "status": "Successfully",
-}
-```
-#### Response fail
-```json
-{
-    "message": "Data not found!",
+    "data": {
+        "id": 14,
+        "user_id": 9,
+        "book_id": 9,
+        "post_type": 1,
+        "body": "Et veniam in nemo commodi molestiae. Voluptas quibusdam perferendis beatae molestias. Qui deserunt cumque veniam commodi et debitis recusandae.",
+        "rate_point": 3.1,
+        "status": 0,
+        "deleted_at": "2018-06-06 08:45:01",
+        "created_at": "2018-06-06 08:45:01",
+        "updated_at": "2018-06-06 08:45:01",
+        "user": {
+            "id": 9,
+            "name": "Prof. Fern Ryan",
+            "email": "skertzmann@example.com",
+            "identity_number": "378468817",
+            "avatar": "http://192.168.33.10/storage/images/default-user.png",
+            "dob": "2000-12-10",
+            "address": "460 Heidi Mount Apt. 732\nWest Zack, RI 05510-4851",
+            "role": 1
+        }
+    }
 }
 ```

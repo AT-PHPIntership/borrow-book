@@ -39,6 +39,8 @@ test:
     - php artisan key:generate
     - touch storage/logs/laravel.log
     - sudo chmod -R 777 storage
+    - mkdir -p public/storage/
+    - mkdir -p public/storage/images
   override:
     # phpcs circleci status
     - ./vendor/bin/phpcs -n --standard=phpcs.xml

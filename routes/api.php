@@ -17,6 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('checkAccessToken', 'API\LoginController@checkAccessToken');
+    Route::post('books/{book}/posts', 'API\PostController@store');
+});
+
 Route::post('login', 'API\LoginController@login');
 Route::post('register', 'API\LoginController@register');
 Route::get('books', 'API\BookController@index');

@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6, figure {
     .colorlib-nav ul li a {
       position: relative;
       font-size: 15px;
-      padding: 30px 12px;
+      padding: 10px 10px;
       color: rgba(0, 0, 0, 0.7);
       -webkit-transition: 0.5s;
       -o-transition: 0.5s;
@@ -559,7 +559,7 @@ h1, h2, h3, h4, h5, h6, figure {
       margin-bottom: 2em; } }
   .product-detail-wrap .thumb-nail .thumb-img {
     height: 120px;
-    width: 31.87%;
+    width: 31.5%;
     float: left;
     margin-left: 8px; }
     .product-detail-wrap .thumb-nail .thumb-img:first-child {
@@ -1176,7 +1176,6 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative; }
   .color-wrap p.color-desc {
     margin-bottom: 0;
-    text-transform: uppercase;
     display: block;
     font-weight: 500; }
     .color-wrap p.color-desc .color {
@@ -2114,3 +2113,11 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+.category-list {
+  width: 350px;
+}
+.category-item {
+  float:left; 
+  width: 49%;
+  margin: 10px;
+}
