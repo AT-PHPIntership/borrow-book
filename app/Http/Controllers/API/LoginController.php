@@ -70,4 +70,17 @@ class LoginController extends ApiController
             return response()->json(['error' => $exception->getMessage()], Response::HTTP_UNAUTHORIZED);
         }
     }
+
+    /**
+     * Logout
+     *
+     * @return 204
+     */
+    public function logout()
+    {
+        $user = Auth::user();
+        $accessToken = $user->token();
+        $accessToken->revoke();
+        return $this->successResponse(null, Response::HTTP_NO_CONTENT);
+    }
 }
