@@ -1,7 +1,7 @@
 ### `POST` Register
 
 ```
-/api/register
+/api/users/register
 ```
 Post a register
 
@@ -13,7 +13,6 @@ Post a register
 | email | String | Email of user |
 | password | Integer | Password of user  |
 | identity_number | Integer | Identity number of user |
-| language | String | Language of user |
 | avatar | string | Avatar of user |
 | dob | date | Birthday of user |
 | address | String | Address of user |
@@ -31,7 +30,7 @@ Post a register
         "avatar": "default-user.png",
         "dob": "1983-07-27",
         "address": "42587 Patsy Tunnel Suite 472\nD'Amoreport, AL 37783",
-        "role": 0,
+        "role": null,
     }
 }
 ```
