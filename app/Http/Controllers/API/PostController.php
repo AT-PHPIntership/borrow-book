@@ -7,10 +7,10 @@ use App\Http\Controllers\ApiController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Post;
 use App\Models\Book;
-use App\Http\Requests\CreatePostRequest;
+use App\Models\User;
 use Auth;
 use DB;
-use App\Models\User;
+use App\Http\Requests\CreatePostRequest;
 
 class PostController extends ApiController
 {
@@ -32,6 +32,23 @@ class PostController extends ApiController
         return $this->showAll($posts, Response::HTTP_OK);
     }
 
+    /**
+     * Api delete post
+     *
+     * @param Models/Post $post post
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Post $post)
+    {
+        if ($post->user_id == Auth::id()) {
+            $post->delete();
+            return $this->showOne($post->load('user'), Response::HTTP_OK);
+        } else {
+            return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_OK);
+        }
+    }
+    
     /**
      * Api store new post
      *
