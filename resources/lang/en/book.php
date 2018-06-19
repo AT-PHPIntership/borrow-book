@@ -4,6 +4,8 @@
 
         'list_book' => 'List Book',
         'detail_book' => 'Detail Book',
+        'comment' => 'Comment',
+        'review' => 'Review',
         'table_head' => [
             'image' => 'Image',
             'title' => 'Title',
