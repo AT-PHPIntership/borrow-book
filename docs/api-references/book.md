@@ -1,3 +1,5 @@
+## Books API
+
 ### `GET` List Books
 ```
 /api/books
