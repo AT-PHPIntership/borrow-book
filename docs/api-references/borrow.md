@@ -3,7 +3,7 @@
 ### `POST` Borrow
 
 ```
-/api/borrow/user/{user}/book/{book}
+/api/user/{user}/book/{book}/borrow
 ```
 Post a register
 
@@ -20,6 +20,15 @@ Post a register
 | id | Integer | Id of borrow detail |
 | book_id | Integer | Id of book |
 | borrow_id | Integer | Id of borrow |
+| user | Object | Object user |
+| id | Integer | Id of user |
+| name | String | Name of user |
+| email | String | Email of user |
+| identity_number | Integer | Name of user |
+| avatar | Integer | Name of user |
+| dob | Date | Birthday of user |
+| address | String | Address of user |
+| role | Integer | Role of user |
 
 ```json
 {
@@ -33,8 +42,18 @@ Post a register
         "borrow_detail": {
             "id": 16,
             "book_id": 1,
-            "borrow_id": 15;
+            "borrow_id": 15,
         },
+        "user": {
+            "id": 2,
+            "name": "Prof. Fern Ryan",
+            "email": "skertzmann@example.com",
+            "identity_number": "378468817",
+            "avatar": "http://192.168.33.10/storage/images/default-user.png",
+            "dob": "2000-12-10",
+            "address": "460 Heidi Mount Apt. 732\nWest Zack, RI 05510-4851",
+            "role": 0
+        }
     }
 }
 ```
