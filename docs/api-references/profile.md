@@ -23,7 +23,7 @@ Get profile user
         "email": "jhayes@example.com",
         "name": "Mr. Fabian Rippin PhD",
         "identity_number": "375699562",
-        "avatar": "default-user.png",
+        "avatar": "http://192.168.10.10/storage/images/default-user.png",
         "dob": "1983-07-27",
         "address": "42587 Patsy Tunnel Suite 472\nD'Amoreport, AL 37783",
         "role": 0,
