@@ -180,3 +180,26 @@ Delete the post
     }
 }
 ```
+### `POST` Update post
+```
+/api/posts/{id}
+```
+Update post
+
+#### Request headers
+| Key | Value |
+|---|---|
+|Accept|application\json
+|Authorization|{token_type} {access_token}|
+
+#### Request body
+| Key | Type | Description |
+|---|---|---|
+| id | Integer | Id post |
+| body | Text | Content of post |
+
+#### Response
+```
+{
+    "body": "new content",
+}
