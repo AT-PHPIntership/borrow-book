@@ -17,7 +17,9 @@
                         <li><a href=""></a></li>
                         <li><a href=""></a></li>
                         <li><a href=""></a></li>
-                        <li id="login"><a href="{{ route('login') }}">{{ trans('homepage.login') }}</a></li>
+                        <li id="login" class="dropdown">
+                            <a href="{{ route('login') }}">{{ trans('homepage.login') }}</a>
+                        </li>
                         <li id="register"><a href="">{{ trans('homepage.register') }}</a></li>
                     </ul>
                 </div>

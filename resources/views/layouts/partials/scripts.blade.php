@@ -19,6 +19,8 @@
 <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
 <!-- Main -->
 <script src="{{ asset('js/main.js') }}"></script>
+<!-- Message -->
+<script src="{{ asset('js/message.js') }}"></script>
 <!-- Main -->
 <script src="{{ asset('js/jquery.twbsPagination.min.js') }}"></script>
 <!-- Homepage -->
