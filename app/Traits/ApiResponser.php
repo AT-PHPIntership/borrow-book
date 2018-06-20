@@ -124,7 +124,7 @@ trait ApiResponser
     protected function sortData(Collection $collection)
     {
         if (request()->has('sort')) {
-            $collection = $collection->sortBy(request()->sort);
+            $collection = $collection->sortByDesc(request()->sort);
         }
         
         return $collection->values();
