@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-2">
-                    <div id="colorlib-logo"><a href="#">Laravel</a></div>
+                    <div id="colorlib-logo"><a href="{{ route('welcome') }}">{{ config('app.name') }}</a></div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
                     <ul>
@@ -20,7 +20,9 @@
                         <li id="login" class="dropdown">
                             <a href="{{ route('login') }}">{{ trans('homepage.login') }}</a>
                         </li>
-                        <li id="register"><a href="">{{ trans('homepage.register') }}</a></li>
+                        <li id="register">
+                            <a href="{{ route('register') }}">{{ trans('homepage.register') }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
