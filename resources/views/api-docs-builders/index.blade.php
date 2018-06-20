@@ -4,4 +4,5 @@
 {!! file_get_contents(base_path('docs/api-references/book.md')) !!}
 {!! file_get_contents(base_path('docs/api-references/category.md')) !!}
 {!! file_get_contents(base_path('docs/api-references/post.md')) !!}
+{!! file_get_contents(base_path('docs/api-references/borrow.md')) !!}
 {!! file_get_contents(base_path('docs/api-references/profile.md')) !!}

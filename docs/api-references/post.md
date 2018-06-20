@@ -1,4 +1,6 @@
-### `GET` List posts following book
+## Posts API
+
+### `GET` List Posts Following Book
 ```
 /api/books/{book}/posts
 ```
@@ -91,7 +93,7 @@ Get list posts following book
 "to": 3,
 "total": 3
 ```
-### `POST` Create new Post
+### `POST` Create New Post
 ```
 /api/books/{book}/posts
 ```
@@ -138,7 +140,7 @@ Create new post
     }
 }
 ```
-### `DELETE` DELETE POST
+### `DELETE` Delete Post
 ```
 /api/posts/{post}
 ```
