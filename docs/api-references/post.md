@@ -182,3 +182,37 @@ Delete the post
     }
 }
 ```
+### `PUT` Update post
+```
+/api/posts/{id}
+```
+Update post
+
+#### Request headers
+| Key | Value |
+|---|---|
+|Accept|application\json
+|Authorization|{token_type} {access_token}|
+
+#### Request body
+| Key | Type | Description |
+|---|---|---|
+| body | Text | Content of post |
+
+#### Response
+```json
+{
+     "data": {
+        "id": 14,
+        "user_id": 9,
+        "book_id": 9,
+        "post_type": 1,
+        "body": "new content",
+        "rate_point": 3.1,
+        "status": 0,
+        "deleted_at": null,
+        "created_at": "2018-06-06 08:45:01",
+        "updated_at": "2018-06-06 08:45:01"
+    }
+}
+```
