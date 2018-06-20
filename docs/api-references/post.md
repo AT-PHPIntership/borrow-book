@@ -180,7 +180,7 @@ Delete the post
     }
 }
 ```
-### `POST` Update post
+### `PUT` Update post
 ```
 /api/posts/{id}
 ```
@@ -195,11 +195,22 @@ Update post
 #### Request body
 | Key | Type | Description |
 |---|---|---|
-| id | Integer | Id post |
 | body | Text | Content of post |
 
 #### Response
-```
+```json
 {
-    "body": "new content",
+     "data": {
+        "id": 14,
+        "user_id": 9,
+        "book_id": 9,
+        "post_type": 1,
+        "body": "new content",
+        "rate_point": 3.1,
+        "status": 0,
+        "deleted_at": null,
+        "created_at": "2018-06-06 08:45:01",
+        "updated_at": "2018-06-06 08:45:01"
+    }
 }
+```
