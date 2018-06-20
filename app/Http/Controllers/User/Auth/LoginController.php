@@ -16,4 +16,14 @@ class LoginController extends Controller
     {
         return view('user.auth.login');
     }
+
+    /**
+     * Show the application's register form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegisterForm()
+    {
+        return view('user.auth.register');
+    }
 }

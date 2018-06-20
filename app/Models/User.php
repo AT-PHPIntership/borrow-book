@@ -110,7 +110,10 @@ class User extends Authenticatable
      */
     public function getAvatarUrlAttribute()
     {
-        return asset(config('image.images_path') . $this->avatar);
+        if ($this->avatar) {
+            return asset(config('image.images_path') . $this->avatar);
+        }
+        return asset(config('image.images_path') . 'default-user.png');
     }
 
     /**
@@ -125,11 +128,10 @@ class User extends Authenticatable
             'name' => $this->name,
             'email' => $this->email,
             'identity_number' => $this->identity_number,
-            'avatar' => $this->avatar,
+            'avatar' => $this->avatar_url,
             'dob' => $this->dob,
             'address' => $this->address,
-            'role' => $this->role,
-            'avatar' => $this->getAvatarUrlAttribute()
+            'role' => $this->role
         ];
     }
 }
