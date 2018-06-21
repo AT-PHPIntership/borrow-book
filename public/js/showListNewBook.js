@@ -1,16 +1,16 @@
 var limit = 8;
 var sortBy = "created_at";
-var url = "api/books?sortBy="+ sortBy +"&limit="+ limit;
+var url = "api/books?sortBy=" + sortBy + "&limit=" + limit;
 $(document).ready(function () {
-
+    getListNewBooks()
 });
 
-function getListCategories() {
+function getListNewBooks() {
     $.get(url, {
         _method : 'GET',
     })
     .done(function(data) {
-        titleCategory(data);
+        contentNewBook(data);
     })
     .fail(function(data) {
         if (data.responseJSON.message) {
@@ -22,8 +22,7 @@ function getListCategories() {
     });
 }
 
-function contentBook(data) {
-
+function contentNewBook(data) {
     var books = '';
     $.each(data.data, function (key, value) {
         if(typeof value.image_books[0] === 'undefined') {
@@ -31,21 +30,21 @@ function contentBook(data) {
                 'image': 'http://via.placeholder.com/150x150'
             };
         }
-        books += '<div class="col-md-4 text-center" >\
+        books += '<div class="col-md-3 text-center" >\
                     <div class="product-entry">\
                         <div class="product-img" style="background-image: url('+ value.image_books[0].image +');">\
                             <p class="tag"><span class="sale">'+ value.author +'</span></p>\
                             <div class="cart">\
                                 <p>\
-                                    <span><a href="#"><i class="fa fa-eye"></i></a></span>\
+                                    <span><a href="/books/' + value.id + '"><i class="fa fa-eye"></i></a></span>\
                                 </p>\
                             </div>\
                         </div>\
                         <div class="desc">\
-                            <h3><a href="#">'+ value.title +'</a></h3>\
+                            <h3><a href="/books/' + value.id + '">'+ value.title +'</a></h3>\
                         </div>\
                     </div>\
                 </div>';
-        $("#books").html(books);
+        $("#new-books").html(books);
     });
 }
