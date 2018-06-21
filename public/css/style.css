@@ -2121,3 +2121,10 @@ input[type="text"] {
   width: 49%;
   margin: 10px;
 }
+#show-more {
+  font-size: 20px;
+  font-weight: bold;
+}
+.decription-title {
+  font-size: 20px;
+}
