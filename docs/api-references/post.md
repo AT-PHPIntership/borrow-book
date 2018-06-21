@@ -1,4 +1,6 @@
-### `GET` List posts following book
+## Posts API
+
+### `GET` List Posts Following Book
 ```
 /api/books/{book}/posts
 ```
@@ -91,7 +93,7 @@ Get list posts following book
 "to": 3,
 "total": 3
 ```
-### `POST` Create new Post
+### `POST` Create New Post
 ```
 /api/books/{book}/posts
 ```
@@ -138,7 +140,7 @@ Create new post
     }
 }
 ```
-### `DELETE` DELETE POST
+### `DELETE` Delete Post
 ```
 /api/posts/{post}
 ```
@@ -180,6 +182,7 @@ Delete the post
     }
 }
 ```
+
 ### `GET` List posts following user
 ```
 /api/users/{user}/posts
@@ -249,5 +252,40 @@ Get list posts following user
     "prev_page_url": null,
     "to": 3,
     "total": 3
+}
+```
+
+### `PUT` Update post
+```
+/api/posts/{id}
+```
+Update post
+
+#### Request headers
+| Key | Value |
+|---|---|
+|Accept|application\json
+|Authorization|{token_type} {access_token}|
+
+#### Request body
+| Key | Type | Description |
+|---|---|---|
+| body | Text | Content of post |
+
+#### Response
+```json
+{
+     "data": {
+        "id": 14,
+        "user_id": 9,
+        "book_id": 9,
+        "post_type": 1,
+        "body": "new content",
+        "rate_point": 3.1,
+        "status": 0,
+        "deleted_at": null,
+        "created_at": "2018-06-06 08:45:01",
+        "updated_at": "2018-06-06 08:45:01"
+    }
 }
 ```

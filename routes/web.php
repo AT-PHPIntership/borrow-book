@@ -47,6 +47,7 @@ Route::post('admin/login', 'Auth\LoginController@login');
 Route::post('admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
 
 Route::get('login', 'User\Auth\LoginController@showLoginForm')->name('login');
+Route::get('register', 'User\Auth\LoginController@showRegisterForm')->name('register');
 Route::resource('books', 'BookController')->except([
     'store', 'update', 'destroy'
 ]);

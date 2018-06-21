@@ -1,5 +1,9 @@
 <!-- jQuery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
+<!-- Message -->
+<script src="{{ asset('js/message.js') }}"></script>
+<!-- Homepage -->
+<script src="{{ asset('js/homepage.js') }}"></script>
 <!-- jQuery Easing -->
 <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
 <!-- Bootstrap -->
@@ -21,7 +25,5 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <!-- Main -->
 <script src="{{ asset('js/jquery.twbsPagination.min.js') }}"></script>
-<!-- Homepage -->
-<script src="{{ asset('js/homepage.js') }}"></script>
 <!-- Categories -->
 <script src="{{ asset('js/showListCategories.js') }}"></script>

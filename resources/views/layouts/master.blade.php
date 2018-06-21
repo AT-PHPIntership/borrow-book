@@ -17,7 +17,7 @@
     <div id="page">
         @include('layouts.partials.header')
         <!--Banner-->
-        @if (!request()->is('login'))
+        @if (!request()->is('login') && !request()->is('register'))
         @include('layouts.partials.banner')
         @endif
         <!-- Content Wrapper. Contains page content -->

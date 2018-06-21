@@ -1,4 +1,4 @@
-## Category Api - Just sample API
+## Category Api
 
 ### `GET` List Categories
 ```

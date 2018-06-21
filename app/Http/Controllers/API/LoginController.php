@@ -45,13 +45,12 @@ class LoginController extends ApiController
      */
     public function register(RegisterRequest $request)
     {
-        $data = $request->all();
-        $data['password'] = bcrypt($data['password']);
-        $user = User::create($data);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
-        $success['name'] =  $user->name;
-        $success['email'] =  $user->email;
-        return response()->json(['success' => $success], Response::HTTP_OK);
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $user = User::create($input);
+        $data['token'] =  $user->createToken('MyApp')->accessToken;
+        $data['user'] =  $user;
+        return response()->json($data, Response::HTTP_OK);
     }
 
     /**
@@ -69,5 +68,18 @@ class LoginController extends ApiController
         } else {
             return response()->json(['error' => $exception->getMessage()], Response::HTTP_UNAUTHORIZED);
         }
+    }
+
+    /**
+     * Logout
+     *
+     * @return 204
+     */
+    public function logout()
+    {
+        $user = Auth::user();
+        $accessToken = $user->token();
+        $accessToken->revoke();
+        return $this->successResponse(null, Response::HTTP_NO_CONTENT);
     }
 }
