@@ -188,7 +188,11 @@ Delete the post
 /api/users/{user}/posts
 ```
 Get list posts following user
-
+#### Request header
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
 #### Query Param
 | Param | Type | Description | 
 |---|---|---|
