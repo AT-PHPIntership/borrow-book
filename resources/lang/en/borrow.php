@@ -18,6 +18,7 @@
             'borrowing' => 'Borrowing'
         ],
         'messages' => [
-            'confirm_delete_message' => 'Are you sure?'
+            'confirm_delete_message' => 'Are you sure?',
+            'error' => 'Quantity book has run out'
         ]
     ];

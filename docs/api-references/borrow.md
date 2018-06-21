@@ -3,9 +3,15 @@
 ### `POST` Borrow
 
 ```
-/api/user/{user}/book/{book}/borrow
+/api/borrow
 ```
-Post a register
+Post new borrow
+
+#### Request header
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}
 
 #### Response - Success
 | Field | Type | Description |
@@ -32,28 +38,28 @@ Post a register
 
 ```json
 {
-    "data": {
-        "id": 15,
-        "user_id": 2,
-        "status": null,
-        "number_book": 1,
-        "form_date": "2018-06-19",
-        "to_date": "1983-06-26",
-        "borrow_detail": {
+    "id": 15,
+    "user_id": 2,
+    "status": null,
+    "number_book": 1,
+    "form_date": "2018-06-19",
+    "to_date": "1983-06-26",
+    "borrow_detail":[ 
+        {
             "id": 16,
             "book_id": 1,
             "borrow_id": 15,
-        },
-        "user": {
-            "id": 2,
-            "name": "Prof. Fern Ryan",
-            "email": "skertzmann@example.com",
-            "identity_number": "378468817",
-            "avatar": "http://192.168.33.10/storage/images/default-user.png",
-            "dob": "2000-12-10",
-            "address": "460 Heidi Mount Apt. 732\nWest Zack, RI 05510-4851",
-            "role": 0
         }
+    ],
+    "user": {
+        "id": 2,
+        "name": "Prof. Fern Ryan",
+        "email": "skertzmann@example.com",
+        "identity_number": "378468817",
+        "avatar": "http://192.168.33.10/storage/images/default-user.png",
+        "dob": "2000-12-10",
+        "address": "460 Heidi Mount Apt. 732\nWest Zack, RI 05510-4851",
+        "role": 0
     }
 }
 ```
