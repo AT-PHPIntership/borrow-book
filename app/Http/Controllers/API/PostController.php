@@ -28,7 +28,7 @@ class PostController extends ApiController
         if ($request->has('post_type')) {
             $posts = $posts->postType($request->post_type);
         }
-        $posts = $posts->with(['user'])->where('book_id', $book->id)->get();
+        $posts = $posts->with(['user'])->where('book_id', $book->id)->where('status', Post::ACCEPT)->get();
         return $this->showAll($posts, Response::HTTP_OK);
     }
 
