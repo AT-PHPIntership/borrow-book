@@ -82,4 +82,15 @@ class LoginController extends ApiController
         $accessToken->revoke();
         return $this->successResponse(null, Response::HTTP_NO_CONTENT);
     }
+
+    /**
+     * Get user profile
+     *
+     * @return json user
+     */
+    public function profile()
+    {
+        $data['data'] = Auth::user();
+        return $this->successResponse($data, Response::HTTP_OK);
+    }
 }
