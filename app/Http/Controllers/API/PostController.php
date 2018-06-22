@@ -41,9 +41,17 @@ class PostController extends ApiController
      */
     public function destroy(Post $post)
     {
+        $book = Book::findOrFail($post->book_id);
         if ($post->user_id == Auth::id()) {
+            if($post->post_type == Post::REVIEW){
+                if($book->total_rate != 0 && $book->count_rate != 0) {
+                    $book->total_rate -= $post->rate_point;
+                    $book->count_rate -= 1;
+                    $book->save();
+                }
+            }
             $post->delete();
-            return $this->showOne($post->load('user'), Response::HTTP_OK);
+            return $this->showOne($post->load(['user']), Response::HTTP_OK);
         } else {
             return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_UNAUTHORIZED);
         }
