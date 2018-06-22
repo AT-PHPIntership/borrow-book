@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('checkAccessToken', 'API\LoginController@checkAccessToken');
     Route::delete('posts/{post}', 'API\PostController@destroy');
     Route::post('books/{book}/posts', 'API\PostController@store');
+    Route::put('posts/{post}', 'API\PostController@update');
     Route::post('logout','API\LoginController@logout');
     Route::post('borrow','API\BorrowController@store');
 });
