@@ -88,4 +88,30 @@ class PostController extends ApiController
             throw new ModelNotFoundException();
         }
     }
+
+    /**
+     * Api update post
+     *
+     * @param \App\Models\Post                     $post    post of this post
+     * @param \App\Http\Requests\CreatePostRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Post $post, Request $request)
+    {
+        $book = Book::findOrFail($post->book_id);
+        if ($post->user_id == Auth::id()) {
+            $input = $request->only('post_type', 'body');
+            if ($input['post_type'] == Post::REVIEW) {
+                $input['rate_point'] = $request->rate_point;
+                $book->total_rate -= $post->rate_point;
+                $book->total_rate += $request->rate_point;
+                $book->save();
+            }
+            $input['status'] = Post::UNACCEPT;
+            $post->update($input);
+            return $this->showOne($post->load('user'), Response::HTTP_OK);
+        }
+        return $this->errorResponse(trans('post.messages.update_post_error'), Response::HTTP_OK);
+    }
 }

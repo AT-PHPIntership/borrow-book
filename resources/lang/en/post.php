@@ -19,5 +19,6 @@
             'delete_post_success' =>'Delete Post Success!',
             'confirm_delete' => 'Are you sure you want to deleted?',
             'delete_post_error' => 'Delete Post Fail!',
+            'update_post_error' => 'Update Post Fail!',
         ],
     ];
