@@ -9,14 +9,11 @@
                     <ul>
                         <li class="active"><a href="#">Home</a></li>
                         <li class="dropdown">
-                            <a href="javascript:void(0);" class="category dropdown-toggle" id="menu1" data-toggle="dropdown">Categories<span class="caret"></span></a>
+                            <a href="javascript:void();" class="category dropdown-toggle" id="menu1" data-toggle="dropdown">Categories<span class="caret"></span></a>
                             <ul class="dropdown-menu category-list" role="menu" aria-labelledby="menu1">
                             </ul>
                         </li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
-                        <li><a href=""></a></li>
+                        <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> {{ trans('homepage.cart') }}</a></li>
                         <li id="login" class="dropdown">
                             <a href="{{ route('login') }}">{{ trans('homepage.login') }}</a>
                         </li>

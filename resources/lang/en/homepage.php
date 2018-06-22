@@ -8,4 +8,5 @@
             'decription' => 'The new books is arrival'
         ],
         'show_more' => 'Show more...',
+        'cart' => 'Cart'
     ];
