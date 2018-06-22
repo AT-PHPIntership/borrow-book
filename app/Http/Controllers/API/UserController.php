@@ -22,4 +22,15 @@ class UserController extends ApiController
         $data = $post->with('book')->where('user_id', $user->id)->get();
         return $this->showAll($data, Response::HTTP_OK);
     }
+
+    /**
+     * Get user profile
+     *
+     * @return json user
+     */
+    public function profile()
+    {
+        $data['data'] = Auth::user();
+        return $this->successResponse($data, Response::HTTP_OK);
+    }
 }

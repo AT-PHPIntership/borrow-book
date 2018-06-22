@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('books/{book}/posts', 'API\PostController@store');
     Route::post('logout','API\LoginController@logout');
     Route::post('borrow','API\BorrowController@store');
+    Route::get('users/profile','API\UserController@profile');
     Route::get('users/posts', 'API\UserController@getPost');
 });
 
