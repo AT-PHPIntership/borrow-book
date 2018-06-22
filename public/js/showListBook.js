@@ -45,7 +45,7 @@ function contentBook(data) {
     $.each(data.data, function (key, value) {
         if(typeof value.image_books[0] === 'undefined') {
             value.image_books[0] = {
-                'image': 'http://via.placeholder.com/150x150'
+                'image': '../storage/images/default-book.png'
             };
         }
         books += '<div class="col-md-4 text-center" >\
