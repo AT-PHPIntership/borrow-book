@@ -45,7 +45,7 @@ class PostController extends ApiController
             $post->delete();
             return $this->showOne($post->load('user'), Response::HTTP_OK);
         } else {
-            return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_OK);
+            return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_UNAUTHORIZED);
         }
     }
     
