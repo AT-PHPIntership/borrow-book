@@ -43,8 +43,8 @@ class PostController extends ApiController
     {
         $book = Book::findOrFail($post->book_id);
         if ($post->user_id == Auth::id()) {
-            if($post->post_type == Post::REVIEW){
-                if($book->total_rate != 0 && $book->count_rate != 0) {
+            if ($post->post_type == Post::REVIEW) {
+                if ($book->total_rate != 0 && $book->count_rate != 0) {
                     $book->total_rate -= $post->rate_point;
                     $book->count_rate -= 1;
                     $book->save();
