@@ -54,7 +54,7 @@ function contentBook(data) {
                             <p class="tag"><span class="sale">'+ value.author +'</span></p>\
                             <div class="cart">\
                                 <p>\
-                                    <span><a href="#"><i class="fa fa-eye"></i></a></span>\
+                                    <span><a href="/books/'+ value.id +'"><i class="fa fa-eye"></i></a></span>\
                                 </p>\
                             </div>\
                         </div>\
@@ -117,9 +117,13 @@ $(".number-of-page").on("click", function filterNumberPage() {
     getListBooks(url);
 });
 
-$("#filter-search").submit(function filterNumberPage(event) {
+$("#filter-search").submit(function filterSearch(event) {
     event.preventDefault();
     search = $('#search').val();
     url += '&search=' + search;
     getListBooks(url);
+});
+
+$(".reset-filter").on('click', function resetFilter() {
+    window.location.reload();
 });
