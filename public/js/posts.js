@@ -1,5 +1,4 @@
 var bookId = window.location.pathname;
-
 const postComment = 0;
 const postReview = 1;
 var urlReview = '/api'+ bookId +'/posts' + '?post_type=' + postReview;
@@ -35,7 +34,7 @@ function contentReview(data) {
         for (var i = 1; i <= k; i++) {
             stars += '<i class="fa fa-star"></i>'; 
         };
-        reviews += '<div class="review" id="review_post'+value.id+'">\
+        reviews += '<div class="review" id="review_post'+ value.id +'">\
                         <div class="user-img" style="background-image: url('+ value.user.avatar +')"></div>\
                         <div class="desc">\
                             <h4>\
@@ -44,7 +43,7 @@ function contentReview(data) {
                             </h4>\
                             <p class="star">\
                                 <span>'+ stars +'</span>\
-                               <span class="text-right"><a href="javascript:void(0);" class="reply delete-post" id="'+value.id+'"><i class="fa fa-times"></i></a></span>\
+                               <span class="text-right"><a href="javascript:void(0);" class="reply delete-post" id="'+ value.id +'"><i class="fa fa-times"></i></a></span>\
                             </p>\
                             <p>'+ value.body +'</p>\
                         </div>\
@@ -71,7 +70,7 @@ function getListComment() {
 function contentComment(data) {
     var comment = '';
     $.each(data.data, function (key, value) {
-        comment += '<div class="review" id="comment'+value.id+'">\
+        comment += '<div class="review" id="comment'+ value.id +'">\
                         <div class="user-img" style="background-image: url('+ value.user.avatar +')"></div>\
                         <div class="desc">\
                             <h4>\
@@ -80,7 +79,7 @@ function contentComment(data) {
                             </h4>\
                              <p class="star">\
                                 <span class="text-left"></span>\
-                                <span class="text-right"><a href="javascript:void(0);" class="delete-post reply" id="'+value.id+'"><i class="fa fa-times"></i></a></span>\
+                                <span class="text-right"><a href="javascript:void(0);" class="delete-post reply" id="'+ value.id +'"><i class="fa fa-times"></i></a></span>\
                             </p>\
                             <p>'+ value.body +'</p>\
                         </div>\
