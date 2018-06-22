@@ -33,6 +33,7 @@ class ApiGetListPostsOfBookTest extends TestCase
         factory(Post::class)->create([
             'id' => 1,
             'book_id' => 1,
+            'status' => 1
         ]);
         factory(Post::class, self::NUMBER_RECORD_CREATE)->create();
     }
