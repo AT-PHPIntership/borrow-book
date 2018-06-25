@@ -9,7 +9,7 @@
                     <ul>
                         <li class="active"><a href="#">Home</a></li>
                         <li class="dropdown">
-                            <a href="javascript:void();" class="category dropdown-toggle" id="menu1" data-toggle="dropdown">Categories<span class="caret"></span></a>
+                            <a href="javascript:void();" class="category dropdown-toggle" id="menu1" data-toggle="dropdown">{{ trans('homepage.categories') }}<span class="caret"></span></a>
                             <ul class="dropdown-menu category-list" role="menu" aria-labelledby="menu1">
                             </ul>
                         </li>
