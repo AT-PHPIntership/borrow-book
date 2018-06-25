@@ -2,7 +2,7 @@ machine:
   hosts:
     myapp.dev: 127.0.0.1
   php:
-    version: 7.1.4
+    version: 7.1.9
   services:
     - mysql
   post:
@@ -11,7 +11,7 @@ machine:
   node:
     version: 6.0
   pre:
-    - sudo apt-get install circleci-php-7.1.4
+    - sudo apt-get install circleci-php-7.1.9
 dependencies:
   cache_directories:
     - ~/.composer/cache
