@@ -1,6 +1,21 @@
 var books = JSON.parse(window.localStorage.getItem('carts'));
+var borrow = [];
+if (window.localStorage.getItem('carts')) {
+    books.forEach(function (book) {
+        book_data = {};
+        book_data.id = book.id;
+        book_data.quantity = book.quantity;
+        borrow.push(book_data);
+    });
+}
+    
 $(document).ready(function () {
-    getListCart();
+    if (window.localStorage.getItem('carts')) {
+        getListCart();
+    } else {
+        $('#modal-cart').hide();
+    }
+    checkout();
 });
 
 function getListCart() {
@@ -27,23 +42,32 @@ function getListCart() {
                     </div>';
         $('.cart').append(itemCart);
     });
+    
 }
 
-console.log(books);
-function register() {
-    $('#checkout').submit( function() {
-        // $.ajax({
-        //     type: 'POST',
-        //     url: '/api/borrow',
-        //     headers: ({
-        //         Accept: 'application/json',
-        //         Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
-        //     }),
-        //     data: ({
-        //         form_date: $('#input[name=form_date]').val(),
-        //         to_date: $('#input[name=to_date]').val(),
-        //         number_book: 
-        //     }),
-        // });
+function checkout() {
+    $('#checkout').submit( function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/api/borrow',
+            headers: ({
+                Accept: 'application/json',
+                Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
+            }),
+            data: ({
+                form_date: $('input[name=form_date]').val(),
+                to_date: $('input[name=to_date]').val(),
+                book: borrow,
+            }),
+            success: function() {
+                localStorage.removeItem('carts');
+                localStorage.removeItem('count');
+                window.location.reload();
+            },
+            error: function(data) {
+                alert(data.responseJSON.message);
+            }
+        });
     });
 }

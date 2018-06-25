@@ -5,5 +5,8 @@
         'from_date' => 'From Date',
         'to_date' => 'To Date',
         'total' => 'Total',
-        'remove' => 'Remove'
+        'remove' => 'Remove',
+        'add_cart' => 'Add Cart',
+        'submit' => 'Submit',
+        'close' => 'Close'
     ];

@@ -2,13 +2,13 @@ var item = [];
 var cartProduct = [];
 var exists = false;
 var n = 0;
+numberItem();
 
 function numberItem() {
   if (localStorage.count) {
     document.getElementById('number-item').innerHTML = localStorage.count;
   }
 }
-numberItem();
 $(document).on('click', '.borrowing', function() {
     item = {
         id: $('#book-id').val(),

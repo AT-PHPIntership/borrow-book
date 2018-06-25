@@ -13,7 +13,8 @@ class BorrowDetail extends Model
     */
     protected $fillable = [
         'borrow_id',
-        'book_id'
+        'book_id',
+        'quantity'
     ];
 
     /**
