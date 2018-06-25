@@ -477,7 +477,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-bottom: 40px; }
   .product-entry .product-img {
     display: block;
-    height: 350px;
+    height: 250px;
     margin-bottom: 20px;
     position: relative; }
     .product-entry .product-img .tag {

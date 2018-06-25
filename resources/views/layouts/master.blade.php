@@ -17,9 +17,13 @@
     <div id="page">
         @include('layouts.partials.header')
         <!--Banner-->
-        @if (!request()->is('login') && !request()->is('register'))
+        @if (!request()->is('login') && !request()->is('register') && !request()->is('cart'))
         @include('layouts.partials.banner')
         @endif
+        <!--Banner2-->
+        @if(request()->is('cart'))
+        @include('layouts.partials.banner2')
+        @endif()
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
