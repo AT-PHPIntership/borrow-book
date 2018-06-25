@@ -6,9 +6,16 @@
                 <div class="col-md-9 col-md-push-3" >
                     <div class="row row-pb-lg" id="books">
                     </div>
+                    <div class="text-center">
+                        <ul class="pagination" id="pagination">
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-md-3 col-md-pull-9">
                     <div class="sidebar">
+                        <div class="side">
+                            <button class="btn btn-default btn-md btn-block reset-filter" type="submit">Reset Filter <i class="fa fa-refresh"></i></button>
+                        </div>
                         <div class="side">
                             <h2>{{ trans('listBook.filter.search') }}</h2>
                             <form method="post" class="colorlib-form-2" id="filter-search">
@@ -77,10 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <ul class="pagination" id="pagination">
-                </ul>
-            </div>
+            
         </div>
     </div>
 @endsection
