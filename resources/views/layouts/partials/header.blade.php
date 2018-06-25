@@ -13,7 +13,7 @@
                             <ul class="dropdown-menu category-list" role="menu" aria-labelledby="menu1">
                             </ul>
                         </li>
-                        <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> {{ trans('homepage.cart') }}</a></li>
+                        <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> {{ trans('homepage.cart') }}[<span class="text-primary" id="number-item"></span>]</a></li>
                         <li id="login" class="dropdown">
                             <a href="{{ route('login') }}">{{ trans('homepage.login') }}</a>
                         </li>

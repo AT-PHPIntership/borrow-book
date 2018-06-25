@@ -41,11 +41,22 @@
                                         <p class="color-desc" id="language">{{ trans('book.form.title_inputs.language')}} :
                                         </p>
                                     </div>
-                                      <div class="color-wrap">
+                                    <div class="color-wrap">
                                         <p class="color-desc" id="publishing_year">{{ trans('book.form.title_inputs.publishing_year')}} :
                                         </p>
                                     </div>
-                                    <p><a href="" class="btn btn-primary">Borrowing</a></p>
+                                    <div class="color-wrap">
+                                        <p class="color-desc">{{ trans('book.form.title_inputs.quantity')}} :
+                                        </p>
+
+                                        <div class="sidebar">
+                                            <div class="colorlib-form-2" class="form-group">
+                                                <input name="quantity" id="quantity" type="number" value="1" min="1" class="form-control">
+                                            </div>
+                                        </div>
+                                        <input name="book_id" type="number" id="book-id" hidden>
+                                    </div>
+                                    <p><a class="btn btn-primary borrowing">Borrowing</a></p>
                                 </div>
                             </div>
                         </div>
