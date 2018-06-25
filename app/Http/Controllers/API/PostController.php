@@ -68,8 +68,7 @@ class PostController extends ApiController
     public function store(Book $book, CreatePostRequest $request)
     {
         $user = Auth::user();
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             DB::beginTransaction();
             try {
                 $input = $request->only('post_type', 'body');
@@ -90,7 +89,7 @@ class PostController extends ApiController
                 throw new ModelNotFoundException();
             }
         } else {
-            return $this->errorResponse(trans('post.messages.send_post_error'), Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponse("trans('post.messages.send_post_error')", Response::HTTP_UNAUTHORIZED);
         }
     }
 

@@ -5,9 +5,6 @@ var urlReview = '/api'+ bookId +'/posts' + '?post_type=' + postReview;
 var urlComment = '/api'+ bookId +'/posts' + '?post_type=' + postComment;
 var ratingValue;
 var urlDelete = '/api/posts/'
-const TYPE_COMMENT = 0;
-const TYPE_REVIEW = 1;
-
 
 $(document).ready(function () {
     getListReview();
@@ -120,7 +117,7 @@ function deletePost() {
 }
 
 function submitComment() {
-    $(document).on('click', '#add_comment',function(event)  {
+    $(document).on('click', '#add_comment', function(event)  {
         $.ajax({
             url: '/api' + bookId + '/posts',
             type: 'POST',
@@ -129,7 +126,7 @@ function submitComment() {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             },
             data: {
-                post_type: TYPE_COMMENT,
+                post_type: postComment,
                 rate_point: $('.fa-star').val(),
                 body: $('#content_cmt').val(),
             },
@@ -190,7 +187,7 @@ function submitReview() {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             },
             data: {
-                post_type: TYPE_REVIEW,
+                post_type: postReview,
                 rate_point: $('#stars li.selected').last().data('value'),
                 body: $('#content_review').val(),
             },
@@ -213,7 +210,3 @@ function submitReview() {
         });
     });
 }
-
-
-
-
