@@ -20,6 +20,7 @@
             'confirm_delete' => 'Are you sure you want to deleted?',
             'delete_post_error' => 'Delete Post Fail!',
             'send_post_error' => 'Please Login'
+            'update_post_error' => 'Update Post Fail!',
         ],
         'send_cmt_message' => 'Send your comment',
         'rating_message' => 'Choose rate of this book',
