@@ -2119,7 +2119,7 @@ input[type="text"] {
 .category-item {
   float:left; 
   width: 49%;
-  margin: 10px;
+  margin: 10px;height: 78px;border: 1px solid #ddd;    border-radius: 4px;margin-bottom: 10px 
 }
 #show-more {
   font-size: 20px;
@@ -2128,3 +2128,44 @@ input[type="text"] {
 .decription-title {
   font-size: 20px;
 }
+.content {
+  height: 78px;
+  border: 1px solid #ddd;   
+  border-radius: 4px;
+  margin-bottom: 10px 
+}
+.rating-stars {
+  display:inline-block;
+}
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul .star {
+  list-style-type:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+  
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:1.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
+

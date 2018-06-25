@@ -5,7 +5,7 @@ $.ajax({
     type: "get",
     success: function( data ) {
         let img='', imgItem='';
-        if(typeof data.image_books !== 'undefined') {
+        if(typeof data.image_books !== 'undefined' ) {
             img += '<div class="product-img" style="background-image: url(' + data.image_books[0].image + ');"></div>';
             for(var i = 1; i < data.image_books.length; i++ )
             {                
