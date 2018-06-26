@@ -43,12 +43,15 @@ function contentReview(data) {
                             </h4>\
                             <p class="star">\
                                 <span>'+ stars +'</span>\
-                               <span class="text-right"><a href="javascript:void(0);" class="reply delete-post" id="'+ value.id +'"><i class="fa fa-times"></i></a></span>\
+                               <span class="text-right" ><a href="javascript:void(0);" class="reply delete-post review-book" hidden id="'+ value.id +'"><i class="fa fa-times"></i></a></span>\
                             </p>\
                             <p>'+ value.body +'</p>\
                         </div>\
                     </div>';
         $("#content-review").html(reviews);
+        if(localStorage.getItem('access_token')) {
+            $('.review-book').show();
+        }
     });
 }
 
@@ -77,14 +80,17 @@ function contentComment(data) {
                                 <span class="text-left">'+ value.user.name +'</span>\
                                 <span class="text-right">'+ value.updated_at +'</span>\
                             </h4>\
-                             <p class="star">\
+                             <p class="star comment-book" hidden>\
                                 <span class="text-left"></span>\
-                                <span class="text-right"><a href="javascript:void(0);" class="delete-post reply" id="'+ value.id +'"><i class="fa fa-times"></i></a></span>\
+                                <span class="text-right"><a href="javascript:void(0);" class="delete-post reply" id="'+ value.id +'" ><i class="fa fa-times"></i></a></span>\
                             </p>\
                             <p>'+ value.body +'</p>\
                         </div>\
                     </div>';
         $("#content-comment").html(comment);
+        if(localStorage.getItem('access_token')) {
+            $('.comment-book').show();
+        }
     });
 }
 
