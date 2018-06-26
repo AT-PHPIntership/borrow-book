@@ -1,7 +1,7 @@
 <aside id="colorlib-hero" class="breadcrumbs">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(http://via.placeholder.com/350x150); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+            <li style="background-image: url(http://192.168.33.10/images/banner1.png); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
