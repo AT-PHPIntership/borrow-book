@@ -52,3 +52,4 @@ Route::get('cart', 'CartController@index')->name('cart');
 Route::resource('books', 'BookController')->except([
     'store', 'update', 'destroy'
 ]);
+Route::get('profile', 'UserController@index')->name('profile');
