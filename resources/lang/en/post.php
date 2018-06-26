@@ -21,4 +21,12 @@
             'delete_post_error' => 'Delete Post Fail!',
             'update_post_error' => 'Update Post Fail!',
         ],
+        'send_cmt_message' => 'Send your comment',
+        'rating_message' => 'Choose rate of this book',
+        'review_message' => 'Write your comment below',
+        'post_message' => 'Your comment on this book',
+        'btn_send_review' => 'Send Review',
+        'btn_send_cmt' => 'Send Comment',
+        'send_success' => 'Your comment is sended',
+        'send_review_success' => 'Your review is sended',
     ];
