@@ -27,7 +27,8 @@ class BorrowController extends ApiController
         foreach ($request->book as $book) {
             BorrowDetail::create([
                 'borrow_id' => $borrow->id,
-                'book_id' => $book
+                'book_id' => $book['id'],
+                'quantity' => $book['quantity']
             ]);
         }
         return $this->showOne($borrow->load(['borrowDetails', 'user']), Response::HTTP_OK);

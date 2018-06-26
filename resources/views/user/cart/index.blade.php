@@ -3,16 +3,10 @@
     <div class="colorlib-shop">
         <div class="container">
             <div class="row row-pb-md">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-10 col-md-offset-1 cart">
                     <div class="product-name">
                         <div class="one-forth text-center">
                             <span>{{ trans('cart.book_details') }}</span>
-                        </div>
-                        <div class="one-eight text-center">
-                            <span>{{ trans('cart.from_date') }}</span>
-                        </div>
-                        <div class="one-eight text-center">
-                            <span>{{ trans('cart.to_date') }}</span>
                         </div>
                         <div class="one-eight text-center">
                             <span>{{ trans('cart.total') }}</span>
@@ -20,34 +14,39 @@
                         <div class="one-eight text-center">
                             <span>{{ trans('cart.remove') }}</span>
                         </div>
-                    </div>
-                    <div class="product-cart">
-                        <div class="one-forth">
-                            <div class="product-img" style="background-image: url(../storage/images/default-book.png);">
-                            </div>
-                            <div class="display-tc">
-                                <h3></h3>
-                            </div>
+                        <div class="one-eight text-center" id="modal-cart">
+                            <button data-toggle="modal" data-target="#calender" class="btn btn-primary">{{ trans('cart.add_cart') }}</button>
                         </div>
-                        <div class="one-eight text-center">
-                            <div class="display-tc">
-                                <span class="price"></span>
+                        <div class="modal fade" id="calender" role="dialog">
+                            <div class="modal-dialog">
+                                <form class="form-inline" id="checkout">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">{{ trans('cart.add_cart') }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="container">
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <label for="from_date">{{ trans('cart.from_date') }}</label>
+                                                            <input type="date" name="from_date" value="{{ date('Y-m-d') }}">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="to_date">{{ trans('cart.to_date') }}</label>
+                                                            <input type="date" name="to_date"  value="{{ date('Y-m-d') }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">{{ trans('cart.submit') }}</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('cart.close') }}</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
-                        <div class="one-eight text-center">
-                            <div class="display-tc">
-                                <span class="price"></span>
-                            </div>
-                        </div>
-                        <div class="one-eight text-center">
-                            <div class="display-tc">
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100" disabled>
-                            </div>
-                        </div>
-                        <div class="one-eight text-center">
-                            <div class="display-tc">
-                                <a href="#" class="closed"></a>
-                            </div>  
                         </div>
                     </div>
                 </div>
@@ -56,4 +55,5 @@
     </div>
 @endsection
 @section('scripts')
+<script src="{{ asset('js/viewCart.js') }}"></script>
 @endsection

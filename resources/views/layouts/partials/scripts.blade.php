@@ -27,3 +27,5 @@
 <script src="{{ asset('js/jquery.twbsPagination.min.js') }}"></script>
 <!-- Categories -->
 <script src="{{ asset('js/showListCategories.js') }}"></script>
+<!-- Add Cart -->
+<script src="{{ asset('js/addCart.js') }}"></script>
