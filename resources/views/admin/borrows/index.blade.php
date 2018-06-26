@@ -31,7 +31,7 @@
                                 <td><img class="text-center img-style" src="{{ $borrow->user->avatar_url}}" alt=""></td>
                                 <td>{{ $borrow->user->name }}</td>
                                 <td>{{ $borrow->number_book }}</td>
-                                <td>{{ date('d-m-Y', strtotime($borrow->form_date)) }}</td>
+                                <td>{{ date('d-m-Y', strtotime($borrow->from_date)) }}</td>
                                 <td>{{ date('d-m-Y', strtotime($borrow->to_date)) }}</td>
                                 <td>
                                     <select class="form-control status" name="status" data-id="{{ $borrow->id }}">

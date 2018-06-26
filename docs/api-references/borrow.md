@@ -20,7 +20,7 @@ Post new borrow
 | user_id | Integer | Id of user |
 | status | Integer | Status of borrow  |
 | number_book | Integer | Number of book |
-| form_date | date | Day borrowes book |
+| from_date | date | Day borrowes book |
 | to_date | date | Day returns book |
 | borrow_detail | Object | Object borrow detail |
 | id | Integer | Id of borrow detail |
@@ -42,7 +42,7 @@ Post new borrow
     "user_id": 2,
     "status": null,
     "number_book": 1,
-    "form_date": "2018-06-19",
+    "from_date": "2018-06-19",
     "to_date": "1983-06-26",
     "borrow_detail":[ 
         {
