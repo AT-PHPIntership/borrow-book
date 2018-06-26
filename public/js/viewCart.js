@@ -1,6 +1,15 @@
-var books = JSON.parse(window.localStorage.getItem('carts'));
-var borrow = [];
+if (!window.localStorage.getItem('access_token') || !window.localStorage.getItem('carts')) {
+    $('#modal-cart').hide();
+}
+
 if (window.localStorage.getItem('carts')) {
+    $(document).ready(function () {
+        getListCart();
+        checkout();
+        changQuantity();
+    });
+    var books = JSON.parse(window.localStorage.getItem('carts'));
+    var borrow = [];
     books.forEach(function (book) {
         book_data = {};
         book_data.id = book.id;
@@ -8,15 +17,7 @@ if (window.localStorage.getItem('carts')) {
         borrow.push(book_data);
     });
 }
-    
-$(document).ready(function () {
-    if (window.localStorage.getItem('carts')) {
-        getListCart();
-    } else {
-        $('#modal-cart').hide();
-    }
-    checkout();
-});
+
 
 function getListCart() {
     var itemCart = '';
@@ -31,7 +32,7 @@ function getListCart() {
                         </div>\
                         <div class="one-eight text-center">\
                             <div class="display-tc">\
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="'+ value.quantity +'" min="1" max="100" disabled>\
+                                <input type="number" id="quantity'+ value.id +'" name="quantity" class="form-control input-number text-center" value="'+ value.quantity +'" min="1" max="'+ value.quantity_max +'">\
                             </div>\
                         </div>\
                         <div class="one-eight text-center">\
@@ -56,7 +57,7 @@ function checkout() {
                 Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
             }),
             data: ({
-                form_date: $('input[name=form_date]').val(),
+                from_date: $('input[name=from_date]').val(),
                 to_date: $('input[name=to_date]').val(),
                 book: borrow,
             }),
@@ -69,5 +70,14 @@ function checkout() {
                 alert(data.responseJSON.message);
             }
         });
+    });
+}
+
+function changQuantity() {
+    $(document).on('change', '.input-number', function() {
+        if (parseInt($(this).val()) > parseInt($(this).prop('max'))) {
+            alert('The max quantity is ' + parseInt($(this).prop('max')));
+            $(this).val(parseInt($(this).prop('max')));
+        }
     });
 }

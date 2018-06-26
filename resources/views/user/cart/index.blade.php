@@ -30,8 +30,8 @@
                                                     
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label for="form_date">{{ trans('cart.from_date') }}</label>
-                                                            <input type="date" name="form_date" value="{{ date('Y-m-d') }}">
+                                                            <label for="from_date">{{ trans('cart.from_date') }}</label>
+                                                            <input type="date" name="from_date" value="{{ date('Y-m-d') }}">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="to_date">{{ trans('cart.to_date') }}</label>

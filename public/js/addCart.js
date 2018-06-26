@@ -15,6 +15,7 @@ $(document).on('click', '.borrowing', function() {
         title: $('#title').text(),
         image: $('#product-img').css('background-image').replace('url(','').replace(')','').replace(/\"/gi, ""),
         quantity: $('#quantity').val(),
+        quantity_max: $('#quantity').prop('max')
     };
     $('.product-detail-wrap').hide().fadeIn(3000);
     if (localStorage.carts) {
