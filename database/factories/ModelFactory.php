@@ -72,7 +72,7 @@ $factory->define(App\Models\Borrow::class, function (Faker $faker) {
         'user_id' => App\Models\User::all()->random()->id,
         'number_book' => $faker->numberBetween(1, 5),
         'status' => $faker->randomElement([\App\Models\Borrow::BORROWING, \App\Models\Borrow::GIVE_BACK, \App\Models\Borrow::WAITTING]),
-        'form_date' => $startingDate,
+        'from_date' => $startingDate,
         'to_date' => $endingDate
     ];
 });

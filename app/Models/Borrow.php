@@ -42,7 +42,7 @@ class Borrow extends Model
         'status',
         'number_book',
         'to_date',
-        'form_date'
+        'from_date'
     ];
     
     /**

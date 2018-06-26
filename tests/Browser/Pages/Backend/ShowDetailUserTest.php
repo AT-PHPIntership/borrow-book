@@ -82,7 +82,7 @@ class ShowDetailUserTest extends DuskTestCase
             $this->assertTrue($browser->text('.dob') === $user->dob);
             $this->assertTrue($browser->text('.address') === $user->address);
             foreach ($borrowes as $borrow) {
-                $this->assertTrue($browser->text('.from-date') === $borrow->form_date);
+                $this->assertTrue($browser->text('.from-date') === $borrow->from_date);
                 $this->assertTrue($browser->text('.to-date') === $borrow->to_date);
             }
         });
