@@ -18,7 +18,7 @@ Post new borrow
 |-------|------|-------------|
 | id | Integer | Id of borrow |
 | user_id | Integer | Id of user |
-| status | Integer | Status of borrow  |
+| status | Integer | Status of borrow |
 | number_book | Integer | Number of book |
 | from_date | date | Day borrowes book |
 | to_date | date | Day returns book |
@@ -61,5 +61,102 @@ Post new borrow
         "address": "460 Heidi Mount Apt. 732\nWest Zack, RI 05510-4851",
         "role": 0
     }
+}
+```
+### `GET` List borrow following user
+```
+/api/users/borrow
+```
+Get list posts following user
+#### Request header
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
+#### Query Param
+| Param | Type | Description |
+|---|---|---|
+| page | number | Paninate Borrow Book Of User|
+| sort | string | Sort Borrow Book Of User |
+| limit | number | Limit Borrow Book Of User |
+
+```json
+{
+    "data": [
+        {
+            "id": 5,
+            "user_id": 9,
+            "status": 1,
+            "number_book": 2,
+            "to_date": "2018-05-14",
+            "from_date": "2018-06-20",
+            "created_at": "2018-05-24 07:00:16",
+            "updated_at": "2018-05-24 07:00:16",
+            "borrow_details": {
+                "id": 3,
+                "book_id": 2,
+                "borrow_id": 5,
+                "created_at": "2018-05-24 07:00:16",
+                "updated_at": "2018-05-24 07:00:16"
+            },
+            "books": {
+                "id": 2,
+                "category_id": 7,
+                "title": "Sydnie Dickens PhD",
+                "description": "Eos facilis doloribus consequatur minus velit dolor. Fugit itaque corrupti et ab. Atque eum hic ipsam esse rerum. Est mollitia aliquid facilis sit.",
+                "number_of_page": 871030395,
+                "author": "Prof. Elian Auer",
+                "publishing_year": "1990-04-28",
+                "language": "English",
+                "quantity": 9,
+                "count_rate": 0,
+                "deleted_at": null,
+                "created_at": "2018-05-24 07:00:16",
+                "updated_at": "2018-05-24 07:00:16"
+            }
+        },
+        {
+            "id": 9,
+            "user_id": 9,
+            "status": 0,
+            "number_book": 3,
+            "to_date": "2018-03-14",
+            "from_date": "2018-02-20",
+            "created_at": "2018-05-24 07:00:16",
+            "updated_at": "2018-05-24 07:00:16",
+            "borrow_details": {
+                "id": 5,
+                "book_id": 3,
+                "borrow_id": 9,
+                "created_at": "2018-05-24 07:00:16",
+                "updated_at": "2018-05-24 07:00:16"
+            },
+            "books": {
+                "id": 3,
+                "category_id": 7,
+                "title": "Sydnie Dickens PhD",
+                "description": "Eos facilis doloribus consequatur minus velit dolor. Fugit itaque corrupti et ab. Atque eum hic ipsam esse rerum. Est mollitia aliquid facilis sit.",
+                "number_of_page": 871030395,
+                "author": "Prof. Elian Auer",
+                "publishing_year": "1990-04-28",
+                "language": "English",
+                "quantity": 9,
+                "count_rate": 0,
+                "deleted_at": null,
+                "created_at": "2018-05-24 07:00:16",
+                "updated_at": "2018-05-24 07:00:16"
+            }
+        }
+    ],
+    "first_page_url": "http://192.168.33.10/api/users/borrow?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://192.168.33.10/api/users/borrow?page=1",
+    "next_page_url": null,
+    "path": "http://192.168.33.10/api/users/borrow",
+    "per_page": 20,
+    "prev_page_url": null,
+    "to": 3,
+    "total": 3
 }
 ```
