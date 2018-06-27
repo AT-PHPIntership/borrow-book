@@ -9,6 +9,7 @@
                             <div class="slider-text-inner text-center">
                                 <h1>{{ trans('homepage.cart') }}</h1>
                             </div>
+                            <p>test</p>
                         </div>
                     </div>
                 </div>
