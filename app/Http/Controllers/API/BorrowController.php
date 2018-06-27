@@ -9,6 +9,7 @@ use App\Models\Borrow;
 use App\Models\Book;
 use App\Models\BorrowDetail;
 use Auth;
+use App\Http\Requests\Api\BorrowBookRequest;
 
 class BorrowController extends ApiController
 {
@@ -19,7 +20,7 @@ class BorrowController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BorrowBookRequest $request)
     {
         $input = $request->all();
         $input['user_id'] = Auth::user()->id;
