@@ -48,24 +48,24 @@ class UserProfileTest extends TestCase
     }
 
     /**
-     * Test compare database
+     * Test return json true
      * 
      * @return void
      */
-    public function testCompareDatabase()
+    public function testReturnJson()
     {
+        $user = User::find(1);
         $response = $this->jsonUser('GET', '/api/users/profile');
-        $data = json_decode($response->getContent());
-        $arrayCompare = [
-            'id' => $data->data->id,
-            'name' => $data->data->name,
-            'email' => $data->data->email,
-            'identity_number' => $data->data->identity_number,
-            'dob' => $data->data->dob,
-            'address' => $data->data->address,
-            'role' => $data->data->role,
-        ];
-        $this->assertDatabaseHas('users', $arrayCompare);
+        $response->assertJsonFragment([
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'identity_number' => $user->identity_number,
+            'avatar' => $user->avatarUrl,
+            'dob' => $user->dob,
+            'address' => $user->address,
+            'role' => $user->role,
+        ]);
     }
 
     /**
