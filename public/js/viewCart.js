@@ -1,15 +1,18 @@
 if (!window.localStorage.getItem('access_token') || !window.localStorage.getItem('carts')) {
     $('#modal-cart').hide();
 }
-
+var borrow;
 if (window.localStorage.getItem('carts')) {
     $(document).ready(function () {
         getListCart();
         checkout();
-        changQuantity();
     });
     var books = JSON.parse(window.localStorage.getItem('carts'));
-    var borrow = [];
+    borrowBook(books);
+}
+
+function borrowBook(books) {
+    borrow = [];
     books.forEach(function (book) {
         book_data = {};
         book_data.id = book.id;
@@ -17,7 +20,6 @@ if (window.localStorage.getItem('carts')) {
         borrow.push(book_data);
     });
 }
-
 
 function getListCart() {
     var itemCart = '';
@@ -40,8 +42,12 @@ function getListCart() {
                                 <a href="#" class="closed"></a>\
                             </div>  \
                         </div>\
+                        <div class="one-eight text-center">\
+                            <span class="text-danger error-quantity" id="error-quantity'+ key +'" ></span>\
+                        </div>\
                     </div>';
         $('.cart').append(itemCart);
+        changQuantity(value.id, value.quantity, key);
     });
     
 }
@@ -67,17 +73,33 @@ function checkout() {
                 window.location.reload();
             },
             error: function(data) {
-                alert(data.responseJSON.message);
+                $('.error-quantity').html('');
+                if (data.responseJSON.errors) {
+                    errors = Object.keys(data.responseJSON.errors);
+                    let errorMessage = '';
+                    errors.forEach(error => {
+                        errorMessage = data.responseJSON.errors[error];
+                        i = error.slice((error.indexOf('.') + 1), error.lastIndexOf('.'));
+                        $('#error-quantity' + i).html(errorMessage);
+                    });
+                    
+                }
             }
         });
     });
 }
 
-function changQuantity() {
-    $(document).on('change', '.input-number', function() {
+function changQuantity(id, quantity, index) {
+    $(document).on('change', '#quantity' + id, function() {
         if (parseInt($(this).val()) > parseInt($(this).prop('max'))) {
             alert('The max quantity is ' + parseInt($(this).prop('max')));
             $(this).val(parseInt($(this).prop('max')));
+            books[index]['quantity'] = parseInt($(this).prop('max'));
+            localStorage.setItem('carts', JSON.stringify(books));
         }
+        books[index]['quantity'] = parseInt($(this).val());
+        localStorage.setItem('carts', JSON.stringify(books));
+        var bookCarts = JSON.parse(window.localStorage.getItem('carts'));
+        borrowBook(bookCarts);
     });
 }
