@@ -33,6 +33,7 @@ class UserProfileTest extends TestCase
             ]
         ];
     }
+    
      /**
      * Test structure of json response.
      *
