@@ -133,7 +133,6 @@ function submitComment() {
             },
             data: {
                 post_type: postComment,
-                rate_point: $('.fa-star').val(),
                 body: $('#content_cmt').val(),
             },
             success: function(data) {
@@ -198,7 +197,7 @@ function submitReview() {
                 body: $('#content_review').val(),
             },
             success: function(data) {
-                $('.alert-info').show();
+                $('.review_success').show();
                 $('.star.selected').attr('class', 'star');
                 $('#content_review').val('');
             },
@@ -210,8 +209,8 @@ function submitReview() {
                         errorMessage += data.responseJSON.errors[error] + '<br/>';
                     });
                 }
-                $('.alert-danger').html(errorMessage);
-                $('.alert-danger').show();
+                $('.review_error').html(errorMessage);
+                $('.review_error').show();
             }
         });
     });
