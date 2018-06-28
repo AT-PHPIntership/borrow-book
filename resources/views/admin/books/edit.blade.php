@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <label>{{trans('book.form.title_inputs.description')}}</label>
                         <div class="form-group">
-                            <textarea name="description" id="description" cols="140" rows="10" placeholder="{{trans('book.form.placeholders.description')}}">{{ $book->description }}</textarea>
+                            <textarea class="ckeditor" name="description" id="description" cols="140" rows="10" placeholder="{{trans('book.form.placeholders.description')}}">{{ $book->description }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -86,15 +86,4 @@
     
     <!-- /.content -->
 </div>
-@endsection
-@section('script')
-<script src="js/deleteImage.js"></script>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>
-tinymce.init({ 
-    selector:'textarea',
-    plugins: 'link code image imagetools',
-    menubar: 'insert',
-});
-</script>
 @endsection

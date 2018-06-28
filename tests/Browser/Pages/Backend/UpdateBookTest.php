@@ -61,10 +61,10 @@ class UpdateBookTest extends DuskTestCase
                 ->assertSee('Update Book')
                 ->assertPathIs('/admin/books/'.$book->id.'/edit')
                 ->type('title', '')
-                ->type('description', '')
                 ->type('number_of_page', '')
                 ->type('author', '')
                 ->type('quantity', '');
+            $this->typeInCKEditor($browser, '#cke_description iframe', '');
             $browser->press('Submit')
                 ->pause(1000)
                 ->assertSee('The title field is required.')
