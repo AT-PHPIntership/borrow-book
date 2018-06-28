@@ -96,7 +96,7 @@
                                                     </ul>
                                                 </div>
                                                 <div>
-                                                    <label for="review_detail">@lang('post.review'):</label>
+                                                    <label for="review_detail">@lang('post.write_review'):</label>
                                                 <div class="content" >
                                                     <textarea  placeholder="@lang('post.review_message')" class="form-control" name="detail" id="content_review" ></textarea>
                                                 </div>
@@ -116,7 +116,7 @@
                                 <div id="comment" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-md-7">
-                                                <label for="review_detail">@lang('post.comment'):</label>
+                                                <label for="review_detail">@lang('post.write_comment'):</label>
                                                 <div class="content" >
                                                     <textarea  placeholder="@lang('post.comment_message')" class="form-control" name="detail" id="content_cmt" ></textarea>
                                                 </div>
