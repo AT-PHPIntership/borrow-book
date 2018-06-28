@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Rating;
 use App\Models\Favorite;
 use App\Models\Borrow;
-use App\Models\BorrowDetail;
 use App\Models\Post;
 use App\Http\Requests\UpdateUserRequest;
 use Session;
@@ -143,14 +142,16 @@ class UserController extends Controller
                 $user->ratings()->delete();
                 $user->favorites()->delete();
                 $user->posts()->delete();
-                $user->delete();
                 $borrowes = Borrow::where('user_id', $user->id)->get();
-                if ($borrowes->count()) {
-                    foreach ($borrowes as $borrow) {
-                        BorrowDetail::where('borrow_id', $borrow->id)->delete();
+                foreach ($borrowes as $borrow) {
+                    if ($borrow->status != Borrow::BORROWING) {
+                        $borrow->borrowDetails()->delete();
+                        $borrow->delete();
+                    } else {
+                        throw new Exception();
                     }
-                    $user->borrowes()->delete();
                 }
+                $user->delete();
                 DB::commit();
                 Session::flash('message_success', trans('user.messages.success.delete'));
             } catch (Exception $e) {

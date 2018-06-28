@@ -85,8 +85,7 @@ class DeleteUserTest extends DuskTestCase
             $this->assertDatabaseMissing('users', ['id' => 2, 'deleted_at' => null])
                 ->assertDatabaseMissing('posts', ['user_id'=> 2, 'deleted_at' => null])
                 ->assertDatabaseMissing('ratings', ['user_id'=> 2])
-                ->assertDatabaseMissing('favorites', ['user_id'=> 2])
-                ->assertDatabaseMissing('borrowes', ['user_id'=> 2, 'deleted_at' => null]);
+                ->assertDatabaseMissing('favorites', ['user_id'=> 2]);
         });
     }
 

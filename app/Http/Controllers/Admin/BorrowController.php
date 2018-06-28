@@ -15,7 +15,7 @@ class BorrowController extends Controller
      */
     public function index()
     {
-        $borrows = Borrow::with(['user'])->paginate();
+        $borrows = Borrow::with(['user', 'borrowDetails'])->paginate();
         return view('admin.borrows.index', compact('borrows'));
     }
 

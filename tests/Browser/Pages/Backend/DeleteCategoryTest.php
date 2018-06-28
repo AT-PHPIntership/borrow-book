@@ -75,11 +75,11 @@ class DeleteCategoryTest extends DuskTestCase
                 ->pause(1000)
                 ->assertSee('Delete Category Successfully!');
             $this->assertDatabaseMissing('categories', ['id' => 1, 'deleted_at' => null])
-                ->assertDatabaseMissing('posts', ['id'=> 1, 'deleted_at' => null])
-                ->assertDatabaseMissing('ratings', ['id'=> 1])
-                ->assertDatabaseMissing('favorites', ['id'=> 1])
-                ->assertDatabaseMissing('borrow_details', ['id'=> 1])
-                ->assertDatabaseMissing('books', ['id'=> 1, 'deleted_at' => null]);
+                ->assertDatabaseMissing('posts', ['id' => 1, 'deleted_at' => null])
+                ->assertDatabaseMissing('ratings', ['id' => 1])
+                ->assertDatabaseMissing('favorites', ['id' => 1])
+                ->assertDatabaseMissing('borrow_details', ['id' => 1, 'deleted_at' => null])
+                ->assertDatabaseMissing('books', ['id' => 1, 'deleted_at' => null]);
         });
     }
 }
