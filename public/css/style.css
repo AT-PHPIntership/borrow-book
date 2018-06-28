@@ -2169,13 +2169,25 @@ input[type="text"] {
   color:#FF912C;
 }
 #profile-img {
-  height: 250px;
-  width: 250px;
-  margin-left: 32px;
-  margin-top: -18px;
+  height: 200px;
+  width: 200px;
+  margin: -18px 0px 24px 23px;
 }
-.name {
-  font-weight: bold;
-  font-size: 20px
+#btn-posts-err{
+  height: 36px;
+  padding-left: 12px;
+  width: 38px;
+  border-radius: 34px;
 }
-
+#btn-posts-success{
+  height: 36px;
+  padding-left: 12px;
+  width: 38px;
+  border-radius: 34px;
+}
+.profile-user {
+  padding-right: 5px;
+}
+.m-top-xs {
+  margin-bottom: 10px;
+}

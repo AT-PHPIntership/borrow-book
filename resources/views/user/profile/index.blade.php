@@ -10,30 +10,61 @@
                                 <div class="product-entry">
                                     <div class="product-img" id="profile-img">
                                     </div>
-                                    <div class="name text-center"></div>
+                                    <ul class="list-unstyled user_data">
+                                        <li  class="m-top-xs" id="name">
+                                            <i class="fa fa-user profile-user"></i>
+                                        </li>
+                                        <li class="m-top-xs" id="address">
+                                            <i class="fa fa-map-marker profile-user"></i>
+                                        </li>
+                                        <li class="m-top-xs" id="email">
+                                            <i class="fa fa-envelope user-profile-icon profile-user"></i>
+                                        </li>
+                                        <li class="m-top-xs" id="dob">
+                                            <i class="fa fa-birthday-cake profile-user"></i>
+                                        </li>
+                                        <li class="m-top-xs" id="identity_number">
+                                            <i class="fa fa-address-card profile-user"></i>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="desc" id="detail">
-                                    <h3 class="name"></h3>
-                                    <div class="color-wrap">
-                                        <p class="color-desc" id="dob">{{ trans('user.form.title_inputs.dob') }} :
-                                        </p>
-                                    </div>
-                                    <hr/>
-                                    <div class="color-wrap">
-                                        <p class="color-desc" id="email">{{ trans('user.form.title_inputs.email') }} :
-                                        </p>
-                                    </div>
-                                    <hr/>
-                                    <div class="color-wrap">
-                                        <p class="color-desc" id="identity_number">{{ trans('user.form.title_inputs.identity_number') }} :
-                                        </p>
-                                    </div>
-                                    <hr/>
-                                    <div class="color-wrap">
-                                        <p class="color-desc" id="address">{{ trans('user.form.title_inputs.address') }} :
-                                        </p>
+                            <div class="col-md-8">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#recent_post" aria-expanded="true">{{ __('profile.recent_post') }}</a>
+                                    </li>
+                                    <li>  <a data-toggle="tab" href="#" aria-expanded="false">{{ __('profile.recent_borrow') }}</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="recent_post" class="tab-pane fade active in">
+                                        <div class="row">
+                                           <div id="table-content">
+                                                <table class="table table-striped table-sm ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="col-md-7">{{ __('profile.profile_content') }}</th>
+                                                            <th class="col-md-7">{{ __('profile.profile_rate') }}</th>
+                                                            <th class="col-md-3">{{ __('profile.profile_book') }}</th>
+                                                            <th class="col-md-2">{{ __('profile.profile_status') }}</th>
+                                                            <th class="col-md-2">{{ __('profile.profile_type') }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr id="template-post" style="display:none;">
+                                                          <td class="body col-md-10"></td>
+                                                          <td class="rate col-md-2"></td>
+                                                          <td class="book-name col-md-3"></td>
+                                                          <td class="status col-md-2"></td>
+                                                          <td class="type col-md-2"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <nav class="paginate-profile text-right">
+                                              <a id="next" hidden href="">{{ __('profile.next') }}>></a>
+                                            </nav>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -47,4 +78,5 @@
 @endsection
 @section('scripts')
 <script src="{{ asset('js/userProfile.js') }}"></script>
+<script src="{{ asset('js/userPost.js') }}"></script>
 @endsection
