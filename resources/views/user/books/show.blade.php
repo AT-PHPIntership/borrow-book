@@ -104,7 +104,7 @@
                                                 <div id="dob_error" class="alert alert-danger" hidden></div>
                                                 <div class="action">
                                                 <div class="word-counter"></div>
-                                                    <button class="btn btn-success btn-add-review " id="add_review">@lang('post.btn_send_review')</button>
+                                                    <button class="btn btn-success btn-add-review" id="add_review">@lang('post.btn_send_review')</button>
                                                 </div>
                                                 </div>
                                                 <div id="content-review"></div>
@@ -123,10 +123,10 @@
                                                 <div id="dob_error" class="alert alert-danger" hidden></div>
                                                 <div class="action">
                                                 <div class="word-counter"></div>
-                                                    <button class="btn btn-success btn-add-review " id="add_comment">@lang('post.btn_send_cmt')</button>
+                                                    <button class="btn btn-success btn-add-comment" id="add_comment">@lang('post.btn_send_cmt')</button>
                                                 </div>
                                             <hr/>
-                                            <div  id="content-comment"></div>
+                                            <div id="content-comment"></div>
                                            
                                         </div>
                                     </div>

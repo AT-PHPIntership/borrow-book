@@ -2169,3 +2169,9 @@ input[type="text"] {
   color:#FF912C;
 }
 
+/*Show option delete or update of post*/
+.icon-option{
+  float: right;
+  right: 20px;
+  top: -50px;
+}
