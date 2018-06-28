@@ -1,6 +1,11 @@
 var current_page = 1;
 var limit = 12;
-var url = "/api/books?limit=" + limit;
+var url = '/api/books';
+if (window.location.search != '') {
+    url += window.location.search + '&limit=' + limit;
+} else {
+    url += '?limit=' + limit;
+}
 var category = [];
 $(document).ready(function () {
     getListBooks();
