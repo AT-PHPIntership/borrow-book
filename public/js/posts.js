@@ -14,7 +14,7 @@ $(document).ready(function () {
     submitComment();
     submitReview();
     editReview();
-    submitUpdateReview();
+    editComment();
 });
 
 function getListReview() {
@@ -153,7 +153,6 @@ function submitComment() {
             },
             data: {
                 post_type: postComment,
-                rate_point: $('.fa-star').val(),
                 body: $('#content_cmt').val(),
             },
             success: function(data) {
@@ -218,7 +217,7 @@ function submitReview() {
                 body: $('#content_review').val(),
             },
             success: function(data) {
-                $('.alert-info').show();
+                $('.review_success').show();
                 $('.star.selected').attr('class', 'star');
                 $('#content_review').val('');
             },
@@ -230,16 +229,17 @@ function submitReview() {
                         errorMessage += data.responseJSON.errors[error] + '<br/>';
                     });
                 }
-                $('.alert-danger').html(errorMessage);
-                $('.alert-danger').show();
+                $('.review_error').html(errorMessage);
+                $('.review_error').show();
             }
         });
     });
 }
 
 function editReview() {
+    var postId;
     $(document).on('click', '.edit-review',function() {
-        var postId = $(this).attr('id');
+        postId = $(this).attr('id');
         $('#content_review').html($('.body-review').attr('data-value-review'));
         var rateStars = $('.rate-value').attr('data-star');
         var stars = $('#stars li').parent().children('li.star');
@@ -247,10 +247,8 @@ function editReview() {
             $(stars[i]).addClass('selected');
         }
         $('.btn-add-review').attr('id', 'update-review');
-        $('.btn-add-review').attr('data-id-post', postId);
     });
     $(document).on('click', '#update-review', function(event) {
-        var postId = $(this).attr('data-id-post');
         $.ajax({
             url: url + postId,
             type: 'PUT',
@@ -285,14 +283,13 @@ function editReview() {
 }
 
 function editComment() {
+    var postId;
     $(document).on('click', '.edit-comment',function() {
-        var postId = $(this).attr('id');
+        postId = $(this).attr('id');
         $('#content_cmt').html($('.body-comment').attr('data-value-comment'));
-        $('.btn-add-comment').attr('id', 'update-review');
-        $('.btn-add-comment').attr('data-id-post', postId);
+        $('.btn-add-comment').attr('id', 'update-comment');
     });
-    $(document).on('click', '#update-review', function(event) {
-        var postId = $(this).attr('data-id-post');
+    $(document).on('click', '#update-comment', function(event) {
         $.ajax({
             url: url + postId,
             type: 'PUT',
@@ -301,15 +298,13 @@ function editComment() {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             },
             data: {
-                post_type: postReview,
-                rate_point: $('#stars li.selected').last().data('value'),
-                body: $('#content_review').val(),
+                post_type: postComment,
+                body: $('#content_cmt').val(),
             },
             success: function(data) {
                 $('.alert-info').show();
-                $('.star.selected').attr('class', 'star');
-                $('#content_review').val('');
-                $('#review_post' + postId).hide();
+                $('#content_cmt').val('');
+                $('#comment' + postId).hide();
             },
             error: function(data) {
                 errorMessage = data.responseJSON.message + '<br/>';

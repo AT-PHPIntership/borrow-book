@@ -2168,6 +2168,16 @@ input[type="text"] {
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
 }
+#profile-img {
+  height: 250px;
+  width: 250px;
+  margin-left: 32px;
+  margin-top: -18px;
+}
+.name {
+  font-weight: bold;
+  font-size: 20px
+}
 
 /*Show option delete or update of post*/
 .icon-option{

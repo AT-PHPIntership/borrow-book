@@ -96,17 +96,18 @@
                                                     </ul>
                                                 </div>
                                                 <div>
-                                                    <label for="review_detail">@lang('post.review_message'):</label>
+                                                    <label for="review_detail">@lang('post.review'):</label>
                                                 <div class="content" >
-                                                    <textarea  placeholder="@lang('post.post_message')" class="form-control" name="detail" id="content_review" ></textarea>
+                                                    <textarea  placeholder="@lang('post.review_message')" class="form-control" name="detail" id="content_review" ></textarea>
                                                 </div>
-                                                <div class="alert alert-info" hidden>@lang('post.send_review_success')</div>
-                                                <div id="dob_error" class="alert alert-danger" hidden></div>
+                                                <div class="alert alert-info review_success" hidden>@lang('post.send_review_success')</div>
+                                                <div class="alert alert-danger review_error" hidden></div>
                                                 <div class="action">
                                                 <div class="word-counter"></div>
                                                     <button class="btn btn-success btn-add-review" id="add_review">@lang('post.btn_send_review')</button>
                                                 </div>
                                                 </div>
+                                                <hr>
                                                 <div id="content-review"></div>
                                         </div>
 
@@ -115,9 +116,9 @@
                                 <div id="comment" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-md-7">
-                                                <label for="review_detail">@lang('post.review_message'):</label>
+                                                <label for="review_detail">@lang('post.comment'):</label>
                                                 <div class="content" >
-                                                    <textarea  placeholder="@lang('post.post_message')" class="form-control" name="detail" id="content_cmt" ></textarea>
+                                                    <textarea  placeholder="@lang('post.comment_message')" class="form-control" name="detail" id="content_cmt" ></textarea>
                                                 </div>
                                                 <div class="alert alert-info" hidden>@lang('post.send_success')</div>
                                                 <div id="dob_error" class="alert alert-danger" hidden></div>
