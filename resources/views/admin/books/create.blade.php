@@ -35,12 +35,6 @@
                         <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('book.form.placeholders.title')}}">
                     </div>
                     <div class="form-group">
-                        <label>{{trans('book.form.title_inputs.description')}}</label>
-                        <div class="form-group">
-                            <textarea name="description" id="description" cols="140" rows="10" placeholder="{{trans('book.form.placeholders.description')}}"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label>{{trans('book.form.title_inputs.number_of_page')}}</label>
                         <input type="number" class="form-control" id="number_of_page" name="number_of_page" placeholder="{{trans('book.form.placeholders.number_of_page')}}">
                     </div>
@@ -64,6 +58,12 @@
                         <label>{{trans('book.form.title_inputs.quantity')}}</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" placeholder="{{trans('book.form.placeholders.quantity')}}">
                     </div>
+                    <div class="form-group">
+                        <label>{{trans('book.form.title_inputs.description')}}</label>
+                        <div class="form-group">
+                            <textarea name="description" id="description" cols="140" rows="10" placeholder="{{trans('book.form.placeholders.description')}}"></textarea>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
@@ -78,4 +78,14 @@
     
     <!-- /.content -->
 </div>
+@endsection
+@section('script')
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>
+tinymce.init({ 
+    selector:'textarea',
+    plugins: 'link code image imagetools',
+    menubar: 'insert',
+});
+</script>
 @endsection
