@@ -43,7 +43,7 @@
                     <div class="box-body">
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>{{trans('user.table_head.from_date')}}</b> <p class="pull-right from-date">{{ $borrow->form_date }}</p>
+                                <b>{{trans('user.table_head.from_date')}}</b> <p class="pull-right from-date">{{ $borrow->from_date }}</p>
                             </li>
                             <li class="list-group-item">
                                 <b>{{trans('user.table_head.to_date')}}</b> <p class="pull-right to-date">{{ $borrow->to_date }}</p>

@@ -41,11 +41,19 @@ class PostController extends ApiController
      */
     public function destroy(Post $post)
     {
+        $book = Book::findOrFail($post->book_id);
         if ($post->user_id == Auth::id()) {
+            if ($post->post_type == Post::REVIEW) {
+                if ($book->total_rate != 0 && $book->count_rate != 0) {
+                    $book->total_rate -= $post->rate_point;
+                    $book->count_rate -= 1;
+                    $book->save();
+                }
+            }
             $post->delete();
-            return $this->showOne($post->load('user'), Response::HTTP_OK);
+            return $this->showOne($post->load(['user']), Response::HTTP_OK);
         } else {
-            return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_OK);
+            return $this->errorResponse(trans('post.messages.delete_post_error'), Response::HTTP_UNAUTHORIZED);
         }
     }
     
@@ -79,5 +87,31 @@ class PostController extends ApiController
             DB::rollBack();
             throw new ModelNotFoundException();
         }
+    }
+
+    /**
+     * Api update post
+     *
+     * @param \App\Models\Post                     $post    post of this post
+     * @param \App\Http\Requests\CreatePostRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Post $post, Request $request)
+    {
+        $book = Book::findOrFail($post->book_id);
+        if ($post->user_id == Auth::id()) {
+            $input = $request->only('post_type', 'body');
+            if ($input['post_type'] == Post::REVIEW) {
+                $input['rate_point'] = $request->rate_point;
+                $book->total_rate -= $post->rate_point;
+                $book->total_rate += $request->rate_point;
+                $book->save();
+            }
+            $input['status'] = Post::UNACCEPT;
+            $post->update($input);
+            return $this->showOne($post->load('user'), Response::HTTP_OK);
+        }
+        return $this->errorResponse(trans('post.messages.update_post_error'), Response::HTTP_OK);
     }
 }

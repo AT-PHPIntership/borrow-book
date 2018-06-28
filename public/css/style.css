@@ -477,7 +477,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-bottom: 40px; }
   .product-entry .product-img {
     display: block;
-    height: 350px;
+    height: 250px;
     margin-bottom: 20px;
     position: relative; }
     .product-entry .product-img .tag {
@@ -2119,5 +2119,63 @@ input[type="text"] {
 .category-item {
   float:left; 
   width: 49%;
-  margin: 10px;
+  margin: 10px;height: 78px;border: 1px solid #ddd;    border-radius: 4px;margin-bottom: 10px 
 }
+#show-more {
+  font-size: 20px;
+  font-weight: bold;
+}
+.decription-title {
+  font-size: 20px;
+}
+.content {
+  height: 78px;
+  border: 1px solid #ddd;   
+  border-radius: 4px;
+  margin-bottom: 10px 
+}
+.rating-stars {
+  display:inline-block;
+}
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul .star {
+  list-style-type:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+  
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:1.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
+#profile-img {
+  height: 250px;
+  width: 250px;
+  margin-left: 32px;
+  margin-top: -18px;
+}
+.name {
+  font-weight: bold;
+  font-size: 20px
+}
+

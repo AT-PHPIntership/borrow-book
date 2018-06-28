@@ -48,6 +48,8 @@ Route::post('admin/logout', 'Auth\LoginController@logout')->name('admin.logout')
 
 Route::get('login', 'User\Auth\LoginController@showLoginForm')->name('login');
 Route::get('register', 'User\Auth\LoginController@showRegisterForm')->name('register');
+Route::get('cart', 'CartController@index')->name('cart');
 Route::resource('books', 'BookController')->except([
     'store', 'update', 'destroy'
 ]);
+Route::get('profile', 'UserController@index')->name('profile');

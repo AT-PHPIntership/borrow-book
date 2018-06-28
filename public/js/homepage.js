@@ -1,4 +1,5 @@
 var logout = Lang.get('auth.logout');
+var profile = Lang.get('auth.profile');
 
 $( document ).ready(function() {
     if (window.localStorage.getItem('access_token')) {
@@ -20,6 +21,7 @@ function getInfo() {
                                 <a href="javascript:void(0);" class="dropdown-toggle" id="setting" data-toggle="dropdown"><small>'+ user.name +'</small><span class="caret"></span></a>\
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="setting">\
                                     <li><a id="logout">'+ logout +'</a></li>\
+                                    <li><a id="profile" href="/profile">'+ profile +'</a></li>\
                                 </ul>';
                 $(".menu-1 #login a").hide();
                 $(".menu-1 #register").hide();

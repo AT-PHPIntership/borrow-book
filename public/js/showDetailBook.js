@@ -5,10 +5,14 @@ $.ajax({
     type: "get",
     success: function( data ) {
         let img='', imgItem='';
-        if(typeof data.image_books !== 'undefined') {
-            img += '<div class="product-img" style="background-image: url(' + data.image_books[0].image + ');"></div>';
-            for(var i = 1; i < data.image_books.length; i++ )
-            {                
+        if (typeof data.image_books[0] === 'undefined') {
+            data.image_books[0] = {
+                'image': '../storage/images/default-book.png'
+            };
+            img += '<div id="product-img" class="product-img" style="background-image: url(' + data.image_books[0].image + ');"></div>';
+        } else {
+            img += '<div id="product-img" class="product-img" style="background-image: url(' + data.image_books[0].image + ');"></div>';
+            for(var i = 1; i < data.image_books.length; i++ ) {                
                 imgItem += '<a href="#" class="thumb-img" style="background-image: url(' + data.image_books[i].image + ');"></a>';
             }
         }
@@ -22,5 +26,7 @@ $.ajax({
         $('#number_of_page').append(data.number_of_page);
         $('#language').append(data.language);
         $('#publishing_year').append(data.publishing_year);
+        $('#quantity').attr('max', data.quantity);
+        $('#book-id').attr('value', data.id);
     }
 });
