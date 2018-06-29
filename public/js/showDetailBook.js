@@ -20,7 +20,7 @@ $.ajax({
         $('.thumb-nail').html(imgItem);
         $('#title').text(data.title);
         $('#author').text(data.author);
-        $('#description').text(data.description);
+        $('#description').append(data.description);
         $('#rating').append(data.count_rate);
         $('#category').append(data.category.name);
         $('#number_of_page').append(data.number_of_page);

@@ -28,7 +28,6 @@
                                             <i class="fa fa-star"></i>
                                         </span>
                                     </p>
-                                    <p id="description"></p>
                                     <div class="color-wrap">
                                         <p class="color-desc" id="category">{{ trans('book.form.title_inputs.category')}} :
                                         </p>
@@ -68,11 +67,14 @@
                     <div class="row">
                         <div class="col-md-12 tabulation">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#review" aria-expanded="true">{{ trans('book.review') }}</a></li>
+                                <li class="active"><a data-toggle="tab" href="#description" aria-expanded="true">{{ trans('book.form.title_inputs.description') }}</a></li>
+                                <li><a data-toggle="tab" href="#review" aria-expanded="true">{{ trans('book.review') }}</a></li>
                                 <li><a data-toggle="tab" href="#comment" aria-expanded="false">{{ trans('book.comment') }}</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div id="review" class="tab-pane fade active in">
+                                <div id="description" class="tab-pane fade active in">
+                                </div>
+                                <div id="review" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-md-7" class="review" >
                                                 <label>@lang('post.rating_message'):</label>
