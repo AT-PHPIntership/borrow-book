@@ -56,8 +56,8 @@
                                                             <td class="rate col-md-2"></td>
                                                             <td class="book-name col-md-3"></td>
                                                             <td class="status col-md-2">
-                                                                <button class="hidden btn btn-success fa fa-check btn-posts-success" id="post-success"></button>
-                                                                <button class="hidden btn-posts-err btn btn-danger fa fa-close" id="post-err"></button>
+                                                                <button class="btn-posts-success btn btn-success fa fa-check" id="post-success"></button>
+                                                                <button class="btn-posts-err btn btn-danger fa fa-close" id="post-err"></button>
                                                             </td>
                                                             <td class="type col-md-2"></td>
                                                         </tr>

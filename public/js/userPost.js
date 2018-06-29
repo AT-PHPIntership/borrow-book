@@ -8,7 +8,7 @@ function getUserPosts(url) {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
         },
         success: function(response) {
-            const COMMENT = 0;
+            const COMMENT = 1;
             const REVIEW = 1;
             const ACCEPT = 1;
             const UNACCEPT = 0;
@@ -28,9 +28,9 @@ function getUserPosts(url) {
                 $("#"+ idpost +" .body").text(body);
                 $("#"+ idpost +" .book-name").text(nameBook);
                 if (posts.status == ACCEPT) {
-                    $("#"+ idpost +" .status .btn-posts-success").attr('class','btn btn-success fa fa-check').show();
+                    $("#"+ idpost +" .status .btn-posts-err").hide();
                 } else {
-                    $("#"+ idpost +" .status .btn-posts-err").attr('class','btn btn-danger fa fa-close').show();
+                    $("#"+ idpost +" .status .btn-posts-success").hide();
                 }
                 if (posts.post_type == REVIEW) {
                     type = "Review";
