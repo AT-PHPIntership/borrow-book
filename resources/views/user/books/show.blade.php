@@ -110,7 +110,7 @@
                                                 </div>
                                                 </div>
                                                 <hr>
-                                                <div id="content-review"></div>
+                                                <div id="list-review"></div>
                                         </div>
 
                                     </div>
