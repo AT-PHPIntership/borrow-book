@@ -8,7 +8,7 @@ $(document).ready(function () {
     },
     success: function( data ) {
         $('#profile-img').css('background-image', 'url('+ data.data.avatar +')');
-        $('.name').text(data.data.name);
+        $('#name').append(data.data.name);
         $('#dob').append(data.data.dob);
         $('#email').append(data.data.email);
         $('#identity_number').append(data.data.identity_number);
