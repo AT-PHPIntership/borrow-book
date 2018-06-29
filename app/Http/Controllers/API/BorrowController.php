@@ -44,7 +44,7 @@ class BorrowController extends ApiController
     public function index()
     {
         $user = Auth::user();
-        $borrows = Borrow::with(['borrowDetails', 'user'])->where('user_id', $user->id)->get();
+        $borrows = Borrow::with(['borrowDetails.book'])->where('user_id', $user->id)->get();
         return $this->showAll($borrows, Response::HTTP_OK);
     }
 }
