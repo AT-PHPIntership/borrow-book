@@ -45,18 +45,21 @@
                                                         <tr>
                                                             <th class="col-md-7">{{ __('profile.profile_content') }}</th>
                                                             <th class="col-md-7">{{ __('profile.profile_rate') }}</th>
-                                                            <th class="col-md-3">{{ __('profile.profile_book') }}</th>
-                                                            <th class="col-md-2">{{ __('profile.profile_status') }}</th>
+                                                                <th class="col-md-3">{{ __('profile.profile_book') }}</th>
+                                                                <th class="col-md-2">{{ __('profile.profile_status') }}</th>
                                                             <th class="col-md-2">{{ __('profile.profile_type') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr id="template-post" style="display:none;">
-                                                          <td class="body col-md-10"></td>
-                                                          <td class="rate col-md-2"></td>
-                                                          <td class="book-name col-md-3"></td>
-                                                          <td class="status col-md-2"></td>
-                                                          <td class="type col-md-2"></td>
+                                                            <td class="body col-md-10"></td>
+                                                            <td class="rate col-md-2"></td>
+                                                            <td class="book-name col-md-3"></td>
+                                                            <td class="status col-md-2">
+                                                                <button class="hidden btn btn-success fa fa-check btn-posts-success" id="post-success"></button>
+                                                                <button class="hidden btn-posts-err btn btn-danger fa fa-close" id="post-err"></button>
+                                                            </td>
+                                                            <td class="type col-md-2"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

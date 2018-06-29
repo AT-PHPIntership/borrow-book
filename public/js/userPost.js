@@ -10,8 +10,8 @@ function getUserPosts(url) {
         success: function(response) {
             const COMMENT = 0;
             const REVIEW = 1;
-            const UNACCEPT = 0;
             const ACCEPT = 1;
+            const UNACCEPT = 0;
             if (response['next_page_url'] != null) {
                 $('#next').show();
                 $('#next').attr('href', response['next_page_url']);
@@ -22,27 +22,21 @@ function getUserPosts(url) {
                 let body = posts.body;
                 let rate = posts.rate_point;
                 let nameBook = posts.book.title;
-                let status = '';
+                let idpost = posts.id;
+                let type = 'Comment';
+                $('#template-post').clone().attr({"style":"display: ", "id":idpost}).insertBefore('#template-post');
+                $("#"+ idpost +" .body").text(body);
+                $("#"+ idpost +" .book-name").text(nameBook);
                 if (posts.status == ACCEPT) {
-                    status = '<button class="btn btn-success fa fa-check " id="btn-posts-success" style="" disabled="disabled"></button>';
+                    $("#"+ idpost +" .status .btn-posts-success").attr('class','btn btn-success fa fa-check').show();
                 } else {
-                    status = '<button class="btn btn-danger fa fa-close" id="btn-posts-err" disabled="disabled"></button>';
+                    $("#"+ idpost +" .status .btn-posts-err").attr('class','btn btn-danger fa fa-close').show();
                 }
-                let type = '';
                 if (posts.post_type == REVIEW) {
                     type = "Review";
-                } else {
-                    type = "Comment";
+                    $("#"+ idpost +" .rate").text(rate);
                 }
-                let idpost=posts.id;
-                $('#template-post').clone().attr({"style":"display: ", "id":idpost}).insertBefore('#template-post');
-                $("#"+idpost +" .body").text(body);
-                $("#"+idpost +" .book-name").text(nameBook);
-                $("#"+idpost +" .status").html(status);
-                $("#"+idpost +" .type").html(type);
-                if (posts.post_type == REVIEW) {
-                    $("#"+idpost +" .rate").text(rate);
-                }
+                $("#"+ idpost +" .type").html(type);
             });
         }
     });

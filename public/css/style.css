@@ -2173,13 +2173,13 @@ input[type="text"] {
   width: 200px;
   margin: -18px 0px 24px 23px;
 }
-#btn-posts-err{
+#post-err{
   height: 36px;
   padding-left: 12px;
   width: 38px;
   border-radius: 34px;
 }
-#btn-posts-success{
+#post-success{
   height: 36px;
   padding-left: 12px;
   width: 38px;
