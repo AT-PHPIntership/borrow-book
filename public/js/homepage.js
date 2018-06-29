@@ -20,8 +20,8 @@ function getInfo() {
                 var imageInfo = '<img src="'+ user.avatar +'" class="img-circle" alt="Cinque Terre" width="40" height="40">\
                                 <a href="javascript:void(0);" class="dropdown-toggle" id="setting" data-toggle="dropdown"><small>'+ user.name +'</small><span class="caret"></span></a>\
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="setting">\
-                                    <li><a id="logout">'+ logout +'</a></li>\
                                     <li><a id="profile" href="/profile">'+ profile +'</a></li>\
+                                    <li><a id="logout">'+ logout +'</a></li>\
                                 </ul>';
                 $(".menu-1 #login a").hide();
                 $(".menu-1 #register").hide();
