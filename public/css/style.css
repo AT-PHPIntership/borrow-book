@@ -2119,7 +2119,7 @@ input[type="text"] {
 .category-item {
   float:left; 
   width: 49%;
-  margin: 10px;height: 78px;border: 1px solid #ddd;    border-radius: 4px;margin-bottom: 10px 
+  margin: 10px; 
 }
 #show-more {
   font-size: 20px;
@@ -2190,4 +2190,10 @@ input[type="text"] {
 }
 .m-top-xs {
   margin-bottom: 10px;
+}
+/*Show option delete or update of post*/
+.icon-option{
+  float: right;
+  right: 20px;
+  top: -50px;
 }

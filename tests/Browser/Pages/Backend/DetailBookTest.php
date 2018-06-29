@@ -71,8 +71,8 @@ class DetailBookTest extends DuskTestCase
             $this->assertTrue($browser->text('.publishing-year') === $book->publishing_year);
             $this->assertTrue($browser->text('.language') === $book->language);
             $this->assertTrue($browser->text('.category') === $book->category->name);
-            $pageNumber = $browser->text('ul li:nth-child(3) p');
-            $quantity = $browser->text('ul li:nth-child(7) p');
+            $pageNumber = $browser->text('ul li:nth-child(2) p');
+            $quantity = $browser->text('ul li:nth-child(6) p');
             $this->assertEquals($book->quantity, $quantity);
             $this->assertEquals($book->number_of_page, $pageNumber);
         });

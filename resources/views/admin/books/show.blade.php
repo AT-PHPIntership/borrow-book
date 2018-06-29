@@ -25,9 +25,6 @@
                                 <b>{{trans('book.form.title_inputs.title')}}</b> <p class=" title pull-right">{{ $book->title }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>{{trans('book.form.title_inputs.description')}}</b> <p class="description">{{ $book->description }}</p>
-                            </li>
-                            <li class="list-group-item">
                                 <b>{{trans('book.form.title_inputs.number_of_page')}}</b> <p class="pull-right">{{ $book->number_of_page }}</p>
                             </li>
                             <li class="list-group-item">
@@ -44,6 +41,9 @@
                             </li>
                             <li class="list-group-item">
                                 <b>{{trans('book.form.title_inputs.category')}}</b> <p class="category pull-right">{{ $book->category->name }}</p>
+                            </li>
+                            <li class="list-group-item">
+                                <b>{{trans('book.form.title_inputs.description')}}</b> <p class="description">{!! $book->description !!}</p>
                             </li>
                         </ul>
                         <a href="javascript:history.back()" class="btn btn-primary btn-block"><b>{{ trans('book.form.buttons.back') }}</b></a>

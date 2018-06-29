@@ -76,6 +76,8 @@ class PostController extends ApiController
                 $book->total_rate += $request->rate_point;
                 $book->count_rate += 1;
                 $book->save();
+            } else {
+                $input['rate_point'] = 0;
             }
             $input['user_id'] = $user->id;
             $input['book_id'] = $book->id;

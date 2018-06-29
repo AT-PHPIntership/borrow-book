@@ -4,7 +4,8 @@ const postReview = 1;
 var urlReview = '/api'+ bookId +'/posts' + '?post_type=' + postReview;
 var urlComment = '/api'+ bookId +'/posts' + '?post_type=' + postComment;
 var ratingValue;
-var urlDelete = '/api/posts/'
+var url = '/api/posts/';
+var data_login = JSON.parse(localStorage.getItem('data'));
 
 $(document).ready(function () {
     getListReview();
@@ -12,6 +13,8 @@ $(document).ready(function () {
     deletePost();
     submitComment();
     submitReview();
+    editReview();
+    editComment();
 });
 
 function getListReview() {
@@ -45,15 +48,23 @@ function contentReview(data) {
                                 <span class="text-right">'+ value.updated_at +'</span>\
                             </h4>\
                             <p class="star">\
-                                <span>'+ stars +'</span>\
-                               <span class="text-right" ><a href="javascript:void(0);" class="reply delete-post review-book" hidden id="'+ value.id +'"><i class="fa fa-times"></i></a></span>\
+                                <span class="rate-value" data-star="'+ k +'">'+ stars +'</span>\
+                                <div class="dropdown icon-option review-book" hidden>\
+                                    <i class="fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>\
+                                    <ul class="dropdown-menu">\
+                                        <li><a href="javascript:void(0);" id="'+ value.id +'" class="delete-post">Delete</a></li>\
+                                        <li><a href="javascript:void(0);" id="'+ value.id +'" class="edit-review">Edit</a></li>\
+                                    </ul>\
+                                </div>\
                             </p>\
-                            <p>'+ value.body +'</p>\
+                            <p class="body-review" data-value-review="'+ value.body +'">'+ value.body +'</p>\
                         </div>\
                     </div>';
         $("#content-review").html(reviews);
         if(localStorage.getItem('access_token')) {
-            $('.review-book').show();
+            if(data_login.id == value.user.id){
+                $('.review-book').show();
+            }
         }
     });
 }
@@ -83,17 +94,26 @@ function contentComment(data) {
                                 <span class="text-left">'+ value.user.name +'</span>\
                                 <span class="text-right">'+ value.updated_at +'</span>\
                             </h4>\
-                             <p class="star comment-book" hidden>\
+                            <p class="star comment-book">\
                                 <span class="text-left"></span>\
-                                <span class="text-right"><a href="javascript:void(0);" class="delete-post reply" id="'+ value.id +'" ><i class="fa fa-times"></i></a></span>\
+                                <div class="dropdown icon-option comment-book" hidden>\
+                                    <i class="fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>\
+                                    <ul class="dropdown-menu">\
+                                        <li><a href="javascript:void(0);" id="'+ value.id +'" class="delete-post">Delete</a></li>\
+                                        <li><a href="javascript:void(0);" id="'+ value.id +'" class="edit-comment">Edit</a></li>\
+                                    </ul>\
+                                </div>\
                             </p>\
-                            <p>'+ value.body +'</p>\
+                            <p class="body-comment" data-value-comment="'+ value.body +'">'+ value.body +'</p>\
                         </div>\
                     </div>';
         $("#content-comment").html(comment);
         if(localStorage.getItem('access_token')) {
-            $('.comment-book').show();
+            if(data_login.id == value.user.id){
+                $('.comment-book').show();
+            }
         }
+
     });
 }
 
@@ -102,7 +122,7 @@ function deletePost() {
         var postId = $(this).attr('id');
         confirm("Are you sure delete?");
         $.ajax({
-            url: urlDelete + postId,
+            url: url + postId,
             type: 'DELETE',
             headers: {
             'Accept': 'application/json',
@@ -123,7 +143,7 @@ function deletePost() {
 }
 
 function submitComment() {
-    $(document).on('click', '#add_comment', function(event)  {
+    $(document).on('click', '#add_comment', function(event) {
         $.ajax({
             url: '/api' + bookId + '/posts',
             type: 'POST',
@@ -214,4 +234,89 @@ function submitReview() {
             }
         });
     });
+}
+
+function editReview() {
+    var postId;
+    $(document).on('click', '.edit-review',function() {
+        postId = $(this).attr('id');
+        $('#content_review').html($('.body-review').attr('data-value-review'));
+        var rateStars = $('.rate-value').attr('data-star');
+        var stars = $('#stars li').parent().children('li.star');
+        for (var i = 0; i < rateStars; i++) {
+            $(stars[i]).addClass('selected');
+        }
+        $('.btn-add-review').attr('id', 'update-review');
+    });
+    $(document).on('click', '#update-review', function(event) {
+        $.ajax({
+            url: url + postId,
+            type: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            },
+            data: {
+                post_type: postReview,
+                rate_point: $('#stars li.selected').last().data('value'),
+                body: $('#content_review').val(),
+            },
+            success: function(data) {
+                $('.alert-info').show();
+                $('.star.selected').attr('class', 'star');
+                $('#content_review').val('');
+                $('#review_post' + postId).hide();
+            },
+            error: function(data) {
+                errorMessage = data.responseJSON.message + '<br/>';
+                if (data.responseJSON.errors) {
+                    errors = Object.keys(data.responseJSON.errors);
+                    errors.forEach(error => {
+                        errorMessage += data.responseJSON.errors[error] + '<br/>';
+                    });
+                }
+                $('.alert-danger').html(errorMessage);
+                $('.alert-danger').show();
+            }
+        });
+    });  
+}
+
+function editComment() {
+    var postId;
+    $(document).on('click', '.edit-comment',function() {
+        postId = $(this).attr('id');
+        $('#content_cmt').html($('.body-comment').attr('data-value-comment'));
+        $('.btn-add-comment').attr('id', 'update-comment');
+    });
+    $(document).on('click', '#update-comment', function(event) {
+        $.ajax({
+            url: url + postId,
+            type: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            },
+            data: {
+                post_type: postComment,
+                body: $('#content_cmt').val(),
+            },
+            success: function(data) {
+                $('.alert-info').show();
+                $('#content_cmt').val('');
+                $('#comment' + postId).hide();
+            },
+            error: function(data) {
+                errorMessage = data.responseJSON.message + '<br/>';
+                if (data.responseJSON.errors) {
+                    errors = Object.keys(data.responseJSON.errors);
+                    errors.forEach(error => {
+                        errorMessage += data.responseJSON.errors[error] + '<br/>';
+                    });
+                }
+                $('.alert-danger').html(errorMessage);
+                $('.alert-danger').show();
+            }
+        });
+    });  
 }

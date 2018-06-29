@@ -96,7 +96,7 @@
                                                     </ul>
                                                 </div>
                                                 <div>
-                                                    <label for="review_detail">@lang('post.review'):</label>
+                                                    <label for="review_detail">@lang('post.write_review'):</label>
                                                 <div class="content" >
                                                     <textarea  placeholder="@lang('post.review_message')" class="form-control" name="detail" id="content_review" ></textarea>
                                                 </div>
@@ -104,7 +104,7 @@
                                                 <div class="alert alert-danger review_error" hidden></div>
                                                 <div class="action">
                                                 <div class="word-counter"></div>
-                                                    <button class="btn btn-success btn-add-review " id="add_review">@lang('post.btn_send_review')</button>
+                                                    <button class="btn btn-success btn-add-review" id="add_review">@lang('post.btn_send_review')</button>
                                                 </div>
                                                 </div>
                                                 <hr>
@@ -116,7 +116,7 @@
                                 <div id="comment" class="tab-pane fade">
                                     <div class="row">
                                         <div class="col-md-7">
-                                                <label for="review_detail">@lang('post.comment'):</label>
+                                                <label for="review_detail">@lang('post.write_comment'):</label>
                                                 <div class="content" >
                                                     <textarea  placeholder="@lang('post.comment_message')" class="form-control" name="detail" id="content_cmt" ></textarea>
                                                 </div>
@@ -124,10 +124,10 @@
                                                 <div id="dob_error" class="alert alert-danger" hidden></div>
                                                 <div class="action">
                                                 <div class="word-counter"></div>
-                                                    <button class="btn btn-success btn-add-review " id="add_comment">@lang('post.btn_send_cmt')</button>
+                                                    <button class="btn btn-success btn-add-comment" id="add_comment">@lang('post.btn_send_cmt')</button>
                                                 </div>
                                             <hr/>
-                                            <div  id="content-comment"></div>
+                                            <div id="content-comment"></div>
                                            
                                         </div>
                                     </div>

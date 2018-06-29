@@ -50,11 +50,11 @@ class CreateBookTest extends DuskTestCase
                 ->visit('admin/books/create')
                 ->select('category_id', '2')
                 ->type('title', 'Title for book')
-                ->type('description', 'Lorem ABC')
                 ->type('number_of_page', '1000')
                 ->type('author', 'ABC')
                 ->keys('#publishing_year', '11-22-2012')
-                ->type('quantity', '2');         
+                ->type('quantity', '2');
+            $this->typeInCKEditor($browser, '#cke_description iframe', 'Lorem ABC');    
             $browser->press('Submit')
                     ->pause(1000)
                     ->assertSee('Successfully created book!');
@@ -62,7 +62,7 @@ class CreateBookTest extends DuskTestCase
                 'id' => 1,
                 'category_id' => 2,
                 'title' => 'Title for book',
-                'description' => 'Lorem ABC',
+                'description' => '<p>Lorem ABC</p>',
                 'number_of_page' => 1000,
                 'author' => 'ABC',
                 "publishing_year" => '2012-11-22',
@@ -84,11 +84,11 @@ class CreateBookTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('admin/books/create')
                 ->type('title', '')
-                ->type('description', '')
                 ->type('number_of_page', '')
                 ->type('author', '')
                 ->keys('#publishing_year', '')
                 ->type('quantity', '');
+            $this->typeInCKEditor($browser, '#cke_description iframe', '');
             $browser->press('Submit')
                 ->pause(1000)
                 ->assertSee('The title field is required.')
