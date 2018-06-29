@@ -22,7 +22,7 @@ function getListCategories() {
 function titleCategory(data) {
     var categories = '';
     $.each(data.data, function (key, value) {
-        categories += '<li role="presentation" class="category-item"><a role="menuitem" tabindex="-1" href="books?category=' + value.id + '">'+ value.name +'</a></li>';
+        categories += '<li role="presentation" class="category-item"><a role="menuitem" tabindex="-1" href="/books?category=' + value.id + '">'+ value.name +'</a></li>';
         $(".category-list").html(categories);
     });
 } 
