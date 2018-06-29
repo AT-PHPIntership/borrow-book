@@ -30,7 +30,7 @@
                             <tr>
                                 <td><img class="text-center img-style" src="{{ $borrow->user->avatar_url}}" alt=""></td>
                                 <td>{{ $borrow->user->name }}</td>
-                                <td>{{ $borrow->number_book }}</td>
+                                <td>{{ $borrow->borrowDetails->sum('quantity') }}</td>
                                 <td>{{ date('d-m-Y', strtotime($borrow->from_date)) }}</td>
                                 <td>{{ date('d-m-Y', strtotime($borrow->to_date)) }}</td>
                                 <td>
