@@ -6,6 +6,8 @@ var urlComment = '/api'+ bookId +'/posts' + '?post_type=' + postComment;
 var ratingValue;
 var url = '/api/posts/';
 var data_login = JSON.parse(localStorage.getItem('data'));
+var delete_confirm = Lang.get('auth.messages.delete_confirm');
+var delete_success = Lang.get('auth.messages.delete_success');
 
 $(document).ready(function () {
     getListReview();
@@ -120,25 +122,35 @@ function contentComment(data) {
 function deletePost() {
     $(document).on('click', '.delete-post',function() {
         var postId = $(this).attr('id');
-        confirm("Are you sure delete?");
-        $.ajax({
-            url: url + postId,
-            type: 'DELETE',
-            headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
-            },
-            success: function(data) {
-                if(data.post_type == 1) {
-                    $("#review_post-" + postId).remove();
-                } else {
-                    $("#comment-" + postId).remove();
+        if(confirm(delete_confirm))
+        {
+            $.ajax({
+                url: url + postId,
+                type: 'DELETE',
+                headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                },
+                success: function(data) {
+                    if(data.post_type == 1) {
+                        alert(delete_success);
+                        $("#review_post-" + postId).remove();
+                    } else {
+                        alert(delete_success);
+                        $("#comment-" + postId).remove();
+                    }
+                },
+                error: function(data) {
+                    if(data.post_type == 1) {
+                        $('.review_error').html(errorMessage);
+                        $('.review_error').show();
+                    } else {
+                        $('.comment-error').html(errorMessage);
+                        $('.comment-error').show();
+                    }
                 }
-            },
-            error: function(data) {
-                alert(data.responseJSON.error);
-            }
-        });
+            });
+        }
     });  
 }
 
@@ -168,8 +180,8 @@ function submitComment() {
                         errorMessage += data.responseJSON.errors[error] + '<br/>';
                     });
                 }
-                $('.alert-danger').html(errorMessage);
-                $('.alert-danger').show();
+                $('.comment-error').html(errorMessage);
+                $('.comment-error').show();
             }
         }); 
     });
@@ -316,8 +328,8 @@ function editComment() {
                         errorMessage += data.responseJSON.errors[error] + '<br/>';
                     });
                 }
-                $('.alert-danger').html(errorMessage);
-                $('.alert-danger').show();
+                $('.comment-error').html(errorMessage);
+                $('.comment-error').show();
             }
         });
     });  
