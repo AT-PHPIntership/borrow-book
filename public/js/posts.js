@@ -40,7 +40,7 @@ function contentReview(data) {
         for (var i = 1; i <= k; i++) {
             stars += '<i class="fa fa-star"></i>'; 
         };
-        reviews += '<div class="review" id="review_post'+ value.id +'">\
+        reviews += '<div class="review" id="review_post-'+ value.id +'">\
                         <div class="user-img" style="background-image: url('+ value.user.avatar +')"></div>\
                         <div class="desc">\
                             <h4>\
@@ -48,8 +48,8 @@ function contentReview(data) {
                                 <span class="text-right">'+ value.updated_at +'</span>\
                             </h4>\
                             <p class="star">\
-                                <span class="rate-value" data-star="'+ k +'">'+ stars +'</span>\
-                                <div class="dropdown icon-option review-book" hidden>\
+                                <span id="rate-value-'+ value.id +'" data-star="'+ k +'">'+ stars +'</span>\
+                                <div class="dropdown icon-option review-book-'+ value.user.id +'" hidden>\
                                     <i class="fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>\
                                     <ul class="dropdown-menu">\
                                         <li><a href="javascript:void(0);" id="'+ value.id +'" class="delete-post">Delete</a></li>\
@@ -57,13 +57,13 @@ function contentReview(data) {
                                     </ul>\
                                 </div>\
                             </p>\
-                            <p class="body-review" data-value-review="'+ value.body +'">'+ value.body +'</p>\
+                            <p id="body-review-'+ value.id +'" data-value-review="'+ value.body +'">'+ value.body +'</p>\
                         </div>\
                     </div>';
-        $("#content-review").html(reviews);
+        $("#list-review").html(reviews);
         if(localStorage.getItem('access_token')) {
             if(data_login.id == value.user.id){
-                $('.review-book').show();
+                $('.review-book-'+ value.user.id +'').show();
             }
         }
     });
@@ -87,7 +87,7 @@ function getListComment() {
 function contentComment(data) {
     var comment = '';
     $.each(data.data, function (key, value) {
-        comment += '<div class="review" id="comment'+ value.id +'">\
+        comment += '<div class="review" id="comment-'+ value.id +'">\
                         <div class="user-img" style="background-image: url('+ value.user.avatar +')"></div>\
                         <div class="desc">\
                             <h4>\
@@ -96,7 +96,7 @@ function contentComment(data) {
                             </h4>\
                             <p class="star comment-book">\
                                 <span class="text-left"></span>\
-                                <div class="dropdown icon-option comment-book" hidden>\
+                                <div class="dropdown icon-option comment-book-'+value.user.id+'" hidden>\
                                     <i class="fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown"></i>\
                                     <ul class="dropdown-menu">\
                                         <li><a href="javascript:void(0);" id="'+ value.id +'" class="delete-post">Delete</a></li>\
@@ -104,13 +104,13 @@ function contentComment(data) {
                                     </ul>\
                                 </div>\
                             </p>\
-                            <p class="body-comment" data-value-comment="'+ value.body +'">'+ value.body +'</p>\
+                            <p id="body-comment-'+ value.id +'" data-value-comment="'+ value.body +'">'+ value.body +'</p>\
                         </div>\
                     </div>';
         $("#content-comment").html(comment);
         if(localStorage.getItem('access_token')) {
             if(data_login.id == value.user.id){
-                $('.comment-book').show();
+                $('.comment-book-'+value.user.id).show();
             }
         }
 
@@ -240,8 +240,8 @@ function editReview() {
     var postId;
     $(document).on('click', '.edit-review',function() {
         postId = $(this).attr('id');
-        $('#content_review').html($('.body-review').attr('data-value-review'));
-        var rateStars = $('.rate-value').attr('data-star');
+        $('#content_review').val($('#body-review-'+ postId).attr('data-value-review'));
+        var rateStars = $('#rate-value-'+ postId).attr('data-star');
         var stars = $('#stars li').parent().children('li.star');
         for (var i = 0; i < rateStars; i++) {
             $(stars[i]).addClass('selected');
@@ -262,10 +262,11 @@ function editReview() {
                 body: $('#content_review').val(),
             },
             success: function(data) {
-                $('.alert-info').show();
+                $('.review_success').show();
                 $('.star.selected').attr('class', 'star');
                 $('#content_review').val('');
-                $('#review_post' + postId).hide();
+                $('#review_post-' + postId).hide();
+                $('.btn-add-review').attr('id', 'add-review');
             },
             error: function(data) {
                 errorMessage = data.responseJSON.message + '<br/>';
@@ -275,8 +276,8 @@ function editReview() {
                         errorMessage += data.responseJSON.errors[error] + '<br/>';
                     });
                 }
-                $('.alert-danger').html(errorMessage);
-                $('.alert-danger').show();
+                $('.review_error').html(errorMessage);
+                $('.review_error').show();
             }
         });
     });  
@@ -286,7 +287,7 @@ function editComment() {
     var postId;
     $(document).on('click', '.edit-comment',function() {
         postId = $(this).attr('id');
-        $('#content_cmt').html($('.body-comment').attr('data-value-comment'));
+        $('#content_cmt').val($('#body-comment-'+ postId).attr('data-value-comment'));
         $('.btn-add-comment').attr('id', 'update-comment');
     });
     $(document).on('click', '#update-comment', function(event) {
@@ -304,7 +305,8 @@ function editComment() {
             success: function(data) {
                 $('.alert-info').show();
                 $('#content_cmt').val('');
-                $('#comment' + postId).hide();
+                $('#comment-' + postId).hide();
+                $('.btn-add-review').attr('id', 'add-comment');
             },
             error: function(data) {
                 errorMessage = data.responseJSON.message + '<br/>';

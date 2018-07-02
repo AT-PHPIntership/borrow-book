@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Borrow;
 use App\Models\Book;
+use App\Mail\UpdateStatusBorrowMail;
+use Mail;
 
 class BorrowController extends Controller
 {
@@ -41,9 +43,22 @@ class BorrowController extends Controller
             }
             $book->save();
         }
+        $data['name'] = $borrow->user->name;
+        $data['from_date'] = $borrow->from_date;
+        $data['to_date'] = $borrow->to_date;
+        $data['status'] = $borrow->status;
+        $data['borrow_details'] = $borrow->borrowDetails;
+        Mail::to($borrow->user->email)->send(new UpdateStatusBorrowMail($data));
         return response()->json($borrow);
     }
 
+    /**
+     * Display the detail of borrow.
+     *
+     * @param Borrow $borrow of borrow
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function show(Borrow $borrow)
     {
         $borrow->load('user', 'borrowDetails.book');

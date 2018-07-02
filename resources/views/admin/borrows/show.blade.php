@@ -7,7 +7,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h2>Detail Borrow</h2>
+        <h2>{{ trans('borrow.borrow_detail') }}</h2>
       </section>
       <!-- Main content -->
     <section class="container">
@@ -20,7 +20,7 @@
                         </div>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Name</b> <a href="{{ route('admin.users.show', $borrow->user->id) }}"><p class=" title pull-right">{{ $borrow->user->name }}</p></a>
+                                <b>{{ trans('user.table_head.name') }}</b> <a href="{{ route('admin.users.show', $borrow->user->id) }}"><p class=" title pull-right">{{ $borrow->user->name }}</p></a>
                             </li>
                             <li class="list-group-item">
                                 <b>{{trans('user.table_head.status')}}</b>
@@ -33,16 +33,16 @@
                                 @endif
                             </li>
                             <li class="list-group-item">
-                                <b>From Date</b> <p class=" title pull-right">{{ $borrow->from_date }}</p>
+                                <b>{{ trans('borrow.table_head.from_date') }}</b> <p class=" title pull-right">{{ $borrow->from_date }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>To Date</b> <p class=" title pull-right">{{ $borrow->to_date }}</p>
+                                <b>{{ trans('borrow.table_head.to_date') }}</b> <p class=" title pull-right">{{ $borrow->to_date }}</p>
                             </li>
                             <li class="list-group-item">
-                                <b>Books</b>
+                                <b>{{ trans('book.list_book') }}</b>
                                 @foreach($borrow->borrowDetails as $borrowDetail)
                                 <div>
-                                    <p class="text-right"><b>{{ $borrowDetail->book->title }}</b> <span>Quantity {{ $borrowDetail->quantity }}</span></p>
+                                    <p class="text-right"><b>{{ $borrowDetail->book->title }}</b> <span>{{ trans('borrow.quantity') }} {{ $borrowDetail->quantity }}</span></p>
                                     <p class="text-right"></p>
                                 </div>
                                 @endforeach

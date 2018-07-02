@@ -24,11 +24,11 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
         'category_id' => App\Models\Category::all()->random()->id,
         'title' => $faker->name,
         'description' => $faker->text,
-        'number_of_page' => $faker->numberBetween(),
+        'number_of_page' => $faker->numberBetween(1, 10000),
         'author' => $faker->name,
         'publishing_year' => $faker->dateTime(),
         'language' => $faker->randomElement($languages),
-        'quantity' => $faker->numberBetween(1, 10)
+        'quantity' => $faker->numberBetween(6, 20)
     ];
 });
 
@@ -70,7 +70,6 @@ $factory->define(App\Models\Borrow::class, function (Faker $faker) {
     $endingDate   = $faker->dateTimeBetween('-1 weeks', 'now');
     return [
         'user_id' => App\Models\User::all()->random()->id,
-        'number_book' => $faker->numberBetween(1, 5),
         'status' => $faker->randomElement([\App\Models\Borrow::BORROWING, \App\Models\Borrow::GIVE_BACK, \App\Models\Borrow::WAITTING]),
         'from_date' => $startingDate,
         'to_date' => $endingDate
@@ -79,6 +78,7 @@ $factory->define(App\Models\Borrow::class, function (Faker $faker) {
 
 $factory->define(App\Models\BorrowDetail::class, function (Faker $faker) {
     return [
-        'book_id' => App\Models\Book::all()->random()->id,
+        'book_id' => App\Models\Book::all()->unique()->random()->id,
+        'quantity' => $faker->numberBetween(1, 5)
     ];
 });
