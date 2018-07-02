@@ -99,7 +99,7 @@ class PostController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Post $post, Request $request)
+    public function update(Post $post, CreatePostRequest $request)
     {
         $book = Book::findOrFail($post->book_id);
         if ($post->user_id == Auth::id()) {
