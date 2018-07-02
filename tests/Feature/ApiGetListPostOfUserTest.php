@@ -26,7 +26,7 @@ class ApiGetListPostOfUserTest extends TestCase
         parent::setUp();
         factory(Category::class)->create();
         factory(Book::class)->create();
-        factory(Post::class)->create();
+        factory(Post::class, 21)->create();
     }
 
      /**
@@ -115,6 +115,54 @@ class ApiGetListPostOfUserTest extends TestCase
         $response = $this->jsonUser('GET', '/api/users/posts');
         $response->assertJsonStructure($this->jsonStructureNotPostsOfUser());
         $response->assertStatus(Response::HTTP_OK);
+    }
+
+    /**
+     * Test result pagination and limit.
+     *
+     * @return void
+     */
+    public function testWithPaginationLimitListPosts()
+    {
+        $response = $this->jsonUser('GET', '/api/users/posts?limit=8&page=2');
+        $response->assertJson([
+            'current_page' => 2,
+            'per_page' => 8,
+            'from' => 9,
+            'to' => 16,
+            'last_page' => 3,
+            'total' => 21,
+        ]);
+    }
+
+     /**
+     * Make cases for test.
+     *
+     * @return array
+     */
+    public function dataForTestSort()
+    {
+        return [
+            ['id', 'posts.id'],
+            ['body', 'posts.body'],
+        ];
+    }
+
+     /**
+     * Test Sort List Posts.
+     *
+     * @dataProvider dataForTestSort
+     *
+     * @return void
+     */
+    public function testWithSortListPost($name, $order)
+    {
+        $response = $this->jsonUser('GET', '/api/users/posts?sort='.$name);
+        $data = json_decode($response->getContent());
+        $arrayDesc = Post::orderBy($order, 'desc')->pluck($name)->toArray();
+        for ($i = 1; $i <= 20; $i++) {
+            $this->assertEquals($data->data[$i - 1]->$name, $arrayDesc[$i - 1]) ;
+        }
     }
 
     /**
