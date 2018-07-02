@@ -1,3 +1,5 @@
+var delete_confirm = Lang.get('auth.messages.delete_confirm');
+var delete_success = Lang.get('auth.messages.delete_success');
 url = '/api/users/posts?limit=8';
 function getUserPosts(url) {
     $.ajax({
@@ -37,6 +39,7 @@ function getUserPosts(url) {
                     $("#"+ idpost +" .rate").text(rate);
                 }
                 $("#"+ idpost +" .type").html(type);
+                $("#"+ idpost +" .option .delete-post-user").attr('id', idpost);
             });
         }
     });
@@ -48,3 +51,26 @@ $('#next').click(function (event) {
     url_next = $('#next').attr('href');
     getUserPosts(url_next);
 })
+function deletePostUser() {
+    $(document).on('click', '.delete-post-user',function() {
+        var postId = $(this).attr('id');
+        confirm(delete_confirm);
+        $.ajax({
+            url: '/api/posts/' + postId,
+            type: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            },
+            success: function(data) {
+                alert(delete_success);
+                $("#" + postId).remove();
+            },
+            error: function(data) {
+                $('.delete_error').html(data.responseJSON.error);
+                $('.delete_error').show();
+            }
+        });
+    });  
+}
+deletePostUser();

@@ -40,14 +40,16 @@
                                     <div id="recent_post" class="tab-pane fade active in">
                                         <div class="row">
                                            <div id="table-content">
+                                                <div class="alert alert-danger delete_error" hidden></div>
                                                 <table class="table table-striped table-sm ">
                                                     <thead>
                                                         <tr>
                                                             <th class="col-md-7">{{ __('profile.profile_content') }}</th>
                                                             <th class="col-md-7">{{ __('profile.profile_rate') }}</th>
-                                                                <th class="col-md-3">{{ __('profile.profile_book') }}</th>
-                                                                <th class="col-md-2">{{ __('profile.profile_status') }}</th>
+                                                            <th class="col-md-3">{{ __('profile.profile_book') }}</th>
+                                                            <th class="col-md-2">{{ __('profile.profile_status') }}</th>
                                                             <th class="col-md-2">{{ __('profile.profile_type') }}</th>
+                                                            <th class="col-md-2">{{ __('profile.profile_option') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -60,6 +62,9 @@
                                                                 <button class="btn-posts-err btn btn-danger fa fa-close" id="post-err"></button>
                                                             </td>
                                                             <td class="type col-md-2"></td>
+                                                            <td class="option col-md-2">
+                                                                <a href="javascript:void(0)" class="delete-post-user"><i class="btn-flat fa fa-trash-o" style="color: red"></i></a>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

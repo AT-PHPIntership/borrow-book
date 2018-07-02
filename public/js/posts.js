@@ -130,9 +130,9 @@ function deletePost() {
             },
             success: function(data) {
                 if(data.post_type == 1) {
-                    $("#review_post" + postId).remove();
+                    $("#review_post-" + postId).remove();
                 } else {
-                    $("#comment" + postId).remove();
+                    $("#comment-" + postId).remove();
                 }
             },
             error: function(data) {

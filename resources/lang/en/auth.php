@@ -17,5 +17,9 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'logout' => 'Logout',
     'profile' => 'Profile',
+    'messages' => [
+        'delete_confirm' => 'Are you sure delete?',
+        'delete_success' => 'You deleted successfully!',
+    ],
 
 ];

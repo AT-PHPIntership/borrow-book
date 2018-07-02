@@ -9,4 +9,5 @@
         'profile_type' => "Type",
         'next' => "More",
         'profile_rate' => "Rate",
+        'profile_option' => 'Option'
     ];
