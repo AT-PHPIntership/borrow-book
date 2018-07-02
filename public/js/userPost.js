@@ -37,6 +37,7 @@ function getUserPosts(url) {
                     $("#"+ idpost +" .rate").text(rate);
                 }
                 $("#"+ idpost +" .type").html(type);
+                $("#"+ idpost +" .option .delete-post-user").attr('id', idpost);
             });
         }
     });
@@ -48,3 +49,25 @@ $('#next').click(function (event) {
     url_next = $('#next').attr('href');
     getUserPosts(url_next);
 })
+function deletePostUser() {
+    $(document).on('click', '.delete-post-user',function() {
+        var postId = $(this).attr('id');
+        confirm("Are you sure delete?");
+        $.ajax({
+            url: '/api/posts/' + postId,
+            type: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            },
+            success: function(data) {
+                alert("You deleted successfully!");
+                $("#"+ postId).remove();
+            },
+            error: function(data) {
+                alert(data.responseJSON.error);
+            }
+        });
+    });  
+}
+deletePostUser();
