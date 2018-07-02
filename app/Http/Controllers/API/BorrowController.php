@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Models\Borrow;
 use App\Models\Book;
 use App\Models\BorrowDetail;
+use App\Models\User;
 use Auth;
 use App\Http\Requests\Api\BorrowBookRequest;
 
@@ -33,5 +34,17 @@ class BorrowController extends ApiController
             ]);
         }
         return $this->showOne($borrow->load(['borrowDetails', 'user']), Response::HTTP_OK);
+    }
+
+    /**
+     * Api get list borrow
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $user = Auth::user();
+        $borrows = Borrow::with(['borrowDetails.book'])->where('user_id', $user->id)->get();
+        return $this->showAll($borrows, Response::HTTP_OK);
     }
 }
