@@ -1,3 +1,5 @@
+var delete_confirm = Lang.get('auth.messages.delete_confirm');
+var delete_success = Lang.get('auth.messages.delete_success');
 url = '/api/users/posts?limit=8';
 function getUserPosts(url) {
     $.ajax({
@@ -52,7 +54,7 @@ $('#next').click(function (event) {
 function deletePostUser() {
     $(document).on('click', '.delete-post-user',function() {
         var postId = $(this).attr('id');
-        confirm("Are you sure delete?");
+        confirm(delete_confirm);
         $.ajax({
             url: '/api/posts/' + postId,
             type: 'DELETE',
@@ -61,11 +63,12 @@ function deletePostUser() {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             },
             success: function(data) {
-                alert("You deleted successfully!");
-                $("#"+ postId).remove();
+                alert(delete_success);
+                $("#" + postId).remove();
             },
             error: function(data) {
-                alert(data.responseJSON.error);
+                $('.delete_error').html(data.responseJSON.error);
+                $('.delete_error').show();
             }
         });
     });  

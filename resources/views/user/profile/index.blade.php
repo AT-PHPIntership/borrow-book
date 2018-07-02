@@ -40,6 +40,7 @@
                                     <div id="recent_post" class="tab-pane fade active in">
                                         <div class="row">
                                            <div id="table-content">
+                                                <div class="alert alert-danger delete_error" hidden></div>
                                                 <table class="table table-striped table-sm ">
                                                     <thead>
                                                         <tr>
