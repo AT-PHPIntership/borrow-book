@@ -23,6 +23,7 @@
                             <th>{{trans('borrow.table_head.from_date')}}</th>
                             <th>{{trans('borrow.table_head.to_date')}}</th>
                             <th>{{trans('borrow.table_head.status')}}</th>
+                            <th>{{trans('borrow.table_head.options')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,9 @@
                                         <option value="{{ App\Models\Borrow::GIVE_BACK }}" {{ $borrow->status == App\Models\Borrow::GIVE_BACK ? 'selected="selected"' : '' }}>{{ trans('borrow.status.give_back') }}</option>
                                         <option value="{{ App\Models\Borrow::WAITTING }}" {{ $borrow->status == App\Models\Borrow::WAITTING ? 'selected="selected"' : '' }}>{{ trans('borrow.status.waitting') }}</option>
                                     </select>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.borrows.show', $borrow->id) }}" class="btn btn-primary btn-flat fa fa-info button-info"></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Borrow;
+use App\Models\Book;
 
 class BorrowController extends Controller
 {
@@ -31,6 +32,21 @@ class BorrowController extends Controller
     {
         $borrow['status'] = $request->status;
         $borrow->save();
+        foreach ($borrow->borrowDetails as $borrowDetail) {
+            $book = Book::where('id', $borrowDetail->book_id)->first();
+            if ($request->status == Borrow::BORROWING) {
+                $book['quantity'] = $book->quantity - $borrowDetail->quantity;
+            } elseif ($request->status == Borrow::GIVE_BACK) {
+                $book['quantity'] = $book->quantity + $borrowDetail->quantity;
+            }
+            $book->save();
+        }
         return response()->json($borrow);
+    }
+
+    public function show(Borrow $borrow)
+    {
+        $borrow->load('user', 'borrowDetails.book');
+        return view('admin.borrows.show', compact('borrow'));
     }
 }
