@@ -123,7 +123,7 @@
                                                     <textarea  placeholder="@lang('post.comment_message')" class="form-control" name="detail" id="content_cmt" ></textarea>
                                                 </div>
                                                 <div class="alert alert-info" hidden>@lang('post.send_success')</div>
-                                                <div id="dob_error" class="alert alert-danger" hidden></div>
+                                                <div id="dob_error" class="alert alert-danger comment-error" hidden></div>
                                                 <div class="action">
                                                 <div class="word-counter"></div>
                                                     <button class="btn btn-success btn-add-comment" id="add_comment">@lang('post.btn_send_cmt')</button>
