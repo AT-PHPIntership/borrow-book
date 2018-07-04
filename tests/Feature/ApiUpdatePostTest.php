@@ -90,15 +90,29 @@ class ApiUpdatePostTest extends TestCase
         ]);
     }
 
+     /**
+     *  Test case
+     * 
+     * @return array
+     */
+    public function missDataForTestUpdate() {
+        return [
+            ['', 'body'],
+            [null, 'rate_point'],
+        ];
+    }
+
     /**
      * test when update comment with content is empty.
      *
+     * @dataProvider missDataForTestUpdate
+     *
      * @return void
      */
-    public function testUpdateCommentWhenContentEmpty()
+    public function testUpdateCommentWhenContentEmpty($value, $key)
     {
         $user1 = User::find(1);
-        $response = $this->put('/api/posts/1', ['body' => '', 'post_type' => 0], ['Accept' => 'application/json', 'Authorization' => 'Bearer '.$user1->createToken('access_token')->accessToken]);
+        $response = $this->put('/api/posts/1', [$key => $value, 'post_type' => 0], ['Accept' => 'application/json', 'Authorization' => 'Bearer '.$user1->createToken('access_token')->accessToken]);
         $response->assertJson([
             "message" => "The given data was invalid.",
             "errors" => [
@@ -112,12 +126,14 @@ class ApiUpdatePostTest extends TestCase
     /**
      * Test when update review with content and rate is empty.
      *
+     * @dataProvider missDataForTestUpdate
+     *
      * @return void
      */
-    public function testUpdateReviewWhenContentAndRateEmpty()
+    public function testUpdateReviewWhenContentAndRateEmpty($value, $key)
     {
         $user1 = User::find(1);
-        $response = $this->put('/api/posts/1', ['body' => '', 'post_type' => 1, 'rate_point' =>null], ['Accept' => 'application/json', 'Authorization' => 'Bearer '.$user1->createToken('access_token')->accessToken]);
+        $response = $this->put('/api/posts/1', [$key => $value, 'post_type' => 1], ['Accept' => 'application/json', 'Authorization' => 'Bearer '.$user1->createToken('access_token')->accessToken]);
         $response->assertJson([
             "message" => "The given data was invalid.",
             "errors" => [

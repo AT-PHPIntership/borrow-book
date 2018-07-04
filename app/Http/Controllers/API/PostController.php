@@ -10,7 +10,7 @@ use App\Models\Book;
 use App\Models\User;
 use Auth;
 use DB;
-use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\PostRequest;
 
 class PostController extends ApiController
 {
@@ -60,12 +60,12 @@ class PostController extends ApiController
     /**
      * Api store new post
      *
-     * @param \App\Models\Book                     $book    book of this post
-     * @param \App\Http\Requests\CreatePostRequest $request request
+     * @param \App\Models\Book               $book    book of this post
+     * @param \App\Http\Requests\PostRequest $request request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Book $book, CreatePostRequest $request)
+    public function store(Book $book, PostRequest $request)
     {
         $user = Auth::user();
         DB::beginTransaction();
@@ -94,12 +94,12 @@ class PostController extends ApiController
     /**
      * Api update post
      *
-     * @param \App\Models\Post                     $post    post of this post
-     * @param \App\Http\Requests\CreatePostRequest $request request
+     * @param \App\Models\Post               $post    post of this post
+     * @param \App\Http\Requests\PostRequest $request request
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Post $post, CreatePostRequest $request)
+    public function update(Post $post, PostRequest $request)
     {
         $book = Book::findOrFail($post->book_id);
         if ($post->user_id == Auth::id()) {
