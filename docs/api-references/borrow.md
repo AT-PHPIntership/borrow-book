@@ -160,7 +160,7 @@ Get list posts following user
     "total": 3
 }
 ```
-### `DELETE` Borrow
+### `UPDATE` Borrow
 
 ```
 /api/borrow/{borrow}
@@ -177,13 +177,12 @@ Cancel borrow
 {
     "id": 15,
     "user_id": 2,
-    "status": null,
+    "status": 3,
     "number_book": 1,
     "from_date": "2018-06-19",
     "to_date": "1983-06-26",
     "created_at": "2018-06-06 08:45:01",
     "updated_at": "2018-06-06 08:45:01",
-    "deleted_at": "2018-06-06 08:45:01",
     "borrow_detail":[ 
         {
             "id": 16,
@@ -192,7 +191,6 @@ Cancel borrow
             "quantity": 1,
             "created_at": "2018-06-06 08:45:01",
             "updated_at": "2018-06-06 08:45:01",
-            "deleted_at": "2018-06-06 08:45:01",
         }
     ],
 }
