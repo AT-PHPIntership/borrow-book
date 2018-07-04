@@ -62,6 +62,6 @@ class BorrowController extends ApiController
             $borrow->save();
             return $this->showOne($borrow->load('borrowDetails'), Response::HTTP_OK);
         }
-        return $this->errorResponse(trans('borrow.messages.cancel_borrow_error'), Response::HTTP_OK);
+        return $this->errorResponse(trans('borrow.messages.cancel_borrow_error'), Response::HTTP_UNAUTHORIZED);
     }
 }
