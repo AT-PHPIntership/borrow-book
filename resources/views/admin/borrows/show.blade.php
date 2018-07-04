@@ -28,8 +28,10 @@
                                     <p class="pull-right label label-primary" >{{trans('borrow.status.borrowing')}}</p>
                                 @elseif($borrow->status == App\Models\Borrow::GIVE_BACK)
                                     <p class="pull-right label label-success">{{trans('borrow.status.give_back')}}</p>
+                                @elseif($borrow->status == App\Models\Borrow::WAITTING)
+                                    <p class="pull-right label label-warning">{{trans('borrow.status.waitting')}}</p>
                                 @else
-                                    <p class="pull-right label label-danger">{{trans('borrow.status.waitting')}}</p>
+                                    <p class="pull-right label label-danger">{{trans('borrow.status.cancel')}}</p>
                                 @endif
                             </li>
                             <li class="list-group-item">
