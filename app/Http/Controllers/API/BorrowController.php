@@ -47,4 +47,21 @@ class BorrowController extends ApiController
         $borrows = Borrow::with(['borrowDetails.book'])->where('user_id', $user->id)->get();
         return $this->showAll($borrows, Response::HTTP_OK);
     }
+
+    /**
+     * Api cancel borrow
+     *
+     * @param \App\Models\Borrow $borrow borrow of this borrow
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel(Borrow $borrow)
+    {
+        if ($borrow->user_id == Auth::id() && $borrow->status == Borrow::WAITTING) {
+            $borrow->status = Borrow::CANCEL;
+            $borrow->save();
+            return $this->showOne($borrow->load('borrowDetails'), Response::HTTP_OK);
+        }
+        return $this->errorResponse(trans('borrow.messages.cancel_borrow_error'), Response::HTTP_UNAUTHORIZED);
+    }
 }
