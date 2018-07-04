@@ -11,7 +11,7 @@ Post new borrow
 | Key | Value |
 |---|---|
 |Accept|application\json|
-|Authorization|{token_type} {access_token}
+|Authorization|{token_type} {access_token}|
 
 #### Response - Success
 | Field | Type | Description |
@@ -158,5 +158,42 @@ Get list posts following user
     "prev_page_url": null,
     "to": 3,
     "total": 3
+}
+```
+### `DELETE` Borrow
+
+```
+/api/borrow/{borrow}
+```
+Cancel borrow
+
+#### Request header
+| Key | Value |
+|---|---|
+|Accept|application\json|
+|Authorization|{token_type} {access_token}|
+
+```json
+{
+    "id": 15,
+    "user_id": 2,
+    "status": null,
+    "number_book": 1,
+    "from_date": "2018-06-19",
+    "to_date": "1983-06-26",
+    "created_at": "2018-06-06 08:45:01",
+    "updated_at": "2018-06-06 08:45:01",
+    "deleted_at": "2018-06-06 08:45:01",
+    "borrow_detail":[ 
+        {
+            "id": 16,
+            "book_id": 1,
+            "borrow_id": 15,
+            "quantity": 1,
+            "created_at": "2018-06-06 08:45:01",
+            "updated_at": "2018-06-06 08:45:01",
+            "deleted_at": "2018-06-06 08:45:01",
+        }
+    ],
 }
 ```
