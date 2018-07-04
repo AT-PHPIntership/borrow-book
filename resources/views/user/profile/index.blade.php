@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="colorlib-shop">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row row-pb-lg">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="product-detail-wrap">
@@ -29,11 +29,11 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a data-toggle="tab" href="#recent_post" aria-expanded="true">{{ __('profile.recent_post') }}</a>
                                     </li>
-                                    <li>  <a data-toggle="tab" href="#" aria-expanded="false">{{ __('profile.recent_borrow') }}</a>
+                                    <li><a data-toggle="tab" href="#borrow" aria-expanded="false">{{ __('profile.recent_borrow') }}</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
@@ -74,6 +74,44 @@
                                             </nav>
                                         </div>
                                     </div>
+                                    <div id="borrow" class="tab-pane fade">
+                                        <div class="row">
+                                           <div id="table-content">
+                                                <table class="table table-striped table-sm ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="col-md-3">{{ trans('borrow.table_head.from_date') }}</th>
+                                                            <th class="col-md-2">{{ trans('borrow.table_head.to_date') }}</th>
+                                                            <th class="col-md-2">{{ trans('borrow.table_head.status') }}</th>
+                                                            <th class="col-md-2">{{ trans('borrow.table_head.detail') }}</th>
+                                                            <th class="col-md-2">{{ trans('borrow.table_head.options') }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr id="template-borrow" style="display:none;">
+                                                            <td class="from-date col-md-3"></td>
+                                                            <td class="to-date col-md-2"></td>
+                                                            <td class="status col-md-2">
+                                                                <p class="label label-success" style="display:none;">{{ trans('borrow.status.borrowing') }}</p>
+                                                                <p class="label label-primary" style="display:none;">{{ trans('borrow.status.give_back') }}</p>
+                                                                <p class="label label-warning" style="display:none;">{{ trans('borrow.status.waitting') }}</p>
+                                                                <p class="label label-danger" style="display:none;">{{ trans('borrow.status.cancel') }}</p>
+                                                            </td>
+                                                            <td class="col-md-2">
+                                                                <ul class="list-group" id="template-borrow-detail" style="display:none;">
+                                                                    <li class="list-group-item borrow-detail">
+                                                                        <p class="book-title"></p>
+                                                                        <p class="book-quantity"></p>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -87,4 +125,5 @@
 @section('scripts')
 <script src="{{ asset('js/userProfile.js') }}"></script>
 <script src="{{ asset('js/userPost.js') }}"></script>
+<script src="{{ asset('js/userBorrow.js') }}"></script>
 @endsection
