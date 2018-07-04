@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::put('posts/{post}', 'API\PostController@update');
     Route::post('logout','API\LoginController@logout');
     Route::post('borrow','API\BorrowController@store');
+    Route::put('borrow/{borrow}','API\BorrowController@cancel');
     Route::get('users/profile','API\UserController@profile');
     Route::get('users/posts', 'API\UserController@getPost');
     Route::get('users/borrow', 'API\BorrowController@index');
