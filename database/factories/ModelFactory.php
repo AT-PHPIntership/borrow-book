@@ -70,7 +70,7 @@ $factory->define(App\Models\Borrow::class, function (Faker $faker) {
     $endingDate   = $faker->dateTimeBetween('-1 weeks', 'now');
     return [
         'user_id' => App\Models\User::all()->random()->id,
-        'status' => $faker->randomElement([\App\Models\Borrow::BORROWING, \App\Models\Borrow::GIVE_BACK, \App\Models\Borrow::WAITTING]),
+        'status' => $faker->randomElement([\App\Models\Borrow::BORROWING, \App\Models\Borrow::GIVE_BACK, \App\Models\Borrow::WAITTING, App\Models\Borrow::CANCEL]),
         'from_date' => $startingDate,
         'to_date' => $endingDate
     ];

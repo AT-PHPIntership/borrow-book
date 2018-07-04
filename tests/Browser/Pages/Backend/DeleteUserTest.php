@@ -37,14 +37,16 @@ class DeleteUserTest extends DuskTestCase
             'address' => 'da nang',
             'role' => User::ROLE_USER
         ]);
+        $faker = Faker::create();
         factory(Category::class,2)->create();
         factory(Book::class,2)->create();
         factory(Post::class,2)->create();
         factory(Favorite::class,2)->create();
         factory(Rating::class,2)->create();
-        factory(Borrow::class,2)->create();
+        factory(Borrow::class,2)->create([
+            'status' => $faker->randomElement([Borrow::GIVE_BACK, Borrow::WAITTING, Borrow::CANCEL]),
+        ]);
         $borrowId = DB::table('borrowes')->pluck('id')->all();
-        $faker = Faker::create();
         factory(BorrowDetail::class,2)->create([
             'borrow_id' => $faker->randomElement($borrowId),
         ]);

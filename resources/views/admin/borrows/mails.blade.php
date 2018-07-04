@@ -6,8 +6,10 @@
 <p>{{ trans('borrow.table_head.to_date') }} {{ $to_date }}</p>
 @elseif ($status == 1)
 <p>{{ trans('mails.message.message_give_back') }}</p>
-@else
+@elseif ($status == 2)
 <p>{{ trans('mails.message.message_waitting') }}</p>
+@else
+<p>{{ trans('mails.message.message_cancel') }}</p>
 @endif
 <ul>    
 @foreach ($borrow_details as $borrow_detail)
