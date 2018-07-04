@@ -12,6 +12,8 @@ use App\Models\Borrow;
 use App\Models\BorrowDetail;
 use App\Models\Category;
 use App\Models\Book;
+use Faker\Factory as Faker;
+use DB;
 
 class ApiGetListBorrowTest extends TestCase
 {
@@ -24,16 +26,24 @@ class ApiGetListBorrowTest extends TestCase
     */
     public function setUp()
     {
+
         parent::setUp();
+        $faker = Faker::create();
         factory(Category::class)->create();
+        factory(User::class)->create();
         factory(Book::class)->create();
-        factory(Borrow::class,9)->create();
-        factory(BorrowDetail::class)->create();
+        factory(Borrow::class, 9)->create();
+        $borrowIds = DB::table('borrowes')->pluck('id')->toArray();
+        foreach ($borrowIds as $borrowId) {
+            factory(BorrowDetail::class, 9)->create([
+                'borrow_id' => $borrowId,
+            ]);
+        }
     }
 
      /**
      * Return structure of json.
-     *
+     *x
      * @return array
      */
     public function jsonStructureListBorrow()
@@ -78,18 +88,18 @@ class ApiGetListBorrowTest extends TestCase
                             ]
                         ]
                     ]
-                ],
-                "first_page_url",
-                "from",
-                "last_page",
-                "last_page_url",
-                "next_page_url",
-                "path",
-                "per_page",
-                "prev_page_url",
-                "to",
-                "total" 
-            ]
+                ]
+            ],
+            "first_page_url",
+            "from",
+            "last_page",
+            "last_page_url",
+            "next_page_url",
+            "path",
+            "per_page",
+            "prev_page_url",
+            "to",
+            "total" 
         ];
     }
 
@@ -112,6 +122,9 @@ class ApiGetListBorrowTest extends TestCase
      */
     public function testJsonListBorrows()
     {
+        $book = Book::find(1);
+        $borrow = Borrow::find(1);
+        $borrowDetail = BorrowDetail::with('book', 'borrow')->get();
         $response = $this->jsonUser('GET', '/api/users/borrow');
         $response->assertJsonStructure($this->jsonStructureListBorrow());
         $response->assertStatus(Response::HTTP_OK);
@@ -130,53 +143,6 @@ class ApiGetListBorrowTest extends TestCase
     }
 
     /**
-     * Test result pagination and limit.
-     *
-     * @return void
-     */
-    public function testWithPaginationLimitListBorrow()
-    {
-        $response = $this->jsonUser('GET', '/api/users/borrow?limit=8&page=2');
-        $response->assertJson([
-            'current_page' => 2,
-            'per_page' => 8,
-            'from' => 9,
-            'last_page' => null,
-            'total' => 9,
-        ]);
-    }
-
-     /**
-     * Make cases for test.
-     *
-     * @return array
-     */
-    public function dataForTestSort()
-    {
-        return [
-            ['id', 'borrowes.id'],
-            ['number_book', 'borrowes.number_book'],
-        ];
-    }
-
-     /**
-     * Test Sort List Borrow.
-     *
-     * @dataProvider dataForTestSort
-     *
-     * @return void
-     */
-    public function testWithSortListBorrow($name, $order)
-    {
-        $response = $this->jsonUser('GET', '/api/users/borrow?sort='.$name);
-        $data = json_decode($response->getContent());
-        $arrayDesc = Borrowes::orderBy($order, 'desc')->pluck($name)->toArray();
-        for ($i = 1; $i <= 9; $i++) {
-            $this->assertEquals($data->data[$i - 1]->$name, $arrayDesc[$i - 1]) ;
-        }
-    }
-
-    /**
      * Test json reponse.
      *
      * @return void
@@ -189,10 +155,7 @@ class ApiGetListBorrowTest extends TestCase
         $response = $this->jsonUser('GET', '/api/users/borrow');
         $response->assertJsonFragment([
             'id' => $borrow->id,
-            'user_id' => $borrow->user_id,
             'number_book' => $borrow->number_book,
-            'to_date' => $borrow->to_date,
-            'from_date' => $borrow->from_date,
             'book_id' => $borrowDetail->book_id,
             'borrow_id' => $borrowDetail->borrow_id,
             'quantity' => $borrowDetail->quantity,
