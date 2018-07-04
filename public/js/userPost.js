@@ -1,6 +1,12 @@
 var delete_confirm = Lang.get('auth.messages.delete_confirm');
 var delete_success = Lang.get('auth.messages.delete_success');
 url = '/api/users/posts?limit=8';
+
+$(document).ready(function () {
+    getUserPosts(url);
+    deletePostUser();
+});
+
 function getUserPosts(url) {
     $.ajax({
         url: url,
@@ -10,7 +16,7 @@ function getUserPosts(url) {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
         },
         success: function(response) {
-            const COMMENT = 1;
+            const COMMENT = 0;
             const REVIEW = 1;
             const ACCEPT = 1;
             const UNACCEPT = 0;
@@ -45,12 +51,12 @@ function getUserPosts(url) {
     });
 }
 
-getUserPosts(url);
 $('#next').click(function (event) {
     event.preventDefault();
     url_next = $('#next').attr('href');
     getUserPosts(url_next);
 })
+
 function deletePostUser() {
     $(document).on('click', '.delete-post-user',function() {
         var postId = $(this).attr('id');
@@ -75,4 +81,3 @@ function deletePostUser() {
         }
     });  
 }
-deletePostUser();

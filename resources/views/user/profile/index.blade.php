@@ -63,11 +63,14 @@
                                                             </td>
                                                             <td class="type col-md-2"></td>
                                                             <td class="option col-md-2">
-                                                                <a href="javascript:void(0)" class="delete-post-user"><i class="btn-flat fa fa-trash-o" style="color: red"></i></a>
+                                                                <a href="javascript:void(0)" class="delete-post-user"><i class="btn-flat fa fa-trash-o" style="color: red"></i></a> | 
+                                                                <a href="javascript:void(0)" class="update-post-user"><i class="btn-flat fa fa-pencil" style="color: green"></i></a>
+                                                                <i class=""></i>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
+                                                
                                             </div>
                                             <nav class="paginate-profile text-right">
                                               <a id="next" hidden href="">{{ __('profile.next') }}>></a>
