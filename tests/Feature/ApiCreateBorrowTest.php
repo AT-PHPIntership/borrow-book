@@ -25,11 +25,13 @@ class ApiCreateBorrowTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        factory(User::class, 1)->create();
-        factory(Category::class, 1)->create();
-        factory(Book::class, 1)->create();
-        factory(ImageBook::class, 1)->create();
-        factory(Borrow::class, 1)->create();
+        factory(User::class)->create();
+        factory(Category::class)->create();
+        factory(Book::class)->create();
+        factory(ImageBook::class)->create();
+        factory(Borrow::class)->create([
+            'id' => 1
+        ]);
         factory(BorrowDetail::class)->create([
             'borrow_id' => 1
         ]);
@@ -67,6 +69,27 @@ class ApiCreateBorrowTest extends TestCase
                 "role"
             ]
         ];
+    }
+
+    /**
+     * Test status code
+     *
+     * @return void
+     */
+    public function testStatusCode()
+    {
+        $body = [
+            'from_date' => '2018-04-12',
+            'to_date' => '2018-04-19',
+            'book' => [
+                0 => [
+                    'id' => 1,
+                    'quantity' => 2,
+                ],
+            ],
+        ];
+        $this->jsonUser('POST', 'api/borrow', $body)
+            ->assertStatus(200);
     }
 
     /**
