@@ -36,12 +36,12 @@ function contentNewBook(data) {
                             <p class="tag"><span class="sale">'+ value.author +'</span></p>\
                             <div class="cart">\
                                 <p>\
-                                    <span><a href="/books/' + value.id + '"><i class="fa fa-eye"></i></a></span>\
+                                    <span><a onclick="addKeyRecommend('+ value.category_id +')" class="recommend-book" href="/books/' + value.id + '"><i class="fa fa-eye"></i></a></span>\
                                 </p>\
                             </div>\
                         </div>\
                         <div class="desc">\
-                            <h3><a href="/books/' + value.id + '">'+ value.title +'</a></h3>\
+                            <h3><a class="recommend-book" href="/books/' + value.id + '">'+ value.title +'</a></h3>\
                         </div>\
                     </div>\
                 </div>';

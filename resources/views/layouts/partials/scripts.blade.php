@@ -29,3 +29,5 @@
 <script src="{{ asset('js/showListCategories.js') }}"></script>
 <!-- Add Cart -->
 <script src="{{ asset('js/addCart.js') }}"></script>
+<!-- Add Recommend -->
+<script src="{{ asset('js/recommendBook.js') }}"></script>

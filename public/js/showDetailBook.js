@@ -23,6 +23,7 @@ $.ajax({
         $('#description').append(data.description);
         $('#rating').append(data.count_rate);
         $('#category').append(data.category.name);
+        $('#category').attr('data-category-id', data.category_id);
         $('#number_of_page').append(data.number_of_page);
         $('#language').append(data.language);
         $('#publishing_year').append(data.publishing_year);

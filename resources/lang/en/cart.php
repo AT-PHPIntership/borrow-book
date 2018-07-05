@@ -8,5 +8,8 @@
         'remove' => 'Remove',
         'add_cart' => 'Add Cart',
         'submit' => 'Submit',
-        'close' => 'Close'
+        'close' => 'Close',
+        'recommend_book' => [
+            'recommend_book' => 'Recommended Books',
+        ],
     ];

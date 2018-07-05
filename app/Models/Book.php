@@ -65,6 +65,7 @@ class Book extends Model
         'category' => ['category_id' => 'in'],
         'number_of_page' => ['books.number_of_page' => 'between'],
         'language' => ['books.language' => 'like'],
+        'book' => ['books.id' => 'notIn'],
     ];
 
     /**
