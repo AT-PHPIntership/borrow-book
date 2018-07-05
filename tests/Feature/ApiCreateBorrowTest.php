@@ -30,7 +30,7 @@ class ApiCreateBorrowTest extends TestCase
         factory(Book::class, 1)->create();
         factory(ImageBook::class, 1)->create();
         factory(Borrow::class, 1)->create();
-        factory(BorrowDetail::class, 1)->create([
+        factory(BorrowDetail::class)->create([
             'borrow_id' => 1
         ]);
     }
