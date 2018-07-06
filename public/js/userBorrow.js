@@ -29,17 +29,70 @@ function getUserBorrows(url) {
                     $("#"+ idBorrow + " #borrow-detail"+ idBorrowDetail +" .borrow-detail .book-title").text(title);
                     $("#"+ idBorrow + " #borrow-detail"+ idBorrowDetail +" .borrow-detail .book-quantity").text(quantity);
                 });
+                $("#"+ idBorrow +" .btn_cancel .btn-cancel").attr({"borrow-id": borrows.id });
                 if (borrows.status == BORROWING) {
                     $("#"+ idBorrow +" .status .label-success").show();
+                    $("#"+ idBorrow +" .btn_cancel .btn-cancel").attr({'disabled':"disabled", "borrowId": borrows.id});
                 } else if (borrows.status == GIVE_BACK) {
                     $("#"+ idBorrow +" .status .label-primary").show();
                 } else if (borrows.status == WAITTING) {
                     $("#"+ idBorrow +" .status .label-warning").show();
                 } else {
                     $("#"+ idBorrow +" .status .label-danger").show();
+                  
                 }
             });
-        }
+        }   
     });
 }
-getUserBorrows(url);
+function cancelBorrow(borrowId) {
+  let note = '';
+  if ($('#note').val()) {
+    note = $('#note').val();
+  }
+  $.ajax({
+    url: 'api/borrow/' + borrowId,
+    type: "put",
+    headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+    },
+    data: {
+      "content": note,
+    },
+    success: function(response) {
+        console.log(response);
+      $('#table-content .table tbody tr[id="borrow' + response.data.id + '"] .status .label-danger').html(Lang.get('auth.cancel'));
+      $('#table-content .table tbody .btn_cancel button[borrowId="' + response.data.id + '"]').prop("disabled",true);
+      alert(Lang.get('user.done'));
+    },
+    statusCode: {
+      500: function(response) {
+        alert(response.responseJSON.message);
+      }
+    }
+  });
+}
+$(document).ready(function() {
+    getUserBorrows(url);
+  $(document).on('click', '#table-content .table tbody tr[id] .btn_cancel button[borrow-id]', function(event) {
+    event.preventDefault();
+    if (confirm(Lang.get('auth.cancel_confirm'))) {
+      $('#note_cancel_submit').attr('borrow-id', $(this).attr('borrow-id'));
+      $('#note_cancel').modal('show');
+    }
+  });
+
+  /*$(document).on('click', '#myTabContent #recent_order #order_detail .btn-order-detail-back', function(event) {
+    event.preventDefault();
+    $('#myTabContent #recent_order #order_detail').hide();
+
+    $('#myTabContent #recent_order table').show();
+  });
+*/
+  $(document).on('click', '#note_cancel .note_cancel .modal-body input[id="note_cancel_submit"][borrow-id]', function(event) {
+    event.preventDefault();
+    cancelBorrow($(this).attr('borrow-id'));
+    $('#note_cancel').modal('hide');
+  });
+});

@@ -9,6 +9,7 @@ use App\Models\Borrow;
 use App\Models\Book;
 use App\Models\BorrowDetail;
 use App\Models\User;
+use App\Models\Note;
 use Auth;
 use App\Http\Requests\Api\BorrowBookRequest;
 
@@ -58,6 +59,11 @@ class BorrowController extends ApiController
     public function cancel(Borrow $borrow)
     {
         if ($borrow->user_id == Auth::id() && $borrow->status == Borrow::WAITTING) {
+            Note::create([
+                'borrow_id' => $borrow->id,
+                'user_id' => Auth::id(),
+                'note' => ,
+            ]);
             $borrow->status = Borrow::CANCEL;
             $borrow->save();
             return $this->showOne($borrow->load('borrowDetails'), Response::HTTP_OK);

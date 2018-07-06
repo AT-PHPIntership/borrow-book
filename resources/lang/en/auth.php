@@ -21,5 +21,8 @@ return [
         'delete_confirm' => 'Are you sure delete?',
         'delete_success' => 'You deleted successfully!',
     ],
+    'cancel' => 'Cancel',
+    'done' => 'Done',
+    'cancel_confirm' => 'Do you want cancel this order?',
 
 ];

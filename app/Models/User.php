@@ -103,6 +103,17 @@ class User extends Authenticatable
         return $this->hasMany(Borrow::class);
     }
 
+     /**
+     * Relationship hasMany with Notes
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+
     /**
      * Get the user's avatar.
      *

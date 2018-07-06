@@ -63,4 +63,5 @@
                 'user_image' => 'User Image',
             ],
         ],
+        'note_cancel' => 'Please provide a reason for this cancellation blow.',
     ];
