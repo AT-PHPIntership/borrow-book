@@ -24,6 +24,7 @@ class Borrow extends Model
     const BORROWING = 0;
     const GIVE_BACK = 1;
     const WAITTING = 2;
+    const CANCEL = 3;
 
     /**
      * The attributes that should be mutated to dates.

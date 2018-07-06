@@ -13,15 +13,18 @@
             'from_date' => 'From Date',
             'to_date' => 'To Date',
             'status' => 'Status',
-            'options' => 'Options'
+            'options' => 'Options',
+            'detail' => 'Detail'
         ],
         'status' => [
             'give_back' => 'Give Back',
             'waitting' => 'Waitting',
-            'borrowing' => 'Borrowing'
+            'borrowing' => 'Borrowing',
+            'cancel' => 'Cancel'
         ],
         'messages' => [
             'confirm_delete_message' => 'Are you sure?',
-            'error' => 'Quantity book has run out'
+            'error' => 'Quantity book has run out',
+            'cancel_borrow_error' => 'Cancel Borrow Fail!',
         ]
     ];

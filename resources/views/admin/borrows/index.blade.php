@@ -39,6 +39,7 @@
                                         <option value="{{ App\Models\Borrow::BORROWING }}" {{ $borrow->status == App\Models\Borrow::BORROWING ? 'selected="selected" disabled' : '' }}>{{ trans('borrow.status.borrowing') }}</option>
                                         <option value="{{ App\Models\Borrow::GIVE_BACK }}" {{ $borrow->status == App\Models\Borrow::GIVE_BACK ? 'selected="selected" disabled' : '' }}>{{ trans('borrow.status.give_back') }}</option>
                                         <option value="{{ App\Models\Borrow::WAITTING }}" {{ $borrow->status == App\Models\Borrow::WAITTING ? 'selected="selected" disabled' : '' }}>{{ trans('borrow.status.waitting') }}</option>
+                                        <option value="{{ App\Models\Borrow::CANCEL }}" {{ $borrow->status == App\Models\Borrow::CANCEL ? 'selected="selected" disabled' : '' }}>{{ trans('borrow.status.cancel') }}</option>
                                     </select>
                                 </td>
                                 <td>

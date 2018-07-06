@@ -1,13 +1,8 @@
 var delete_confirm = Lang.get('auth.messages.delete_confirm');
 var delete_success = Lang.get('auth.messages.delete_success');
-url = '/api/users/posts?limit=8';
+var url = '/api/users/posts?limit=8';
 
-$(document).ready(function () {
-    getUserPosts(url);
-    deletePostUser();
-});
-
-function getUserPosts(url) {
+function getUserPosts() {
     $.ajax({
         url: url,
         type: 'get',
@@ -46,10 +41,12 @@ function getUserPosts(url) {
                 }
                 $("#"+ idpost +" .type").html(type);
                 $("#"+ idpost +" .option .delete-post-user").attr('id', idpost);
+                $(".update-post-user").attr('data-id', idpost);
             });
         }
     });
 }
+getUserPosts();
 
 $('#next').click(function (event) {
     event.preventDefault();
@@ -81,3 +78,25 @@ function deletePostUser() {
         }
     });  
 }
+deletePostUser();
+
+function editCommentProfile() {
+    $("#form-edit-post").dialog({
+        autoOpen: false,
+        show: 'slide',
+        resizable: false,
+        position: 'center',
+        stack: true,
+        height: 'auto',
+        width: 'auto',
+        modal: true
+    });
+    $('.update-post-user').on('click', function () {
+        $('').attr('class', 'center');
+    })
+
+    $('#close').on('click', function () {
+        $('#form-edit-post').hide();
+    })
+}
+editCommentProfile();
