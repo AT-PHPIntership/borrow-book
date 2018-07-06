@@ -73,6 +73,7 @@ Get list posts following user
 |---|---|
 |Accept|application\json|
 |Authorization|{token_type} {access_token}|
+
 #### Query Param
 | Param | Type | Description |
 |---|---|---|
@@ -173,6 +174,11 @@ Cancel borrow
 |Accept|application\json|
 |Authorization|{token_type} {access_token}|
 
+#### Parameters
+| Key | Value | Required | Description |
+|---|---|---|---|
+| content | String | required | reason of cancel borrow |
+
 ```json
 {
     "id": 15,
@@ -189,6 +195,16 @@ Cancel borrow
             "book_id": 1,
             "borrow_id": 15,
             "quantity": 1,
+            "created_at": "2018-06-06 08:45:01",
+            "updated_at": "2018-06-06 08:45:01",
+        }
+    ],
+    "note":[
+        {
+            "id": 1,
+            "borrow_id": 15,
+            "user_id": 1,
+            "content": "Eos facilis doloribus consequatur minus velit dolor.",
             "created_at": "2018-06-06 08:45:01",
             "updated_at": "2018-06-06 08:45:01",
         }
