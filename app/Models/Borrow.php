@@ -65,4 +65,14 @@ class Borrow extends Model
     {
         return $this->hasMany(BorrowDetail::class);
     }
+
+    /**
+     * Relationship hasOne with Note
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function note()
+    {
+        return $this->hasOne(Note::class);
+    }
 }
