@@ -41,7 +41,6 @@ function getUserBorrows(url) {
                 } else {
                     $("#"+ idBorrow +" .status .label-danger").show();
                     $("#"+ idBorrow +" .btn_cancel .btn-cancel").hide();
-                  
                 }
             });
         }   
