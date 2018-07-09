@@ -71,7 +71,7 @@ class Borrow extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function notes()
+    public function note()
     {
         return $this->hasOne(Note::class);
     }

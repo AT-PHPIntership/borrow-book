@@ -17,14 +17,16 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedInteger('borrow_id');
             $table->foreign('borrow_id')
-                ->references('id')
-                ->on('borrowes');
+                ->references('id')->on('borrowes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->text('content')->nullable();
             $table->timestamps();
-            $table->string('content');
         });
     }
 

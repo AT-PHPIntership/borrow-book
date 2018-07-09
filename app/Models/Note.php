@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
+
 class Note extends Model
 {
-
-     /**
+    /**
     * The attributes that are mass assignable.
     *
     * @var array
@@ -17,7 +16,8 @@ class Note extends Model
         'borrow_id',
         'content',
     ];
-	/**
+
+    /**
      * Relationship belongsTo with User
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -30,9 +30,9 @@ class Note extends Model
     /**
      * Relationship belongsTo with Borrow
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function borrow()
+    public function borrows()
     {
         return $this->belongsTo(Borrow::class, 'borrow_id');
     }

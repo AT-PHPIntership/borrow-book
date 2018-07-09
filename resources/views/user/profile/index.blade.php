@@ -114,45 +114,38 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Modal -->
                                     <div class="modal fade" id="note_cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                      <div class="modal-dialog modal-dialog-centered note_cancel" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5>@lang('user.note_cancel')</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                  <span aria-hidden="true">&times;</span>
-                                                </button>   
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="demo-form2" method="POST" class="form-horizontal form-label-left">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12 col-sm-6 col-xs-12">
-                                                         <textarea rows="5" id="note" name="note" class="form-control col-md-7 col-xs-12"></textarea>
+                                        <div class="modal-dialog modal-dialog-centered note_cancel" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5>{{ trans('user.note_cancel') }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>   
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="demo-form2" method="POST" class="form-horizontal form-label-left">
+                                                        <div class="form-group">
+                                                            <div class="col-md-12 col-sm-6 col-xs-12">
+                                                                <textarea rows="5" id="note" name="note" class="form-control col-md-7 col-xs-12"></textarea>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
-                                                            <input type="submit" id="note_cancel_submit" class="btn btn-success" value="{{ __('user.form.buttons.submit') }}">
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
+                                                                <input type="submit" id="note_cancel_submit" class="btn btn-success" value="{{ trans('user.form.buttons.submit') }}">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                           <!--  <div class="modal-footer">
-                                           <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
-                                      </div>
                                     </div>
-                                     
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-          
         </div>
     </div>
 @endsection
