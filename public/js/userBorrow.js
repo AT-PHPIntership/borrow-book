@@ -32,15 +32,14 @@ function getUserBorrows(url) {
                 $("#"+ idBorrow +" .btn_cancel .btn-cancel").attr({"borrow-id": borrows.id });
                 if (borrows.status == BORROWING) {
                     $("#"+ idBorrow +" .status .label-success").show();
-                    $("#"+ idBorrow +" .btn_cancel .btn-cancel").hide();
                 } else if (borrows.status == GIVE_BACK) {
                     $("#"+ idBorrow +" .status .label-primary").show();
-                    $("#"+ idBorrow +" .btn_cancel .btn-cancel").hide();
+                   
                 } else if (borrows.status == WAITTING) {
                     $("#"+ idBorrow +" .status .label-warning").show();
+                     $("#"+ idBorrow +" .btn_cancel .btn-cancel").show();
                 } else {
                     $("#"+ idBorrow +" .status .label-danger").show();
-                    $("#"+ idBorrow +" .btn_cancel .btn-cancel").hide();
                 }
             });
         }   
@@ -66,11 +65,12 @@ function cancelBorrow(borrowId) {
             $('#table-content .table tbody tr[id="borrow' + response.id + '"] .status .label-danger').show();
             $('#table-content .table tbody tr[id] .btn_cancel button[borrow-id="' + response.id + '"]').hide();
             $('#note').val('');
-            alert(Lang.get('auth.done'));
+            $('#table-content .table tbody tr[id="borrow' + response.id + '"] .done').show();
         },
         statusCode: {
             500: function(response) {
-                alert(response.responseJSON.message);
+                $('#table-content .table tbody tr[id="borrow' + response.id + '"] .error lb-error').html(response.responseJSON.message);
+                $('#table-content .table tbody tr[id="borrow' + response.id + '"] .error').show();
             }
         }
     });

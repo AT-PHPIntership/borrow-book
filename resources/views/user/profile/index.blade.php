@@ -85,6 +85,7 @@
                                                             <th class="col-md-2">{{ trans('borrow.table_head.status') }}</th>
                                                             <th class="col-md-2">{{ trans('borrow.table_head.detail') }}</th>
                                                             <th class="col-md-2">{{ trans('borrow.table_head.options') }}</th>
+                                                            <th class="col-md-2">{{ trans('user.message') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -106,7 +107,16 @@
                                                                 </ul>
                                                             </td>
                                                             <td class="col-md-2 btn_cancel">
-                                                                <button class="btn btn-danger btn-cancel">{{ trans('borrow.status.cancel') }}</button>
+                                                                <button class="btn btn-danger btn-cancel" style="display:none;">{{ trans('borrow.status.cancel') }}</button>
+                                                            </td>
+                                                                <button class="btn btn-danger btn-cancel" style="display:none;">{{ trans('borrow.status.cancel') }}</button>
+                                                            <td class="col-md-2 alert alert-success done" style="display:none;" >
+                                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                <strong>{{ trans('auth.done')}}</strong> 
+                                                            </td>
+                                                            <td class="col-md-2 alert alert-danger error" style="display:none;" >
+                                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                <strong class="lb-error"></strong> 
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -133,6 +143,7 @@
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
                                                                 <input type="submit" id="note_cancel_submit" class="btn btn-success" value="{{ trans('user.form.buttons.submit') }}">
+                                                              
                                                             </div>
                                                         </div>
                                                     </form>

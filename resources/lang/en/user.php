@@ -64,4 +64,5 @@
             ],
         ],
         'note_cancel' => 'Please provide a reason for this cancellation blow.',
+        'message' => 'Message',
     ];
