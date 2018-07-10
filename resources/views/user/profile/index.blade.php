@@ -39,7 +39,9 @@
                                 <div class="tab-content">
                                     <div id="recent_post" class="tab-pane fade active in">
                                         <div class="row">
-                                           <div id="table-content">
+                                            <div id="table-content">
+                                                <div class="alert alert-info review_success" hidden>@lang('post.send_review_success')</div>
+                                                <div class="alert alert-danger review_error" hidden></div>
                                                 <div class="alert alert-danger delete_error" hidden></div>
                                                 <table class="table table-striped table-sm ">
                                                     <thead>
@@ -63,11 +65,59 @@
                                                             </td>
                                                             <td class="type col-md-2"></td>
                                                             <td class="option col-md-2">
-                                                                <a href="javascript:void(0)" class="delete-post-user"><i class="btn-flat fa fa-trash-o" style="color: red"></i></a>
+                                                                <a href="javascript:void(0)" class="delete-post-user"><i class="btn-flat fa fa-trash-o" style="color: red"></i></a> | 
+                                                                <a href="javascript:void(0)" class="update-post-user" data-toggle="modal" data-target="#modal-update-post"><i class="btn-flat fa fa-pencil" style="color: green"></i></a>
+                                                                <i class=""></i>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
+                                                <div class="modal fade" id="modal-update-post" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Form update</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="form-update-post" method="POST" class="form-horizontal form-label-left">
+                                                                    <div class="form-group">
+                                                                        <div class="col-md-12 col-sm-6 col-xs-12">
+                                                                            <div class='rating-stars text-right'>
+                                                                                <ul id='stars'>
+                                                                                    <li class='star' title='Poor' data-value='1'>
+                                                                                        <i class='fa fa-star fa-fw'></i>
+                                                                                    </li>
+                                                                                    <li class='star' title='Fair' data-value='2'>
+                                                                                        <i class='fa fa-star fa-fw'></i>
+                                                                                    </li>
+                                                                                    <li class='star' title='Good' data-value='3'>
+                                                                                        <i class='fa fa-star fa-fw'></i>
+                                                                                    </li>
+                                                                                    <li class='star' title='Excellent' data-value='4'>
+                                                                                        <i class='fa fa-star fa-fw'></i>
+                                                                                    </li>
+                                                                                    <li class='star' title='WOW!!!' data-value='5'>
+                                                                                        <i class='fa fa-star fa-fw'></i>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <textarea rows="4" id="content-post" name="boby" class="form-control col-md-7 col-xs-12"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="btn-form-update">
+                                                                            <button type="button" id="submit-update-post" class="btn btn-success">Submit</button>
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <nav class="paginate-profile text-right">
                                               <a id="next" hidden href="">{{ __('profile.next') }}>></a>
