@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="contact-wrap">
-                    <h3>{{ __('Login') }}</h3>
+                    <h3>{{ __('resetPassword.reset_password') }}</h3>
                     <form id="loginForm">
                         <div class="row form-group">
                             <div class="col-md-12">
@@ -20,9 +20,14 @@
                                 <input id="password" type="password" class="form-control" name="password" required>
                             </div>
                         </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label for="password">{{ __('register.password_confirmation') }}</label>
+                                <input id="re-password" type="password" class="form-control" name="re-password" required>
+                            </div>
+                        </div>
                         <div class="form-group text-center">
-                            <input type="submit" value="{{ __('Login') }}" class="btn btn-success">
-                            <input type="submit" value="{{ __('resetPassword.forget_password') }}" class="btn btn-danger">
+                            <input type="submit" value="{{ __('resetPassword.reset_password') }}" class="btn btn-success">
                         </div>
                     </form>     
                 </div>
@@ -31,5 +36,5 @@
     </div>
 @endsection
 @section('scripts')
-<script src="js/user/login.js"></script>
+
 @endsection
