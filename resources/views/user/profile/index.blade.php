@@ -85,6 +85,7 @@
                                                             <th class="col-md-2">{{ trans('borrow.table_head.status') }}</th>
                                                             <th class="col-md-2">{{ trans('borrow.table_head.detail') }}</th>
                                                             <th class="col-md-2">{{ trans('borrow.table_head.options') }}</th>
+                                                            <th class="col-md-2">{{ trans('user.message') }}</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -105,20 +106,57 @@
                                                                     </li>
                                                                 </ul>
                                                             </td>
+                                                            <td class="col-md-2 btn_cancel">
+                                                                <button class="btn btn-danger btn-cancel" style="display:none;">{{ trans('borrow.status.cancel') }}</button>
+                                                            </td>
+                                                                <button class="btn btn-danger btn-cancel" style="display:none;">{{ trans('borrow.status.cancel') }}</button>
+                                                            <td class="col-md-2 alert alert-success done" style="display:none;" >
+                                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                <strong>{{ trans('auth.done')}}</strong> 
+                                                            </td>
+                                                            <td class="col-md-2 alert alert-danger error" style="display:none;" >
+                                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                <strong class="lb-error"></strong> 
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="modal fade" id="note_cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered note_cancel" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5>{{ trans('user.note_cancel') }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>   
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="demo-form2" method="POST" class="form-horizontal form-label-left">
+                                                        <div class="form-group">
+                                                            <div class="col-md-12 col-sm-6 col-xs-12">
+                                                                <textarea rows="5" id="note" name="note" class="form-control col-md-7 col-xs-12"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
+                                                                <input type="submit" id="note_cancel_submit" class="btn btn-success" value="{{ trans('user.form.buttons.submit') }}">
+                                                              
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-          
         </div>
     </div>
 @endsection

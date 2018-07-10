@@ -8,6 +8,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Models\User;
+use App\Models\Book;
+use App\Models\Borrow;
+use App\Models\BorrowDetail;
 
 class SendMailRecommendJob implements ShouldQueue
 {
@@ -35,7 +38,10 @@ class SendMailRecommendJob implements ShouldQueue
             ->get();
         \Log::info("Schedule sent mail to remined asdasd book");
         foreach ($users as $user) {
-            \Log::info($user->date_recommend);
+            $borrow = Borrow::where('user_id', $user->id)
+                        ->get();
+            $bookBorrowed = BorrowDetail::whereIn('borrow_id', $borrow->pluck('id'))->get()->implode('book_id', ', ')->toArray();
+            \Log::info($bookBorrowed);
         }
     }
 }

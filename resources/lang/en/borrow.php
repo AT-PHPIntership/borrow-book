@@ -5,6 +5,7 @@
         'borrow_detail' => 'Borrow Detail',
         'list_borrow' => 'List Borrow',
         'quantity' => 'Quantity',
+        'reminder' => 'Mail Reminder Book',
         'table_head' => [
             'avatar' => 'Avatar',
             'borrower' => 'Borrower',

@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\SendMailRecommend',
+        'App\Console\Commands\SendMailReminder',
     ];
 
     /**
@@ -27,6 +28,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('recommend-book:users')
                 ->everyMinute();
+        $schedule->command('remind-borrow-expire:users')
+            ->dailyAt('8:00')
+            ->timezone('Asia/Ho_Chi_Minh');
     }
 
     /**
