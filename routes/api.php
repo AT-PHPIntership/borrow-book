@@ -36,3 +36,5 @@ Route::get('books', 'API\BookController@index');
 Route::get('categories', 'API\CategoryController@index');
 Route::get('books/{book}', 'API\BookController@show');
 Route::get('books/{book}/posts', 'API\PostController@getPostFollowingBook');
+Route::post('password/reset', 'API\ForgotPasswordController@sendResetLinkEmail');
+Route::put('password/reset', 'API\ResetPasswordController@reset');
