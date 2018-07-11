@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group text-center">
                             <input type="submit" value="{{ __('Login') }}" class="btn btn-success">
-                            <input type="submit" value="{{ __('resetPassword.forget_password') }}" class="btn btn-danger">
+                            <a href="#" class="text-info">{{ __('resetPassword.forget_password') }}</a>
                         </div>
                     </form>     
                 </div>
