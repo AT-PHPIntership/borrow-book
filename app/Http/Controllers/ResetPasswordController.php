@@ -20,7 +20,7 @@ class ResetPasswordController extends Controller
     {
         return view('user.auth.resetpassword')->with(
             [
-                'token' => $token, 
+                'token' => $token,
                 'email' => $request->email
             ]
         );
