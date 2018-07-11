@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="col-md-6 text-center">
                 </div>
-                 <div class="col-md-6">
+                <div class="col-md-6">
                     <form class="form-inline qbstp-header-subscribe">
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
