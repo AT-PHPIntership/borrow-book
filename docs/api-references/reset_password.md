@@ -1,6 +1,6 @@
-## Send Mail Resetpassword Api
+## Send Mail Reset password Api
 
-### `POST` Send Mail Resetpassword
+### `POST` Send Mail Reset password
 ```
 /api/password/reset
 ```
@@ -49,11 +49,11 @@ Post email
 }
 ```
 
-### `PUT` Resetpassword
+### `PUT` New password
 ```
 /api/password/reset
 ```
-Put password new
+Update new password
 #### Request Headers
 | Key | Value | 
 |---|---|
