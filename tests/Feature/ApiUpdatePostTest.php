@@ -27,7 +27,7 @@ class ApiUpdatePostTest extends TestCase
         parent::setUp();
         factory(Category::class)->create();
         factory(Book::class)->create();
-        factory(User::class,2)->create(); 
+        factory(User::class, 2)->create(); 
         factory(Post::class)->create([
             'user_id' => 1,
         ]);    
