@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Models\User;
 
 class UpdateUsersTable extends Migration
 {
@@ -14,8 +15,8 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('date_recommend')->nullable();
-            $table->tinyInteger('status_recommend')->nullable()->default(0);
+            $table->integer('date_recommend')->nullable();
+            $table->tinyInteger('flag_recommend')->nullable()->default(User::TURN_OFF);
         });
     }
 
@@ -28,7 +29,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('date_recommend');
-            $table->dropColumn('status_recommend');
+            $table->dropColumn('flag_recommend');
         });
     }
 }

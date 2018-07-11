@@ -11,6 +11,9 @@ use App\Models\User;
 use App\Models\Book;
 use App\Models\Borrow;
 use App\Models\BorrowDetail;
+use Carbon\Carbon;
+use App\Mail\RecommendBookMail;
+use Mail;
 
 class SendMailRecommendJob implements ShouldQueue
 {
@@ -33,15 +36,24 @@ class SendMailRecommendJob implements ShouldQueue
      */
     public function handle()
     {
+        $today = Carbon::parse(Carbon::today());
         $users = User::with('borrowes.borrowDetails')->whereNotNull('date_recommend')
-            ->where('status_recommend', User::TURN_ON)
+            ->where('date_recommend', $today->dayOfWeek)
+            ->where('flag_recommend', User::TURN_ON)
             ->get();
-        \Log::info("Schedule sent mail to remined asdasd book");
+        \Log::info('Schedule send mail to recommend book for you');
         foreach ($users as $user) {
-            $borrow = Borrow::where('user_id', $user->id)
+            $bookBorrowed = BorrowDetail::with(['book'])
+                        ->whereIn('borrow_id', Borrow::where('user_id', $user->id)->get()->pluck('id'))
+                        ->get()->unique('book_id')->pluck('book_id');
+            $categoryIds = Book::whereIn('id', $bookBorrowed)->get()->pluck('category_id');
+            $bookRecommend = Book::with('category', 'imageBooks')->whereNotIn('id', $bookBorrowed)
+                        ->whereIn('category_id', $categoryIds)
+                        ->orWhereYear('publishing_year', $today->year)
+                        ->orWhereBetween('total_rate', [3, 5])
                         ->get();
-            $bookBorrowed = BorrowDetail::whereIn('borrow_id', $borrow->pluck('id'))->get()->implode('book_id', ', ')->toArray();
-            \Log::info($bookBorrowed);
+            Mail::to($user->email)->send(new RecommendBookMail($user, $bookRecommend));
+            \Log::info($bookRecommend);
         }
     }
 }

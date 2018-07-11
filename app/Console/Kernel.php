@@ -27,9 +27,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('recommend-book:users')
-                ->everyMinute();
+                ->dailyAt('9:00')
+                ->timezone('Asia/Ho_Chi_Minh');
         $schedule->command('remind-borrow-expire:users')
-            ->dailyAt('8:00')
+            ->dailyAt('8:30')
             ->timezone('Asia/Ho_Chi_Minh');
     }
 

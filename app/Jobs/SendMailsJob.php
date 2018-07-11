@@ -35,7 +35,7 @@ class SendMailsJob implements ShouldQueue
     {
         $borrows = Borrow::with('borrowDetails.book', 'user')
             ->where('status', Borrow::BORROWING)
-            ->whereDate('to_date', '<=', Carbon::now())
+            ->whereDate('to_date', '<=', Carbon::today())
             ->whereNull('date_send_mail')->get();
         \Log::info("Schedule sent mail to remined borrow book");
         foreach ($borrows as $borrow) {
