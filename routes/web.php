@@ -53,5 +53,5 @@ Route::resource('books', 'BookController')->except([
     'store', 'update', 'destroy'
 ]);
 Route::get('profile', 'UserController@index')->name('profile');
-Route::get('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::get('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+Route::get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');

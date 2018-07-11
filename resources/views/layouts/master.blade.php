@@ -17,7 +17,7 @@
     <div id="page">
         @include('layouts.partials.header')
         <!--Banner-->
-        @if (!request()->is('login') && !request()->is('register') && !request()->is('cart') && !request()->is('password/reset') && !request()->is('password/reset/*'))
+        @if (!request()->is('login') && !request()->is('register') && !request()->is('cart') && !request()->is('password/email') && !request()->is('password/reset/*'))
         @include('layouts.partials.banner')
         @endif
         <!--Banner2-->
