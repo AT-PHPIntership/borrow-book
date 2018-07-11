@@ -22,6 +22,29 @@ class User extends Authenticatable
     const ROLE_ADMIN = 1;
 
     /**
+     * User recommend
+     *
+     * @type int
+     */
+    const TURN_OFF = 0;
+    const TURN_ON = 1;
+
+    /**
+     * Weekdays
+     *
+     * @type array
+     */
+    const WEEK_DAYS = [
+        'sunday' => 0,
+        'monday' => 1,
+        'tuesday' => 2,
+        'wednesday' => 3,
+        'thursday' => 4,
+        'friday' => 5,
+        'saturday' => 6
+    ];
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
@@ -41,7 +64,9 @@ class User extends Authenticatable
         'avatar',
         'dob',
         'address',
-        'role'
+        'role',
+        'date_recommend',
+        'flag_recommend'
     ];
     
     /**
