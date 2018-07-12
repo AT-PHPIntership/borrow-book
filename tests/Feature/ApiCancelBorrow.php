@@ -35,7 +35,11 @@ class ApiCancelBorrow extends TestCase
         factory(Borrow::class)->create([
             'user_id' => $this->user->id,
             'status' => 2,
-        ]); 
+        ]);
+        factory(Borrow::class)->create([
+            'user_id' => $this->user->id,
+            'status' => 1,
+        ]);
         factory(BorrowDetail::class)->create([
             'borrow_id' => 1,
         ]); 
@@ -125,5 +129,22 @@ class ApiCancelBorrow extends TestCase
             'content' => $data->content,
         ];
         $this->assertDatabaseHas('notes', $arrayNote);
+    }
+
+    /**
+     * Test structure of json response.
+     *
+     * @return void
+     */
+    public function testFailCancelBorrow()
+    {
+        $body = [
+            "content" => "hahaha"
+        ];
+        $response = $this->jsonUser('PUT', 'api/borrow/2', $body);
+        $response->assertStatus(401)
+            ->assertJson([
+                "error" => "Cancel Borrow Fail!",
+            ]);
     }
 }
