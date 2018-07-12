@@ -82,3 +82,11 @@ $factory->define(App\Models\BorrowDetail::class, function (Faker $faker) {
         'quantity' => $faker->numberBetween(1, 5)
     ];
 });
+
+$factory->define(App\Models\Note::class, function (Faker $faker) {
+    return [
+        'user_id' => App\Models\User::all()->unique()->random()->id,
+        'borrow_id' => App\Models\Borrow::all()->unique()->random()->id,
+        'content' => $faker->text,
+    ];
+});
