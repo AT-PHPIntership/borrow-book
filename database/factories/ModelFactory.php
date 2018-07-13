@@ -28,7 +28,8 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
         'author' => $faker->name,
         'publishing_year' => $faker->dateTime(),
         'language' => $faker->randomElement($languages),
-        'quantity' => $faker->numberBetween(6, 20)
+        'quantity' => $faker->numberBetween(6, 20),
+        'barcode' => $faker->isbn13()
     ];
 });
 
