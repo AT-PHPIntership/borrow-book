@@ -1,6 +1,6 @@
 $(document).ready(function () {
     if (localStorage.getItem('access_token')) {
-        window.location.href = 'http://' + window.location.hostname;
+       window.location.href = '/';
     }
 
     $(document).on('click', '#send-email-reset', function (event) {
@@ -55,7 +55,7 @@ $(document).ready(function () {
                 password_confirmation: $('#re-password').val(),
             },
             success: function () {
-                window.location.href = 'http://' + window.location.hostname + '/login';
+                window.location.href = '/login';
             },
             statusCode: {
                 404: function (response) {
