@@ -8,6 +8,14 @@
             'new_arrival' => 'New Arrival Books',
             'decription' => 'The new books is arrival'
         ],
+        'you_book' => [
+            'book_you_need' => 'Book You Need',
+            'decription' => 'Maybe these are the books you need'
+        ],
+        'similar_book' => [
+            'similar_book' => 'Similar Book',
+            'decription' => 'The book of the same category'
+        ],
         'show_more' => 'Show more...',
         'cart' => 'Cart',
         'banner' => [

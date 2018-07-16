@@ -54,6 +54,9 @@ trait FilterTrait
             case 'in':
                 $query->whereIn($column, explode(',', $value));
                 break;
+            case 'notIn':
+                $query->whereNotIn($column, explode(',', $value));
+                break;
             default:
                 $query->where($column, $operator, $value);
                 break;

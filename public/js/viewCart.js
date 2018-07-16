@@ -6,6 +6,7 @@ if (window.localStorage.getItem('carts')) {
     $(document).ready(function () {
         getListCart();
         checkout();
+        getListRecommendCartBooks();
     });
     var books = JSON.parse(window.localStorage.getItem('carts'));
     borrowBook(books);
@@ -101,5 +102,50 @@ function changQuantity(id, quantity, index) {
         localStorage.setItem('carts', JSON.stringify(books));
         var bookCarts = JSON.parse(window.localStorage.getItem('carts'));
         borrowBook(bookCarts);
+    });
+}
+
+var limit = 12;
+var urlRecommendCart = '/api/books?limit=' + limit;
+var categoryRecommend = [];
+var bookExist = [];
+$.each(books, function (key, value) {
+    categoryRecommend.push(value.category_id);
+    bookExist.push(value.id);
+});
+function getListRecommendCartBooks() {
+    $.ajax({
+        type: 'GET',
+        url: urlRecommendCart + '&category=' + categoryRecommend.toString() + '&book=' + bookExist.toString(),
+        success: function(data) {
+            contentRecommendCartBook(data);
+        }
+    });
+}
+
+function contentRecommendCartBook(data) {
+    var cartRecommend = '';
+    $.each(data.data, function (key, value) {
+        if(typeof value.image_books[0] === 'undefined') {
+            value.image_books[0] = {
+                'image': '../storage/images/default-book.png'
+            };
+        }
+        cartRecommend += '<div class="col-md-3 text-center" >\
+                    <div class="product-entry">\
+                        <div class="product-img" style="background-image: url('+ value.image_books[0].image +');">\
+                            <p class="tag"><span class="sale">'+ value.author +'</span></p>\
+                            <div class="cart">\
+                                <p>\
+                                    <span><a onclick="addKeyRecommend('+ value.category_id +')" class="recommend-book" href="/books/'+ value.id +'"><i class="fa fa-eye"></i></a></span>\
+                                </p>\
+                            </div>\
+                        </div>\
+                        <div class="desc">\
+                            <h3><a class="recommend-book" href="/books/'+ value.id +'">'+ value.title +'</a></h3>\
+                        </div>\
+                    </div>\
+                </div>';
+        $(".recommed-cart-book").html(cartRecommend);
     });
 }
