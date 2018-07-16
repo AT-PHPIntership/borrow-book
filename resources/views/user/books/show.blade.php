@@ -78,7 +78,7 @@
                                     <div class="row">
                                         <div class="col-md-7" class="review" >
                                                 <label>@lang('post.rating_message'):</label>
-                                               <div class='rating-stars text-right'>
+                                                <div class='rating-stars text-right'>
                                                     <ul id='stars'>
                                                         <li class='star' title='Poor' data-value='1'>
                                                             <i class='fa fa-star fa-fw'></i>

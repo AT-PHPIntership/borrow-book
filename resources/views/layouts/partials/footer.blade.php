@@ -1,4 +1,4 @@
- @if (!request()->is('login') && !request()->is('register') && !request()->is('cart'))
+ @if (!request()->is('login') && !request()->is('register') && !request()->is('cart') && !request()->is('password/email') && !request()->is('password/reset/*'))
 <div id="colorlib-subscribe">
     <div class="overlay"></div>
     <div class="container">

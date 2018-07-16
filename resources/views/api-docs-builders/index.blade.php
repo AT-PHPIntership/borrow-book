@@ -6,3 +6,4 @@
 {!! file_get_contents(base_path('docs/api-references/post.md')) !!}
 {!! file_get_contents(base_path('docs/api-references/borrow.md')) !!}
 {!! file_get_contents(base_path('docs/api-references/profile.md')) !!}
+{!! file_get_contents(base_path('docs/api-references/reset_password.md')) !!}
