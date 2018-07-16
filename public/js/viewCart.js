@@ -118,7 +118,6 @@ function getListRecommendCartBooks() {
         type: 'GET',
         url: urlRecommendCart + '&category=' + categoryRecommend.toString() + '&book=' + bookExist.toString(),
         success: function(data) {
-            console.log(data);
             contentRecommendCartBook(data);
         }
     });
