@@ -15,15 +15,16 @@ class ResetPasswordTest extends TestCase
     use SendsPasswordResetEmails;
 
     /**
-     * Test status code
+     * Test structure json
      *
      * @return void
      */
-    public function testStatusResetPassword()
+    public function  testStructureJson()
     {
         $email = $this->user->email;
         $this->json('POST', '/api/password/reset', ['email' => $email])
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertJsonStructure($this->jsonStructure());
         $token = $this->broker()->createToken($this->user);
         $reset = [
             'email' => $email,
@@ -32,7 +33,8 @@ class ResetPasswordTest extends TestCase
             'password_confirmation' => '123456',
         ];
         $this->json('PUT', 'api/password/reset', $reset)
-            ->assertStatus(200);
+            ->assertStatus(200)
+            ->assertJsonStructure($this->jsonStructure());
     }
 
     /**
@@ -45,27 +47,6 @@ class ResetPasswordTest extends TestCase
         return [
             "message",
         ];
-    }
-
-    /**
-     * Test structure of json response.
-     *
-     * @return void
-     */
-    public function testStructureJsonSuccess()
-    {
-        $email = $this->user->email;
-        $this->json('POST', '/api/password/reset', ['email' => $email])
-            ->assertJsonStructure($this->jsonStructure());
-        $token = $this->broker()->createToken($this->user);
-        $reset = [
-            'email' => $email,
-            'token' => $token,
-            'password' => '123456',
-            'password_confirmation' => '123456',
-        ];
-        $this->json('PUT', 'api/password/reset', $reset)
-            ->assertJsonStructure($this->jsonStructure());
     }
 
     /**
@@ -139,37 +120,31 @@ class ResetPasswordTest extends TestCase
     }
 
     /**
-     * Test structure of json when not find email.
+     * Test case
      *
-     * @return void
+     * @return array
      */
-    public function testStructureJsonErrorNotFoundEmail()
+    public function listCaseTestNotFound()
     {
-        $email = $this->user->email;
-        $this->json('POST', '/api/password/reset', ['email' => $email.'a'])
-            ->assertJsonStructure($this->jsonStructureErrorNotFound());
-        $token = $this->broker()->createToken($this->user);
-        $reset = [
-            'email' => $email.'a',
-            'token' => $token,
-            'password' => '123456',
-            'password_confirmation' => '123456',
+        return [
+            ['abc@gmail.com', 'c62399583f85268b1dfbee5f527139c67cd5abd1f2e83550de45bc98720e8f26sds'],
         ];
-        $this->json('PUT', 'api/password/reset', $reset)
-            ->assertJsonStructure($this->jsonStructureErrorNotFound());
     }
 
     /**
-     * Test structure of json when error token.
-     *
+     * Test structure
+     * 
+     * @dataProvider listCaseTestNotFound
+     * 
      * @return void
      */
-    public function testStructureJsonErrorToken()
+    public function testStructureJsonErrorNotFound($email, $token)
     {
-        $token = $this->broker()->createToken($this->user);
+        $this->json('POST', '/api/password/reset', [ 'email' => $email])
+            ->assertJsonStructure($this->jsonStructureErrorNotFound());
         $reset = [
             'email' => $this->user->email,
-            'token' => $token.'a',
+            'token' => $token,
             'password' => '123456',
             'password_confirmation' => '123456',
         ];
