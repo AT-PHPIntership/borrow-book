@@ -17,17 +17,17 @@ class ApiUpdatePostTest extends TestCase
 {
 	use DatabaseMigrations;
 
-     /**
+    /**
     * Set up database
     *
     * @return void
     */
-     public function setUp()
+    public function setUp()
     {
         parent::setUp();
         factory(Category::class)->create();
         factory(Book::class)->create();
-        factory(User::class,2)->create(); 
+        factory(User::class, 2)->create(); 
         factory(Post::class)->create([
             'user_id' => 1,
         ]);    
@@ -90,7 +90,7 @@ class ApiUpdatePostTest extends TestCase
         ]);
     }
 
-     /**
+    /**
      *  Test case
      * 
      * @return array
@@ -147,7 +147,7 @@ class ApiUpdatePostTest extends TestCase
         ]);
     }
 
-     /**
+    /**
      * Test status update post when is not login
      *
      * @return void

@@ -41,9 +41,9 @@ class ApiGetListBorrowTest extends TestCase
         }
     }
 
-     /**
+    /**
      * Return structure of json.
-     *x
+     *
      * @return array
      */
     public function jsonStructureListBorrow()
