@@ -5,6 +5,12 @@
 @section('content')
 
 <div class="content-wrapper">
+    <section class="container">
+        <div id="scanner-container"></div>
+        <input type="button" id="btn" value="Start/Stop the scanner"/>
+        <div class="alert alert-danger alert-dismissible fade in" hidden>
+        </div>
+    </section>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h2>{{trans('book.list_book')}}</h2>
@@ -72,4 +78,8 @@
     </section>
     <!-- /.content -->
 </div>
+@endsection
+@section('script')
+    <script src="bower_components/quagga/dist/quagga.min.js"></script>
+    <script src="{{ asset('js/readBarcode.js') }}"></script>
 @endsection

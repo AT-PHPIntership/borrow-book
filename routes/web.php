@@ -31,6 +31,7 @@ Route::group($admin_config, function(){
     Route::get('/', 'HomeController@index');
     Route::resource('users', 'UserController');
     Route::resource('books', 'BookController');
+    Route::post('books/read-barcode', 'BookController@readBarcode')->name('readBarcode');
     Route::resource('borrows', 'BorrowController');
     Route::resource('images', 'ImageBookController');
     Route::resource('posts', 'PostController');

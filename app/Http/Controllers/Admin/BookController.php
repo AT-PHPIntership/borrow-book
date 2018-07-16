@@ -161,4 +161,17 @@ class BookController extends Controller
         $book = Book::with(['category','imageBooks'])->findOrFail($id);
         return view('admin.books.show', compact('book'));
     }
+
+    /**
+     * Find Book.
+     *
+     * @param Http\Requests\UpdateUserRequest $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function readBarcode(Request $request)
+    {
+        $book = Book::with('borrowDetails')->where('barcode', $request->barcode)->get();
+        return response()->json($book);
+    }
 }
