@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('users/profile','API\UserController@profile');
     Route::get('users/posts', 'API\UserController@getPost');
     Route::get('users/borrow', 'API\BorrowController@index');
+    Route::post('favorites','API\FavoriteController@store');
+    Route::get('users/favorites','API\FavoriteController@index');
+    Route::put('users/favorites/{favorite}','API\FavoriteController@update');
 });
 
 Route::post('login', 'API\LoginController@login');
