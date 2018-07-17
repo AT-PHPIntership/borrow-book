@@ -11,6 +11,11 @@ Post new favorite
 | Accept | application\json |
 | Authorization | {token_type} {access_token} |
 
+#### Parameters
+| Param | Type | Description |
+| --- | --- | ---|
+| book_id | Number | Id of book favorite|
+
 ```json
 {
     "id": 15,
