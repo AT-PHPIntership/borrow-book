@@ -49,7 +49,6 @@ class FavoriteController extends ApiController
      */
     public function update(Favorite $favorite, Request $request)
     {
-        $favorite = Favorite::findOrFail($favorite->id);
         $user = Auth::user();
         if ($favorite->user_id == $user->id) {
             $favorite['status'] = $request->status;
