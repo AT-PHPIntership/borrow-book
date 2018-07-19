@@ -9,5 +9,6 @@
         'profile_type' => "Type",
         'next' => "More",
         'profile_rate' => "Rate",
-        'profile_option' => 'Option'
+        'profile_option' => 'Option',
+        'favorite_book' => 'Favorite Book'
     ];
