@@ -57,4 +57,21 @@ class FavoriteController extends ApiController
         }
         return $this->errorResponse(trans('favorite.messages.update_favorite_error'), Response::HTTP_OK);
     }
+
+    /**
+     * Api delete favorite
+     *
+     * @param Models/Post $favorite favorite
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Favorite $favorite)
+    {
+        if ($favorite->user_id == Auth::id()) {
+            $favorite->delete();
+            return $this->successResponse($favorite, Response::HTTP_OK);
+        } else {
+            return $this->errorResponse(trans('favorite.messages.delete_favorite_error'), Response::HTTP_UNAUTHORIZED);
+        }
+    }
 }
