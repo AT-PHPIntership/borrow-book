@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('favorites','API\FavoriteController@store');
     Route::get('users/favorites','API\FavoriteController@index');
     Route::put('users/favorites/{favorite}','API\FavoriteController@update');
+    Route::delete('favorites/{favorite}', 'API\FavoriteController@destroy');
 });
 
 Route::post('login', 'API\LoginController@login');
