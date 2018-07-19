@@ -35,6 +35,8 @@
                                     </li>
                                     <li><a data-toggle="tab" href="#borrow" aria-expanded="false">{{ __('profile.recent_borrow') }}</a>
                                     </li>
+                                     <li><a data-toggle="tab" href="#favorite" aria-expanded="false">{{ __('profile.favorite_book') }}</a>
+                                    </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="recent_post" class="tab-pane fade active in">
@@ -174,6 +176,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="favorite" class="tab-pane fade">
+                                        <div class="row">
+                                           <div id="table-content">
+                                                <table class="table table-striped table-sm ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="col-md-3">{{ trans('favorite.book_name') }}</th>
+                                                            <th class="col-md-2">{{ trans('favorite.status') }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr id="template-favorite" style="display:none;">
+                                                            <td class="book_name col-md-3"></td>
+                                                            <td class="status col-md-2">
+                                                                <a href="javascript:void(0)" class="btn-read btn-status"><i class="btn btn-success fa fa-check"></i></a>
+                                                                <a href="javascript:void(0)"  class="btn-unread btn-status"><i class="btn btn-danger fa fa-close"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="modal fade" id="note_cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered note_cancel" role="document">
                                             <div class="modal-content">
@@ -214,4 +239,5 @@
 <script src="{{ asset('js/userProfile.js') }}"></script>
 <script src="{{ asset('js/userPost.js') }}"></script>
 <script src="{{ asset('js/userBorrow.js') }}"></script>
+<script src="{{ asset('js/userFavorite.js') }}"></script>
 @endsection
