@@ -19,12 +19,11 @@ function getListFavorite() {
                 let idFavorite = "favorite" + favorites.id;
                 $('#template-favorite').clone().attr({"style":"display: ", "id": idFavorite}).insertBefore('#template-favorite');
                 $("#"+ idFavorite +" .book_name").text(nameBook);
+                $("#"+ idFavorite +" .status .btn-status").attr('data-status', favorites.status);
                 if (favorites.status == READ) {
                     $("#"+ idFavorite +" .status .btn-unread").hide();
-                    $("#"+ idFavorite +" .status .btn-read").attr('data-status', READ);
                 } else {
                     $("#"+ idFavorite +" .status .btn-read").hide();
-                    $("#"+ idFavorite +" .status .btn-unread").attr('data-status', UNREAD);
                 }
                 $("#"+ idFavorite +" .status .btn-unread").attr('data-id', favorites.id);
                 $("#"+ idFavorite +" .status .btn-read").attr('data-id', favorites.id);
@@ -35,12 +34,7 @@ function getListFavorite() {
 function updateStatus() {
     $(document).on('click', '.btn-status',function(event) {
         var favoriteId = $(this).attr('data-id');
-        var status = $(this).attr('data-status');
-        if(status == READ) {
-            status = UNREAD
-        } else {
-            status = READ
-        }
+        var currentStatus = parseInt($(this).attr('data-status'));
         $.ajax({
             url: '/api/users/favorites/' + favoriteId,
             type: 'PUT',
@@ -49,7 +43,7 @@ function updateStatus() {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             },
             data: {
-                status: status
+                status: (!currentStatus) * 1
             },
             success: function(data) {
                 if(data.status == READ) {
@@ -61,6 +55,5 @@ function updateStatus() {
                 }
             }
         });
-        
     });  
 }
